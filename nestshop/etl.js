@@ -1,10 +1,14 @@
 const axios = require('axios');
 
 (async () => {
-  const { data } = await axios.post('http://localhost:3000/auth/register', {
-    username: 'username',
-    password: 'password',
-  });
+  try {
+    const { data } = await axios.post('http://localhost:3000/auth/login', {
+      username: '123',
+      password: '123',
+    });
 
-  console.log(data);
+    console.log(data);
+  } catch (err) {
+    console.log(err);
+  }
 })();

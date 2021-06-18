@@ -1,4 +1,9 @@
-import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
+import {
+  Injectable,
+  HttpException,
+  HttpStatus,
+  PayloadTooLargeException,
+} from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
@@ -18,19 +23,23 @@ export class UserService {
   }
 
   async create(userDTO: RegisterDTO) {
+    console.log(userDTO);
+
     const { username } = userDTO;
+
     const user = await this.userModel.findOne({ username });
     if (user) {
       throw new HttpException('User already exists', HttpStatus.BAD_REQUEST);
     }
 
-    const createdUser = new this.userModel({ userDTO });
+    const createdUser = new this.userModel(userDTO);
     await createdUser.save();
     return this.sanitizerUser(createdUser);
   }
 
   async findByLogin(userDTO: LoginDTO) {
     const { username, password } = userDTO;
+
     const user = await this.userModel.findOne({ username });
     if (!user) {
       throw new HttpException(
@@ -47,5 +56,10 @@ export class UserService {
         HttpStatus.UNAUTHORIZED,
       );
     }
+  }
+
+  async findByPayload(payload: any) {
+    const { username } = payload;
+    return await this.userModel.findOne({ username });
   }
 }
