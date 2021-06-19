@@ -5,10 +5,12 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
+import { ProductController } from './product/product.controller';
+import { ProductModule } from './product/product.module';
 
 @Module({
-  imports: [MongooseModule.forRoot(process.env.MONGO_URI), SharedModule, AuthModule],
-  controllers: [AppController],
+  imports: [MongooseModule.forRoot(process.env.MONGO_URI), SharedModule, AuthModule, ProductModule],
+  controllers: [AppController, ProductController],
   providers: [AppService],
 })
 export class AppModule {}

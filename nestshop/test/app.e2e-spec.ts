@@ -6,7 +6,7 @@ import { AppModule } from './../src/app.module';
 import { RegisterDTO, LoginDTO } from 'src/auth/auth.dto';
 import * as mongoose from 'mongoose';
 
-const app = 'http://localhost:3000';
+import { app } from './constamts';
 
 beforeAll(async () => {
   await mongoose.connect(process.env.MONGO_URI);
@@ -17,19 +17,27 @@ afterAll(async (done) => {
   await mongoose.disconnect(done);
 });
 
-describe('ROOT', () => {
-  it('shoul plng', () => {
-    return request(app).get('/').expect(200).expect('Hello World!');
-  });
-});
-
 describe('AUTH', () => {
-  it('should register', () => {
-    const user: RegisterDTO = {
-      username: 'username',
-      password: 'password',
-    };
+  const user: RegisterDTO | LoginDTO = {
+    username: 'testUser',
+    password: 'testUser',
+  };
 
+  const sellerRegister: RegisterDTO = {
+    username: 'seller',
+    password: 'password',
+    seller: true,
+  };
+
+  const sellerLogin: LoginDTO = {
+    username: 'seller',
+    password: 'password',
+  };
+
+  let userToken: string;
+  let sellerToken: string;
+
+  it('should register', () => {
     return request(app)
       .post('/auth/register')
       .set('Accept', 'application/json')
@@ -38,16 +46,28 @@ describe('AUTH', () => {
         //console.log(body);
         expect(body.token).toBeDefined();
         expect(body.user.username).toEqual('username');
+        expect(body.user.password).toBeUndefined();
+        expect(body.user.seller).toBeFalsy();
+      })
+      .expect(HttpStatus.CREATED);
+  });
+
+  it('should register seller', () => {
+    return request(app)
+      .post('/auth/register')
+      .set('Accept', 'application/json')
+      .send(sellerRegister)
+      .expect(({ body }) => {
+        //console.log(body);
+        expect(body.token).toBeDefined();
+        expect(body.user.username).toEqual('seller');
+        expect(body.user.password).toBeUndefined();
+        expect(body.user.seller).toBeTruthy();
       })
       .expect(HttpStatus.CREATED);
   });
 
   it('should reject duplicate registration', () => {
-    const user: RegisterDTO = {
-      username: 'username',
-      password: 'password',
-    };
-
     return request(app)
       .post('/auth/register')
       .set('Accept', 'application/json')
@@ -60,18 +80,32 @@ describe('AUTH', () => {
       .expect(HttpStatus.BAD_REQUEST);
   });
 
-  it('should login', () => {
-    const user: LoginDTO = {
-      username: 'username',
-      password: 'password',
-    };
-
+  it('should login user', () => {
     return request(app)
       .post('/auth/login')
       .set('Accept', 'application/json')
       .send(user)
-      .expect((req) => {
-        // console.log(req);
+      .expect(({ body }) => {
+        userToken = body.token;
+        expect(body.token).toBeDefined();
+        expect(body.user.username).toEqual('username');
+        expect(body.user.password).toBeUndefined();
+        expect(body.user.seller).toBeFalsy();
+      })
+      .expect(HttpStatus.CREATED);
+  });
+
+  it('should login seller', () => {
+    return request(app)
+      .post('/auth/login')
+      .set('Accept', 'application/json')
+      .send(sellerLogin)
+      .expect(({ body }) => {
+        sellerToken = body.token;
+        expect(body.token).toBeDefined();
+        expect(body.user.username).toEqual('seller');
+        expect(body.user.password).toBeUndefined();
+        expect(body.user.seller).toBeTruthy();
       })
       .expect(HttpStatus.CREATED);
   });

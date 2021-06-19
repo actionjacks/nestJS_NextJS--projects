@@ -6,9 +6,9 @@ export const ProductSchema = new mongoose.Schema({
     ref: 'User',
   },
   title: String,
-  descripton: String,
   image: String,
-  price: String,
+  description: String,
+  price: Number,
   created: {
     type: Date,
     default: Date.now,
