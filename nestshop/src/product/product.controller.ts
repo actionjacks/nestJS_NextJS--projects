@@ -6,16 +6,15 @@ import {
   Param,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { CreateProductDTO, UpdateProductDTO } from './product.dto';
-import { UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { SellerGuard } from '../guards/seller.guard';
 import { User as UserDocument } from '../types/user';
 import { User } from '../utilities/user.decorator';
 import { Product } from '../types/product';
-
 @Controller('product')
 export class ProductController {
   constructor(private productService: ProductService) {}
