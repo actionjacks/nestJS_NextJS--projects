@@ -16,7 +16,7 @@ afterAll(async (done) => {
 
 describe('AUTH', () => {
   const user: RegisterDTO = {
-    username: 'testUser',
+    username: 'username',
     password: 'password',
   };
 

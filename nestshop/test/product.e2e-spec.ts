@@ -9,8 +9,8 @@ import { HttpStatus } from '@nestjs/common';
 let sellerToken: string;
 const productSeller: RegisterDTO = {
   seller: true,
-  username: 'productSeller',
-  password: 'password',
+  username: 'jacek ',
+  password: 'jacek',
 };
 
 beforeAll(async () => {

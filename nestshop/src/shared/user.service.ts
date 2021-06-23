@@ -1,32 +1,18 @@
-import {
-  Injectable,
-  HttpException,
-  HttpStatus,
-  PayloadTooLargeException,
-} from '@nestjs/common';
-import * as bcrypt from 'bcrypt';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
+import * as bcrypt from 'bcrypt';
 import { Model } from 'mongoose';
-//interfaces
-import { LoginDTO, RegisterDTO } from 'src/auth/auth.dto';
-import { User } from './../types/user';
+
+import { LoginDTO, RegisterDTO } from '../auth/auth.dto';
+import { Payload } from '../types/payload';
+import { User } from '../types/user';
 
 @Injectable()
 export class UserService {
-  constructor(
-    @InjectModel('User')
-    private userModel: Model<User>,
-  ) {}
-
-  private sanitizerUser(user: User) {
-    return user.depopulate('password');
-  }
+  constructor(@InjectModel('User') private userModel: Model<User>) {}
 
   async create(userDTO: RegisterDTO) {
-    console.log(userDTO);
-
     const { username } = userDTO;
-
     const user = await this.userModel.findOne({ username });
     if (user) {
       throw new HttpException('User already exists', HttpStatus.BAD_REQUEST);
@@ -34,32 +20,38 @@ export class UserService {
 
     const createdUser = new this.userModel(userDTO);
     await createdUser.save();
-    return this.sanitizerUser(createdUser);
+    return this.sanitizeUser(createdUser);
+  }
+
+  async find() {
+    return await this.userModel.find();
   }
 
   async findByLogin(userDTO: LoginDTO) {
     const { username, password } = userDTO;
-
-    const user = await this.userModel.findOne({ username });
+    const user = await this.userModel
+      .findOne({ username })
+      .select('username password seller created address');
     if (!user) {
-      throw new HttpException(
-        'Invalid username or password',
-        HttpStatus.UNAUTHORIZED,
-      );
+      throw new HttpException('Invalid credentials', HttpStatus.UNAUTHORIZED);
     }
 
     if (await bcrypt.compare(password, user.password)) {
-      return this.sanitizerUser(user);
+      return this.sanitizeUser(user);
     } else {
-      throw new HttpException(
-        'Invalid username or password',
-        HttpStatus.UNAUTHORIZED,
-      );
+      throw new HttpException('Invalid credentials', HttpStatus.UNAUTHORIZED);
     }
   }
 
-  async findByPayload(payload: any) {
+  async findByPayload(payload: Payload) {
     const { username } = payload;
     return await this.userModel.findOne({ username });
+  }
+
+  sanitizeUser(user: User) {
+    const sanitized = user.toObject();
+    // delete sanitized['password'];
+    return sanitized;
+    // return user.depopulate('password');
   }
 }
