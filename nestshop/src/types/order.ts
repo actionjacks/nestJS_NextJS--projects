@@ -8,7 +8,7 @@ interface ProductOrder {
 }
 
 export interface Order extends Document {
-  owner: User;
+  owner: any;
   totalPrice: number;
   products: ProductOrder[];
   created: Date;

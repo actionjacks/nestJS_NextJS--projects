@@ -1,0 +1,13 @@
+runtime: nodejs10
+
+env_variables:
+  PORT: 8080
+  SECRET_KEY: 'secret'
+  MONGO_URI: 'mongodb+srv://admin:admin@jacek.nqpdz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+
+manual_scaling:
+  instances: 1 
+resources:
+  cpu: 1
+  memory_gb: 0.5
+  disk_size_gb: 10
