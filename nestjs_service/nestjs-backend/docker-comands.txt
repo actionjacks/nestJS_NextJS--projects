@@ -1,0 +1,10 @@
+docker-compose up
+https://www.youtube.com/watch?v=Q0kkrP8y2CU
+2:29
+
+
+adminer
+
+server mysql
+root
+example
