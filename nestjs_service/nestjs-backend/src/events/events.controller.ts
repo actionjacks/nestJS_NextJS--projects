@@ -9,12 +9,16 @@ import {
   HttpCode,
   Logger,
   NotFoundException,
+  Query,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { CreateEventDto } from './create-event.dto';
+import { Attendee } from './attendee.entity';
+import { CreateEventDto } from './input/create-event.dto';
 import { Event } from './event.entity';
-import { UpdateEventDto } from './update-event.dto';
+import { EventsService } from './events.service';
+import { UpdateEventDto } from './input/update-event.dto';
+import { ListEvents } from './input/list.events';
 
 @Controller('/events')
 export class EventsController {
@@ -25,14 +29,20 @@ export class EventsController {
   constructor(
     @InjectRepository(Event)
     private readonly repository: Repository<Event>,
+    //multi attendee Relations
+    @InjectRepository(Attendee)
+    private readonly attendeeRepository: Repository<Attendee>,
+    private readonly eventsService: EventsService,
   ) {}
 
   @Get()
-  async findAll() {
+  async findAll(@Query() filter: ListEvents) {
     //logger help debug check requests
     this.logger.log(`Hit the findAll route`);
 
-    const events = await this.repository.find();
+    const events = await this.eventsService.getEventsWithAttendeeCountFiltered(
+      filter,
+    );
     this.logger.debug(`Found ${events.length} events`);
 
     return events;
@@ -41,13 +51,35 @@ export class EventsController {
   @Get('/practice')
   async practice() {
     return await this.repository.find({
-      where: { id: 3 },
+      where: { id: 1 },
     });
+  }
+  @Get('/practice2')
+  async practice2() {
+    // return await this.repository.findOne(1, {
+    //   //show all relations to this entity
+    //   relations: ['attendees'],
+    // });
+
+    //multi atendee
+    const event = await this.repository.findOne(1, {
+      relations: ['attendees'],
+    });
+
+    const attendee = new Attendee();
+    attendee.name = 'uusing cascade';
+    // attendee.event = event;
+
+    event.attendees.push(attendee);
+
+    // await this.attendeeRepository.save(attendee);
+    await this.repository.save(event);
+    return event;
   }
 
   @Get(':id')
   async findOne(@Param('id') id) {
-    const event = await this.repository.findOne(id);
+    const event = await this.eventsService.getEvent(id);
 
     if (!event) {
       throw new NotFoundException();
