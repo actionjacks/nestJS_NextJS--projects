@@ -13,7 +13,7 @@ export class DatabaseConnectionService implements TypeOrmOptionsFactory {
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_DB,
       synchronize: true,
-      dropSchema: true,
+      dropSchema: false, //reset or not DB data on server restart
       logging: true,
       entities: ['dist/**/*.entity.js'],
     };
