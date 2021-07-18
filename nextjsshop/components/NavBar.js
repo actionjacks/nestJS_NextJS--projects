@@ -1,7 +1,17 @@
 import React from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 function NavBar() {
+  const router = useRouter();
+  const isActive = (r) => {
+    if (r === router.pathname) {
+      return " active";
+    } else {
+      return "";
+    }
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <Link href="/">
@@ -26,14 +36,20 @@ function NavBar() {
           <ul className="navbar-nav">
             <li className="nav-item">
               <Link href="/cart">
-                <a className="nav-link active" aria-current="page">
+                <a
+                  className={`nav-link ${isActive("/cart")}`}
+                  aria-hidden="true"
+                >
                   <i className="fas fa-shopping-cart"></i> Cart
                 </a>
               </Link>
             </li>
             <li className="nav-item">
               <Link href="/signin">
-                <a className="nav-link active" aria-current="page">
+                <a
+                  className={`nav-link ${isActive("/signin")}`}
+                  aria-hidden="true"
+                >
                   <i className="fas fa-user"></i> Sign in
                 </a>
               </Link>
