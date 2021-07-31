@@ -42,9 +42,9 @@ function Header() {
 
       <img
         className="cursor-pointer h-12 w-12 rounded-full ml-2"
-        // onClick={signOut}
-        // src={session?.user.image}
-        src="https://wpcdn.pl/kardiolo-forum/monthly_2018_06/J_member_7361.png"
+        onClick={signOut}
+        src={session?.user.image}
+        // src="https://wpcdn.pl/kardiolo-forum/monthly_2018_06/J_member_7361.png"
         alt=""
       />
     </header>

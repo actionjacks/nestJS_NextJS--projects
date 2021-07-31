@@ -1,19 +1,78 @@
+import { useState } from "react";
+
 import Head from "next/head";
 import Header from "../components/Header";
 import Login from "../components/Login";
+import DocumentRow from "../components/DocumentRow";
 
-import { useSession } from "next-auth/client";
+import firebase from "firebase";
+import { db } from "../firebase";
+import { useCollectionOnce } from "react-firebase-hooks/firestore";
+import { getSession, useSession } from "next-auth/client";
 
 import Button from "@material-tailwind/react/Button";
 import Icon from "@material-tailwind/react/Icon";
 import Image from "next/image";
+import Modal from "@material-tailwind/react/Modal";
+import ModalBody from "@material-tailwind/react/ModalBody";
+import ModalFooter from "@material-tailwind/react/ModalFooter";
 
 import docImg from "../assets/blank-doc-img.png";
 
 export default function Home() {
   const [session] = useSession();
-
   if (!session) return <Login />;
+
+  const [showModal, setShowModal] = useState(false);
+  const [input, setInput] = useState("");
+  const [snapshot] = useCollectionOnce(
+    db
+      .collection("userDocs")
+      .doc(session.user.email)
+      .collection("docs")
+      .orderBy("timestamp", "desc")
+  );
+
+  const createDocument = () => {
+    if (!input) return;
+
+    db.collection("userDocs").doc(session.user.email).collection("docs").add({
+      fileName: input,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+
+    setInput("");
+    setShowModal(false);
+  };
+
+  const modal = (
+    <Modal size="sm" active={showModal} toggler={() => setShowModal(false)}>
+      <ModalBody>
+        <input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          type="text"
+          className="outline-none w-full"
+          placeholder="Enter name of coument"
+          onKeyDown={(e) => e.key === "Enter" && createDocument()}
+        />
+      </ModalBody>
+      <ModalFooter>
+        <Button
+          color="blue"
+          buttonType="link"
+          onClick={(e) => setShowModal(false)}
+          ripple="dark"
+        >
+          Cancel
+        </Button>
+
+        <Button color="blue" onClick={createDocument} ripple="light">
+          Create
+        </Button>
+      </ModalFooter>
+    </Modal>
+  );
 
   return (
     <div
@@ -24,6 +83,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
+
+      {modal}
 
       <section className="bg-[#f8f9fa] pb-10 px-10">
         <div className="max-w-3xl mx-auto">
@@ -41,7 +102,11 @@ export default function Home() {
             </Button>
           </div>
           <div>
-            <div className="relative h-52 w-40 border-2 cursor-pointer hover:border-blue-700">
+            {/* create new document section */}
+            <div
+              onClick={() => setShowModal(true)}
+              className="relative h-52 w-40 border-2 cursor-pointer hover:border-blue-700"
+            >
               <Image src={docImg} layout="fill" />
             </div>
 
@@ -59,6 +124,17 @@ export default function Home() {
             <p className="mr-12">Date Created</p>
             <Icon name="folder" size="3xl" color="gray" />
           </div>
+
+          {/* render documents form firebase db */}
+
+          {snapshot?.docs.map((doc) => (
+            <DocumentRow
+              key={doc.id}
+              id={doc.id}
+              fileName={doc.data().fileName}
+              date={doc.data().timestamp}
+            />
+          ))}
         </div>
       </section>
     </div>
@@ -70,7 +146,7 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      sessions,
+      session,
     },
   };
 }
