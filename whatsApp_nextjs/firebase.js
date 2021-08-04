@@ -1,17 +1,16 @@
 import firebase from "firebase";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBa-e13x7ZFaYrxKZU-qRD2LFe8UnV2ejU",
-  authDomain: "jackmessenger-e9aff.firebaseapp.com",
-  databaseURL: "https://jackmessenger-e9aff.firebaseio.com",
-  projectId: "jackmessenger-e9aff",
-  storageBucket: "jackmessenger-e9aff.appspot.com",
-  messagingSenderId: "308423447401",
-  appId: "1:308423447401:web:22f0b3716d11f1da79a3f8",
-  measurementId: "G-7H5RBBC0R6",
+  apiKey: "AIzaSyAgqiy-bh8Cew3JrcQtaM81zMNH4tHrr5k",
+  authDomain: "fake-gogle-doc.firebaseapp.com",
+  projectId: "fake-gogle-doc",
+  storageBucket: "fake-gogle-doc.appspot.com",
+  messagingSenderId: "1053441001599",
+  appId: "1:1053441001599:web:932d6e579cb9cfdfb1174a",
+  measurementId: "G-QDWFD3TW5E",
 };
 
-const app = !firebase.app.length
+const app = !firebase.apps.length
   ? firebase.initializeApp(firebaseConfig)
   : firebase.app();
 
