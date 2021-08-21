@@ -1,0 +1,23 @@
+const MyComponent = (props) => {
+  return (
+    <div>
+     <p>lorem !</p>
+     {props.children}
+    </div>
+  )
+}
+export default myComponent
+
+function MainComponent(){
+  return (
+    <div>
+      <MyComponent>
+        <h1>LOREM !</h1>
+      </MyComponent>
+    </div>
+  )
+}
+
+html file
+  lorem
+  LOREM !

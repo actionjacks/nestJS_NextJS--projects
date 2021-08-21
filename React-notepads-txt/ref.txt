@@ -1,0 +1,13 @@
+function InputComponent() {
+  const titleInputRef = useRef()
+
+  function submitHandler(e) {
+    e.preventDefault()
+
+    const enteredTitle = titleInputRef.current.value;
+  }
+
+    return (
+       <input ref={titleInputRef} />
+    )
+}

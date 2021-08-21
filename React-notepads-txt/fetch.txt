@@ -1,0 +1,17 @@
+useEffect(()=>{
+
+  fetch('some.pl')
+  .then((res)=> res.json())
+  .then((data)=>{
+
+    const meetups = []
+
+    for (const key in data){
+      const meetup = {
+        id:key,
+        ...data[key]
+      }
+      meetup.push(meetups)
+    }
+  })
+},[])
