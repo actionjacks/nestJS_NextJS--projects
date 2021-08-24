@@ -1,16 +1,31 @@
 import Head from "next/head";
 import Header from "../components/Header";
+import Login from "../components/Login";
+import Sidebar from "../components/Sidebar";
+import Feed from "../components/Feed";
 
-export default function Home() {
+import { getSession } from "next-auth/client";
+
+export default function Home({ session }) {
+  if (!session) return <Login />;
+
   return (
-    <div>
+    <div className="h-screen bg-gray-100 overflow-hidden">
       <Head>
-        <title>Create Next App</title>
+        <title>fakebook</title>
       </Head>
+      <Header />
 
-      <div>
-        <Header />
-      </div>
+      <main className="flex">
+        <Sidebar />
+        <Feed />
+      </main>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+
+  return { props: { session } };
 }
