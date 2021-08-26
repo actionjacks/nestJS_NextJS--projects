@@ -1,3 +1,6 @@
+https://swr.vercel.app/
+hook form fetch in React
+
 useEffect(()=>{
 
   fetch('some.pl')
