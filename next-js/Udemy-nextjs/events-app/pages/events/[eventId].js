@@ -1,6 +1,7 @@
 import EventSummary from "../../components/event-detail/event-summary";
 import EventLogistics from "../../components/event-detail/event-logistics";
 import EventContent from "../../components/event-detail/event-content";
+import ErrorAlert from "../../components/error-alert/error-alert";
 
 import { useRouter } from "next/router";
 import { getEventById } from "../../dummy-data";
@@ -11,7 +12,7 @@ function EventDetailPage() {
 
   const event = getEventById(eventId); //get event from dummy_data
 
-  if (!event) return <p>No event found!</p>;
+  if (!event) return <ErrorAlert>No event found!</ErrorAlert>;
 
   return (
     <>
