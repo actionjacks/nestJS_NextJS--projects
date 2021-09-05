@@ -4,13 +4,15 @@ import EventContent from "../../components/event-detail/event-content";
 import ErrorAlert from "../../components/error-alert/error-alert";
 
 import { useRouter } from "next/router";
-import { getEventById } from "../../dummy-data";
+//import { getEventById } from "../../dummy-data";//data from file
+import { getEventById, getFeaturedEvents } from "../../helpers/api-util"; //data forom onlineDB
 
-function EventDetailPage() {
-  const router = useRouter();
-  const eventId = router.query.eventId;
+function EventDetailPage({ selectedEvent }) {
+  //const router = useRouter();
+  //const eventId = router.query.eventId;
 
-  const event = getEventById(eventId); //get event from dummy_data
+  //const event = getEventById(eventId); //get event from dummy_data
+  const event = selectedEvent; //from props selected event
 
   if (!event) return <ErrorAlert>No event found!</ErrorAlert>;
 
@@ -30,3 +32,27 @@ function EventDetailPage() {
   );
 }
 export default EventDetailPage;
+
+export async function getStaticProps(context) {
+  const eventId = context.params.eventId;
+
+  const event = await getEventById(eventId);
+
+  return {
+    props: {
+      selectedEvent: event,
+    },
+    revalidate: 30,
+  };
+}
+
+export async function getStaticPaths() {
+  const events = await getFeaturedEvents();
+  //need to tell nexjs all pages can be generated
+  const paths = events.map((event) => ({ params: { eventId: event.id } }));
+
+  return {
+    paths: paths,
+    fallback: true,
+  };
+}
