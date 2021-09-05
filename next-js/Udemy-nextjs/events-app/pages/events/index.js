@@ -1,3 +1,5 @@
+import Head from "next/head";
+import Link from "next/link";
 import { useRouter } from "next/router";
 
 import EventSearch from "../../components/event-search/events-search";
@@ -18,6 +20,10 @@ function AllEventsPage({ events }) {
 
   return (
     <>
+      <Head>
+        <title>Lorem</title>
+        <meta name="description" content="lorem ipsum" />
+      </Head>
       <EventSearch onSearch={findEventsHandler} />
       <EventList items={events} />
     </>

@@ -1,4 +1,7 @@
+import Head from "next/head";
+import Link from "next/link";
 import { useRouter } from "next/router";
+
 import EventList from "../../components/events/event-list";
 import ResultsTitle from "../../components/results-title/results-title";
 import ErrorAlert from "../../components/error-alert/error-alert";
@@ -49,8 +52,19 @@ function FilteredEventsPage({ hasError, events, dates }) {
 
   const date = new Date(dates.year, dates.month - 1);
 
+  const pageHeadData = (
+    <Head>
+      <title>Filtered Events</title>
+      <meta
+        name="description"
+        content={`all events for ${dates.month}/${dates.year}`}
+      />
+    </Head>
+  );
+
   return (
     <>
+      {pageHeadData}
       <ResultsTitle date={date} />
       <EventList items={filteredEvents} />
     </>
