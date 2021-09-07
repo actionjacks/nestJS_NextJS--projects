@@ -1,7 +1,9 @@
 import Head from "next/head";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export default function Home() {
+  const [feedbackItems, setFeedbackItems] = useState([]);
+
   const emailInputRef = useRef();
   const feedbackInputRef = useRef();
 
@@ -23,6 +25,14 @@ export default function Home() {
       .then((res) => res.json())
       .then((data) => console.log(data));
   }
+  function loadFeedbackHandler() {
+    fetch(`/api/feedback`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setFeedbackItems(data.feedback);
+      });
+  }
 
   return (
     <div>
@@ -42,6 +52,13 @@ export default function Home() {
         </div>
         <button> Send feedback</button>
       </form>
+      <hr />
+      <button onClick={loadFeedbackHandler}>Load Feedback</button>
+      <ul>
+        {feedbackItems.map((item) => (
+          <li key={item.id}>{item.text}</li>
+        ))}
+      </ul>
     </div>
   );
 }
