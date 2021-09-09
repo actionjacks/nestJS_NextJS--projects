@@ -1,12 +1,21 @@
-import { MongoClient } from "mongodb";
+import {
+  connectDatabse,
+  insertDocument,
+  getAllDocuments,
+} from "../../../helpers/db-util";
 
 async function handler(req, res) {
   const eventId = req.query.eventId; //need file name.js [eventId].js
 
   //connect to mongoDB
-  const client = await MongoClient.connect(
-    "mongodb+srv://admin:admin@jacek.nqpdz.mongodb.net/nextjs?retryWrites=true&w=majority"
-  );
+  let client;
+
+  try {
+    client = await connectDatabse();
+  } catch (error) {
+    res.status(500).json({ message: "Connectiong to the databse failed!" });
+    return;
+  }
 
   if (req.method === "POST") {
     const { email, name, text } = req.body;
@@ -19,6 +28,7 @@ async function handler(req, res) {
       text.trim() === ""
     ) {
       res.status(422).json({ message: "ivalid input" });
+      client.close();
       return;
     }
 
@@ -28,24 +38,36 @@ async function handler(req, res) {
       text,
       eventId,
     };
+    let result;
 
-    const db = client.db();
-    const result = await db.collection("comments").insertOne(newComment);
-
-    newComment.id = result.insertedId;
-
-    res.status(201).json({ message: "added comment", comment: newComment });
+    try {
+      result = await insertDocument(client, "comments", newComment);
+      newComment._id = result.insertedId;
+      res.status(201).json({ message: "added comment", comment: newComment });
+    } catch (error) {
+      res.status(500).json({ message: "Connectiong to the databse failed!" });
+    }
   }
 
   if (req.method === "GET") {
-    const db = client.db();
-    const documents = await db
-      .collection("comments")
-      .find()
-      .sort({ _id: -1 })
-      .toArray();
+    // const db = client.db();
 
-    res.status(200).json({ comments: documents });
+    // const documents = await db
+    //   .collection("comments")
+    //   .find({ eventId: eventId })
+    //   .sort({ _id: -1 })
+    //   .toArray();
+    try {
+      const documents = await getAllDocuments(
+        client,
+        "comments",
+        { _id: -1 },
+        { eventId: eventId }
+      );
+      res.status(200).json({ comments: documents });
+    } catch (err) {
+      res.status(500).json({ message: "Getting comments failed" });
+    }
   }
 
   client.close();
