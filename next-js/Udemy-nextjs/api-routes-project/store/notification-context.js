@@ -9,6 +9,7 @@ const NotificationContext = createContext({
 
 export function NotificationContextProvider(props) {
   const [activeNotification, setActiveNotification] = useState();
+
   //auto hide notifications
   useEffect(() => {
     if (
@@ -16,8 +17,13 @@ export function NotificationContextProvider(props) {
       (activeNotification.status === "success" ||
         activeNotification.status === "error")
     ) {
+      const timer = setTimeout(() => {
+        setActiveNotification(null);
+      }, 3000);
+
+      return () => clearTimeout(timer);
     }
-  }, []);
+  }, [activeNotification]);
 
   function showNotificationHandler(notificationData) {
     setActiveNotification(notificationData);
