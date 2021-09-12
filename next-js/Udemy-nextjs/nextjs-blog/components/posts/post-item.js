@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 import classes from "./post-item.module.css";
 
@@ -14,10 +15,16 @@ function PostItem({ post }) {
 
   return (
     <li className={classes.post}>
-      <Link>
+      <Link href="/">
         <a>
           <div className={classes.image}>
-            <Image src={imagePath} alt={title} width={300} height={200} />
+            <Image
+              //  src={imagePath}
+              src="/assets/posts/js-js.jpg"
+              alt={title}
+              width={300}
+              height={200}
+            />
           </div>
           <div className={classes.content}>
             <h3>{title}</h3>
