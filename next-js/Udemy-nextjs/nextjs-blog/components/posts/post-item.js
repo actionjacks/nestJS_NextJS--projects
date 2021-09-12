@@ -12,18 +12,19 @@ function PostItem({ post }) {
     year: "numeric",
   });
   const imagePath = `/assets/posts/${slug}/${image}`;
+  const linkPath = `/posts/${slug}`;
 
   return (
     <li className={classes.post}>
-      <Link href="/">
+      <Link href={linkPath}>
         <a>
           <div className={classes.image}>
             <Image
-              //  src={imagePath}
-              src="/assets/posts/js-js.jpg"
+              src={imagePath}
               alt={title}
               width={300}
               height={200}
+              layout="responsive"
             />
           </div>
           <div className={classes.content}>

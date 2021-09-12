@@ -3,7 +3,7 @@ import classes from "./featured-posts.module.css";
 
 function FeaturesPosts({ posts }) {
   return (
-    <section className={classes.lastes}>
+    <section className={classes.latest}>
       <h2>Features Posts</h2>
       <PostGrid posts={posts} />
     </section>
