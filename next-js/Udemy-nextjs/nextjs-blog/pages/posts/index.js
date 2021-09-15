@@ -1,21 +1,22 @@
 import AllPosts from "../../components/posts/all-posts";
+import { getAllPosts } from "../../lib/posts-util";
 
-//todo remove dev
-const DUMMY_POSTS = [
-  {
-    slug: "js-is-fun",
-    title: "JS IS SUPER FUN !!",
-    image: "js-js.jpg",
-    excerpt: "some lorems ipsum about js. Js is super fun and easy",
-    date: "2021-09-12",
-  },
-];
-
-function AllPostsPage() {
+function AllPostsPage({ posts }) {
   return (
     <>
-      <AllPosts posts={DUMMY_POSTS} />
+      <AllPosts posts={posts} />
     </>
   );
 }
+export function getStaticProps() {
+  const allPosts = getAllPosts();
+
+  return {
+    props: {
+      posts: allPosts,
+    },
+    //  revalidate: 3000,
+  };
+}
+
 export default AllPostsPage;
