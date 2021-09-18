@@ -1,0 +1,37 @@
+git init                                           #now git control project
+git commit -m "message"               # commit changes
+- 
+git checkout                                  #switch branch
+git branch									   #check branches for project
+
+-get existing project-
+git remote add orgin {link from github}
+
+git push orgin main   !need include login credentials
+git remove rm orgin
+
+(login to git and DEVELOPMENT SETTINGS > PERSONAL ACCESS TOKEN)
+check box:
+	repo
+	admin_repo_hook
+	delete_repo
+-copy token 
+git remote add orgin {{MY_USER_NAME}@github.com/actionjacks/MY_PROJECT}.git
+git push orgin main
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

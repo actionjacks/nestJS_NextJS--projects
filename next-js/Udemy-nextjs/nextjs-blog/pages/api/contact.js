@@ -25,10 +25,11 @@ async function handler(req, res) {
 
     let client;
 
+    //mongodb+srv://admin:admin@jacek.nqpdz.mongodb.net/nextjsblog?retryWrites=true&w=majority
+    const connectionString = `mongodb+srv://${process.env.mongodb_username}:${process.env.mongodb_password}@${mongodb_clustername}.nqpdz.mongodb.net/${process.env.mongodb_databse}?retryWrites=true&w=majority`;
+
     try {
-      client = await MongoClient.connect(
-        "mongodb+srv://admin:admin@jacek.nqpdz.mongodb.net/nextjsblog?retryWrites=true&w=majority"
-      );
+      client = await MongoClient.connect(connectionString);
     } catch (err) {
       res.status(500).json({ message: "Could not connect to databse" });
       return;
