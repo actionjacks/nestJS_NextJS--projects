@@ -31,6 +31,7 @@ export default NextAuth({
         }
 
         client.close();
+        //email is a part of the session
         return { email: user.email };
       },
     }),
