@@ -1,0 +1,28 @@
+{
+  "name": "prism_sql_postgres",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@prisma/client": "^2.24.1",
+    "@types/css-modules": "^1.0.2",
+    "@types/node": "^15.12.2",
+    "@types/react": "^17.0.11",
+    "next": "11.1.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.3",
+    "typescript": "^4.3.2"
+  },
+  "devDependencies": {
+    "eslint": "7.32.0",
+    "eslint-config-next": "11.1.2",
+    "prisma": "^3.0.2"
+  }
+}

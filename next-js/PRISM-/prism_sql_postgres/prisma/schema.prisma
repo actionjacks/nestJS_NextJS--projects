@@ -1,0 +1,28 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+//.env
+//DATABASE_URL="postgresql://postgres:postgres@localhost:5432/mydb?schema=public"
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        Int    @id @default(autoincrement())
+  firstName String
+  lastName  String
+  role      Role   @default(DEVELOPER)
+  email     String
+  avatar    String
+}
+
+enum Role {
+  USER
+  ADMIN
+  DEVELOPER
+}
