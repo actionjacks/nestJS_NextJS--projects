@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "age_of_sigmars",
+  "info": {
+    "name": "age_of_sigmar",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "fraction": {
+      "type": "string"
+    },
+    "poster": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "players": {
+      "collection": "players",
+      "via": "age_of_sigmars",
+      "dominant": true
+    }
+  }
+}
