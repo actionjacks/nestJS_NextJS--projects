@@ -1,5 +1,5 @@
 module.exports = {
   images: {
-    domains: ["https://github.com/"],
+    domains: ["www.games-workshop.com/", "fakestoreapi.com"],
   },
 };
