@@ -21,7 +21,16 @@ function Product({ id, title, price, category, description, image }) {
 
   //redux add item to basket to global cart
   const addItemToBasket = () => {
-    const product = { id, title, price, category, description, image };
+    const product = {
+      id,
+      title,
+      price,
+      rating,
+      category,
+      description,
+      image,
+      hasPrime,
+    };
     dispatch(addToBasket(product));
   };
 
@@ -30,10 +39,8 @@ function Product({ id, title, price, category, description, image }) {
       <p className="absolute top-2 right-2 text-xs italic text-gray-400">
         {category}
       </p>
-      <StarIcon />
       <Image src={image} height={200} width={200} objectFit="contain" />
       <h4 className="my-3">{title}</h4>
-
       <div className="flex">
         {Array(rating)
           .fill()
@@ -49,7 +56,7 @@ function Product({ id, title, price, category, description, image }) {
 
       {hasPrime && (
         <div className="flex items-center space-x-2 -mt-5">
-          <img src="/prime.png" alt="" />
+          <img loading="lazy" src="/prime.png" alt="" />
           <p className="text-xs text-gray-500">Free next-day delivery</p>
         </div>
       )}
