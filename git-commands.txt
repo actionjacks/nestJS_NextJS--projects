@@ -19,9 +19,7 @@ check box:
 git remote add orgin {{MY_USER_NAME}@github.com/actionjacks/MY_PROJECT}.git
 git push orgin main
 
-
-
-
+stripe listen --forward-to localhost:3000/api/webhook
 
 
 
