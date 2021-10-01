@@ -3,7 +3,7 @@ export default function Home() {
     <div>
       <main>plorem</main>
 
-      <footer c></footer>
+      <footer ></footer>
     </div>
   );
 }
