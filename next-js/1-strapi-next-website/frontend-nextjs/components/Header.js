@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { rem } from "polished";
 
-function Header({ idDark }) {
+function Header({ isDark }) {
   return (
     <HeaderStyled isDark={isDark}>
       <div className="container">
