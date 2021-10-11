@@ -12,12 +12,29 @@ import {
 import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
+import { useRouter } from "next/dist/client/router";
 
-function Header() {
+function Header({ placeholder }) {
   const [searchInput, setSearchInput] = useState("");
   const [noOfGuests, setNoOfGuests] = useState(1);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndtDate] = useState(new Date());
+  const router = useRouter();
+
+  const resetInput = () => {
+    setSearchInput("");
+  };
+  const search = () => {
+    router.push({
+      pathname: "/search",
+      query: {
+        location: searchInput,
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString(),
+        noOfGuests,
+      },
+    });
+  };
 
   const selectionRange = {
     startDate: startDate,
@@ -33,7 +50,10 @@ function Header() {
   return (
     <header className="sticky top-0 z-50 grid grid-cols-3 bg-white shadow-md py-5 px-5 md:px-10">
       {/* left */}
-      <div className="relative flex items-center h-10 cursor-pointer my-auto">
+      <div
+        onClick={() => router.push("/")}
+        className="relative flex items-center h-10 cursor-pointer my-auto"
+      >
         <Image
           src="/assets/logo.png"
           layout="fill"
@@ -43,16 +63,16 @@ function Header() {
       </div>
 
       {/* middle */}
-      <div className="flex-grow pl-5 items-center md:bottom-2 rounded-full py-2 md:shadow-sm">
+      <div className="flex flex-grow pl-5 items-center md:bottom-2 rounded-full py-2 md:shadow-sm justify-between">
         <input
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
           className="pl-5 bg-transparent outline-none
           text-sm text-gray-600 placeholder-gray-400"
           type="text"
-          placeholder="start ur search"
+          placeholder={placeholder || "start ur search"}
         />
-        <SearchIcon className="hidden md:inline-flex cursor-pointer h-8 bg-red-400 text-white rounded-full p-2 md:mx-2" />
+        <SearchIcon className="hidden flex-none md:inline-flex cursor-pointer h-8 bg-red-400 text-white rounded-full p-2 md:mx-2" />
       </div>
 
       {/* right */}
@@ -88,8 +108,12 @@ function Header() {
             />
           </div>
           <div className="flex">
-            <button className="flex-grow">Cancel</button>
-            <button className="flex-grow">Search</button>
+            <button onClick={resetInput} className="flex-grow text-gray-500">
+              Cancel
+            </button>
+            <button onClick={search} className="flex-grow text-red-400">
+              Search
+            </button>
           </div>
         </div>
       )}
