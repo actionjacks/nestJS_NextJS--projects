@@ -1,5 +1,5 @@
 {
-  "name": "FullStackBuild",
+  "name": "fullstackbuild",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -14,5 +14,19 @@
     "@types/node": "^16.6.1",
     "ts-node": "^10.2.0",
     "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "@mikro-orm/cli": "^4.5.9",
+    "@mikro-orm/core": "^4.5.9",
+    "@mikro-orm/migrations": "^4.5.9",
+    "@mikro-orm/postgresql": "^4.5.9",
+    "pg": "^8.7.1"
+  },
+  "mikro-orm": {
+    "useTsNode": true,
+    "configPaths": [
+      "./src/mikro-orm.config.ts",
+      "./dist/mikro-orm.config.js"
+    ]
   }
 }
