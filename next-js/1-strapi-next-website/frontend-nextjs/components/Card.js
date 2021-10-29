@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import Link from "next/link";
 
 const Card = ({ data }) => {
   const { API_URL } = process.env;
@@ -11,13 +12,17 @@ const Card = ({ data }) => {
       <div className="body">
         <h3>{data.title}</h3>
         <p>{data.fraction}</p>
+
+        <Link href={`/fractions/${data.genre.slug}/${data.slug}`}>
+          <a>more about this</a>
+        </Link>
       </div>
     </CardStyled>
   );
 };
 
 const CardStyled = styled.div`
-  width: 400px;
+  width: 100%;
   border: 1px solid #cccccc;
   margin-top: 50px;
   border-radius: 20px;
@@ -30,9 +35,15 @@ const CardStyled = styled.div`
     h3 {
       margin-bottom: 20px;
     }
+
     p {
       color: #6666;
       line-height: 1.5;
+    }
+
+    a {
+      display: inline-block;
+      margin: 20px 0;
     }
   }
 `;

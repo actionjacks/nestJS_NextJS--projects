@@ -1,15 +1,28 @@
+import Link from "next/link";
+
 import styled from "@emotion/styled";
 import { rem } from "polished";
+import { Flex, Box } from "reflexbox";
+//components
+import Navigation from "./Navigation";
 
-function Header({ isDark }) {
+function Header({ isDark, navigation }) {
   return (
     <HeaderStyled isDark={isDark}>
-      <div className="container">
-        <div className="logo">
-          <img src="./assets/img/logo.webp" />
+      <Box maxWidth={960} width="100%" mx="auto" px={30}>
+        <Flex justifyContent="space-between" alignItems="center">
           <span className="logo-text">Pieczara-bitewna</span>
-        </div>
-      </div>
+          <div className="logo">
+            <Link href="/">
+              <a>
+                <img src="./assets/img/logo.webp" />
+              </a>
+            </Link>
+          </div>
+
+          <Navigation navigation={navigation} />
+        </Flex>
+      </Box>
     </HeaderStyled>
   );
 }
