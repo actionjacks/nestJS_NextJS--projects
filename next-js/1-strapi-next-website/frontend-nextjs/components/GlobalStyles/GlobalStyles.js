@@ -316,6 +316,12 @@ const GlobalStyles = () => (
           margin: 0 auto;
           padding: 30px;
         }
+        button {
+          border: 1px solid #ccc;
+          padding: 10px 25px;
+          border-radius: 10px;
+          min-width: 120px;
+        }
       `}
     />
   </>

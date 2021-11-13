@@ -1,7 +1,13 @@
 const path = require("path");
 require("dotenv").config();
+const { i18n } = require("./next-i18next.config");
 
 module.exports = {
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en", "hr"],
+  },
+
   env: {
     API_URL: process.env.API_URL,
   },

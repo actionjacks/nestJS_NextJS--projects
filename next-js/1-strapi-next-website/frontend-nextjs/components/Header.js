@@ -1,12 +1,12 @@
 import Link from "next/link";
-
 import styled from "@emotion/styled";
-import { rem } from "polished";
 import { Flex, Box } from "reflexbox";
 //components
 import Navigation from "./Navigation";
+import ToggleNavigationColorButton from "./ToggleNavigationColorButton";
+import LanguageSwitcher from "./LanguageSwitcher";
 
-function Header({ isDark, navigation }) {
+function Header({ isDark }) {
   return (
     <HeaderStyled isDark={isDark}>
       <Box maxWidth={960} width="100%" mx="auto" px={30}>
@@ -20,7 +20,9 @@ function Header({ isDark, navigation }) {
             </Link>
           </div>
 
-          <Navigation navigation={navigation} />
+          <Navigation />
+          <ToggleNavigationColorButton />
+          <LanguageSwitcher />
         </Flex>
       </Box>
     </HeaderStyled>

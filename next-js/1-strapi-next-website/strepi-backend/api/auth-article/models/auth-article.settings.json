@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "auth_articles",
+  "info": {
+    "name": "AuthArticle"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Body": {
+      "type": "richtext"
+    }
+  }
+}

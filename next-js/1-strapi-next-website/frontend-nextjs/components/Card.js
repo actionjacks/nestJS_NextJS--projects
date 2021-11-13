@@ -4,11 +4,19 @@ import Link from "next/link";
 const Card = ({ data }) => {
   const { API_URL } = process.env;
 
+  if (!data.genre) {
+    data.genre = {};
+    data.genre.slug = "uncategorised";
+  }
+
   return (
     <CardStyled>
-      <div className="poster">
-        <img src={API_URL + data.poster[0].url} alt="" />
-      </div>
+      {data.poster[0] && (
+        <div className="poster">
+          <img src={API_URL + data.poster[0].url} alt="" />
+        </div>
+      )}
+
       <div className="body">
         <h3>{data.title}</h3>
         <p>{data.fraction}</p>

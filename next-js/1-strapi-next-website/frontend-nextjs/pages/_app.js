@@ -1,28 +1,72 @@
+import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import { ThemeProvider } from "@emotion/react";
 import GlobalStyles from "../components/GlobalStyles/GlobalStyles";
 import theme from "../theme/theme";
 import getConfig from "next/config";
+import fetch from "isomorphic-unfetch";
+import { DefaultSeo } from "next-seo";
+import SEO from "../next-seo-config";
+import ContextWrapper from "../components/ContextWrapper";
+import { appWithTranslation } from "next-i18next";
 
-function MyApp({ Component, pageProps, navigation }) {
-  console.log(navigation);
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
+//from initial props, navigation from strapi go to context api
+function MyApp({ Component, pageProps }) {
+  const [navigation, setNavigation] = useState(null);
+
+  useEffect(async () => {
+    const { API_URL } = process.env;
+    const res = await fetch(`${API_URL}/Navigations`);
+    const navigationItems = await res.json();
+
+    setNavigation(navigationItems);
+  }, []);
+
+  console.log(pageProps);
+
   return (
     <>
+      <DefaultSeo {...SEO} />
       <ThemeProvider theme={theme}>
         <GlobalStyles />
-        <Header navigation={navigation} isDark="true" />
+
+        <ContextWrapper navigation={navigation}>
+          <Header isDark="true" />
+        </ContextWrapper>
+
         <Component {...pageProps} />
       </ThemeProvider>
     </>
   );
 }
 
-const { publicRuntimeConfig } = getConfig();
-MyApp.getInitialProps = async () => {
-  const res = await fetch(`${publicRuntimeConfig.API_URL}/Navigations`);
-  const navigation = await res.json();
+export async function getServerSideProps({ Component, ctx, locale }) {
+  let pageProps = {};
 
-  return { navigation };
-};
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps(ctx);
+  }
+  return {
+    props: {
+      pageProps,
+      ...(await serverSideTranslations(locale, ["common", "main"])),
+    },
+  };
+}
+//const { publicRuntimeConfig } = getConfig();
+// MyApp.getInitialProps = async ({ Component, ctx }) => {
+//   let pageProps = {};
 
-export default MyApp;
+//   const res = await fetch(`${publicRuntimeConfig.API_URL}/Navigations`);
+//   const navigation = await res.json();
+
+//   if (Component.getInitialProps) {
+//     pageProps = await Component.getInitialProps(ctx);
+//   }
+
+//   return { pageProps, navigation };
+// };
+
+export default appWithTranslation(MyApp);

@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/auth-articles",
+      "handler": "auth-article.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/auth-articles/count",
+      "handler": "auth-article.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/auth-articles/:id",
+      "handler": "auth-article.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/auth-articles",
+      "handler": "auth-article.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/auth-articles/:id",
+      "handler": "auth-article.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/auth-articles/:id",
+      "handler": "auth-article.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import "../next-i18next.config";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
