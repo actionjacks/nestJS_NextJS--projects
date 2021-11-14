@@ -10,7 +10,7 @@ function Navigation() {
   let { navigation, color } = value;
 
   return (
-    <NavigationStyled color={color && color}>
+    <NavigationStyled color={color.toString()}>
       <ul>
         {navigation &&
           navigation.map((link) => (
@@ -41,7 +41,7 @@ const NavigationStyled = styled.div`
 
     a {
       text-decoration: none;
-      color: ${(props) => (props.color ? "#4c9ee3" : "#130")};
+      color: ${(props) => (props.color !== "true" ? "#4c9ee3" : "#130")};
 
       &:hover {
         text-decoration: underline;

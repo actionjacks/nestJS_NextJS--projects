@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/age-of-sigmars",
+      "handler": "age-of-sigmars.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/age-of-sigmars/count",
+      "handler": "age-of-sigmars.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/age-of-sigmars/:id",
+      "handler": "age-of-sigmars.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/age-of-sigmars",
+      "handler": "age-of-sigmars.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/age-of-sigmars/:id",
+      "handler": "age-of-sigmars.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/age-of-sigmars/:id",
+      "handler": "age-of-sigmars.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

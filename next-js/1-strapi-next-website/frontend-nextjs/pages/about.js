@@ -16,7 +16,7 @@ function About({ pages }) {
     <>
       <NextSeo {...SEO} />
       <Box maxWidth={960} width="100%" mx="auto" px={30} pt={40}>
-        <Box as="h2" my={40}>
+        <Box as="div" my={40}>
           <Box as="h2" my={40}>
             {pages.title}
           </Box>

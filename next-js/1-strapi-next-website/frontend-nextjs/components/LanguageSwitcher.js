@@ -9,7 +9,7 @@ function LanguageSwitcher() {
   // } = useContext(I18nContext);
 
   let i18n = useContext(I18nContext);
-  console.log(i18n);
+  //console.log(i18n);
 
   return (
     <p>lorem</p>

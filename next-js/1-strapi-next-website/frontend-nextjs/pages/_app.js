@@ -11,6 +11,7 @@ import ContextWrapper from "../components/ContextWrapper";
 import { appWithTranslation } from "next-i18next";
 
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Router from "next/router";
 
 //from initial props, navigation from strapi go to context api
 function MyApp({ Component, pageProps }) {
@@ -44,10 +45,10 @@ function MyApp({ Component, pageProps }) {
 
 export async function getServerSideProps({ Component, ctx, locale }) {
   let pageProps = {};
-
   if (Component.getInitialProps) {
     pageProps = await Component.getInitialProps(ctx);
   }
+
   return {
     props: {
       pageProps,
@@ -55,18 +56,5 @@ export async function getServerSideProps({ Component, ctx, locale }) {
     },
   };
 }
-//const { publicRuntimeConfig } = getConfig();
-// MyApp.getInitialProps = async ({ Component, ctx }) => {
-//   let pageProps = {};
-
-//   const res = await fetch(`${publicRuntimeConfig.API_URL}/Navigations`);
-//   const navigation = await res.json();
-
-//   if (Component.getInitialProps) {
-//     pageProps = await Component.getInitialProps(ctx);
-//   }
-
-//   return { pageProps, navigation };
-// };
 
 export default appWithTranslation(MyApp);

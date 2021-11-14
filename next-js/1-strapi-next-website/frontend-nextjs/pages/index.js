@@ -1,9 +1,11 @@
 import React from "react";
+
 import { useTranslation } from "react-i18next";
 
 import fetch from "isomorphic-unfetch";
 import { Flex, Box } from "reflexbox";
 import Card from "../components/Card";
+
 
 // import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { withTranslation } from "react-i18next";
@@ -39,6 +41,8 @@ function Home({ data }) {
     </Box>
   );
 }
+
+
 
 export async function getServerSideProps({ ctx, locale }) {
   const { API_URL } = process.env;

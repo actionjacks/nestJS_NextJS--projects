@@ -1,5 +1,8 @@
+import Image from "next/image";
 import styled from "@emotion/styled";
 import Link from "next/link";
+
+import propTypes from "prop-types";
 
 const Card = ({ data }) => {
   const { API_URL } = process.env;
@@ -13,7 +16,7 @@ const Card = ({ data }) => {
     <CardStyled>
       {data.poster[0] && (
         <div className="poster">
-          <img src={API_URL + data.poster[0].url} alt="" />
+          <Image src={API_URL + data.poster[0].url} width={400} height={400} />
         </div>
       )}
 
@@ -27,6 +30,10 @@ const Card = ({ data }) => {
       </div>
     </CardStyled>
   );
+};
+//check type of prop
+Card.propTypes = {
+  data: propTypes.object.isRequired,
 };
 
 const CardStyled = styled.div`
