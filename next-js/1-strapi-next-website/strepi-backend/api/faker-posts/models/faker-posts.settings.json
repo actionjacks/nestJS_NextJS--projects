@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "faker_posts",
+  "info": {
+    "name": "Faker_posts"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Content": {
+      "type": "richtext"
+    }
+  }
+}

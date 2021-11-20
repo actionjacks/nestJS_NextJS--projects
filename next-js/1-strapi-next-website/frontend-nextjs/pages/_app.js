@@ -11,7 +11,9 @@ import ContextWrapper from "../components/ContextWrapper";
 import { appWithTranslation } from "next-i18next";
 
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Router from "next/router";
+import { QueryClientProvider, QueryClient } from "react-query";
+
+const queryClient = new QueryClient();
 
 //from initial props, navigation from strapi go to context api
 function MyApp({ Component, pageProps }) {
@@ -37,13 +39,15 @@ function MyApp({ Component, pageProps }) {
           <Header isDark="true" />
         </ContextWrapper>
 
-        <Component {...pageProps} />
+        <QueryClientProvider client={queryClient}>
+          <Component {...pageProps} />
+        </QueryClientProvider>
       </ThemeProvider>
     </>
   );
 }
 
-export async function getServerSideProps({ Component, ctx, locale }) {
+export const getServerSideProps = async ({ Component, ctx, locale }) => {
   let pageProps = {};
   if (Component.getInitialProps) {
     pageProps = await Component.getInitialProps(ctx);
@@ -55,6 +59,6 @@ export async function getServerSideProps({ Component, ctx, locale }) {
       ...(await serverSideTranslations(locale, ["common", "main"])),
     },
   };
-}
+};
 
 export default appWithTranslation(MyApp);

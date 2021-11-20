@@ -6,12 +6,11 @@ import fetch from "isomorphic-unfetch";
 import { Flex, Box } from "reflexbox";
 import Card from "../components/Card";
 
-
 // import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { withTranslation } from "react-i18next";
 
-function Home({ data }) {
-  // console.log(data);
+function Home({ data }, props) {
+  console.log(props);
   const { t } = useTranslation("main");
 
   return (
@@ -41,8 +40,6 @@ function Home({ data }) {
     </Box>
   );
 }
-
-
 
 export async function getServerSideProps({ ctx, locale }) {
   const { API_URL } = process.env;

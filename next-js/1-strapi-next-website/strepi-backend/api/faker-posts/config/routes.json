@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/faker-posts",
+      "handler": "faker-posts.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/faker-posts/count",
+      "handler": "faker-posts.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/faker-posts/:id",
+      "handler": "faker-posts.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/faker-posts",
+      "handler": "faker-posts.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/faker-posts/:id",
+      "handler": "faker-posts.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/faker-posts/:id",
+      "handler": "faker-posts.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
