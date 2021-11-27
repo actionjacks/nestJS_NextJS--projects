@@ -39,7 +39,7 @@ touch   //create file
   docker run -d -p 8080:80 -p 3000:80 nginx
 
 //can start container 
-  docker start <container_id or container name>
+  docker start <container_id or container name>  !!start container
 
 //remove container
   docker rm <container_id or container name>
@@ -53,4 +53,29 @@ touch   //create file
 //docker format
 docker ps --format="ID\t{{.ID}}\nNAME\t{{.Names}}\nIMAGE\t{{.Image}}\nPORTS\t{{.Ports}}\nCOMMAND\t{{.Command}}\nCREATED\t{{.CreatedAt}}\nSTATUS\t{{.Status}}\n"
 
+//create from Dockerfile
+  FROM <some img> FROM nginx:latest
+  ADD . /usr/share/nginx/html // add all files from working-directory and copy to root in nginx
 
+//to build tak --tag or -t
+  docker build --tag <name of app> .
+  docker build --tag myapp:latest .
+
+//docker file express
+  FROM node:latest
+  WORKDIR /app
+  ADD package*.json ./
+  RUN npm install
+  ADD . .
+  CMD node index.js
+
+//run new container
+    docker run --name newimage -d -p 3000:3000 expresso:latest
+    
+//.dockerignore
+node_modules
+Dockerfile
+.git
+
+//alipne images reduce size of images
+  docker pull node:lts-alpine
