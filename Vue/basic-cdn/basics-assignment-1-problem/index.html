@@ -15,6 +15,7 @@
   <section id="assignment">
     <button v-on:click='add(5)'>Add(5)</button>
     <button v-on:click='reduce'>Reduce</button>
+
     <p>Result {{ counter}}</p>
     <br>
     <input v-on:input='setName' type="text" v-on:keyup.enter='confirmInput'>
@@ -22,6 +23,7 @@
     <p>{{confiremdName}}</p>
     <br>
     <h2>{{myName}}</h2>
+
     <p>{{myAge}}</p>
     <p>{{ageInFiveYears()}}</p>
     <p v-once>Favorite Number: RANDOM NUMBER BETWEEN 0 AND 1 | {{randomNum()}}</p>
@@ -33,7 +35,12 @@
       <input type="text">
       <button>Sign up</button>
     </form>
+    <input type="text" v-model='inputValue'>
+    <!-- computed -->
+    <p>Full name {{fullName}}</p>
+    <button v-on:click='resetInput'>Reset</button>
   </section>
 </body>
+
 
 </html>

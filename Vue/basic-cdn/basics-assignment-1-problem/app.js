@@ -8,8 +8,32 @@ const app = Vue.createApp({
       counter: 0,
       inputValue: "",
       confiremdName: "",
+      fullNameeeee: "",
     };
   },
+
+  watch: {
+    inputValue() {
+      //console.log("this watcher well trigger after inputValue change");
+    },
+    counter(newValue) {
+      console.log("counter", newValue);
+      if (newValue > 50) {
+        this.counter = 0;
+      }
+    },
+  },
+
+  computed: {
+    fullName() {
+      if (this.inputValue === "") {
+        return "";
+      } else {
+        return this.inputValue + " " + "Zablockie";
+      }
+    },
+  },
+
   methods: {
     ageInFiveYears() {
       return this.myAge + 5;
@@ -34,6 +58,9 @@ const app = Vue.createApp({
     },
     submitForm(e) {
       return;
+    },
+    resetInput() {
+      this.inputValue = "";
     },
   },
 });

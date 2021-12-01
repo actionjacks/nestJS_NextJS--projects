@@ -1,6 +1,6 @@
 const app = Vue.createApp({
   data() {
-    inputValue = "";
+    return { inputValue: "" };
   },
   methods: {
     alertBtn() {
@@ -10,4 +10,4 @@ const app = Vue.createApp({
       this.inputValue = e.target.value;
     },
   },
-});
+}).mount("#assignment");
