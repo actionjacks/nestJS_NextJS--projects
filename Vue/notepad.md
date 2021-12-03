@@ -1,3 +1,14 @@
+## shortcut
+
+<input type="text" v-model='inputValue'>
+v-click="method"
+@click="method"
+
+v-bind:value="{{}}"
+:value="{{}}"
+:style=""
+:class="[demo, {active:boxB}]"
+
 ## vue - directives
 
 ## use link or input
@@ -72,3 +83,13 @@ v-bind:value="{{}}"
 
  <div :class="{demo:true,active:boxA}" @click='boxSelected("A")'></div>
    <div class="demo" :class="{active:boxA}" @click='boxSelected("A")'></div>
+
+## can use computed obj
+
+boxAClasses() {
+return { active: this.boxA };
+},
+
+## can use array
+
+:class="[demo, {active:boxB}]"
