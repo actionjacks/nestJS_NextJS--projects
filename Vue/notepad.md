@@ -1,4 +1,4 @@
-## shortcut
+## shortcut ---------------------------------
 
 <input type="text" v-model='inputValue'>
 v-click="method"
@@ -8,6 +8,26 @@ v-bind:value="{{}}"
 :value="{{}}"
 :style=""
 :class="[demo, {active:boxB}]"
+
+//item is hidden
+v-show='' - you can when you don't need other conditions
+
+//render items if condition meet
+v-if=''
+v-else-if=''
+v-else=''
+//<p v-if='goals.length === 0'>if arr no items render this<p>
+//<p v-else-if='goals.length >=3'>else condition</p>
+//<button v-elese>click me!</button>
+
+//map items
+//<ul v-for='(item,index) in items' :key='item'>{{item}}</ul>
+//<ul v-for='(item,index) in items' :key='item' @click='remove(index)'>{{item}}</ul>
+
+//<li v-for='value in {name:"jacek",age:22}' :key='value'>{{value}}</li>
+//<li v-for='num in 10'>{{num}}</li>
+
+## ------------------------------------------
 
 ## vue - directives
 
@@ -93,3 +113,27 @@ return { active: this.boxA };
 ## can use array
 
 :class="[demo, {active:boxB}]"
+
+## v-if=""
+
+data() {
+return { goals: [] };
+},
+
+<p v-if='goals.length === 0'>if arr no items render this<p>
+
+## v-else can only use after v-if
+
+<p v-if='goals.length === 0'>if arr no items render this<p>
+<p v-else-if='goals.length >=3'>else condition</p>
+<button v-elese>click me!</button>
+
+## v-for map items
+
+data() {
+return { goals: [] };
+},
+
+<ul v-for='goal in goals'>
+<p>{{goal}}</p>
+</ul>
