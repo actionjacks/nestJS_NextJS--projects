@@ -2,7 +2,7 @@
 
 <input type="text" v-model='inputValue'>
 v-click="method"
-@click="method"
+@click="method" @input=''
 
 v-bind:value="{{}}"
 :value="{{}}"
@@ -27,7 +27,80 @@ v-else=''
 //<li v-for='value in {name:"jacek",age:22}' :key='value'>{{value}}</li>
 //<li v-for='num in 10'>{{num}}</li>
 
-## ------------------------------------------
+//ref
+ref='lorem'
+get ref
+this.$refs.lorem
+
+//props
+to pass true or false need bind
+<my-component :is-named='true'>
+
+## !! change props passed inside component and change in parent !!
+
+in child component
+props:[],
+emits:["toggle-favorite"],
+method
+isFavorite(){
+this.$emit("toggle-favorite");//name of event
+}
+
+in parent
+as props @toggle-favorite='toggleFavoriteStatus'
+method
+toggleFavoriteStatus(){
+//some logic
+}
+
+## provide inject data some like redux in react
+
+parent component
+provide:{
+//some data
+topic:[{lotrm:lorem}]
+}
+
+child component
+inject:['topic']
+
+## can use provide like method
+
+data(){
+return {
+topics:[]
+}
+},
+provide(){
+retrun {
+topics:this.topics
+}
+}
+
+## we can pass function inject
+
+//in parent component
+provide() {
+return {
+selectTopic: this.activateTopic,
+};
+},
+methods: {
+activateTopic(topicId) {
+//this.activeTopic = this.topics.find((topic) => topic.id === topicId);
+},
+},
+//in child component
+<template>
+<button @click="selectTopic(id)">Learn More</button>
+</template>
+inject: ['selectTopic'],
+
+## wraped component
+
+<template v-slot:header> or <template #header>
+
+## -------------------------------------------------------------------
 
 ## vue - directives
 
@@ -137,3 +210,141 @@ return { goals: [] };
 <ul v-for='goal in goals'>
 <p>{{goal}}</p>
 </ul>
+
+## ref='<string>'
+
+ref='lorem'
+in js file
+this.$refs.lorem
+
+## life-cucle methods
+
+in .js
+1-beforeCreate(){}
+2-created(){}
+3-beforeMount(){}
+4-mounted(){}
+5-beforeUpdate(){}
+6-updated(){}
+
+beforeUnmount(){}
+unmounted(){}
+
+## pass props name in array or name and type in obj
+
+props:["jacek","dupa","rara"]
+props:{
+jacek:String,dupa:String,rara:String
+}
+
+## change props inside props and change in parent !!
+
+in child component
+method
+this.$emit("toggle-favorite");
+
+in parent
+as props @toggle-favorite=''
+method
+some logic
+
+## pass props as obj
+
+<template>
+  <user-data v-bind="person"></user-data>
+</template>
+ 
+<script>
+  export default {
+    data() {
+      return {
+        person: { firstname: 'Max', lastname: 'Schwarz' }
+      };
+    }
+  }
+</script>
+
+## register components in main.js
+
+import Component './../'
+
+const app=createApp({})
+app.component('component',Component)
+
+## provide inject data some like redux in react
+
+parent component
+provide:{
+//some data
+topic:[{lotrm:lorem}]
+}
+
+child component
+inject:['topic']
+
+## can use provide like method
+
+data(){
+return {
+topics:[]
+}
+},
+provide(){
+retrun {
+topics:this.topics
+}
+}
+
+## register components in main.js componnet is register globally
+
+to wrap content whit componet use <slot> tag in wrapper componet
+! - can use more than 1 slot
+
+<div>
+  <slot></slot>
+</div>
+<section>
+  <slot name='section'></slot>
+</section>
+..
+  <my-component-wrapper>
+    <template v-slot:header>
+    </template>
+    <template v-slot:default>
+    </template>
+  </my-component-wrapper>
+
+## to get slot proxy
+
+mounted(){
+consol.log(this.$slots)
+}
+and we can check if v-slot: is passed
+v-if="$slots.header"
+
+## use dynamic walues in component wrapper
+
+<li v-for="goal in goals">
+  <slot
+  :item="goal"
+  ></slot>
+</li>
+
+## dynamic components
+
+import ActiveGoals from "./components/ActiveGoals.vue";
+import ManageGoals from "./components/ManageGoals.vue";
+
+data() {
+return {
+selectedComponent: "active-goals",
+<component :is="selectedComponent"></component>
+//wrap
+<keep-alive>
+<component :is="selectedComponent"></component>
+</keep-alive>
+to save inputs from switched components
+
+## teleport
+
+<teleport to=''></teleport>
