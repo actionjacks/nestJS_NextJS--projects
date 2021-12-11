@@ -3,6 +3,7 @@
 <input type="text" v-model='inputValue'>
 v-click="method"
 @click="method" @input=''
+// v-modal.lazy ;v-modal.trim ;v-modal.number
 
 v-bind:value="{{}}"
 :value="{{}}"

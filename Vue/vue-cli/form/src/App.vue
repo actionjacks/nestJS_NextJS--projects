@@ -7,9 +7,9 @@ import TheForm from './components/TheForm.vue';
 
 export default {
   components: {
-    TheForm
-  }  
-}
+    TheForm,
+  },
+};
 </script>
 
 <style>
