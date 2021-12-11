@@ -308,7 +308,7 @@ to wrap content whit componet use <slot> tag in wrapper componet
 </section>
 ..
   <my-component-wrapper>
-    <template v-slot:header>
+    <template v-slot:section>
     </template>
     <template v-slot:default>
     </template>
