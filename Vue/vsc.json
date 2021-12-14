@@ -1,0 +1,142 @@
+{
+  "files.eol": "\n",
+  "prettier.singleQuote": false,
+  "editor.tabSize": 2,
+  "editor.minimap.enabled": false,
+  "workbench.iconTheme": "material-icon-theme",
+  "files.autoSave": "afterDelay",
+  "editor.formatOnSave": true,
+  "liveServer.settings.donotShowInfoMsg": true,
+  "workbench.settings.editor": "json",
+  "workbench.settings.useSplitJSON": true,
+  "editor.wordWrap": "on",
+  //"editor.fontFamily": "Hasklig",
+  "editor.fontSize": 14,
+  "extensions.ignoreRecommendations": true,
+  //svg-editor
+  "[svg]": {
+    "editor.tabSize": 4,
+    "editor.formatOnSave": false
+  },
+  "javascript.autoClosingTags": true,
+  //sass live
+  "liveSassCompile.settings.formats": [
+    {
+      "format": "expanded",
+      "extensionName": ".css",
+      // miejsce kompilowania ssasa do css w folderze w ktorym jestesmy do folderu css
+      "savePath": "~/css/"
+      //"savePath": "/css"
+    }
+  ],
+  "liveSassCompile.settings.autoprefix": ["> 1%", "last 2 versions"],
+  "workbench.sideBar.location": "right",
+  "liveServer.settings.donotVerifyTags": true,
+  "sync.autoUpload": true,
+  "sync.autoDownload": true,
+  "breadcrumbs.enabled": false,
+  "editor.renderWhitespace": "none",
+  // "emmet.syntaxProfiles": {
+  //   "javascript": "jsx"
+  // },
+  "workbench.startupEditor": "newUntitledFile",
+  "git.autofetch": true,
+  //  / zeby emet vue czytał
+  "emmet.syntaxProfiles": {
+    "vue-html": "html",
+    "vue": "html"
+  },
+  //zeby emet reacta czytał
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "vue-html": "html",
+    "vue": "html"
+  },
+  "sync.gist": "19eab776fceba35f97086793696908ea",
+  "eslint.options": {
+    "configFile": "./.eslintrc.js"
+  },
+  "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "python.languageServer": "Default",
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // "[vue]": {
+  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "emmet.triggerExpansionOnTab": true,
+  // terminal color shema
+  "workbench.colorCustomizations": {
+    "terminal.background": "#202e26",
+    "terminal.foreground": "#14af0f",
+    "terminalCursor.background": "#A89984",
+    "terminalCursor.foreground": "#A89984",
+    "terminal.ansiBlack": "#1D2021",
+    "terminal.ansiBlue": "#0D6678",
+    "terminal.ansiBrightBlack": "#665C54",
+    "terminal.ansiBrightBlue": "#0D6678",
+    "terminal.ansiBrightCyan": "#8BA59B",
+    "terminal.ansiBrightGreen": "#95C085",
+    "terminal.ansiBrightMagenta": "#8F4673",
+    "terminal.ansiBrightRed": "#FB543F",
+    "terminal.ansiBrightWhite": "#FDF4C1",
+    "terminal.ansiBrightYellow": "#FAC03B",
+    "terminal.ansiCyan": "#8BA59B",
+    "terminal.ansiGreen": "#95C085",
+    "terminal.ansiMagenta": "#8F4673",
+    "terminal.ansiRed": "#FB543F",
+    "terminal.ansiWhite": "#A89984",
+    "terminal.ansiYellow": "#FAC03B"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "remote.SSH.remoteServerListenOnSocket": true,
+  "angular.experimental-ivy": true,
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "jupyter.askForKernelRestart": false,
+  "window.zoomLevel": -1,
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // for react
+  "files.associations": {
+    "*.js": "javascriptreact"
+  },
+  "liveServer.settings.port": 3000,
+  "[javascript,html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  }
+}
+
+//prettier
+// "editor.defaultFormatter": "esbenp.prettier-vscode",
+// "[javascript]": {
+//   "editor.defaultFormatter": "esbenp.prettier-vscode"
+// }
+//beautifly:
+// "[html]": {
+//     "editor.defaultFormatter": "HookyQR.beautify"
+// },
+// "[javascript]": {
+//     "editor.defaultFormatter": "HookyQR.beautify"
+// },
