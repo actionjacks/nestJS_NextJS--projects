@@ -2,31 +2,52 @@
   <section>
     <h2>{{ teamName }}</h2>
     <ul>
-      <user-item
+      <UserItem
         v-for="member in members"
         :key="member.id"
         :name="member.fullName"
         :role="member.role"
-      ></user-item>
+      />
     </ul>
   </section>
 </template>
 
 <script>
 import UserItem from '../users/UserItem.vue';
-
+//get qury string and pass this string and = with some data
 export default {
+  inject: ['users', 'teams'],
   components: {
-    UserItem
+    UserItem,
   },
+  props: ['teamId'],
   data() {
     return {
-      teamName: 'Test',
-      members: [
-        { id: 'u1', fullName: 'Max Schwarz', role: 'Engineer' },
-        { id: 'u2', fullName: 'Max Schwarz', role: 'Engineer' },
-      ],
+      teamName: '',
+      members: [],
     };
+  },
+  methods: {
+    loadTeamMembers(route) {
+      // { path: '/teams/:id', component: TeamMembers },
+      //:id
+      const teamId = route.params.teamId; //team id from query string
+      const selectedTeam = this.teams.find((team) => team.id === teamId); //select team from ijected prop using query id
+      const members = selectedTeam.members; //get member from selected team
+      const selectedMembers = []; //declate tem array
+
+      for (const member of members) {
+        const selectedUser = this.users.find((user) => user.id === member);
+        selectedMembers.push(selectedUser);
+      }
+      this.members = selectedMembers;
+      this.teamName = selectedTeam.name;
+    },
+  },
+  created() {
+    //passed props from query-string
+    console.log(this.teamId);
+    this.loadTeamMembers(this.$route);
   },
 };
 </script>
