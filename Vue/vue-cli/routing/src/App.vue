@@ -1,8 +1,11 @@
 <template>
   <TheNavigation />
   <main>
-    <RouterView />
+    <router-view />
   </main>
+  <footer>
+    <router-view name="footer" />
+  </footer>
 </template>
 
 <script>

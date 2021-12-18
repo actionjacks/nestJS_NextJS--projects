@@ -1,4 +1,5 @@
 <template>
+  <!-- need this route to render child routes -->
   <RouterView />
   <ul>
     <TeamsItem

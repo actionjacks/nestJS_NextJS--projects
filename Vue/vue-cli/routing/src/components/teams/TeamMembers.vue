@@ -47,7 +47,17 @@ export default {
   created() {
     //passed props from query-string
     console.log(this.teamId);
+    // console.log(this.$route.query);
     this.loadTeamMembers(this.$route);
+  },
+  // BUG ?
+  // watch: {
+  //   $route() {
+  //     this.loadTeamMembers(this.$route);
+  //   },
+  // },
+  beforeRouteUpdate(to, from, next) {
+    console.log(to, from, next);
   },
 };
 </script>

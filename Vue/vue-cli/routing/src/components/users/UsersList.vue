@@ -1,6 +1,7 @@
 <template>
   <ul>
     <button @click="someClick">KLIK</button>
+    <button @click="saveChanges">Save changes</button>
     <user-item
       v-for="user in users"
       :key="user.id"
@@ -20,6 +21,26 @@ export default {
   },
 
   inject: ['users'],
+  data() {
+    return { changesSave: false };
+  },
+  methods: {
+    saveChanges() {
+      this.changesSave = true;
+    },
+  },
+
+  beforeRouteEnter(to, from, next) {
+    console.log(to, from, next);
+  },
+  beforeRouteLeave(to, from, next) {
+    if (this.changesSave) {
+      next();
+    } else {
+      const userWantsConfirm = confirm('are u sure? u got unsaved changes');
+      next(userWantsConfirm);
+    }
+  },
 
   setup() {
     const router = useRouter();

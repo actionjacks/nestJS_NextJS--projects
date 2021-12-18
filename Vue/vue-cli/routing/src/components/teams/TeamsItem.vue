@@ -10,8 +10,16 @@
 export default {
   props: ['id', 'name', 'memberCount'],
   computed: {
+    // teamLink() {
+    //   return { path: `/teams/${this.id}` };
+    // },
     teamLink() {
-      return `/teams/${this.id}`;
+      // optional we can pass query
+      return {
+        name: 'teams-members',
+        params: { teamId: this.id },
+        query: { sort: 'abc' },
+      };
     },
   },
 };
