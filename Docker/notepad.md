@@ -28,7 +28,10 @@ docker run -d <container-name>
 ## copy from one to
   docker run --name myapp-copy -volumes-from myapp -d -p 8081:80 nginx
 
-## ===============================
+## =============================== !!!!!!!
+## go to container
+  docker exec -it container-name sh
+  
 ## go to container 
   docker exec -it <conntainer name> bash 
     ls -al                    //list all folders
