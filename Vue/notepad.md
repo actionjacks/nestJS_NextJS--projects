@@ -349,3 +349,35 @@ to save inputs from switched components
 ## teleport
 
 <teleport to=''></teleport>
+
+## 
+//wrap element
+    <transition>
+      <p v-if="paraIsVisible">this is sometimes visible...</p>
+    </transition>
+    <button @click="animateParagraph">Toggle paragraph</button>
+//default class supported by vue
+//anim when enter
+.v-enter-from{opacity:0;transform:translateY(-30px);}
+.v-enter-active{transition:all 0.3s;}
+.v-enter-to{opacity:1;transform:translateY(0);}
+
+//anim when element leave
+.v-leave-from{opacity:1;transform:translateY(0);}
+.v-leave-active{transition:all 0.3s;}
+.v-leave-to{opacity:0;transform:translateY(-30px);}
+
+//we can use custom animation in 
+.v-enter-active{
+  animation: <my-animation> 0.3s ease-in;
+}
+.v-leave-active{
+  animation:slide-scale 0.3s ease-out
+}
+   <!-- custom prefix name class -->
+    <transition name="para">
+    .para-enter-from{opacity:0;transform:translateY(-30px);}
+    .para-enter-active{transition:all 0.3s;}
+    .para-enter-to{opacity:1;transform:translateY(0);}
+  <!-- custom named class -->
+    <transition enter-to-class="some-class">
