@@ -1,3 +1,4 @@
+```
 > Url is valid
 > function validUrl (urlToCheck: string): boolean {
 >       try {
@@ -7,3 +8,4 @@
 >      }
 >      return true
 >    }
+```
