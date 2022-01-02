@@ -1,15 +1,16 @@
 ## shortcut ---------------------------------
-
+```
 <input type="text" v-model='inputValue'>
 v-click="method"
 @click="method" @input=''
 // v-modal.lazy ;v-modal.trim ;v-modal.number
-
+```
+```
 v-bind:value="{{}}"
 :value="{{}}"
 :style=""
 :class="[demo, {active:boxB}]"
-
+```
 //item is hidden
 v-show='' - you can when you don't need other conditions
 
