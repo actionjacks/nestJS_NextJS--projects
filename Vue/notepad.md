@@ -102,6 +102,34 @@ inject: ['selectTopic'],
 
 <template v-slot:header> or <template #header>
 
+## get from backend response
+ ```
+  async loadPlayers(context, payload) {
+    const response = await fetch(
+      `https://`
+    );
+    const responseDate = await response.json();
+    if (!response.ok) {
+      const error = new Error(responseDate.message || 'Faild to fetch!');
+      throw error;
+    }
+ ```
+ //in component
+ ```
+     async loadPlayers() {
+      this.isLoading = true;
+      try {
+        await this.$store.dispatch('players/loadPlayers');
+      } catch (error) { < ====this is playe for catch error
+        this.error = error.message || 'something went wrong';
+      }
+      this.isLoading = false;
+    },
+    handleError() {
+      this.error = null;
+    },
+  },
+ ```
 ## -------------------------------------------------------------------
 
 ## vue - directives
