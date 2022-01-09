@@ -1,8 +1,10 @@
 <template>
-  <base-card>
-    <div>register</div>
-    <player-form @save-data="saveData"></player-form>
-  </base-card>
+  <div>
+    <base-card>
+      <div>register</div>
+      <player-form @save-data="saveData"></player-form>
+    </base-card>
+  </div>
 </template>
 
 <script>
