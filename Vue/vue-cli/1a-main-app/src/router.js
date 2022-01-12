@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import PlayersList from './pages/players/PlayersList';
-import PlayerDetails from './pages/players/PlayerDetails';
+//import PlayerDetails from './pages/players/PlayerDetails';
 import ContactPlayer from './pages/requests/ContactPlayer';
 import PlayersRegistration from './pages/players/PlayersRegistration';
 import RequestReceived from './pages/requests/RequestReceived';
@@ -8,6 +8,8 @@ import UserAuth from './pages/auth/UserAuth';
 import NotFound from './pages/NotFound';
 
 import store from './store/index';
+//optional for optimalization
+const PlayerDetails = () => import('./pages/players/PlayerDetails');
 
 const router = createRouter({
   history: createWebHistory(),
