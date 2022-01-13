@@ -1,6 +1,6 @@
 <template>
   <div class="carousel">
-    <div class="inner" ref="inner">
+    <div class="inner" ref="inner" :style="innerStyles">
       <div class="card" v-for="card in cards" :key="card">
         {{ card }}
       </div>
@@ -30,10 +30,33 @@
 
   function next() {
     moveLeft();
+
+    afterTransition(() => {
+      const card = cards.value.shift();
+      cards.value.push(card);
+
+      resetTranslate();
+    });
   }
+
   function moveLeft() {
     innerStyles.value = {
       transform: `translateX(-${step.value})`,
+    };
+  }
+
+  function afterTransition(callback) {
+    const listener = () => {
+      callback();
+      inner.value.removeEventListener("transitionend", listener);
+    };
+    inner.value.addEventListener("transitionend", listener);
+  }
+
+  function resetTranslate() {
+    innerStyles.value = {
+      transition: "none",
+      transform: "translateX(0)",
     };
   }
 </script>
@@ -46,6 +69,7 @@
     border: 1px solid lemonchiffon;
   }
   .inner {
+    transition: transform 0.2s;
     white-space: nowrap;
     height: 100%;
   }
