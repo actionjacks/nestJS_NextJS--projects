@@ -26,8 +26,10 @@
 </template>
 
 <script>
-import { ref, computed, watch } from 'vue';
+import { toRefs } from 'vue';
 import UserItem from './UserItem.vue';
+import useSearch from '../../hooks/search';
+import useSort from '../../hooks/sort';
 
 export default {
   components: {
@@ -36,53 +38,13 @@ export default {
   props: ['users'],
   emits: ['list-projects'],
   setup(props) {
-    const enteredSearchTerm = ref('');
-    const activeSearchTerm = ref('');
-    const availableUsers = computed(() => {
-      let users = [];
-      if (activeSearchTerm.value) {
-        users = props.users.filter((usr) =>
-          usr.fullName.includes(activeSearchTerm.value)
-        );
-      } else if (props.users) {
-        users = props.users;
-      }
-      return users;
-    });
+    const { users } = toRefs(props);
 
-    watch(enteredSearchTerm, (nevValue) => {
-      setTimeout(() => {
-        if (nevValue === enteredSearchTerm.value) {
-          activeSearchTerm.value = nevValue;
-        }
-      }, 300);
-    });
-
-    function updateSearch(val) {
-      enteredSearchTerm.value = val;
-    }
-
-    const sorting = ref(null);
-    const displayUsers = computed(() => {
-      if (!sorting.value) {
-        return availableUsers.value;
-      }
-      return availableUsers.value.slice().sort((u1, u2) => {
-        if (sorting.value === 'asc' && u1.fullName > u2.fullName) {
-          return 1;
-        } else if (sorting.value === 'asc') {
-          return -1;
-        } else if (sorting.value === 'desc' && u1.fullName > u2.fullName) {
-          return -1;
-        } else {
-          return 1;
-        }
-      });
-    });
-
-    function sort(mode) {
-      sorting.value = mode;
-    }
+    const { enteredSearchTerm, availableItems, updateSearch } = useSearch(
+      users,
+      'fullName'
+    );
+    const { displayUsers, sort, sorting } = useSort(availableItems, 'fullName');
 
     return {
       enteredSearchTerm,
