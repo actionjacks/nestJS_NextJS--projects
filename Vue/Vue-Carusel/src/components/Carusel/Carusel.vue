@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-  import { onMounted, ref } from "vue";
+  import { onMounted, ref, onUnmounted } from "vue";
   const cards = ref([1, 2, 3, 4, 5, 6, 7]);
 
   const inner = ref(null);
@@ -20,6 +20,13 @@
 
   onMounted(() => {
     setStep();
+    window.addEventListener("resize", () => {
+      setStep();
+      resetTranslate();
+    });
+  });
+  onUnmounted(() => {
+    window.removeEventListener("resize");
   });
 
   function setStep() {
