@@ -3,33 +3,46 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from "vue";
+  import { Job } from "./types/Job";
+  import { defineComponent, ref, computed } from "vue";
 
-export default defineComponent({
-  name: "App",
-  components: {},
+  interface Goal {
+    id: string | Date;
+    text: string;
+  }
 
-  //setup got 2 arg props , context
-  setup() {
-    const goals = ref([]);
+  export default defineComponent({
+    name: "App",
+    components: {},
 
-    const filteredGoals = computed(function () {
-      return goals.value.filter((goal) => {
-        !goal.text.insludes("LOREM");
+    //setup got 2 arg props , context
+    setup() {
+      const jobs = ref<Job[]>([
+        { title: "s", location: "s2", salary: 2, id: "12" },
+      ]);
+      const someVal = ref<string | boolean>(true);
+      const goals = ref<Goal[]>([]);
+      const myObj = ref({
+        name: "jacek" as string | null,
       });
-    });
 
-    function addGoal(text: string) {
-      const newGoal = {
-        id: new Date().toISOString(),
-        text,
-      };
-      goals.value.push(newGoal);
-    }
+      const filteredGoals = computed(function () {
+        return goals.value.filter((goal) => {
+          !goal.text.includes("LOREM");
+        });
+      });
 
-    return { filteredGoals, addGoal };
-  },
-});
+      function addGoal(text: string) {
+        const newGoal: Goal = {
+          id: new Date().toISOString(),
+          text,
+        };
+        goals.value.push(newGoal);
+      }
+
+      return { filteredGoals, addGoal };
+    },
+  });
 </script>
 
 <style></style>
