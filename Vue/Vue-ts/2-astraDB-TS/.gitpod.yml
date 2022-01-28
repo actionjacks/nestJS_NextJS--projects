@@ -1,0 +1,36 @@
+tasks:
+  - name: cors-host-config
+    before: bash hostURL.sh
+    command: gp open README.md
+  - name: VueJS-Setup
+    before: |
+      nvm install 16.11.1
+      npm install -g npm@latest
+      npm install astra-setup
+      npm install -g netlify-cli
+      npm install
+    command: |
+      echo "workshop-vuejs gitpod ready - LET'S DO THIS!"
+ports:
+  - port: 8888
+    visibility: public
+    onOpen: open-preview
+  - port: 8080
+    visibility: public
+    onOpen: open-browser
+  - port: 3000
+    visibility: public
+    onOpen: open-preview      
+github:
+  prebuilds:
+    master: true
+    branches: true
+    pullRequests: true
+    pullRequestsFromForks: false
+    addCheck: true
+    addComment: false
+    addBadge: true
+    addLabel: false
+vscode:
+  extensions:
+    - octref.vetur
