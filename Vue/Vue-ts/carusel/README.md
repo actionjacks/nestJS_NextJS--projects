@@ -5,20 +5,12 @@
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### Run dummy_data
 ```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
+yarn api
 ```
 
-### Lints and fixes files
+### Run project on localhost 8081
 ```
-yarn lint
+yarn start
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
