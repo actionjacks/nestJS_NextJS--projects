@@ -14,3 +14,6 @@ yarn api
 ```
 yarn start
 ```
+### TO-DD
+## * touch event for carusel
+** * make config obj for customization of carusel
