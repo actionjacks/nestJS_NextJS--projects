@@ -7,6 +7,8 @@ import RenderData from "../views/renderData/RenderData.vue";
 import RenderDataItem from "../components/RenderDataItem.vue";
 import NotFound from "../views/NotFound.vue";
 import Todo from "../views/todo/Todo.vue";
+import AddTodo from "../views/todo/AddProject.vue";
+import EditTodo from "../views/todo/EditTodo.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -34,6 +36,18 @@ const routes: Array<RouteRecordRaw> = [
     path: ROUTING_URLS.PROJECT_TODO,
     name: "todo",
     component: Todo,
+    props: true,
+  },
+  {
+    path: ROUTING_URLS.PROJECT_ADDTODO,
+    name: "addtodo",
+    component: AddTodo,
+    props: true,
+  },
+  {
+    path: ROUTING_URLS.PROJECT_EDITTODO,
+    name: "edittodo",
+    component: EditTodo,
     props: true,
   },
   // redirect

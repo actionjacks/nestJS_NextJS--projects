@@ -1,41 +1,90 @@
 <template>
   <div class="todo">
     <div v-if="todoData">
-      <div v-for="todo in todoData" :key="todo.id">
-        <TodoItem :todo="todo" />
+      <FilterNav @filterChange="current2 = $event" :current="current2" />
+      <div v-for="todo in filteredTodo" :key="todo.id">
+        <TodoItem
+          :todo="todo"
+          @delete="handleDelete"
+          @complete="handleComplete"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-  import { defineComponent, ref, onMounted } from "vue";
-  // types
-  import { ToDo } from "../../types/todo";
-  import TodoItem from "../../components/TodoItem.vue";
+import { defineComponent, ref, onMounted, computed } from "vue";
+// types
+import { ToDo } from "../../types/todo";
+import TodoItem from "../../components/TodoItem.vue";
+import FilterNav from "../../components/FilterNav.vue";
 
-  export default defineComponent({
-    components: {
-      TodoItem,
-    },
+enum Filters {
+  all,
+  completed,
+  ongoing,
+}
 
-    setup() {
-      const todoData = ref<ToDo[] | null>(null);
+export default defineComponent({
+  components: {
+    TodoItem,
+    FilterNav,
+  },
 
-      onMounted(async () => {
-        const response: Response = await fetch("http://localhost:3000/todo");
-        const data: ToDo[] = await response.json();
+  setup() {
+    const todoData = ref<ToDo[] | null>(null);
+    const current = ref<Filters>(Filters.all);
+    const current2 = ref("all");
 
-        if (!response.ok) {
-          throw new Error("Wlacz json--server !");
-        }
-        todoData.value = data;
-        console.log(todoData);
+    onMounted(async () => {
+      const response: Response = await fetch("http://localhost:3000/todo");
+      const data: ToDo[] = await response.json();
+
+      if (!response.ok) {
+        throw new Error("Wlacz json--server !");
+      }
+      todoData.value = data;
+      console.log(todoData);
+    });
+
+    function handleDelete(id: number): void {
+      if (!todoData.value) {
+        return;
+      }
+      todoData.value = todoData.value?.filter((todo) => todo.id !== id);
+    }
+
+    function handleComplete(id: number): void {
+      if (!todoData.value) {
+        return;
+      }
+      let todoDataForUpdate = todoData.value.find((todo: ToDo) => {
+        return todo.id === id;
       });
+      todoDataForUpdate!.complete = !todoDataForUpdate?.complete;
+    }
+    //fix to do any
+    const filteredTodo = computed((): any => {
+      if (current2.value === "completed") {
+        return todoData.value?.filter((todo) => todo.complete);
+      }
+      if (current2.value === "ongoing") {
+        return todoData.value?.filter((todo) => !todo.complete);
+      }
+      return todoData.value;
+    });
 
-      return { todoData };
-    },
-  });
+    return {
+      todoData,
+      handleDelete,
+      handleComplete,
+      current,
+      current2,
+      filteredTodo,
+    };
+  },
+});
 </script>
 
 <style scoped></style>
