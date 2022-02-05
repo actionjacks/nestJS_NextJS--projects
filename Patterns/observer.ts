@@ -1,0 +1,5 @@
+class JobPortal {
+  constructor() {
+    this
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "name": "doman-react-boilerplate",
+  "version": "1.0.0",
+  "description": "Boilerplate for frontend projects configured for React library and using more valuable tools for development",
+  "main": "index.ts",
+  "scripts": {
+    "start": "webpack serve --mode=development",
+    "build": "webpack --mode=production",
+    "checkts": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doman89/react-boilerplate.git"
+  },
+  "keywords": [
+    "react",
+    "boilerplate",
+    "typescript",
+    "scss",
+    "eslint",
+    "configuration"
+  ],
+  "author": "Mateusz \"doman89\" Domanski",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/doman89/react-boilerplate/issues"
+  },
+  "homepage": "https://github.com/doman89/react-boilerplate#readme",
+  "devDependencies": {
+    "@namics/stylelint-bem": "^6.3.1",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
+    "@types/react-redux": "^7.1.16",
+    "@types/react-router-dom": "^5.1.7",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^5.2.4",
+    "eslint": "^7.25.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "file-loader": "^6.2.0",
+    "fork-ts-checker-webpack-plugin": "^6.2.5",
+    "html-webpack-plugin": "^5.3.1",
+    "mini-css-extract-plugin": "^1.5.0",
+    "node-sass": "^5.0.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.4",
+    "sass-loader": "^11.0.1",
+    "style-loader": "^2.0.0",
+    "stylelint": "^13.13.0",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-order": "^4.1.0",
+    "ts-loader": "^9.1.1",
+    "typescript": "^4.2.4",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.35.1",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.7.3"
+  },
+  "dependencies": {
+    "bem-css-modules": "^1.4.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.1.0",
+    "redux-thunk": "^2.3.0"
+  }
+}
