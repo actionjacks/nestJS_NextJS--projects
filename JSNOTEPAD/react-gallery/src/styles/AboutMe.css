@@ -1,0 +1,23 @@
+@media (min-width: 360px) {
+  .aboutMe {
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+  .aboutMe__avatar {
+    height: 150px;
+    object-fit: contain;
+    border-radius: 5px;
+  }
+  .aboutMe__description {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+  }
+}
+@media (min-width: 1024px) {
+  .aboutMe {
+    flex-direction: row;
+  }
+}

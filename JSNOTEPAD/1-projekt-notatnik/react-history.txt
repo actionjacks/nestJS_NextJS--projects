@@ -1,0 +1,4 @@
+import { useHistory } from "react-router-dom";
+
+const history = useHistory();
+onClick={() => history.push("/mail")} // zmienia routa

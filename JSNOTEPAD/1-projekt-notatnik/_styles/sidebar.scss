@@ -1,0 +1,30 @@
+.sidebar__left,
+.content__middle {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar__left {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  flex: 0.3;
+  border: 4px solid whitesmoke;
+
+  .menu__title {
+    cursor: pointer;
+  }
+
+  .menu__container-redux {
+    display: none;
+    cursor: pointer;
+
+    .menu__link {
+      text-decoration: none;
+    }
+  }
+}
+
+.menu__container-redux.show {
+  display: block;
+}

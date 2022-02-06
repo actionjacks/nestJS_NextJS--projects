@@ -1,0 +1,59 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "DotGothic16", sans-serif;
+  font-size: 13px;
+  background: #eef2f7;
+}
+.wrapper,
+.counter__container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.counter__textToCount:focus,
+.counter__lettersOrWords:focus {
+  outline: none;
+  transition: 0.7s;
+  background-color: #949494;
+  color: white;
+}
+
+@media (min-width: 359px) {
+  .counter__form {
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+  .counter__textToCount {
+    margin: 15px 0 10px 0;
+    width: 70%;
+    height: 100px;
+    border: 1px solid gray;
+  }
+  .counter__lettersOrWords {
+    margin-top: 15px;
+    width: 25%;
+    border: 1px solid gray;
+  }
+  .counter__btn {
+    margin-top: 15px;
+    width: 80px;
+    background-color: transparent;
+  }
+  .counter__itemsCounted {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+  .countedWords,
+  .countedLetters {
+    margin-left: 10px;
+  }
+}
+
+@media (min-width: 992px) {
+}

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="./_styles//css//index.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="sidebar__left">
+      <nav>
+        <button class="menu__title redux">Redux in React</button>
+        <ul class="menu__container-redux">
+          <li><a class="menu__link" href="#redux-react">Array -add input value to redux state</a></li>
+          <li><a class="menu__link" href="#redux-react-2">Change theme </a></li>
+          <li><a class="menu__link" href="#">3 example</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="content__middle">
+      <section id="redux-react">
+        <div class="file__container">
+          <p class="file__name bg-bg c-white">index.js</p>
+          <p class="file-margin1 font-s-1">import <span class="f-bold c-red">{ Provider }</span> from
+            "react-redux"</p>
+          <p class="file-margin1 font-s-1">import <span class="f-bold c-red">store</span> from <span
+              class="f-bold c-red f-italic">"./location of my store"</span>
+          </p>
+          <br>
+          <p class="file-margin1">ReactDOM.render( </p>
+          <p class="file-margin2">
+            <.React.StrictMode>
+          </p>
+          <p class="file-margin3">
+            <span class="f-bold bg-bg c-white">
+              <.Provider store={store}>
+            </span>
+          </p>
+          <p class="file-margin4">
+            <.App />
+          </p>
+          <p class="file-margin3">
+            <span class="f-bold bg-bg c-white">
+              <./Provider> </span> </p> <p class="file-margin2">
+                <./React.StrictMode>, </p> <p class="file-margin1"> document.getElementById("root"));</p>
+          <br>
+        </div>
+        <div class="file__container">
+          <p class="file__name bg-bg c-white">store.js</p>
+          <p class="file-margin1 font-s-1">import <span class="f-bold c-red">{ configureStore }</span> from
+            "@reduxjs/toolkit"
+          </p>
+          <p class="file-margin1 font-s-1">import <span class="f-bold c-red">myArrayReducer</span> from <span
+              class="f-bold c-red f-italic">"./location of my
+              slice"</span>
+          </p>
+          <br>
+          <p class="file-margin1">export default <span class="f-bold c-red">configureStore</span>({</p>
+          <p class="file-margin1"> reducer: {</p>
+          <p class="file-margin1"> myArray: <span class="f-bold c-red">myArrayReducer,</span> </p>
+          <p class="file-margin4"> },</p>
+          <p class="file-margin1"> });</p>
+          <br>
+          <!--  -->
+        </div>
+        <div class="file__container">
+          <p class="file__name bg-bg c-white">myArraySlice.js (reducer file)</p>
+          <br>
+          <p class="file-margin1 font-s-1">import <span class="f-bold c-red">{ createSlice }</span> from
+            "@reduxjs/toolkit"</p>
+          <br>
+          <p class="file-margin1 font-s-1">const initialState = {</p>
+          <p class="file-margin2 font-s-1"> myArray: [ ],</p>
+          <p class="file-margin1 font-s-1"> };</p>
+          <br />
+          <p class="file-margin1 font-s-1"> const <span class="f-bold c-red">myArraySlice</span> = createSlice({</p>
+          <p class="file-margin2 font-s-1"> name: <span class="c-red">"myArray",</span></p>
+          <p class="file-margin2 font-s-1"> initialState,</p>
+          <p class="file-margin2 font-s-1"> reducers: {</p>
+          <br />
+          <p class="file-margin1 font-s-1 "> <span class="c-red">saveToMyArray: </span> (state, action) => {</p>
+          <p class="file-margin2 font-s-1"> state.myArray.push(action.payload);</p>
+          <p class="file-margin1 font-s-1"> },</p>
+          <br />
+          <p class="file-margin1 font-s-1"> <span class="c-red">deletFromMyArray:</span> (state, action) => {</p>
+          <p class="file-margin3 font-s-1">let tempArray = [ ...state.myArray ];</p>
+          <br>
+          <p class="file-margin3 font-s-1"> const <span class="c-red">index</span> = tempArray.findIndex((i) =>
+            action.payload === i.id); </p>
+          <p class="file-margin3 font-s-1"> if (<span class="c-red">index</span> >= 0) { </p>
+          <p class="file-margin5 font-s-1">tempArray.splice(<span class="c-red">index</span>, 1);</p>
+          <p class="file-margin4 font-s-1">} else {</p>
+          <p class="file-margin5 font-s-1">console.warn("no object in array");</p>
+          <p class="file-margin4 font-s-1">}</p>
+          <p class="file-margin5 font-s-1">state.myArray = [ ...tempArray ];</p>
+          <p class="file-margin3 font-s-1">}</p>
+          <p class="file-margin1 font-s-1">});</p>
+          <br>
+          <p class="file-margin1 font-s-1">
+            <!--  -->
+            <img src="./assets/lightbulb_black_24dp.svg" alt="">
+            <span class="bg-bg c-white"> action.payload it is the value passed
+              on</span></p>
+          <br>
+          <p class="file-margin1 font-s-1 f-bold">export const { <span class="c-red">saveToMyArray</span>, <span
+              class="c-red">deletFromMyArray</span> } =
+            myArraySlice.actions</p>
+          <br>
+          <p class="file-margin1 font-s-1 f-bold">export const <span class="f-bold c-red">selectMyArray</span> = (state)
+            =>
+            state.myArray.myArray</p>
+          <br>
+          <p class="file-margin1 font-s-1 f-bold">export default <span class="f-bold c-red">myArraySlice.reducer</span>
+          </p>
+        </div>
+        <div class="file__container">
+          <p class="file__name font-s-1 bg-bg c-white">Component.js (save data to redux state)</p>
+          <p class="file-margin1 font-s-1">import { <span class="f-bold c-red">useDispatch</span> } from "react-redux"
+          </p>
+          <p class="file-margin1 font-s-1">import { <span class="f-bold c-red">saveToMyArray</span> } from "<span
+              class="f-italic c-red">./location of
+              my slice</span>"</p>
+          <br>
+          <p class="file-margin1 font-s-1"> function Input() { </p>
+          <p class="file-margin1 font-s-1"> const <span class="f-bold c-red">[ input, setInput ]</span> = useState(" ");
+            <img src="./assets/lightbulb_black_24dp.svg" alt="">//state from react hook </p>
+          <p class="file-margin1 font-s-1"> const <span class="f-bold c-red">dispatch</span> = useDispatch(); </p>
+          <br />
+          <p class="file-margin1 font-s-1"> const addToMyArray = ( ) => { </p>
+          <p class="file-margin2 font-s-1"> <span class="f-bold c-red">dispatch</span>( </p>
+          <p class="file-margin3 font-s-1"> <span class="f-bold c-red">saveToMyArray</span>({ </p>
+          <p class="file-margin5 font-s-1"> name: input, </p>
+          <p class="file-margin5 font-s-1"> id: Date.now(), </p>
+          <p class="file-margin5 font-s-1"> }) </p>
+          <p class="file-margin4 font-s-1"> ); </p>
+          <p class="file-margin3 font-s-1"> }; </p>
+          <br>
+          <p class="file-margin1 font-s-1"> return ( </p>
+          <p class="file-margin3 font-s-1">
+            <.div className="input">
+          </p>
+          <p class="file-margin5 font-s-1">
+            <.input </p> <p class="file-margin5 font-s-1"> type="text"
+          </p>
+          <p class="file-margin5 font-s-1"> value={input} </p>
+          <p class="file-margin5 font-s-1"> <span class="bg-bg c-white">onChange={ (e) => setInput ( e.target.value
+              ) }</span> </p>
+          <p class="file-margin5 font-s-1 f-bold"> /> </p>
+          <br />
+          <p class="file-margin5 font-s-1 f-bold">
+            <.button <span class="bg-bg c-white f-bold">onClick={addToMyArray}</span>>Add<./button> </p> <p
+                class="file-margin3 font-s-1 f-bold">
+                <./div> </p> <p class="file-margin2 font-s-1 f-bold"> );
+          </p>
+          <p class="file-margin1 font-s-1 f-bold"> } </p>
+          <br />
+        </div>
+        <div class="file__container">
+          <p class="file__name bg-bg c-white">RenderData.js ( get data from redux state )</p>
+          <p class="file-margin1">import { <span class="f-bold c-red">useSelector</span> } from "react-redux"</p>
+          <p class="file-margin1">import { <span class="f-bold c-red">selectMyArray</span> } from "<span
+              class="f-bold c-red f-italic">./location of my slice</span>"</p>
+          <br>
+          <p class="file-margin1">
+            function App() { </p>
+          <p class="file-margin1"> const <span class="f-bold c-red">myState</span> = useSelector(selectMyArray); </p>
+          <br />
+          <p class="file-margin1"> return ( </p>
+          <p class="file-margin1">
+            <.div className="app">
+          </p>
+          <p class="file-margin3">
+            <.div className="app__container">
+          </p>
+          <p class="file-margin5">
+            <span class="bg-bg c-white">
+              <.div className="app__stateContainer">
+            </span>
+          </p>
+          <p class="file-margin5"> <span class="f-bold">{ myState.map (({ name, id }) => ( </span></p>
+          <p class="file-margin6">
+            <span class="f-bold c-red">
+              <.div id={ id } key={ id } /> { name }
+              <./div> </span> </p/> <p class="file-margin9 f-bold"> ))}
+          </p>
+          <p class="file-margin8"> );
+          </p />
+          <p class="file-margin7"> } </p>
+          <p class="file-margin5 ">
+            <span class="bg-bg c-white">
+              <.div>
+            </span>
+          </p>
+          <p class="file-margin2">
+            <.div>
+          </p>
+          <p class="file-margin1">
+            <.div>
+          </p>
+        </div>
+      </section>
+      <hr>
+      <section id="redux-react-2">
+        <div class="file__container">
+          <p class="file__name bg-bg c-white">index.js</p>
+          <p class="file-margin1 font-s-1">import <span class="f-bold c-red">{ Provider }</span> from
+            "react-redux"</p>
+          <p class="file-margin1 font-s-1">import <span class="f-bold c-red">{ createStore }</span> from <span
+              class="f-bold c-red f-italic">"redux"</span>
+          </p>
+          <p class="file-margin1 font-s-1">import <span class="f-bold c-red">reducers</span> from <span
+              class="f-bold c-red f-italic">"./location reducers files"</span>
+          </p>
+          <br>
+          <p class="file-margin1">ReactDOM.render( </p>
+          <p class="file-margin2">
+            <.React.StrictMode>
+          </p>
+          <p class="file-margin3">
+            <span class="f-bold bg-bg c-white">
+              <.Provider store={createStore(reducers)}>
+            </span>
+          </p>
+          <p class="file-margin4">
+            <.App />
+          </p>
+          <p class="file-margin3">
+            <span class="f-bold bg-bg c-white">
+              <./Provider> </span> </p> <p class="file-margin1">
+                <./React.StrictMode>, </p> <p class="file-margin1"> document.getElementById("root"));</p>
+          <br>
+        </div>
+        <div class="file__container">
+          <p class="file__name bg-bg-yellow c-white">actions - folder</p>
+          <p class="file__name bg-bg c-white">index.js</p>
+          <p class="file-margin1 font-s-1">import <span class="f-bold c-red">{ CHANGE_THEME }</span> from
+            "./location types file"</p>
+          <p class="file-margin1 font-s-1">export const <span class="f-bold c-red">changeTheme</span> = <span
+              class="f-bold c-red f-italic">( themeColor ) => {</span>
+          </p>
+          <p class="file-margin2 font-s-1">return { </p>
+          <p class="file-margin3">type: <span class="c-red">{ CHANGE_THEME }</span> ,</p>
+          <p class="file-margin3">payload: themeColor,</p>
+          <p class="file-margin2">};</p>
+          <p class="file-margin1">};</p>
+          <br>
+        </div>
+        <div class="file__container">
+          <p class="file__name bg-bg c-white">types.js</p>
+          <p class="file-margin1 font-s-1">export const <span class="f-bold c-red">CHANGE_THEME</span> = "CHANGE_THEME"
+          </p>
+        </div>
+        <div class="file__container">
+          <p class="file__name bg-bg-yellow c-white">reducers - folder</p>
+          <p class="file__name bg-bg c-white">index.js</p>
+          <p class="file-margin1 font-s-1">import <span class="f-bold c-red">{ combineReducers }</span> from
+            "redux"</p>
+          <p class="file-margin1 font-s-1">import <span class="f-bold c-green">themeReducer</span> from
+            "./location theme reducer file"</p>
+          <br>
+          <p class="file-margin1 font-s-1">export default <span class="f-bold c-red">combineReducers </span>({
+          </p>
+          <p class="file-margin2 font-s-1">themeColor: themeReducer,</p>
+          <p class="file-margin1">});</p>
+        </div>
+        <div class="file__container">
+          <p class="file__name bg-bg c-green">themeReducer.js</p>
+          <p class="file-margin1 font-s-1">import <span class="f-bold c-red">{ CHANGE_THEME }</span> from
+            "./actions types file"</p>
+          <p class="file-margin1 font-s-1">import <span class="f-bold c-red">themeReducer</span> from
+            "./location theme reducer file"</p>
+          <br>
+          <p class="file-margin1 font-s-1">
+            <!--  -->
+            <img src="./assets/lightbulb_black_24dp.svg" alt="">
+            <span class="bg-bg c-white">const INITIAL_STATE = {
+              <span class="bg-bg c-white">themeColor: "",
+                <span class="bg-bg c-white">};</span>
+          </p>
+          <br>
+          <p class="file-margin1 font-s-1">export default <span class="f-bold c-red">( themeColor = "white", actions
+              )</span>=> {
+          </p>
+          <p class="file-margin2 font-s-1">switch ( action.type ) {</p>
+          <p class="file-margin3 font-s-1">case <span class="f-bold c-red">CHANGE_THEME: </span></p>
+          <p class="file-margin3 font-s-1">
+            <img src="./assets/lightbulb_black_24dp.svg" alt="">
+            <span class="bg-bg c-white">return { ...state, themeColor: action.payload }</span>
+          </p>
+          <p class="file-margin3 font-s-1">return action.payload;</p>
+          <p class="file-margin2 font-s-1">default: </p>
+          <p class="file-margin3 font-s-1">return themeColor;</p>
+          <p class="file-margin2 font-s-1">}</p>
+          <p class="file-margin1 font-s-1">};</p>
+        </div>
+        <div class="file__container">
+          <p class="file__name bg-bg c-white">App.js</p>
+          <p class="file-margin1 font-s-1">import <span class="f-bold c-red">{ connect }</span> from
+            "react-redux"</p>
+          <p class="file-margin1 font-s-1">import <span class="f-bold c-red">{ changeTheme }</span> from <span
+              class="f-bold c-red f-italic">"./ actions file location"</span>
+          </p>
+          <p class="file-margin1 font-s-1">import <span class="f-bold c-red">ThemeSelector</span> from <span
+              class="f-bold c-red f-italic">"./location react component"</span>
+          </p>
+          <br>
+          <p class="file-margin1">const App = ({ theme }) => {</p>
+          <p class="file-margin2">
+            return (
+          </p>
+        </div>
+      </section>
+    </div>
+  </div>
+  <script src="./_js/script.js"></script>
+</body>
+
+</html>

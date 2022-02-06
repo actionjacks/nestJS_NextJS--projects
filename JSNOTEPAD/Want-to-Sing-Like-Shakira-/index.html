@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Want to Sing Like Shakira?</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="keys">
+    <div data-key="38" class="key">
+      <kbd>UP Arrow</kbd>
+      <span class="sound">Background-music</span>
+    </div>
+    <!--  -->
+    <div data-key="81" class="key">
+      <kbd>Q</kbd>
+      <span class="sound">01</span>
+    </div>
+    <div data-key="87" class="key">
+      <kbd>W</kbd>
+      <span class="sound">02</span>
+    </div>
+    <div data-key="69" class="key">
+      <kbd>E</kbd>
+      <span class="sound">03</span>
+    </div>
+    <div data-key="82" class="key">
+      <kbd>R</kbd>
+      <span class="sound">04</span>
+    </div>
+    <div data-key="65" class="key">
+      <kbd>A</kbd>
+      <span class="sound">05</span>
+    </div>
+    <div data-key="83" class="key">
+      <kbd>S</kbd>
+      <span class="sound">06</span>
+    </div>
+    <div data-key="68" class="key">
+      <kbd>D</kbd>
+      <span class="sound">07</span>
+    </div>
+    <div data-key="70" class="key">
+      <kbd>F</kbd>
+      <span class="sound">08</span>
+    </div>
+    <div data-key="90" class="key">
+      <kbd>Z</kbd>
+      <span class="sound">09</span>
+    </div>
+    <div data-key="88" class="key">
+      <kbd>X</kbd>
+      <span class="sound">10</span>
+    </div>
+  </div>
+  <!-- background-music -->
+  <audio data-key="38" src="sounds/bg-music.wav"></audio>up
+
+  <audio data-key="81" src="sounds/01.wav"></audio>q
+  <audio data-key="87" src="sounds/02.wav"></audio>w
+  <audio data-key="69" src="sounds/03.wav"></audio>e
+  <audio data-key="82" src="sounds/04.wav"></audio>r
+  <audio data-key="65" src="sounds/05.wav"></audio>a
+  <audio data-key="83" src="sounds/06.wav"></audio>s
+  <audio data-key="68" src="sounds/07.wav"></audio>d
+  <audio data-key="70" src="sounds/08.wav"></audio>f
+  <audio data-key="90" src="sounds/09.wav"></audio>z
+  <audio data-key="88" src="sounds/10.wav"></audio>x
+
+  <script src="./js/script.js"></script>
+  <script>
+    const shakiraStart = new ShakiraShakira
+    shakiraStart.initialize()
+
+    bgMusic = new Audio('sounds/bg-music.wav')
+    bgMusic.volume = 0.1;
+  </script>
+
+
+</body>
+
+</html>

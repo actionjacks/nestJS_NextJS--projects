@@ -1,0 +1,31 @@
+.content__middle {
+  flex: 0.7;
+
+  #redux-react,
+  #redux-react-2 {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    width: 60%;
+
+    .file__container {
+      margin-bottom: 8px;
+      padding: 15px;
+      border: 1px solid $border-color;
+      box-shadow: 3px 3px 1px 1px $border-color;
+      border-radius: 5px;
+
+      .file__name {
+        text-align: center;
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+    }
+  }
+
+  #redux-react-2 {
+    display: flex;
+    flex-direction: column;
+  }
+}

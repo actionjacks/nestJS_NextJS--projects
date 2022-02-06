@@ -1,0 +1,2 @@
+# myFirstCalc
+code need refactor

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/40cc81707e.js" crossorigin="anonymous"></script>
+    <style>
+        .list {
+            font-size: 40px;
+        }
+
+        .close {
+            cursor: pointer;
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="main">
+        <div class="main">
+            <label for="addTask" class="addTask__label">
+                <input type="text" name="addTask" class="addTask__input" data-add>
+                <button class="submit__task" data-button>Add task</button>
+            </label>
+            <label for="search" class="search__label">
+                <input type="text" name="search" class="search__input" placeholder="search task" data-search>
+            </label>
+        </div>
+        <!--  -->
+        <div class="list__content">
+            <ul class="list__ul" data-taskcontent>
+            </ul>
+        </div>
+    </main>
+
+    <script src="./localStorge.ts"></script>
+    <!-- <script src="script.js"></script> -->
+    <script>
+        toDoApp = new toDo()
+        toDoApp.initialize()
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+{
+  "name": "paintlikebobross",
+  "version": "1.0.0",
+  "description": "",
+  "main": "mobile.js",
+  "scripts": {
+    "start:build": "tsc -w",
+    "start:run": "nodemon build/index.js",
+    "start": "concurrently npm:start:*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/actionjacks/PaintLikeBobRoss.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/actionjacks/PaintLikeBobRoss/issues"
+  },
+  "homepage": "https://github.com/actionjacks/PaintLikeBobRoss#readme",
+  "dependencies": {
+    "concurrently": "^5.3.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.1.3"
+  }
+}

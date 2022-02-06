@@ -1,0 +1,94 @@
+*,
+*::after,
+*::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+}
+
+body {
+    box-sizing: border-box;
+    cursor: url(../coursor/coursor.png), auto;
+    height: 200vh;
+}
+
+/*  */
+@font-face {
+    font-family: ARCADECLASSIC;
+    src: url(../fonts/pixelsix14.ttf);
+}
+
+/* head nav */
+
+#Navigation-container {
+    /*  */
+    background-image: url("../pic/main-nav2.png");
+    background-repeat: repeat-x;
+    /*  */
+    max-width: 1403px;
+    position: relative;
+    margin: auto;
+    top: 0;
+    left: 0;
+    height: 60px;
+    width: 80%;
+    transition: 1s;
+}
+
+#Navigation-wrapper.headroom-not-top.headroom-not-top #Navigation-container {
+    width: 80%;
+    transition: 1s;
+    max-width: 1803px;
+    height: 60px;
+}
+
+#Navigation-wrapper.headroom-not-top.slide-down #Navigation-container {
+    transition: 1s;
+    height: 60px;
+    width: 100%;
+}
+
+#Navigation-wrapper.headroom-top {
+    position: absolute;
+    margin-top: 4%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: 1s;
+}
+
+#Navigation-wrapper.headroom-not-top {
+    position: absolute;
+    margin-top: -60px;
+    top: -60px;
+    left: 0;
+    width: 100%;
+    transition: 1s;
+}
+
+#Navigation-wrapper.headroom-not-top.slide-down {
+    position: fixed;
+    margin-top: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+/* --------------------------------------------------- */
+
+/* main content graphic */
+
+.main-content-graphic {
+    /* background-image: url(./pic/bg-.jpg); */
+    height: 100vh;
+    background-image: url(../pic/bg2-.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+}
+
+#wrapper #section {
+    width: 100%;
+    height: 600px;
+    background-color: red;
+}

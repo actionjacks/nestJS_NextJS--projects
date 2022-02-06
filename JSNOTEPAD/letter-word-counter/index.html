@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="counter__container">
+      <form class="counter__form">
+        <label for="textToCount">Enter your text here</label>
+        <textarea id="textToCount" class="counter__textToCount"></textarea>
+        <label for="lettersOrWords">What to count, letters or words?</label>
+        <input id="lettersOrWords" class="counter__lettersOrWords" type="text">
+        <button class="counter__btn">Search</button>
+      </form>
+      <div class="counter__itemsCounted">
+        <div class="countedLetters__container">Letters: <span class="countedLetters">0</span></div>
+        <div class="countedWords__container">Words: <span class="countedWords">0</span></div>
+      </div>
+    </div>
+  </div>
+  <!-- functions -->
+  <!-- <script src="./script.js"></script> -->
+
+  <!-- class -->
+  <script src="./classCounter.js"></script>
+  <script>
+    countLettersOrWords = new CountLettersOrWords()
+    countLettersOrWords.initialize()
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+@media (min-width: 360px) {
+  .galleryContainer {
+    padding: 5px;
+  }
+  .galleryVariant {
+    position: relative;
+  }
+  .galleryContainer img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    object-fit: contain;
+    height: 80vh;
+  }
+  .galleryVariant__prevButton,
+  .galleryVariant__nextButton {
+    cursor: pointer;
+    font-size: 2.5rem !important;
+  }
+  .galleryVariant__prevButton {
+    transform: rotate(180deg);
+    position: absolute;
+    z-index: 99;
+    top: 80%;
+    left: 5%;
+  }
+  .galleryVariant__nextButton {
+    position: absolute;
+    z-index: 99;
+    top: 80%;
+    right: 5%;
+  }
+}
+@media (min-width: 1024px) {
+  .galleryContainer {
+    padding: 25px;
+  }
+  .galleryVariant {
+    position: relative;
+  }
+  .galleryContainer img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    object-fit: contain;
+    height: 90vh;
+  }
+  .galleryVariant__prevButton,
+  .galleryVariant__nextButton {
+    cursor: pointer;
+    font-size: 2.5rem !important;
+  }
+  .galleryVariant__prevButton {
+    transform: rotate(180deg);
+    position: absolute;
+    z-index: 99;
+    top: 50%;
+    left: 5%;
+  }
+  .galleryVariant__nextButton {
+    position: absolute;
+    z-index: 99;
+    top: 50%;
+    right: 5%;
+  }
+}

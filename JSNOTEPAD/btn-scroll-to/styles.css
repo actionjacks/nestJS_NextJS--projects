@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 50px;
+}
+.btn1,
+.btn2,
+.btn3,
+.btn4 {
+  padding: 0 20px;
+  margin: 10px;
+}
+.element1,
+.element2,
+.element3,
+.element4 {
+  height: 100vh;
+}
+.element1 {
+  background-color: rgb(208, 206, 206);
+}
+.element2 {
+  background-color: rgb(224, 254, 207);
+}
+.element3 {
+  background-color: rgb(193, 217, 248);
+}
+.element4 {
+  background-color: rgb(247, 165, 190);
+}

@@ -1,0 +1,130 @@
+* {
+    /* margin: 0;
+    padding: 0; */
+    box-sizing: border-box;
+    overflow: hidden;
+    font-family: 'Playfair Display', serif;
+    font-size: 10px;
+}
+
+canvas {
+    border: 1px solid black;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+/*  small:(min-width:640px),
+    medium:(min-width:800px),
+    large:(min-width:1024px),
+    xlarge:(min-width:1200px),
+    xxlarge:(min-width:1440px),
+ */
+@media (min-width:359px) {
+    .rating {
+        /* border-bottom: 1px solid black; */
+        font-size: 2rem;
+        pointer-events: none;
+        position: fixed;
+        top: 1vw;
+        left: calc(50% - 25vw);
+        width: 50vw;
+        height: 25vw;
+        display: block;
+        text-align: center;
+        opacity: 1;
+        transition: .8s;
+    }
+
+    aside {
+        background-image: url('./BobemRoss.jpg');
+        background-repeat: no-repeat;
+        /* background-color: rgb(128, 60, 60); */
+        background-position: center;
+        background-size: cover;
+        position: absolute;
+        bottom: 0;
+        left: calc(50% - 40vw);
+        height: 30vh;
+        width: 80vw;
+        transition: 1s
+    }
+
+    aside:hover {
+        -webkit-transform: scale(1.5);
+        -ms-transform: scale(1.5);
+        transform: scale(1.5);
+        transform: rotate(180deg)
+    }
+
+    aside>p {
+        position: relative;
+        width: 120px;
+        height: 100%;
+        top: 0;
+        left: 0;
+        display: block;
+        background-color: #fff;
+        text-align: left;
+        line-height: 22px;
+        font-size: 1.5rem;
+    }
+
+    span {
+        color: white;
+        font-weight: 700;
+        position: relative;
+        display: block;
+        top: -110%;
+        right: -90%;
+        font-size: 2rem;
+        transition: .5s;
+    }
+
+    i {
+        font-size: 2rem;
+    }
+
+    span:hover {
+        cursor: pointer;
+    }
+}
+
+@media (min-width:639px) {
+    aside {
+        height: 40vh;
+    }
+}
+
+@media (min-width:1024px) {
+    .rating {
+        font-size: 2rem;
+    }
+
+    aside>p {
+        width: 200px;
+        line-height: 40px;
+        font-size: 1.8rem;
+    }
+
+    aside {
+        background-position: center;
+        background-size: cover;
+        position: absolute;
+        bottom: 0;
+        left: calc(50% - 25vw);
+        height: 30vh;
+        width: 50vw;
+        transition: 1s
+    }
+
+    i {
+        font-size: 2rem;
+    }
+}
+
+.opacity {
+    opacity: 0;
+}

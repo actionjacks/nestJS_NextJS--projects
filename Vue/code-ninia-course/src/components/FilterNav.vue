@@ -9,13 +9,13 @@
     >
       completed
     </button>
-    <button
-      :class="{ active: current === 'ongoing' }"
-      @click="updateFilter('ongoing')"
-    >
-      ongoing
-    </button>
-  </div>
+            <button
+              :class="{ active: current === 'ongoing' }"
+              @click="updateFilter('ongoing')"
+              >
+                ongoing
+              </button>
+    </div>
 </template>
 
 <script lang="ts">

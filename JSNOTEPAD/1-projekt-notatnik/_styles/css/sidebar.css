@@ -1,0 +1,39 @@
+.sidebar__left,
+.content__middle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.sidebar__left {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  -webkit-box-flex: 0.3;
+      -ms-flex: 0.3;
+          flex: 0.3;
+  border: 4px solid whitesmoke;
+}
+
+.sidebar__left .menu__title {
+  cursor: pointer;
+}
+
+.sidebar__left .menu__container-redux {
+  display: none;
+  cursor: pointer;
+}
+
+.sidebar__left .menu__container-redux .menu__link {
+  text-decoration: none;
+}
+
+.menu__container-redux.show {
+  display: block;
+}
+/*# sourceMappingURL=sidebar.css.map */
