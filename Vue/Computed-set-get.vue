@@ -1,28 +1,28 @@
 <template>
-  <div></div>
+  <h1>{{ name }}</h1>
+  <input type="text" v-model="fullName" />
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref } from "vue";
-//getters initialize variables when called
-//setters applied when variable is modified
+import { computed, defineComponent, ref } from "vue";
+
 export default defineComponent({
+  name: "App",
+  components: {},
+
   setup() {
     const name = ref("");
 
-    const fullname = computed({
+    const fullName = computed({
       get: () => {
         return name.value;
       },
-      set: (newValue) => {
-        const addString = newValue + "++_++";
-        return addString;
+      set: (newVal) => {
+        return (name.value = newVal);
       },
     });
 
-    return {};
+    return { fullName, name };
   },
 });
 </script>
-
-<style scoped></style>

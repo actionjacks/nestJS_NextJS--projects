@@ -1,0 +1,16 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "lorem lorem lorem 1",
+      "body": "lororoorroor",
+      "tags": ["webdev", "coding", "news"]
+    },
+    {
+      "id": 2,
+      "title": "lorem lorem lorem 2",
+      "body": "lororoorroor",
+      "tags": ["css", "coding", "webdev"]
+    }
+  ]
+}
