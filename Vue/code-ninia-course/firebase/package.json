@@ -9,6 +9,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@firebase/firestore-types": "^2.5.0",
     "core-js": "^3.6.5",
     "firebase": "^9.6.6",
     "vue": "^3.0.0",
