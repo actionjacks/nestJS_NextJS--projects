@@ -4,9 +4,26 @@
     <router-link to="/about">About</router-link> |
     <router-link to="/login">login</router-link> |
     <router-link to="/signup">signup</router-link> |
+    <button @click="handleClick">logout</button>
   </div>
   <router-view />
 </template>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+import { auth } from "./firebase";
+import { signOut } from "firebase/auth";
+
+export default defineComponent({
+  setup() {
+    const handleClick = () => {
+      signOut(auth);
+    };
+
+    return { handleClick };
+  },
+});
+</script>
 
 <style lang="scss">
 #app {

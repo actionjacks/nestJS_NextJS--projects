@@ -15,6 +15,8 @@
 </template>
 
 <script lang="ts">
+import { db } from "../firebase";
+import { addDoc, collection } from "firebase/firestore";
 import { defineComponent, ref } from "vue";
 
 export default defineComponent({
@@ -23,7 +25,16 @@ export default defineComponent({
     const description = ref<string>("");
 
     const handleSubmit = async () => {
-      console.log(title.value, description.value);
+      const colRef = collection(db, "vue");
+
+      await addDoc(colRef, {
+        title: title.value,
+        description: description.value,
+        isFav: false,
+      });
+
+      title.value = "";
+      description.value = "";
     };
 
     return { title, description, handleSubmit };

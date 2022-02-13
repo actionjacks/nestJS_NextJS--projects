@@ -3,6 +3,7 @@ import { render } from './AppLoader';
 import { Basket } from './Basket/Basket';
 import { BasketStorage } from './storage-localstorage/BasketStorage';
 import './styles/global-styles.scss';
+import { FrontendBooksPage } from './FrontendBooksPage/FrontendPage';
 
 declare global {
   interface Window {
@@ -44,5 +45,6 @@ window.basket = storage;
 
 //test
 basket.addToBasket({ id: '1', name: 'test', price: 2, quantity: 2 });
+new FrontendBooksPage('listing-page', 'frontend', router, basket);
 
 export {};

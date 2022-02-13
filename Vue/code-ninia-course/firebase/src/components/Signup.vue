@@ -16,14 +16,21 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
+import { useSignup } from "../api/useSignup";
 
 export default defineComponent({
   setup() {
+    const { error, isPending, signup } = useSignup();
+
     const email = ref<string>("");
     const password = ref<string>("");
 
     const handleSubmit = async () => {
-      console.log(email.value, password.value);
+      await signup(email.value, password.value);
+
+      if (!error.value) {
+        //redirect to home page
+      }
     };
 
     return { email, password, handleSubmit };
