@@ -4,23 +4,39 @@
     <router-link to="/about">About</router-link> |
     <router-link to="/login">login</router-link> |
     <router-link to="/signup">signup</router-link> |
-    <button @click="handleClick">logout</button>
+
+    <div v-if="user">
+      <h3>{{ user.displayName }}</h3>
+      <button @click="handleClick">logout</button>
+    </div>
   </div>
   <router-view />
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, watchEffect } from "vue";
 import { auth } from "./firebase";
 import { signOut } from "firebase/auth";
+import { getUser } from "./api/GetUser";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   setup() {
+    const router = useRouter();
+
     const handleClick = () => {
       signOut(auth);
     };
 
-    return { handleClick };
+    watchEffect(() => {
+      if (!user.value) {
+        router.push("/login");
+      }
+    });
+
+    const { user } = getUser();
+
+    return { handleClick, user };
   },
 });
 </script>

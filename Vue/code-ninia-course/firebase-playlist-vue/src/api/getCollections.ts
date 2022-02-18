@@ -1,20 +1,23 @@
 import { ref, watchEffect } from "vue";
 //firebase
 import { db } from "../firebase";
-import { collection, onSnapshot, query, where } from "firebase/firestore";
-import { FirebaseData } from "@/types/FirebaseData";
+import {
+  collection,
+  onSnapshot,
+  query,
+  where,
+  WhereFilterOp,
+} from "firebase/firestore";
+import { FirebaseData } from "@/types/firebase";
 //todo fix any type
 
-const getCollection = (
-  collectionName: string,
-  querry: [string, string, string]
-) => {
+const getCollection = (collectionName: string, _query: WhereFilterOp) => {
   const data = ref<FirebaseData[]>([]);
 
   let collectionRef = collection(db, collectionName);
 
-  if (querry) {
-    collectionRef = query(collectionRef, where(...querry));
+  if (_query) {
+    collectionRef = query(collectionRef, where(_query, "==", _query));
   }
 
   const unsub = onSnapshot(collectionRef, (snapshot) => {

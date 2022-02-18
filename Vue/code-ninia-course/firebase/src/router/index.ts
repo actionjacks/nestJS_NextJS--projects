@@ -3,11 +3,26 @@ import Home from "../views/Home.vue";
 import Login from "@/components/Login.vue";
 import Signup from "@/components/Signup.vue";
 
+import { auth } from "../firebase";
+//auth guard
+const requireAuth = (
+  _to: any,
+  _from: any,
+  next: (arg0: { name?: string; Home?: any }) => void
+) => {
+  let user = auth.currentUser;
+  if (!user) {
+    next({ name: "Login" });
+  }
+  next({ name: "Home" });
+};
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "Home",
     component: Home,
+    beforeEnter: requireAuth,
   },
   {
     path: "/about",

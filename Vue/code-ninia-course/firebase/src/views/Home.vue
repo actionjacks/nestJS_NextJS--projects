@@ -19,6 +19,8 @@
 import { defineComponent, ref } from "vue";
 import FormData from "@/components/FormData.vue";
 import { FirebaseData } from "@/types/FirebaseData";
+import { getUser } from "../api/GetUser";
+
 //firebase depen
 import { db } from "../firebase";
 import {
@@ -59,8 +61,14 @@ export default defineComponent({
       });
     }
 
+    const { user } = getUser();
+
     //realtime db
-    const { data } = getCollections("vue");
+    const { data } = getCollections("vue", [
+      "userUid",
+      "==",
+      user.value?.uid ?? "",
+    ]);
 
     return { data, handleDelete, handleUpdate };
   },

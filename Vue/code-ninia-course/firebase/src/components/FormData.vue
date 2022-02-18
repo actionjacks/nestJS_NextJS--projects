@@ -18,11 +18,14 @@
 import { db } from "../firebase";
 import { addDoc, collection } from "firebase/firestore";
 import { defineComponent, ref } from "vue";
+import { getUser } from "../api/GetUser";
 
 export default defineComponent({
   setup() {
     const title = ref<string>("");
     const description = ref<string>("");
+
+    const { user } = getUser();
 
     const handleSubmit = async () => {
       const colRef = collection(db, "vue");
@@ -31,6 +34,7 @@ export default defineComponent({
         title: title.value,
         description: description.value,
         isFav: false,
+        userUid: user.value?.uid,
       });
 
       title.value = "";
