@@ -1,13 +1,11 @@
 import { JobOffer, Observer } from "./interfaces";
 import { CandidateTemplate, JobOfficePortal } from "./abstracClasses";
 
-class JobPortal extends JobOfficePortal {
+class JobPortal implements JobOfficePortal {
   public newJobOffer: {};
   public observers: Observer[];
 
   constructor() {
-    super();
-
     this.newJobOffer = {} as JobOffer;
     this.observers = [];
   }
@@ -42,10 +40,8 @@ class JobPortal extends JobOfficePortal {
 }
 
 //obserwator
-class Candidate extends CandidateTemplate {
-  constructor(public name: string) {
-    super();
-  }
+class Candidate implements CandidateTemplate {
+  constructor(public name: string) {}
 
   sendJobOffer(offer: JobOffer) {
     console.log(`

@@ -1,11 +1,13 @@
 import { JobOffer, Observer } from "./interfaces";
 
 export abstract class CandidateTemplate {
+  constructor() {}
   abstract name: string;
   abstract sendJobOffer(offer: JobOffer): void;
 }
 
 export abstract class JobOfficePortal {
+  constructor() {}
   abstract newJobOffer: Object;
   abstract observers: Observer[];
 
