@@ -37,3 +37,12 @@ class SmallArray {
         this.sorter.sort(this.data);
     }
 }
+class BigArray {
+    constructor(d) {
+        this.sorter = new QuickSorter();
+        this.data = d;
+    }
+    sort() {
+        this.sorter.sort(this.data);
+    }
+}
