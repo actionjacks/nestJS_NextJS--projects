@@ -79,3 +79,29 @@ class ProprtyToGive {
   constructor(public age: number, public id: number) {}
 }
 type GetClassParameters = ConstructorParameters<typeof ProprtyToGive>;
+
+//GENERIC !!
+
+function update<T, V>(firstObj: T, secObj: V): T & V {
+  return { ...firstObj, ...secObj };
+}
+
+class Planet<T> {
+  constructor(private slosestStar: T) {}
+}
+const sun = new Planet<string>("Sun");
+
+const sun2 = new Planet<{ name: string; distance: number }>({
+  name: "kakao",
+  distance: 12,
+});
+
+interface Custom<T> {
+  name: string;
+  dupa: T;
+}
+
+const kaka: Custom<number> = {
+  name: "jaja",
+  dupa: 1,
+};

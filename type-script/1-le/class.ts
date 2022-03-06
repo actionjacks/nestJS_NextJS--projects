@@ -60,3 +60,18 @@ class HumanPersonUsingInterfaces implements HumanForClass {
     return this.age;
   }
 }
+
+//static
+
+class SomeClass {
+  static MY_STATIC_DATA = 1;
+
+  constructor() {}
+
+  static myStaticFunc(val: number) {
+    return { myNumber: val };
+  }
+}
+
+console.log(SomeClass.MY_STATIC_DATA);
+console.log(SomeClass.myStaticFunc(2));
