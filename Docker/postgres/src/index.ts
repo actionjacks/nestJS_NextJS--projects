@@ -1,5 +1,10 @@
 import { createConnection } from "typeorm";
+import express from "express";
 import { Client } from "./entities/Client";
+import { Banker } from "./entities/Banker";
+import { Transactions } from "./entities/Transaction";
+
+const app = express();
 
 const main = async (params: any) => {
   try {
@@ -10,7 +15,7 @@ const main = async (params: any) => {
       username: "jack2",
       password: "123",
       database: "mydb",
-      entities: [Client],
+      entities: [Client, Banker, Transactions],
       synchronize: true,
     });
     console.log("connection success");
