@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+
+  php:
+    volumes:
+      - drupal-sync:/var/www:nocopy
+  nginx:
+    volumes:
+      - drupal-sync:/var/www:nocopy
+
+volumes:
+  drupal-sync:
+    external: true
