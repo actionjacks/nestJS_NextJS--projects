@@ -19,6 +19,7 @@
 ## using docker-compouse
 `docker-compose up -d` - -d detache mode
 `docker-compose up -d --build` - force to rebuild image
+`docker-compose up -d --build -V` - force to rebuild image and rename volumes
 `docker-compose build -d`
 `docker-compose down`
 `docker-compose down -v` - del volumes
