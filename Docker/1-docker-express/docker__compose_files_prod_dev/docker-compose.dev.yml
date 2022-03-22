@@ -1,0 +1,14 @@
+version: "3"
+services:
+  node_app:
+    build:
+      context: .
+      args:
+        NODE_ENV: development
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    # command will overwrite CMD ["npm","run","dev"] from dockerfile
+    command: npm run dev

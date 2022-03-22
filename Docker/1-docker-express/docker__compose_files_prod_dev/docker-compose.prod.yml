@@ -1,0 +1,11 @@
+version: "3"
+services:
+  node_app:
+    build:
+      context: .
+      args:
+        NODE_ENV: production
+    environment:
+      - NODE_ENV=production
+    # command will overwrite CMD ["npm","run","dev"] from dockerfile
+    command: node index.js
