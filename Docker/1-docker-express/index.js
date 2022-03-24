@@ -1,10 +1,11 @@
 import config from './config/config.js'
 import express from "express";
 import mongoose from "mongoose";
-import * as session from 'express-session';
-import * as connectRedis from 'connect-redis';
 import redis from 'redis'
-let RedisStore = connectRedis(session);
+import cors from 'cors'
+import connectRedis from 'connect-redis';
+import session from 'express-session';
+const RedisStore = connectRedis(session);
 
 let redisClient = redis.createClient({
   host: config.REDIS_URL,
@@ -33,20 +34,22 @@ const connectWithRetry = () => {
 }
 connectWithRetry()
 
+app.enable('trust proxy')
+app.use(cors({}))
 app.use(session({
   store: new RedisStore({ client: redisClient }),
   secret: config.SESSION_SECRET,
   cookie: {
     secure: false,
     httpOnly: true,
-    maxAge: 30000
+    maxAge: 30000000
   }
 }))
 
 app.use(express.json())
 
-app.get("/", (req, res) => {
-  res.send("<p>dupa_w_w</p>");
+app.get("/api/v1", (req, res) => {
+  res.send("<p>express-app</p>");
 });
 
 app.use('/api/v1/posts', postRouter)
