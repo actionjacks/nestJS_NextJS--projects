@@ -1,7 +1,7 @@
 <template>
   <section class="dropdown-wrapper">
     <div @click="isVisible = !isVisible" class="selected-item">
-      <span>{{ selectedItem.name ?? "" }}</span>
+      <span>{{ selectedItem?.name ?? "" }}</span>
       <span class="drop-down-icon" :class="[{ isVisible }]">==</span>
     </div>
 

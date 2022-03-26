@@ -1,6 +1,12 @@
 <template>
-  <p>custom-dropdown</p>
-  <DropDown />
+  <div class="vuelidate">
+    <Vuelidate />
+  </div>
+
+  <div class="dropdown-wrapper">
+    <p>custom-dropdown</p>
+    <DropDown />
+  </div>
 
   <div class="skeletion-wrapper">
     <p>profile-skeletion</p>
@@ -22,9 +28,11 @@ import DropDown from "@/components/drop-down/index.vue";
 //skeletion
 import ProfileCard from "@/components/skeletion/index.vue";
 import CardSkeletion from "@/components/skeletion/CardSkeletion.vue";
+//validator
+import Vuelidate from "@/components/vuelidate-validate-lib/index.vue";
 
 export default defineComponent({
-  components: { DropDown, ProfileCard, CardSkeletion },
+  components: { DropDown, ProfileCard, CardSkeletion, Vuelidate },
   setup() {
     return {};
   },
