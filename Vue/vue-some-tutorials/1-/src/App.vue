@@ -1,4 +1,13 @@
 <template>
+  <Teleport />
+  <div id="modal">
+    <!-- this is for modal -->
+  </div>
+
+  <!-- custom directive -->
+  <p v-font-size:small>dupa</p>
+  <p v-font-size:medium>dupa</p>
+
   <div style="margin-bottom: 10px; border: 1px solid" class="axios">
     <UseAxios />
   </div>
@@ -52,6 +61,8 @@ import Slootss from "@/components/slots/index.vue";
 import Watcheffectt from "@/watchEffect/index.vue";
 //useAxios
 import UseAxios from "@/axios/index.vue";
+//teleport
+import Teleport from "@/components/teleport/index.vue";
 
 export default defineComponent({
   components: {
@@ -62,6 +73,7 @@ export default defineComponent({
     Slootss,
     Watcheffectt,
     UseAxios,
+    Teleport,
   },
   setup() {
     function grabBindFromSlotComp(data: string) {
