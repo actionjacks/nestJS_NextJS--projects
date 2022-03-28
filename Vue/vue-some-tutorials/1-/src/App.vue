@@ -1,4 +1,20 @@
 <template>
+  <div style="margin-bottom: 10px; border: 1px solid" class="axios">
+    <UseAxios />
+  </div>
+
+  <div class="watcheffect">
+    <Watcheffectt />
+  </div>
+
+  <div class="slot">
+    <Slootss>
+      <template #caption="{ source }">
+        <button @click="grabBindFromSlotComp(source)">CLICK</button>
+      </template>
+    </Slootss>
+  </div>
+
   <div class="vuelidate">
     <Vuelidate />
   </div>
@@ -22,7 +38,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 //dropdown
 import DropDown from "@/components/drop-down/index.vue";
 //skeletion
@@ -30,11 +46,31 @@ import ProfileCard from "@/components/skeletion/index.vue";
 import CardSkeletion from "@/components/skeletion/CardSkeletion.vue";
 //validator
 import Vuelidate from "@/components/vuelidate-validate-lib/index.vue";
+//slot
+import Slootss from "@/components/slots/index.vue";
+//watcheffect
+import Watcheffectt from "@/watchEffect/index.vue";
+//useAxios
+import UseAxios from "@/axios/index.vue";
 
 export default defineComponent({
-  components: { DropDown, ProfileCard, CardSkeletion, Vuelidate },
+  components: {
+    DropDown,
+    ProfileCard,
+    CardSkeletion,
+    Vuelidate,
+    Slootss,
+    Watcheffectt,
+    UseAxios,
+  },
   setup() {
-    return {};
+    function grabBindFromSlotComp(data: string) {
+      console.log(data);
+    }
+
+    return {
+      grabBindFromSlotComp,
+    };
   },
 });
 </script>
