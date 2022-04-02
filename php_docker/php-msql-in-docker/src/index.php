@@ -83,6 +83,69 @@ multi line comment
     echo $num;
   }
   ?>
+  <!-- FUNCTIONS -->
+
+  <?php
+  function something()
+  {
+    echo "string from function";
+    echo "<br/>";
+  }
+  something();
+  something();
+
+  function printVar($mess)
+  {
+    echo $mess;
+    return $mess;
+  }
+  printVar('----');
+  echo "<br/>";
+
+  //scope
+  $x = "out-";
+  function von()
+  {
+    global $x;
+    $x = "in";
+  }
+  echo $x;
+  von();
+  echo $x;
+  echo "<br/>";
+
+  $canHnge = 100;
+  echo $canHnge;
+  echo "<br/>";
+  //constant
+  define('cantChange', 200);
+  echo cantChange;
+  echo "<br/>";
+
+  const CONSTANT = 'Hello World';
+  echo CONSTANT;
+  echo "<br/>";
+
+  // php math
+  //https://www.php.net/manual/en/ref.math.phps
+
+  echo rand(1, 100); //random from 1 to 100
+
+  //strings
+  //https://www.php.net/manual/en/book.strings.php
+
+  $someStr = 'dupa aa';
+  echo strlen($someStr);
+  echo "<br/>";
+  echo strtoupper($someSt);
+
+  //arrays
+  //https://www.php.net/manual/en/book.array.php
+
+  $arrayMetods = [1, 2, 3, 4, 1, 2, 3];
+  echo max($arrayMetods);
+
+  ?>
 </body>
 
 </html>

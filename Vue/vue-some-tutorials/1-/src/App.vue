@@ -1,4 +1,6 @@
 <template>
+  <EmmitInput />
+
   <Teleport />
   <div id="modal">
     <!-- this is for modal -->
@@ -63,6 +65,8 @@ import Watcheffectt from "@/watchEffect/index.vue";
 import UseAxios from "@/axios/index.vue";
 //teleport
 import Teleport from "@/components/teleport/index.vue";
+//emitt
+import EmmitInput from "@/emits/index.vue";
 
 export default defineComponent({
   components: {
@@ -74,6 +78,7 @@ export default defineComponent({
     Watcheffectt,
     UseAxios,
     Teleport,
+    EmmitInput,
   },
   setup() {
     function grabBindFromSlotComp(data: string) {
