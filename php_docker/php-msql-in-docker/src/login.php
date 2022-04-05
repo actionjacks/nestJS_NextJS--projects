@@ -1,9 +1,20 @@
 <?php
+include "db.php";
+include "functions.php";
+
 if (isset($_POST['submit'])) {
   $userName = $_POST['name'];
   $password = $_POST['password'];
+  $id = $_POST['id'];
+
+  //code for post
+  //createRecordSql($userName, $password);
+
+  //code for updated
+  updateRecordSql($userName, $password, $id);
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,23 +29,58 @@ if (isset($_POST['submit'])) {
 
 <body>
   <div class="container">
-    <form action="login.php" method="post">
+    <h1>CREATE</h1>
+    <!-- <form action="login.php" method="post">
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        <div id="emailHelp" name='name' class="form-text">We'll never share your email with anyone else.</div>
+        <input type="email" name='name' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Password</label>
         <input type="password" name='password' class="form-control" id="exampleInputPassword1">
       </div>
-      <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-      </div>
       <button type="submit" name='submit' class="btn btn-primary">Submit</button>
+    </form> -->
+
+    <!-- update  -->
+    <h1>UPDATE</h1>
+    <form action="login.php" method="post">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" name='name' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" name='password' class="form-control" id="exampleInputPassword1">
+      </div>
+      <div class="mb-3">
+        <select name="id" id="">
+          <?php
+          showAllData();
+          ?>
+        </select>
+      </div>
+      <button type="submit" name='submit' class="btn btn-primary">Update</button>
     </form>
+
+    <!-- get data from SQL  -->
+    <!-- <div class="col-sm-6"> -->
+    <!-- <?php
+          while ($row = mysqli_fetch_assoc($result_get_users)) {
+          ?>
+      <pre>
+        <?php
+            print_r($row);
+        ?>
+       </pre>
+      <?php
+          }
+      ?> -->
+    <!-- </div> -->
   </div>
+
 </body>
 
 </html>
