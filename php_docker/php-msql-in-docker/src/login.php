@@ -6,6 +6,18 @@ if (isset($_POST['submit'])) {
   $userName = $_POST['name'];
   $password = $_POST['password'];
   $id = $_POST['id'];
+  //clear all escape prevent inject hack
+  $userName = mysqli_real_escape_string($connect, $userName);
+  $password = mysqli_real_escape_string($connect, $password);
+
+  $salt = '12fnjdfsfjosidfjcds909';
+  $hashFormat = "$2y$10$";
+
+  $hashF_and_salt = $hashFormat . $salt;
+  $password  = crypt($password, $hashF_and_salt);
+
+
+
 
   //code for post
   //createRecordSql($userName, $password);
