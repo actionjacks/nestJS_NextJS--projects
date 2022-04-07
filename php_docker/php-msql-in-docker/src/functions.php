@@ -43,3 +43,16 @@ function updateRecordSql($userName, $password, $id)
     die("query faiiled" . mysqli_error($connect));
   }
 }
+
+function deleteRecordSql($userName, $password, $id)
+{
+  global $connect;
+
+  $query = "DELETE FROM users ";
+  $query .= "WHERE id = $id ";
+
+  $result = mysqli_query($connect, $query);
+  if (!$result) {
+    die("query faiiled" . mysqli_error($connect));
+  }
+}
