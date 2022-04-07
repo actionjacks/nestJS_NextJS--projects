@@ -1,24 +1,21 @@
 <template>
-  <heading :level="1">TV Finder</heading>
-  <render-me>
-    <!-- <template #namedSlot>
-          <h3>Hello From Named Slot</h3>
-        </template> -->
-    <!-- <h4>Hi From Default slot</h4> -->
+  <Heading :level="1">TV Finder</Heading>
+  <MyShows>
     <template #sc="{ shows }">
-      <h3 v-if="shows?.length > 0">
+      <h3 v-if="shows?.lenght > 0">
         Average Score {{ computedAverage(shows).toFixed(2) }}
       </h3>
     </template>
-  </render-me>
+  </MyShows>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import Heading from "./Heading.vue";
+import MyShows from "./MyShows.vue";
 
 export default defineComponent({
-  components: { Heading },
+  components: { Heading, MyShows },
   setup() {
     const computedAverage = (shows: any) =>
       shows.reduce((acc: any, info: any) => +info.score + acc, 0) /

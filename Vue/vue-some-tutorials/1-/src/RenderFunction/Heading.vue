@@ -6,6 +6,7 @@ export default defineComponent({
   props: {
     level: { type: Number, default: 1 },
   },
+  /* eslint-disable-next-line */
   setup({ level }, { slots }) {
     const slot = slots ? slots.default?.() : [];
 

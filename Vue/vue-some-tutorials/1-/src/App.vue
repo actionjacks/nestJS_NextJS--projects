@@ -1,4 +1,8 @@
 <template>
+  <div class="render_function">
+    <RenderFunction />
+  </div>
+
   <EmmitInput />
 
   <Teleport />
@@ -67,6 +71,8 @@ import UseAxios from "@/axios/index.vue";
 import Teleport from "@/components/teleport/index.vue";
 //emitt
 import EmmitInput from "@/emits/index.vue";
+//renderFunctionn
+import RenderFunction from "@/RenderFunction/index.vue";
 
 export default defineComponent({
   components: {
@@ -79,6 +85,7 @@ export default defineComponent({
     UseAxios,
     Teleport,
     EmmitInput,
+    RenderFunction,
   },
   setup() {
     function grabBindFromSlotComp(data: string) {
@@ -99,6 +106,9 @@ export default defineComponent({
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+.render_function {
+  border: 2px solid gray;
 }
 .skeletion-wrapper {
   margin-top: 15px;

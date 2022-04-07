@@ -1,11 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import MyPlugin from './MyPlugin'
-
 createApp(App)
 .use(router)
-.use(MyPlugin)
 // custom directive
 .directive('font-size',{
   // beforeMount:(el,binding)=>{
