@@ -1,6 +1,6 @@
 import {reactive, RendererElement, RendererNode, VNode}from 'vue'
 type Store = {
-  shadowText: VNode<RendererNode, RendererElement, { [key: string]: any; }>
+  shadowText: string 
 }
 
 const store = reactive({})

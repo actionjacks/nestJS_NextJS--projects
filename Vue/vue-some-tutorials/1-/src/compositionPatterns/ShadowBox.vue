@@ -7,7 +7,7 @@
     </slot> -->
     <!-- {{ store.shadowText }} -->
     <!-- uzywa jeszcze komponentu rRenderFunction aby wysiwetlic dane przekazonane w propsie -->
-    <RenderInfo :info="store.shadowText" />
+    <RenderInfo :info="store?.shadowText" />
   </div>
 </template>
 
