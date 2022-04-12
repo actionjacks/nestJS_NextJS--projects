@@ -1,15 +1,48 @@
 <template>
-  <router-view />
+  <div class="app-wrapper">
+    <div class="app">
+      <Navigation />
+      <router-view />
+    </div>
+  </div>
 </template>
 
+<script lang="ts">
+import { defineComponent } from "vue";
+import Navigation from "@/components/Navigation.vue";
+
+export default defineComponent({
+  components: { Navigation },
+  setup() {
+    return {};
+  },
+});
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  padding: 0;
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Quicksand", sans-serif;
+}
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.link {
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: black;
+}
+.link-light {
+  color: #fff;
 }
 </style>

@@ -6,29 +6,151 @@
       </div>
 
       <div class="nav-links">
-        <u>
+        <ul v-show="!state.mobile">
           <router-link class="link" to="#">Home</router-link>
           <router-link class="link" to="#">Blogs</router-link>
           <router-link class="link" to="#">Create Post</router-link>
           <router-link class="link" to="#">Login/Register</router-link>
-        </u>
+        </ul>
       </div>
     </nav>
-    <MenuIcon />
+
+    <MenuIcon
+      v-show="state.mobile"
+      class="menu-icon"
+      @click="toggleMobileNav"
+    />
+    <transition name="mobile-nav">
+      <ul v-show="state.mobileNav" class="mobile-nav">
+        <router-link class="link" to="#">Home</router-link>
+        <router-link class="link" to="#">Blogs</router-link>
+        <router-link class="link" to="#">Create Post</router-link>
+        <router-link class="link" to="#">Login/Register</router-link>
+      </ul>
+    </transition>
   </header>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, onMounted, onUnmounted, reactive } from "vue";
 import MenuIcon from "@/assets/Icons/bars-regular.vue";
+
+type State = {
+  mobile: boolean;
+  mobileNav: boolean;
+  windowWidth: number;
+};
 
 export default defineComponent({
   components: { MenuIcon },
   setup() {
-    return {};
+    const state = reactive<State>({
+      mobile: false,
+      mobileNav: false,
+      windowWidth: 0,
+    });
+
+    function windowWidth(): void {
+      state.windowWidth = window.innerWidth;
+      if (state.windowWidth <= 750) {
+        state.mobile = true;
+        return;
+      }
+      state.mobile = false;
+      state.mobileNav = false;
+    }
+
+    function toggleMobileNav(): void {
+      state.mobileNav = !state.mobileNav;
+    }
+
+    onMounted(() => {
+      window.addEventListener("resize", windowWidth);
+      windowWidth();
+    });
+    onUnmounted(() => window.removeEventListener("resize", windowWidth));
+
+    return {
+      state,
+      toggleMobileNav,
+    };
   },
 });
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+header {
+  background-color: #fff;
+  padding: 0 25px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.link {
+  font-weight: 500;
+  padding: 0 8px;
+  transition: 0.3s color ease;
+
+  &:hover {
+    color: #1eb8b8;
+  }
+}
+
+nav {
+  display: flex;
+  padding: 25px 0;
+  .branding {
+    display: flex;
+    align-items: center;
+    .header {
+      font-weight: 600;
+      font-size: 24px;
+      color: #000;
+      text-decoration: none;
+    }
+  }
+
+  .nav-links {
+    position: relative;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: flex-end;
+
+    ul {
+      margin-right: 32px;
+      .link {
+        margin-right: 32px;
+      }
+      .link:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+.menu-icon {
+  cursor: pointer;
+  position: absolute;
+  top: 32px;
+  right: 25px;
+  height: 25px;
+  width: auto;
+}
+.mobile-nav {
+  padding: 20px;
+  width: 70%;
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  height: 100%;
+  background-color: #303030;
+  top: 0;
+  left: 0;
+
+  .link {
+    padding: 15px 0;
+    color: #fff;
+  }
+}
 </style>
