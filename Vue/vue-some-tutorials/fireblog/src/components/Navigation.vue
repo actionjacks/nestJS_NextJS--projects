@@ -40,7 +40,7 @@ type State = {
   mobileNav: boolean;
   windowWidth: number;
 };
-
+//42:21 https://www.youtube.com/watch?v=ISv22NNL-aE
 export default defineComponent({
   components: { MenuIcon },
   setup() {
