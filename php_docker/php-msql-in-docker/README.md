@@ -16,6 +16,10 @@
 `sudo lsof -i -P -n | grep 80`
 `sudo kill <proces id>`
 
+### stop remove all running containers
+
+`docker container kill $(docker ps -q) `
+
 ### build run docker from docker-compose
 
 `docker-compose up -d`

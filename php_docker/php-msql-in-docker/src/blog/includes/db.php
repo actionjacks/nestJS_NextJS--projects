@@ -16,5 +16,5 @@ $connect = mysqli_connect($db['db_host'], $db['db_user'], $db['db_pass'], $db['d
 // //$connect = mysqli_connect('mysql_db_container', 'root', 'admin', 'blog');
 
 if ($connect) {
-  echo 'connected to db';
+  // echo 'connected to db';
 }
