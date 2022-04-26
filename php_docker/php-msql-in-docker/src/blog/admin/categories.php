@@ -19,7 +19,6 @@
           </h1>
 
           <div class="col-xs-6">
-
             <?php
             if (isset($_POST['submit'])) {
               $cat_title = $_POST['cat_title'];
@@ -37,9 +36,9 @@
               }
             }
             ?>
-
             <form action="" method="post">
               <div class="form-group">
+                <label for="cat_title">add category</label>
                 <input class="form-control" type="text" name="cat_title">
               </div>
               <div class="form-group">
@@ -47,41 +46,76 @@
               </div>
             </form>
           </div>
-
-
           <div class="col-xs-6">
+            <form action="" method="post">
+              <div class="form-group">
+                <label for="cat_title">edit category</label>
 
-            <?php
-            $query = "SELECT * FROM categories";
-            $select_categories = mysqli_query($connect, $query);
-            ?>
+                <?php
+                if (isset($_GET['edit'])) {
+                  $cat_id_ = $_GET['edit'];
 
-            <table class="table table-bordered table-hover">
-              <tr>
-                <th>Id</th>
-                <th>Category Title</th>
-              </tr>
+                  $query = "SELECT * FROM categories WHERE cat_id = $cat_id_ ";
+                  $select_categories_id_ = mysqli_query($connect, $query);
 
-              <?php
-              while ($row = mysqli_fetch_assoc($select_categories)) {
-                $cat_id = $row['cat_id'];
-                $cat_title = $row['cat_title'];
-
-                echo "<tr>";
-                echo "<th>{$cat_id}</th>";
-                echo "<th>{$cat_title}</th>";
-                echo "</tr>";
-              }
-              ?>
-
-            </table>
+                  while ($row = mysqli_fetch_assoc($select_categories_id_)) {
+                    $cat_id = $row['cat_id'];
+                    $cat_title = $row['cat_title'];
+                ?>
+                <input value="<?php if (isset($cat_title)) {
+                                    echo $cat_title;
+                                  } ?>" class="form-control" type="text" name="cat_title">
+                <?php }
+                }
+                ?>
+              </div>
+              <div class="form-group">
+                <input class="btn btn-primary" type="submit" name="edit" value="update">
+              </div>
+            </form>
           </div>
         </div>
-      </div>
-      <!-- /.row -->
-    </div>
-    <!-- /.container-fluid -->
-  </div>
-  <!-- /#page-wrapper -->
 
-  <?php include "includes/footer.php"; ?>
+
+        <div class="col-xs-6">
+          <table class="table table-bordered table-hover">
+            <tr>
+              <th>Id</th>
+              <th>Category Title</th>
+            </tr>
+
+            <?php //find all categories
+            $query = "SELECT * FROM categories";
+            $select_categories = mysqli_query($connect, $query);
+
+            while ($row = mysqli_fetch_assoc($select_categories)) {
+              $cat_id = $row['cat_id'];
+              $cat_title = $row['cat_title'];
+
+              echo "<tr>";
+              echo "<th>{$cat_id}</th>";
+              echo "<th>{$cat_title}</th>";
+              echo "<th><a href='categories.php?delete={$cat_id}'>Delete</a></th>";
+              echo "<th><a href='categories.php?edit={$cat_id}'>Edit</a></th>";
+              echo "</tr>";
+            }
+            ?>
+            <?php
+            if (isset($_GET['delete'])) {
+              $cat_id = $_GET['delete'];
+              $query = "DELETE FROM categories WHERE cat_id = {$cat_id} ";
+              $delete_query = mysqli_query($connect, $query);
+              header("Location: categories.php");
+            }
+            ?>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->
+
+<?php include "includes/footer.php"; ?>
