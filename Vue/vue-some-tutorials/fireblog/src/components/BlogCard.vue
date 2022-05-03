@@ -1,6 +1,6 @@
 <template>
   <div class="blog-card">
-    <div class="icons">
+    <div v-show="editPost" class="icons">
       <div class="icon">
         <Edit class="icon" />
       </div>
@@ -23,16 +23,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import { computed, defineComponent, PropType } from "vue";
+import { Store, useStore } from "vuex";
 import Arrow from "@/assets/Icons/arrow-right-light.vue";
 import Edit from "@/assets/Icons/edit-regular.vue";
 import Delete from "@/assets/Icons/trash-regular.vue";
-
-type BlogCardData = {
-  blogTitle: string;
-  blogCoverPhoto: string;
-  blogDate: string;
-};
+import { key, BlogCardData, State } from "@/store/index";
 
 export default defineComponent({
   components: { Arrow, Edit, Delete },
@@ -40,7 +36,10 @@ export default defineComponent({
     post: { type: Object as PropType<BlogCardData>, required: true },
   },
   setup() {
-    return {};
+    const store: Store<State> = useStore(key);
+    const editPost = computed(() => store.state.editPost);
+
+    return { editPost };
   },
 });
 </script>
@@ -55,6 +54,8 @@ export default defineComponent({
   background-color: #fff;
   min-height: 420px;
   transition: 0.5s ease all;
+  width: 100%;
+  max-width: 100%;
 
   &:hover {
     transform: rotateZ(-1deg) scale(1.01);
@@ -67,7 +68,7 @@ export default defineComponent({
     position: absolute;
     top: 10px;
     right: 10px;
-    z-index: 99;
+    z-index: 98;
     .icon {
       display: flex;
       justify-content: content;
@@ -100,7 +101,7 @@ export default defineComponent({
     }
   }
 
-  .img {
+  img {
     display: block;
     border-radius: 8px 8px 0 0;
     z-index: 1;

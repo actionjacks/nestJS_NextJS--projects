@@ -1,22 +1,42 @@
 <template>
   <div class="app-wrapper">
     <div class="app">
-      <Navigation />
+      <Navigation v-show="!navigation" />
       <router-view />
-      <Footer />
+      <Footer v-show="!navigation" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, onMounted, ref, watch } from "vue";
+import { useRouter, useRoute } from "vue-router";
 import Navigation from "@/components/Navigation.vue";
 import Footer from "@/components/Footer.vue";
 
 export default defineComponent({
   components: { Navigation, Footer },
   setup() {
-    return {};
+    const router = useRouter();
+    const route = useRoute();
+    const navigation = ref<boolean>(false);
+
+    onMounted(() => checkroute());
+    watch(route, () => checkroute());
+
+    function checkroute() {
+      if (
+        route.name === "Login" ||
+        route.name === "Register" ||
+        route.name === "ForgetPassword"
+      ) {
+        navigation.value = true;
+        return;
+      }
+      navigation.value = false;
+    }
+
+    return { navigation };
   },
 });
 </script>
@@ -107,7 +127,7 @@ button,
   .button-inactive {
     pointer-events: none !important;
     cursor: none !important;
-    background-color: rgba(128, 128, 128, 0.5 !important);
+    background-color: rgba(128, 128, 128, 0.5) !important;
   }
 }
 .blog-card-wrap {
@@ -132,5 +152,10 @@ button,
       grid-template-columns: repeat(4, 1fr);
     }
   }
+}
+.error {
+  text-align: center;
+  font-size: 12px;
+  color: red;
 }
 </style>

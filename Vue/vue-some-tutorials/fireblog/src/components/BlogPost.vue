@@ -33,7 +33,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
 import ArrowIcon from "@/assets/Icons/arrow-right-light.vue";
-import { Blog } from "@/views/Home.vue";
+import { Blog } from "@/store/index";
 
 export default defineComponent({
   components: { ArrowIcon },

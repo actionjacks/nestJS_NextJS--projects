@@ -3,7 +3,9 @@
     <div class="container">
       <div class="left">
         <div class="col-1">
-          <!-- <router-link class="header" :to="{ name: 'home' }"> blog </router-link> -->
+          <router-link class="header" :to="{ name: 'Home' }">
+            blog
+          </router-link>
 
           <ul>
             <li>
@@ -31,10 +33,14 @@
 
         <div class="col-2">
           <ul>
-            <router-link class="link" to="#">Home</router-link>
-            <router-link class="link" to="#">Blogs</router-link>
+            <router-link class="link" :to="{ name: 'Home' }">Home</router-link>
+            <router-link class="link" :to="{ name: 'Blogs' }"
+              >Blogs</router-link
+            >
             <router-link class="link" to="#">Create Post</router-link>
-            <router-link class="link" to="#">Login/Register</router-link>
+            <router-link class="link" :to="{ name: 'Register' }"
+              >Login/Register</router-link
+            >
           </ul>
         </div>
       </div>

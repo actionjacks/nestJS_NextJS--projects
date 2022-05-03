@@ -7,10 +7,12 @@
 
       <div class="nav-links">
         <ul v-show="!state.mobile">
-          <router-link class="link" to="#">Home</router-link>
-          <router-link class="link" to="#">Blogs</router-link>
+          <router-link class="link" :to="{ name: 'Home' }">Home</router-link>
+          <router-link class="link" :to="{ name: 'Blogs' }">Blogs</router-link>
           <router-link class="link" to="#">Create Post</router-link>
-          <router-link class="link" to="#">Login/Register</router-link>
+          <router-link class="link" :to="{ name: 'Register' }"
+            >Login/Register</router-link
+          >
         </ul>
       </div>
     </nav>
@@ -22,10 +24,12 @@
     />
     <transition name="mobile-nav">
       <ul v-show="state.mobileNav" class="mobile-nav">
-        <router-link class="link" to="#">Home</router-link>
-        <router-link class="link" to="#">Blogs</router-link>
+        <router-link class="link" :to="{ name: 'Home' }">Home</router-link>
+        <router-link class="link" :to="{ name: 'Blogs' }">Blogs</router-link>
         <router-link class="link" to="#">Create Post</router-link>
-        <router-link class="link" to="#">Login/Register</router-link>
+        <router-link class="link" :to="{ name: 'Register' }"
+          >Login/Register</router-link
+        >
       </ul>
     </transition>
   </header>
@@ -144,6 +148,7 @@ nav {
   flex-direction: column;
   position: fixed;
   height: 100%;
+  z-index: 99;
   background-color: #303030;
   top: 0;
   left: 0;

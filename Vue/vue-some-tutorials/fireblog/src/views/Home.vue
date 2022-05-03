@@ -27,23 +27,19 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
+import { useStore } from "vuex";
 import BlogPost from "@/components/BlogPost.vue";
 import BlogCard from "@/components/BlogCard.vue";
 import Arrow from "@/assets/Icons/arrow-right-light.vue";
-
-export type Blog = {
-  title: string;
-  blogPost?: string;
-  blogHTML?: string;
-  welcomeScreen?: boolean;
-  photo?: string;
-  blogCoverPhoto?: string;
-};
+import { key, Blog, BlogCardData } from "@/store/index";
 
 export default defineComponent({
   components: { BlogPost, BlogCard, Arrow },
   setup() {
+    const store = useStore(key);
+    const dummyCards = ref<BlogCardData[]>(store.state.dummyCards);
+
     const dummyData: Blog[] = [
       {
         title: "fist title",
@@ -62,9 +58,7 @@ export default defineComponent({
         blogCoverPhoto: "designed-for-everyone",
       },
     ];
-    const dummyCards = [
-      { blogTitle: "lorem", blogCoverPhoto: "loo", blogDate: "000000" },
-    ];
+
     return { dummyData, dummyCards };
   },
 });
