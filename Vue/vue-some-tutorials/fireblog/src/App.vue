@@ -1,7 +1,7 @@
 <template>
   <div class="app-wrapper">
     <div class="app">
-      <Navigation v-show="!navigation" />
+      <Navigation v-show="!navigation" :loginUser="user" />
       <p>{{ user }}</p>
       <button @click.prevent="getCurrentUserFromFirebase">
         Get current user from firebase
@@ -18,7 +18,6 @@ import { useRouter, useRoute } from "vue-router";
 import Navigation from "@/components/Navigation.vue";
 import Footer from "@/components/Footer.vue";
 import { getUser } from "@/getCurrentFirebaseUser";
-//store
 import { Store, useStore } from "vuex";
 import { key, State, UserDetailsFirebase } from "@/store/index";
 

@@ -10,10 +10,48 @@
           <router-link class="link" :to="{ name: 'Home' }">Home</router-link>
           <router-link class="link" :to="{ name: 'Blogs' }">Blogs</router-link>
           <router-link class="link" to="#">Create Post</router-link>
-          <router-link class="link" :to="{ name: 'Register' }"
+          <router-link v-if="loginUser" class="link" :to="{ name: 'Register' }"
             >Login/Register</router-link
           >
         </ul>
+
+        <div
+          ref="profile"
+          v-if="loginUser"
+          class="profile"
+          @click="toggleProfileMenu"
+        >
+          <span>{{
+            loginUser.firstName?.charAt(0)?.toUpperCase() ?? "LOL"
+          }}</span>
+          <div v-if="state.profileMemu" class="profile-menu">
+            <div class="info">
+              <div class="right">
+                <p>{{ loginUser.firstName }}</p>
+                <p>{{ loginUser.lastName }}</p>
+                <p>{{ loginUser.username }}</p>
+              </div>
+            </div>
+            <div class="options">
+              <div class="option">
+                <router-link class="option" to="#">
+                  <UserCrownIcon class="icon" />
+                  Profile</router-link
+                >
+              </div>
+              <div class="option">
+                <router-link class="option" to="#">
+                  <UserCrownIcon class="icon" />
+                  Admin</router-link
+                >
+              </div>
+              <div @click="signOut" class="option">
+                <SignOutIcon class="icon" />
+                Sign Out
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </nav>
 
@@ -36,22 +74,42 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, onUnmounted, reactive } from "vue";
+import {
+  defineComponent,
+  onMounted,
+  onUnmounted,
+  PropType,
+  reactive,
+  ref,
+} from "vue";
+import { UserDetailsFirebase } from "@/store/index";
+import { auth } from "@/firebase";
 import MenuIcon from "@/assets/Icons/bars-regular.vue";
+import SignOutIcon from "@/assets/Icons/sign-out-alt-regular.vue";
+import UserCrownIcon from "@/assets/Icons/user-crown-light.vue";
 
 type State = {
   mobile: boolean;
   mobileNav: boolean;
   windowWidth: number;
+  profileMemu: boolean;
 };
 
 export default defineComponent({
-  components: { MenuIcon },
+  components: { MenuIcon, SignOutIcon, UserCrownIcon },
+  props: {
+    loginUser: {
+      type: Object as PropType<UserDetailsFirebase>,
+      required: true,
+    },
+  },
   setup() {
+    const profile = ref<HTMLDivElement | null>(null);
     const state = reactive<State>({
       mobile: false,
       mobileNav: false,
       windowWidth: 0,
+      profileMemu: false,
     });
 
     function windowWidth(): void {
@@ -67,6 +125,17 @@ export default defineComponent({
     function toggleMobileNav(): void {
       state.mobileNav = !state.mobileNav;
     }
+    //todo focus out
+    function toggleProfileMenu(e: Event): void {
+      if (e.target === profile.value) {
+        state.profileMemu = !state.profileMemu;
+      }
+    }
+
+    function signOut(): void {
+      auth.signOut();
+      window.location.reload();
+    }
 
     onMounted(() => {
       window.addEventListener("resize", windowWidth);
@@ -75,8 +144,11 @@ export default defineComponent({
     onUnmounted(() => window.removeEventListener("resize", windowWidth));
 
     return {
+      profile,
       state,
       toggleMobileNav,
+      toggleProfileMenu,
+      signOut,
     };
   },
 });
@@ -127,6 +199,75 @@ nav {
       }
       .link:last-child {
         margin-right: 0;
+      }
+    }
+
+    .profile {
+      position: relative;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      color: #fff;
+      background-color: #303030;
+
+      span {
+        pointer-events: none;
+      }
+
+      .profile-menu {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 250px;
+        background-color: #303030;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+        .info {
+          display: flex;
+          align-items: center;
+          padding: 15px;
+          border-bottom: 1px solid #fff;
+
+          .right {
+            flex: 1;
+            margin-left: 24px;
+
+            p:nth-child(1) {
+              font-size: 14px;
+            }
+            p:nth-child(2),
+            p:nth-child(3) {
+              font-size: 12px;
+            }
+          }
+        }
+        .options {
+          padding: 15px;
+          .option {
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+
+            .icon {
+              width: 18px;
+              height: auto;
+            }
+            p {
+              font-size: 18px;
+              margin-left: 12px;
+            }
+            &:last-child {
+              margin-bottom: 0px;
+            }
+          }
+        }
       }
     }
   }
