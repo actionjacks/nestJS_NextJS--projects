@@ -5,6 +5,12 @@ import { getUser } from '@/getCurrentFirebaseUser'
 import { createStore, Store } from 'vuex'
 import { doc, getDoc } from "firebase/firestore";
 
+export type UserDetailsFirebase = {
+  username: string
+  firstName: string
+  lastName: string
+}
+
 export type Blog = {
   title: string;
   blogPost?: string;
@@ -24,7 +30,7 @@ export type BlogCardData = {
 export interface State {
   dummyCards: BlogCardData[], // to do make type for state
   editPost: boolean
-  userInfo: unknown //fix
+  userInfo: UserDetailsFirebase[] //fix
 }
 
 // define injection key
@@ -51,8 +57,12 @@ export const store = createStore<State>({
     }
   },
   actions: {
+    /**
+     * Get collection users and find rigstered
+     * user id in this collection, and get profile data
+     */
     async getCurrentUserData({ commit }) {
-      let user = getUser().user.value?.uid
+      const user = getUser().user.value?.uid
       if (!user) {
         return
       }

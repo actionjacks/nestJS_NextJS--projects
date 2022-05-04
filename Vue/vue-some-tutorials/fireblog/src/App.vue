@@ -2,6 +2,10 @@
   <div class="app-wrapper">
     <div class="app">
       <Navigation v-show="!navigation" />
+      <p>{{ user }}</p>
+      <button @click.prevent="getCurrentUserFromFirebase">
+        Get current user from firebase
+      </button>
       <router-view />
       <Footer v-show="!navigation" />
     </div>
@@ -13,15 +17,31 @@ import { defineComponent, onMounted, ref, watch } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import Navigation from "@/components/Navigation.vue";
 import Footer from "@/components/Footer.vue";
+import { getUser } from "@/getCurrentFirebaseUser";
+//store
+import { Store, useStore } from "vuex";
+import { key, State, UserDetailsFirebase } from "@/store/index";
 
 export default defineComponent({
   components: { Navigation, Footer },
   setup() {
+    const store = useStore(key);
+
     const router = useRouter();
     const route = useRoute();
     const navigation = ref<boolean>(false);
+    const user = ref<UserDetailsFirebase[]>([]);
 
     onMounted(() => checkroute());
+
+    async function getCurrentUserFromFirebase(): Promise<void> {
+      await store.dispatch("getCurrentUserData");
+      user.value = store.state.userInfo;
+    }
+    //test
+    // onMounted(() => {
+    //   user.value = getUser();
+    // });
     watch(route, () => checkroute());
 
     function checkroute() {
@@ -36,7 +56,7 @@ export default defineComponent({
       navigation.value = false;
     }
 
-    return { navigation };
+    return { navigation, user, getCurrentUserFromFirebase };
   },
 });
 </script>
