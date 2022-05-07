@@ -9,6 +9,7 @@ export type UserDetailsFirebase = {
   username: string
   firstName: string
   lastName: string
+  email?: string
 }
 
 export type Blog = {
@@ -43,6 +44,11 @@ export const store = createStore<State>({
     ],
     editPost: false,
     userInfo: []
+  },
+  getters: {
+    getCurrentUserInfo(state) {
+      return state.userInfo
+    }
   },
   mutations: {
     toggleEditPost(state, payload) {

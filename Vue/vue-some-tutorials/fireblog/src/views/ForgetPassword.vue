@@ -41,7 +41,7 @@ import { auth, db } from "@/firebase";
 import { setDoc, doc, collection } from "firebase/firestore";
 import { sendPasswordResetEmail } from "firebase/auth";
 
-type ModalState = {
+export type ModalState = {
   modalActive: boolean;
   modalMessage: string;
   loading: boolean;

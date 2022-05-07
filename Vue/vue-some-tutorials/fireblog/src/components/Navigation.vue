@@ -34,13 +34,13 @@
             </div>
             <div class="options">
               <div class="option">
-                <router-link class="option" to="#">
+                <router-link class="option" :to="{ name: 'Profile' }">
                   <UserCrownIcon class="icon" />
                   Profile</router-link
                 >
               </div>
               <div class="option">
-                <router-link class="option" to="#">
+                <router-link class="option" :to="{ name: 'Admin' }">
                   <UserCrownIcon class="icon" />
                   Admin</router-link
                 >
@@ -65,7 +65,7 @@
         <router-link class="link" :to="{ name: 'Home' }">Home</router-link>
         <router-link class="link" :to="{ name: 'Blogs' }">Blogs</router-link>
         <router-link class="link" to="#">Create Post</router-link>
-        <router-link class="link" :to="{ name: 'Register' }"
+        <router-link v-if="loginUser" class="link" :to="{ name: 'Register' }"
           >Login/Register</router-link
         >
       </ul>
