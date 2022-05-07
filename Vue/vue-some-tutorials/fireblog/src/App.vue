@@ -1,23 +1,27 @@
 <template>
   <div class="app-wrapper">
     <div class="app">
-      <Navigation v-show="!navigation" :loginUser="user" />
+      <Navigation
+        v-show="!navigation"
+        :loginUser="user"
+        :userToken="userToken"
+      />
       <p>{{ user }}</p>
       <button @click.prevent="getCurrentUserFromFirebase">
         Get current user from firebase
       </button>
       <router-view />
-      <Footer v-show="!navigation" />
+      <Footer v-show="!navigation" :userToken="userToken" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, watch } from "vue";
+import { computed, defineComponent, onMounted, ref, watch } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import Navigation from "@/components/Navigation.vue";
 import Footer from "@/components/Footer.vue";
-import { getUser } from "@/getCurrentFirebaseUser";
+import { getUser, getUserToken } from "@/getCurrentFirebaseUser";
 import { Store, useStore } from "vuex";
 import { key, State, UserDetailsFirebase } from "@/store/index";
 
@@ -30,6 +34,10 @@ export default defineComponent({
     const route = useRoute();
     const navigation = ref<boolean>(false);
     const user = ref<UserDetailsFirebase[]>([]);
+    const userToken = computed(async () => {
+      const token = await getUserToken();
+      return token;
+    });
 
     onMounted(() => checkroute());
 
@@ -55,7 +63,7 @@ export default defineComponent({
       navigation.value = false;
     }
 
-    return { navigation, user, getCurrentUserFromFirebase };
+    return { navigation, user, getCurrentUserFromFirebase, userToken };
   },
 });
 </script>

@@ -37,7 +37,9 @@
             <router-link class="link" :to="{ name: 'Blogs' }"
               >Blogs</router-link
             >
-            <router-link class="link" to="#">Create Post</router-link>
+            <router-link v-if="userToken" class="link" to="#"
+              >Create Post</router-link
+            >
             <router-link class="link" :to="{ name: 'Register' }"
               >Login/Register</router-link
             >
@@ -51,16 +53,24 @@
     </div>
   </footer>
 </template>
-//50
+
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, PropType } from "vue";
 import youtubeIcon from "@/assets/Icons/youtube-brands.vue";
 import linkedinIcon from "@/assets/Icons/linkedin-brands.vue";
 import tweeterIcon from "@/assets/Icons/twitter-brands.vue";
 import istagramIcon from "@/assets/Icons/instagram-brands.vue";
+import { IdTokenResult } from "@firebase/auth";
 
 export default defineComponent({
   components: { youtubeIcon, linkedinIcon, tweeterIcon, istagramIcon },
+  props: {
+    userToken: {
+      type: Object as PropType<IdTokenResult | undefined>,
+      required: false,
+      default: () => {},
+    },
+  },
   setup() {
     return {};
   },

@@ -9,7 +9,9 @@
         <ul v-show="!state.mobile">
           <router-link class="link" :to="{ name: 'Home' }">Home</router-link>
           <router-link class="link" :to="{ name: 'Blogs' }">Blogs</router-link>
-          <router-link class="link" to="#">Create Post</router-link>
+          <router-link v-if="userToken" class="link" to="#"
+            >Create Post</router-link
+          >
           <router-link v-if="loginUser" class="link" :to="{ name: 'Register' }"
             >Login/Register</router-link
           >
@@ -87,6 +89,7 @@ import { auth } from "@/firebase";
 import MenuIcon from "@/assets/Icons/bars-regular.vue";
 import SignOutIcon from "@/assets/Icons/sign-out-alt-regular.vue";
 import UserCrownIcon from "@/assets/Icons/user-crown-light.vue";
+import { IdTokenResult } from "@firebase/auth";
 
 type State = {
   mobile: boolean;
@@ -101,6 +104,11 @@ export default defineComponent({
     loginUser: {
       type: Object as PropType<UserDetailsFirebase>,
       required: true,
+    },
+    userToken: {
+      type: Object as PropType<IdTokenResult | undefined>,
+      required: false,
+      default: () => {},
     },
   },
   setup() {
