@@ -1,9 +1,10 @@
 // store.ts
 import { InjectionKey, ref, watchEffect } from 'vue'
 import { db } from '@/firebase'
-import { getUser } from '@/getCurrentFirebaseUser'
+import { getUser, getUserToken } from '@/getCurrentFirebaseUser'
 import { createStore, Store } from 'vuex'
 import { doc, getDoc } from "firebase/firestore";
+import { IdTokenResult } from 'firebase/auth';
 
 export type UserDetailsFirebase = {
   username: string
@@ -32,6 +33,7 @@ export interface State {
   dummyCards: BlogCardData[], // to do make type for state
   editPost: boolean
   userInfo: UserDetailsFirebase[] //fix
+  userToken?: null | IdTokenResult
 }
 
 // define injection key
@@ -43,11 +45,15 @@ export const store = createStore<State>({
       { blogTitle: "lorem", blogCoverPhoto: "stock-1", blogDate: "000000" },
     ],
     editPost: false,
-    userInfo: []
+    userInfo: [],
+    userToken: null
   },
   getters: {
     getCurrentUserInfo(state) {
       return state.userInfo
+    },
+    getUserToken(state) {
+      return state.userToken
     }
   },
   mutations: {
@@ -57,6 +63,9 @@ export const store = createStore<State>({
     //payload === doc from docSnap.data()
     setProfileInfo(state, payload) {
       state.userInfo = { ...payload }
+    },
+    setUserToken(state, payload) {
+      state.userToken = payload
     },
     setProfileInitials(state) {
       return state//todo
@@ -72,6 +81,9 @@ export const store = createStore<State>({
       if (!user) {
         return
       }
+      const token = getUserToken()
+      commit('setUserToken', token)
+
       const docRef = doc(db, 'users', `${user}`)
       const docSnap = await getDoc(docRef)
 

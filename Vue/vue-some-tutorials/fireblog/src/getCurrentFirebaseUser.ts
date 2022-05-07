@@ -13,3 +13,10 @@ onAuthStateChanged(auth, (_user) => {
 export const getUser = () => {
   return { user };
 };
+
+export const getUserToken = async () => {
+  if (!user.value) {
+    return
+  }
+  return await user.value?.getIdTokenResult()
+}

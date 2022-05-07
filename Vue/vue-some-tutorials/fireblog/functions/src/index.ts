@@ -1,20 +1,23 @@
 import * as functions from "firebase-functions";
 
-type User = {
-  admin: boolean
-  uid: string
-}
-
-const admin = require('firebase-admin')
-admin.initializeApp()
+import admin = require("firebase-admin");
+admin.initializeApp();
 
 exports.addAdminRole = functions.https.onCall((data, context) => {
   return admin
     .auth()
     .getUserByEmail(data.email)
-    .then((user: User) => {
+    .then((user: any) => {
       return admin.auth().setCustomUserClaims(user.uid, {
-        admin: true
-      })
+        admin: true,
+      });
     })
-})
+    .then(() => {
+      return {
+        message: `Sucess !${data.email}`,
+      };
+    })
+    .catch((err: any) => {
+      console.log(err);
+    });
+});
