@@ -1,0 +1,51 @@
+{
+    "editor.tabSize": 2,
+    "editor.fontSize": 11,
+    "editor.minimap.enabled": false,
+    "workbench.iconTheme": "material-icon-theme",
+    "files.autoSave": "off",
+    "workbench.settings.editor": "json",
+    "workbench.settings.useSplitJSON": true,
+    "editor.wordWrap": "on",
+    "workbench.sideBar.location": "right",
+    // terminal
+    "workbench.colorCustomizations": {
+        "terminal.background": "#202e26",
+        "terminal.foreground": "#14af0f",
+        "terminalCursor.background": "#A89984",
+        "terminalCursor.foreground": "#A89984",
+        "terminal.ansiBlack": "#1D2021",
+        "terminal.ansiBlue": "#0D6678",
+        "terminal.ansiBrightBlack": "#665C54",
+        "terminal.ansiBrightBlue": "#0D6678",
+        "terminal.ansiBrightCyan": "#8BA59B",
+        "terminal.ansiBrightGreen": "#95C085",
+        "terminal.ansiBrightMagenta": "#8F4673",
+        "terminal.ansiBrightRed": "#FB543F",
+        "terminal.ansiBrightWhite": "#FDF4C1",
+        "terminal.ansiBrightYellow": "#FAC03B",
+        "terminal.ansiCyan": "#8BA59B",
+        "terminal.ansiGreen": "#95C085",
+        "terminal.ansiMagenta": "#8F4673",
+        "terminal.ansiRed": "#FB543F",
+        "terminal.ansiWhite": "#A89984",
+        "terminal.ansiYellow": "#FAC03B"
+    },
+    "editor.accessibilitySupport": "off",
+    "vetur.format.defaultFormatter.html": "js-beautify-html",
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    // -=
+    "eslint.alwaysShowStatus": true,
+    //default Enables ESLint as a formatter.
+    "eslint.format.enable": true,
+    //default Controls whether a task for linting the whole workspace will be available.
+    "eslint.lintTask.enable": false,
+    //default
+    "eslint.codeActionsOnSave.mode": "all",
+    "workbench.startupEditor": "none",
+    "git.confirmSync": false,
+    "json.maxItemsComputed": 9000,
+}
