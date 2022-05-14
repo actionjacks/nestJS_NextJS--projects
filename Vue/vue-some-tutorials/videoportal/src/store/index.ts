@@ -7,28 +7,32 @@ export const store = createStore<State>({
   state: {
     videos: [
       {
-        id: 1,
+        id: "1",
         name: 'video-1',
         description: `<p>lorem ipsum lorem ipsum lorem ipsum</p>`,
-        thumbnail: 'https://i.ytimg.com/vi/zL0kemiI0yc/maxresdefault.jpg'
+        thumbnail: 'https://i.ytimg.com/vi/zL0kemiI0yc/maxresdefault.jpg',
+        url: 'https://www.youtube.com/embed/63mSxQUAP30'
       },
       {
-        id: 2,
+        id: "2",
         name: 'video-2',
         description: `<p>lorem ipsum lorem ipsum lorem ipsum</p>`,
-        thumbnail: 'https://i.ytimg.com/vi/zL0kemiI0yc/maxresdefault.jpg'
+        thumbnail: 'https://i.ytimg.com/vi/zL0kemiI0yc/maxresdefault.jpg',
+        url: 'https://www.youtube.com/embed/63mSxQUAP30'
       },
       {
-        id: 3,
+        id: "3",
         name: 'video-3',
         description: `<p>lorem ipsum lorem ipsum lorem ipsum</p>`,
-        thumbnail: 'https://i.ytimg.com/vi/zL0kemiI0yc/maxresdefault.jpg'
+        thumbnail: 'https://i.ytimg.com/vi/zL0kemiI0yc/maxresdefault.jpg',
+        url: 'https://www.youtube.com/embed/63mSxQUAP30'
       },
       {
-        id: 4,
+        id: "4",
         name: 'video-4',
         description: `<p>lorem ipsum lorem ipsum lorem ipsum</p>`,
-        thumbnail: 'https://i.ytimg.com/vi/zL0kemiI0yc/maxresdefault.jpg'
+        thumbnail: 'https://i.ytimg.com/vi/zL0kemiI0yc/maxresdefault.jpg',
+        url: 'https://www.youtube.com/embed/63mSxQUAP30'
       },
     ]
   },

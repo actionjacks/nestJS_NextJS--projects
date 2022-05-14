@@ -1,9 +1,4 @@
-export type Videos = {
-  id: number
-  name: string
-  description: string
-  thumbnail: string
-}
+import { Videos } from '@/Classes/Videos'
 
 export type State = {
   videos: Videos[]
