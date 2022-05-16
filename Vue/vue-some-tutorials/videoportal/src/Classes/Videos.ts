@@ -4,6 +4,7 @@ export type Videos = {
   description: string
   thumbnail: string
   url: string
+  tagids?: string[]
 }
 
 export class Video implements Videos {
@@ -12,6 +13,7 @@ export class Video implements Videos {
   description: string
   thumbnail: string
   url: string
+  tagids?: string[]
 
   constructor(data: Videos, id: string) {
     this.id = id
@@ -19,5 +21,6 @@ export class Video implements Videos {
     this.description = data.description
     this.thumbnail = data.thumbnail
     this.url = data.url
+    this.tagids = data.tagids
   }
 }

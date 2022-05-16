@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "name": "firstTag",
+    "videoIds": [
+      "1"
+    ]
+  },
+  {
+    "id": "2",
+    "name": "secondTag",
+    "videoIds": [
+      "1",
+      "2",
+      "3"
+    ]
+  },
+  {
+    "id": "3",
+    "name": "thirdTag",
+    "videoIds": [
+      "1",
+      "4"
+    ]
+  }
+]

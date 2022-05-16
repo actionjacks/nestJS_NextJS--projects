@@ -16,28 +16,22 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from "vue";
+import { defineComponent, onMounted, ComputedRef } from "vue";
 import { useStore } from "vuex";
-import { key } from "@/store/index";
-import Api from '@/service/videosFromMirage'
-import { Video, Videos } from '@/Classes/Videos'
+import { mapGetters } from "@/store/map-state";
+import { key, Tag } from "@/store/index";
+import { Videos } from "@/Classes/Videos";
 
 export default defineComponent({
   setup() {
-    const videos = ref<Videos[]>([])
+    const store = useStore(key)
+    const { videos, tags } = mapGetters()
 
-    onMounted(async () => {
-      const result: { data: { type: string, id: string, attributes: Videos }[] }
-        = await (await Api().get('/videos')).data
-
-      result.data.forEach((item) => {
-        const { id, attributes } = item
-        videos.value.push(new Video(attributes, id))
-      })
-    });
+    onMounted(() => store.dispatch('loadVideos'))
 
     return {
-      videos
+      videos: videos as ComputedRef<Videos[]>,
+      tags: tags as ComputedRef<Tag[]>
     }
   }
 });
