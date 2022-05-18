@@ -11,7 +11,7 @@ export const key: InjectionKey<Store<State>> = Symbol()
 export const store = createStore<State>({
   state: {
     videos: [],
-    tags: []
+    tags: {}
   },
   getters: {
     videos(state) {
@@ -32,34 +32,39 @@ export const store = createStore<State>({
       state.videos = []
     },
     /**
-    * @param {Tag[]} state
+    * @param {Tag} state
     */
-    SET_TAGS(state, tags) {
-      state.tags.push(tags)
+    SET_TAGS(state, tag: Tag) {
+      state.tags = {
+        ...state.tags,
+        ...tag
+      }
+      console.log(state.tags, '!')
     },
   },
   actions: {
+    /**
+    * load videos and tags from mirage
+    */
     async loadVideos({ commit }) {
       const result: {
-        //todo move types to file
-        data: { type: string, id: string, attributes: Videos }[],
+        //todo move types to file todo refactor API types
+        data: { type: string, id: string, attributes: Videos, relationships: { tags: { data: { type: string, id: string }[] } } }[],
         included: { type: string, id: string, attributes: Tag, relationships: Record<string, unknown> }[]
       }
         = await (await Api().get('/videos')).data
 
       result.data.forEach((item) => {
-        const { id, attributes } = item
-        commit('SET_VIDEOS', new Video(attributes, id))
+        const { id, attributes, relationships } = item
+        const tagsId = relationships.tags.data.filter(i => i.type === 'tags')
+        commit('SET_VIDEOS', new Video(attributes, id, tagsId))
       })
 
-      const tags = result.included.filter(i => i.type === 'tags')
+      result.included.filter(i => i.type === 'tags')
         .map((t) => {
-          return Object.assign({ [t.id]: Object.values(t.attributes).join('') })
+          commit('SET_TAGS', { [t.id]: Object.values(t.attributes).join('') })
         })
-      commit('SET_TAGS', tags)
 
-      console.log(result)
-      console.log(tags)
     },
     clearVideos({ commit }) {
       commit('CLEAR_VIDEOS')

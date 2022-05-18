@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper">
+    {{ displayTag(3) }}
     <div v-if="videos.length > 1" class="video-container">
       <div v-for="video in videos" :key="video.id" class="video-box ">
         <router-link :to="{ name: 'video-watch', params: { id: video.id } }">
@@ -7,6 +8,11 @@
           <div>
             <h3>{{ video.name ?? '' }}</h3>
             <div v-html="video.description"></div>
+            <span v-for="({ id }) in video.tagids" :key="id">
+              <button>
+                {{ displayTag(Number(id)) }}
+              </button>
+            </span>
           </div>
         </router-link>
         <hr>
@@ -27,11 +33,18 @@ export default defineComponent({
     const store = useStore(key)
     const { videos, tags } = mapGetters()
 
-    onMounted(() => store.dispatch('loadVideos'))
+    onMounted(() => {
+      store.dispatch('loadVideos')
+    })
+
+    function displayTag(id: number) {
+      return tags.value[id]
+    }
 
     return {
       videos: videos as ComputedRef<Videos[]>,
-      tags: tags as ComputedRef<Tag[]>
+      tags: tags as ComputedRef<Tag[]>,
+      displayTag
     }
   }
 });
