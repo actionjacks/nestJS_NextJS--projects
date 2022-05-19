@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import Video from "@/views/Video.vue"
 import VideoWatch from "@/views/VideoWatch.vue"
+import TagVideoList from '@/views/TagVideoList.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -14,6 +15,12 @@ const routes: Array<RouteRecordRaw> = [
     component: VideoWatch,
     props: true
   },
+  {
+    path: "/tag/:id",
+    name: "tag",
+    component: TagVideoList,
+    props: true
+  }
 ];
 
 const router = createRouter({

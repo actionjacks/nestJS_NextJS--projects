@@ -17,29 +17,37 @@ export const store = createStore<State>({
     videos(state) {
       return state.videos
     },
+    getVideosByTagId: (state) => (id: string) => {
+      return state.videos.filter(({ tagids }) => {
+        const ids = tagids?.map(({ id }) => id)
+        return ids?.includes(id)
+      })
+    },
     tags(state) {
       return state.tags
+    },
+    getTagById: (state) => (id: number) => {
+      return state.tags[id]
     }
   },
   mutations: {
     /**
     * @param {Videos[]} state
     */
-    SET_VIDEOS(state, videos) {
+    SET_VIDEOS(state: { videos: Videos[] }, videos) {
       state.videos.push(videos)
     },
-    CLEAR_VIDEOS(state, _) {
+    CLEAR_VIDEOS(state: { videos: Videos[] }, _) {
       state.videos = []
     },
     /**
     * @param {Tag} state
     */
-    SET_TAGS(state, tag: Tag) {
+    SET_TAGS(state: { tags: Tag }, tag: Tag) {
       state.tags = {
         ...state.tags,
         ...tag
       }
-      console.log(state.tags, '!')
     },
   },
   actions: {

@@ -1,13 +1,19 @@
 <template>
   <div class="wrapper">
-    {{ displayTag(3) }}
     <div v-if="videos.length > 1" class="video-container">
       <div v-for="video in videos" :key="video.id" class="video-box ">
-        <router-link :to="{ name: 'video-watch', params: { id: video.id } }">
+        <router-link :to="{
+          name: 'video-watch',
+          params: {
+            id: video.id,
+            displayTag: video.tagids?.map(({ id }) => displayTag(Number(id))) ?? []
+          }
+        }">
           <img :src="video.thumbnail" :alt="video.name">
           <div>
             <h3>{{ video.name ?? '' }}</h3>
             <div v-html="video.description"></div>
+
             <span v-for="({ id }) in video.tagids" :key="id">
               <button>
                 {{ displayTag(Number(id)) }}
@@ -15,7 +21,6 @@
             </span>
           </div>
         </router-link>
-        <hr>
       </div>
     </div>
   </div>
@@ -25,7 +30,7 @@
 import { defineComponent, onMounted, ComputedRef } from "vue";
 import { useStore } from "vuex";
 import { mapGetters } from "@/store/map-state";
-import { key, Tag } from "@/store/index";
+import { key, Tag, Tags } from "@/store/index";
 import { Videos } from "@/Classes/Videos";
 
 export default defineComponent({
@@ -34,11 +39,12 @@ export default defineComponent({
     const { videos, tags } = mapGetters()
 
     onMounted(() => {
+      store.dispatch('clearVideos')
       store.dispatch('loadVideos')
     })
 
-    function displayTag(id: number) {
-      return tags.value[id]
+    function displayTag(id: number): Tags | string {
+      return tags.value[id] ?? ''
     }
 
     return {
@@ -53,7 +59,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .video-container {
   .video-box {
-    border: 1px solid block;
+    border: 1px solid black;
     border-radius: 16px;
     margin: 10px;
     text-align: left;
