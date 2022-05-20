@@ -34,7 +34,9 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx",
-    "src/mirage/server.ts"
+    "src/mirage/server.ts",
+    "src/components",
+    "src/custom.d.ts"
   ],
   "exclude": [
     "node_modules"

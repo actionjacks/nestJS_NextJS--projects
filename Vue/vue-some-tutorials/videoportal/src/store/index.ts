@@ -11,7 +11,8 @@ export const key: InjectionKey<Store<State>> = Symbol()
 export const store = createStore<State>({
   state: {
     videos: [],
-    tags: {}
+    tags: {},
+    playedVideos: []
   },
   getters: {
     videos(state) {
@@ -28,6 +29,9 @@ export const store = createStore<State>({
     },
     getTagById: (state) => (id: number) => {
       return state.tags[id]
+    },
+    getPlayedVideos(state) {
+      return state.playedVideos
     }
   },
   mutations: {
@@ -49,6 +53,18 @@ export const store = createStore<State>({
         ...tag
       }
     },
+    SET_PLAYED_VIDEOS(state, playedVideos) {
+      state.playedVideos = playedVideos
+    },
+    MARK_VIDEO_PLAYED(state, videoId) {
+      // check for duplicates
+      if (state.playedVideos.map(id => id === videoId).includes(true)) {
+        return
+      }
+      const playedVideos = state.playedVideos.concat(videoId)
+      window.localStorage.playedVideos = JSON.stringify(playedVideos)
+      state.playedVideos = playedVideos
+    }
   },
   actions: {
     /**
@@ -74,8 +90,22 @@ export const store = createStore<State>({
         })
 
     },
+    async createVideo({ commit }, model) {
+      const result = await Api().post('/videos', model)
+      return result
+    },
     clearVideos({ commit }) {
       commit('CLEAR_VIDEOS')
+    },
+    getPlayedVideos({ commit }) {
+      if (window.localStorage.getItem('playedVideos') === null) {
+        return
+      }
+      const playedVideos = JSON.parse(window.localStorage.playedVideos)
+      commit('SET_PLAYED_VIDEOS', playedVideos)
+    },
+    markPlayed({ commit }, videoId: string) {
+      commit('MARK_VIDEO_PLAYED', videoId)
     }
   },
   modules: {},

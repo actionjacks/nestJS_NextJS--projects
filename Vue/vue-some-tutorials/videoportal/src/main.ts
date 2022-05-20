@@ -8,4 +8,4 @@ makeServer()
 createApp(App)
   .use(store, key)
   .use(router)
-  .mount("#app");
+  .mount("#app")

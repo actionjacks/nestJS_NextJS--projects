@@ -4,4 +4,5 @@ import { Tag } from '.'
 export type State = {
   videos: Videos[]
   tags: Tag
+  playedVideos: string[]
 }

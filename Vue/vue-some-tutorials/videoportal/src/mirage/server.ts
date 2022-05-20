@@ -9,7 +9,15 @@ export function makeServer({ environment = "development" } = {}) {
     {
       application: JSONAPISerializer,
       video: JSONAPISerializer.extend({
-        include: ['tags']
+        include: ['tags'],
+        normalize(json) {
+          return {
+            data: {
+              type: 'video',
+              attributes: json
+            }
+          }
+        }
       }),
       tag: JSONAPISerializer.extend({
         include: ['videos']
@@ -30,6 +38,9 @@ export function makeServer({ environment = "development" } = {}) {
     },
     routes() {
       this.get('api/videos')
+      this.post('api/videos')
+      this.put('api/videos/:id')
+      this.delete('api/videos/:id')
     }
   })
   return server

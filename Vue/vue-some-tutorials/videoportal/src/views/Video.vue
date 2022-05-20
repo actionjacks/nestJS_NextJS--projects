@@ -1,26 +1,11 @@
 <template>
   <div class="wrapper">
+    <span v-if="info">
+      {{ info }}
+    </span>
     <div v-if="videos.length > 1" class="video-container">
       <div v-for="video in videos" :key="video.id" class="video-box ">
-        <router-link :to="{
-          name: 'video-watch',
-          params: {
-            id: video.id,
-            displayTag: video.tagids?.map(({ id }) => displayTag(Number(id))) ?? []
-          }
-        }">
-          <img :src="video.thumbnail" :alt="video.name">
-          <div>
-            <h3>{{ video.name ?? '' }}</h3>
-            <div v-html="video.description"></div>
-
-            <span v-for="({ id }) in video.tagids" :key="id">
-              <button>
-                {{ displayTag(Number(id)) }}
-              </button>
-            </span>
-          </div>
-        </router-link>
+        <VideoListVideo componentAsLink :video="video" />
       </div>
     </div>
   </div>
@@ -28,29 +13,33 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ComputedRef } from "vue";
+import VideoListVideo from '@/components/VideoListVideo.vue'
 import { useStore } from "vuex";
 import { mapGetters } from "@/store/map-state";
-import { key, Tag, Tags } from "@/store/index";
+import { key } from "@/store/index";
 import { Videos } from "@/Classes/Videos";
+import { useRoute } from 'vue-router'
+import { computed } from "@vue/reactivity";
 
 export default defineComponent({
+  components: { VideoListVideo },
+  props: {
+    sucessInfo: { type: String, required: false, default: '' }
+  },
   setup() {
     const store = useStore(key)
-    const { videos, tags } = mapGetters()
+    const { videos } = mapGetters()
+
+    const info = computed(() => useRoute().params?.sucessInfo ?? '')
 
     onMounted(() => {
       store.dispatch('clearVideos')
       store.dispatch('loadVideos')
     })
 
-    function displayTag(id: number): Tags | string {
-      return tags.value[id] ?? ''
-    }
-
     return {
-      videos: videos as ComputedRef<Videos[]>,
-      tags: tags as ComputedRef<Tag[]>,
-      displayTag
+      info,
+      videos: videos as ComputedRef<Videos[]>
     }
   }
 });
@@ -66,10 +55,7 @@ export default defineComponent({
     display: flex;
     justify-content: flex-start;
 
-    img {
-      width: 200px;
-      padding: 10px;
-    }
+
   }
 }
 </style>

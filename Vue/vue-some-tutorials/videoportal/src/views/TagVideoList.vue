@@ -2,20 +2,21 @@
   <div>
     <h1>{{ paramId }}</h1>
     <h4>{{ displayCurrentTag }}</h4>
-    <span v-for="video in videos" :key="video.id">
-      {{ video.name }}
-      <br>
-    </span>
+    <div v-for="video in videos" :key="video.id" class="video-box ">
+      <VideoListVideo :video="video" />
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, computed, ComputedRef } from 'vue'
+import { defineComponent, onMounted, computed, ComputedRef } from 'vue'
+import VideoListVideo from '@/components/VideoListVideo.vue'
 import { useRoute } from 'vue-router'
 import { useStore } from "vuex";
 import { key } from "@/store/index";
 
 export default defineComponent({
+  components: { VideoListVideo },
   setup() {
     const store = useStore(key)
 
