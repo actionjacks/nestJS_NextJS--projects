@@ -40,10 +40,10 @@
 </template>
 
 <script lang="ts">
-import { Tag, Tags } from '@/store'
 import { ComputedRef, defineComponent, PropType, onMounted } from 'vue'
 import { mapGetters } from "@/store/map-state";
 import { Videos } from '@/Classes/Videos';
+import { Tag, Tags } from '@/store'
 import { useStore } from "vuex";
 import { key } from "@/store/index";
 
@@ -58,7 +58,7 @@ export default defineComponent({
   },
   setup() {
     const store = useStore(key)
-    const { tags, getPlayedVideos } = mapGetters()
+    const { getPlayedVideos, tags } = mapGetters()
 
     function isPlayed(id: string): boolean {
       return getPlayedVideos?.value?.includes(id)
@@ -68,9 +68,7 @@ export default defineComponent({
       return tags.value[id] ?? ''
     }
 
-    onMounted(() => {
-      store.dispatch('getPlayedVideos')
-    })
+    onMounted(() => store.dispatch('getPlayedVideos'))
 
     return {
       isPlayed,

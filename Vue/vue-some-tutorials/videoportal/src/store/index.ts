@@ -44,6 +44,17 @@ export const store = createStore<State>({
     CLEAR_VIDEOS(state: { videos: Videos[] }, _) {
       state.videos = []
     },
+    DEDIT_VIDEO(state, video) {
+      state.videos.forEach((video_) => {
+        if (video_.id === video.id) {
+          video_ = video
+        }
+      })
+    },
+    DELETE_VIDEO(state, video) {
+      const newState = state.videos.filter(({ id }) => id !== video.id)
+      state.videos = newState
+    },
     /**
     * @param {Tag} state
     */
@@ -93,6 +104,20 @@ export const store = createStore<State>({
     async createVideo({ commit }, model) {
       const result = await Api().post('/videos', model)
       return result
+    },
+    async editVideo({ commit }, video) {
+      const response = await Api().put(`/videos/${video.id}`, video)
+      response.status === 200 || response.status === 204
+        ? commit('DEDIT_VIDEO', video)
+        : new Error('Cant edit')
+      return response
+    },
+    async deleteVideo({ commit }, video) {
+      const response = await Api().delete(`/videos/${video.id}`)
+      return response.status === 200 || response.status === 204
+        ? commit('DELETE_VIDEO', video)
+        : new Error('Cant del')
+
     },
     clearVideos({ commit }) {
       commit('CLEAR_VIDEOS')

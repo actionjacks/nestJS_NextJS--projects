@@ -3,6 +3,8 @@ import Video from "@/views/Video.vue"
 import VideoWatch from "@/views/VideoWatch.vue"
 import TagVideoList from '@/views/TagVideoList.vue'
 import VideoCreate from '@/views/VideoCreate.vue'
+import AdminVideoList from '@/views/AdminVideoList.vue'
+import AdminVideoEdit from '@/views/AdminVideoEdit.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -19,6 +21,18 @@ const routes: Array<RouteRecordRaw> = [
     path: "/video/:id",
     name: "video-watch",
     component: VideoWatch,
+    props: true
+  },
+  {
+    path: "/admin/videos",
+    name: "admin-video-list",
+    component: AdminVideoList,
+    props: true
+  },
+  {
+    path: "/admin/videos/:id/edit",
+    name: "admin-video-edit",
+    component: AdminVideoEdit,
     props: true
   },
   {
