@@ -1,5 +1,14 @@
 <template>
   <div class="wrapper">
+    <div class="top-navbar">
+      <div v-if="currentUser">
+        <button>{{ currentUser.name }}</button>
+        <button @click="logout">Logout</button>
+      </div>
+      <div v-else>
+        <button>Login</button>
+      </div>
+    </div>
     <span v-if="info">
       {{ info }}
     </span>
@@ -20,6 +29,7 @@ import { key } from "@/store/index";
 import { Videos } from "@/Classes/Videos";
 import { useRoute } from 'vue-router'
 import { computed } from "@vue/reactivity";
+import { User } from '@/Classes/Users';
 
 export default defineComponent({
   components: { VideoListVideo },
@@ -28,9 +38,13 @@ export default defineComponent({
   },
   setup() {
     const store = useStore(key)
-    const { videos } = mapGetters()
+    const { videos, currentUser } = mapGetters()
 
     const info = computed(() => useRoute().params?.sucessInfo ?? '')
+
+    function logout() {
+      store.dispatch('logoutUser')
+    }
 
     onMounted(() => {
       store.dispatch('clearVideos')
@@ -39,7 +53,9 @@ export default defineComponent({
 
     return {
       info,
-      videos: videos as ComputedRef<Videos[]>
+      logout,
+      videos: videos as ComputedRef<Videos[]>,
+      currentUser: currentUser as ComputedRef<User>
     }
   }
 });
@@ -54,8 +70,6 @@ export default defineComponent({
     text-align: left;
     display: flex;
     justify-content: flex-start;
-
-
   }
 }
 </style>

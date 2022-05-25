@@ -3,6 +3,7 @@ import { createStore, Store } from 'vuex'
 import { State } from './stateTypes';
 import Api from '@/service/videosFromMirage'
 import { Video, Videos } from '@/Classes/Videos'
+import { User } from '@/Classes/Users';
 
 export type Tags = 'firstTag' | 'secondTag' | 'thirdTag'
 export type Tag = Record<number, Tags>
@@ -12,7 +13,9 @@ export const store = createStore<State>({
   state: {
     videos: [],
     tags: {},
-    playedVideos: []
+    playedVideos: [],
+    users: [],
+    currentUser: null
   },
   getters: {
     videos(state) {
@@ -32,6 +35,12 @@ export const store = createStore<State>({
     },
     getPlayedVideos(state) {
       return state.playedVideos
+    },
+    users(state) {
+      return state.users
+    },
+    currentUser(state) {
+      return state.currentUser
     }
   },
   mutations: {
@@ -40,6 +49,18 @@ export const store = createStore<State>({
     */
     SET_VIDEOS(state: { videos: Videos[] }, videos) {
       state.videos.push(videos)
+    },
+    SET_USERS(state: { users: User[] }, user) {
+      state.users.push(user)
+    },
+    CLEAR_USERS(state: { users: User[] }, _) {
+      state.users = []
+    },
+    SET_CURRENT_USER(state: { currentUser: User | null }, user) {
+      state.currentUser = user
+    },
+    LOGOUT_USER(state: { currentUser: User | null }) {
+      state.currentUser = null
     },
     CLEAR_VIDEOS(state: { videos: Videos[] }, _) {
       state.videos = []
@@ -122,6 +143,15 @@ export const store = createStore<State>({
     clearVideos({ commit }) {
       commit('CLEAR_VIDEOS')
     },
+    clearUsers({ commit }) {
+      commit('CLEAR_USERS')
+    },
+    loginUser({ commit }, user) {
+      commit('SET_CURRENT_USER', user)
+    },
+    logoutUser({ commit }) {
+      commit('LOGOUT_USER')
+    },
     getPlayedVideos({ commit }) {
       if (window.localStorage.getItem('playedVideos') === null) {
         return
@@ -131,6 +161,20 @@ export const store = createStore<State>({
     },
     markPlayed({ commit }, videoId: string) {
       commit('MARK_VIDEO_PLAYED', videoId)
+    },
+    async getUsers({ commit }) {
+      const result: {
+        //todo move types to file todo refactor API types
+        data: { type: string, id: string, attributes: User }[]
+      } = await (await Api().get('/users')).data
+
+      result.data.forEach((user) => {
+        const { id } = user
+        const { admin, email, name, playedVideos } = user.attributes
+        commit('SET_USERS', new User({
+          admin, email, name, playedVideos, id: Number(id)
+        }))
+      })
     }
   },
   modules: {},

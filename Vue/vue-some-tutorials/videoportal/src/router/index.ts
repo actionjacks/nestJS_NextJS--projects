@@ -5,6 +5,7 @@ import TagVideoList from '@/views/TagVideoList.vue'
 import VideoCreate from '@/views/VideoCreate.vue'
 import AdminVideoList from '@/views/AdminVideoList.vue'
 import AdminVideoEdit from '@/views/AdminVideoEdit.vue'
+import AdminUserList from '@/views/AdminUserList.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -28,6 +29,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "admin-video-list",
     component: AdminVideoList,
     props: true
+  },
+  {
+    path: "/admin/users",
+    name: "admin-user-list",
+    component: AdminUserList,
   },
   {
     path: "/admin/videos/:id/edit",

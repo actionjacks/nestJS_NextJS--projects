@@ -1,7 +1,8 @@
 
 import { createServer, Model, JSONAPISerializer, hasMany } from "miragejs"
+import usersJson from './users.json'
 import videoJson from './videos.json'
-import tagsJSON from './tagsVideo.json'
+import tagsJson from './tagsVideo.json'
 
 export function makeServer({ environment = "development" } = {}) {
   const server = createServer({
@@ -21,12 +22,20 @@ export function makeServer({ environment = "development" } = {}) {
       }),
       tag: JSONAPISerializer.extend({
         include: ['videos']
+      }),
+      user: JSONAPISerializer.extend({
+        attrs: ['name', 'email', 'admin', 'playedVideos'],
+        keyForAttribute(attr) {
+          return attr
+        }
       })
     },
     fixtures:
     {
       videos: videoJson,
-      tags: tagsJSON
+      tags: tagsJson,
+      users: usersJson
+
     },
     models: {
       video: Model.extend({
@@ -34,13 +43,22 @@ export function makeServer({ environment = "development" } = {}) {
       }),
       tag: Model.extend({
         videos: hasMany()
-      })
+      }),
+      user: Model
     },
     routes() {
       this.get('api/videos')
+      this.get('api/users')
+      this.post('api/sessions', function (schema: any, request) {
+        const json = JSON.parse(request.requestBody)
+        const response = schema.users.findBy({ email: json.email })
+
+        return response
+      })
       this.post('api/videos')
       this.put('api/videos/:id')
       this.delete('api/videos/:id')
+
     }
   })
   return server
