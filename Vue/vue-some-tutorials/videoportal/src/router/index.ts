@@ -6,12 +6,18 @@ import VideoCreate from '@/views/VideoCreate.vue'
 import AdminVideoList from '@/views/AdminVideoList.vue'
 import AdminVideoEdit from '@/views/AdminVideoEdit.vue'
 import AdminUserList from '@/views/AdminUserList.vue'
+import UserLogin from '@/views/UserLogin.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "video",
     component: Video,
+  },
+  {
+    path: "/login",
+    name: "user-login",
+    component: UserLogin,
   },
   {
     path: "/video/new",

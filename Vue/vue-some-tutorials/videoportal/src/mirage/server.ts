@@ -49,10 +49,9 @@ export function makeServer({ environment = "development" } = {}) {
     routes() {
       this.get('api/videos')
       this.get('api/users')
-      this.post('api/sessions', function (schema: any, request) {
-        const json = JSON.parse(request.requestBody)
-        const response = schema.users.findBy({ email: json.email })
-
+      this.post('api/sessions', (schema: any, request) => {
+        const email = JSON.parse(request.requestBody).email
+        const response = schema.users.findBy({ email })
         return response
       })
       this.post('api/videos')

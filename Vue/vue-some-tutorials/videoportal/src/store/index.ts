@@ -2,6 +2,7 @@ import { InjectionKey } from 'vue'
 import { createStore, Store } from 'vuex'
 import { State } from './stateTypes';
 import Api from '@/service/videosFromMirage'
+import ApiUser from '@/service/user'
 import { Video, Videos } from '@/Classes/Videos'
 import { User } from '@/Classes/Users';
 
@@ -55,9 +56,11 @@ export const store = createStore<State>({
     },
     CLEAR_USERS(state: { users: User[] }, _) {
       state.users = []
+      window.localStorage.currentUser = JSON.stringify({})
     },
     SET_CURRENT_USER(state: { currentUser: User | null }, user) {
       state.currentUser = user
+      window.localStorage.currentUser = JSON.stringify(user)
     },
     LOGOUT_USER(state: { currentUser: User | null }) {
       state.currentUser = null
@@ -146,7 +149,9 @@ export const store = createStore<State>({
     clearUsers({ commit }) {
       commit('CLEAR_USERS')
     },
-    loginUser({ commit }, user) {
+    async loginUser({ commit }, user) {
+      const { email, password } = user
+      const response = await ApiUser().post('/sessions', { email, password })
       commit('SET_CURRENT_USER', user)
     },
     logoutUser({ commit }) {
@@ -175,6 +180,11 @@ export const store = createStore<State>({
           admin, email, name, playedVideos, id: Number(id)
         }))
       })
+      if (window.localStorage.getItem('currentUser') === null) {
+        return
+      }
+      const user_ = JSON.parse(window.localStorage.currentUser)
+      commit('SET_CURRENT_USER', user_)
     }
   },
   modules: {},
