@@ -1,6 +1,6 @@
 import { InjectionKey } from 'vue'
 import { createStore, Store } from 'vuex'
-import { State } from './stateTypes';
+import { ShowPopup, State } from './stateTypes';
 import Api from '@/service/videosFromMirage'
 import ApiUser from '@/service/user'
 import { Video, Videos } from '@/Classes/Videos'
@@ -16,9 +16,17 @@ export const store = createStore<State>({
     tags: {},
     playedVideos: [],
     users: [],
-    currentUser: null
+    currentUser: null,
+    showPopup: {
+      title: '',
+      position: 'bottom',
+      show: false
+    }
   },
   getters: {
+    getPopup(state) {
+      return state.showPopup
+    },
     videos(state) {
       return state.videos
     },
@@ -45,6 +53,11 @@ export const store = createStore<State>({
     }
   },
   mutations: {
+    SET_POPUP(state: { showPopup: ShowPopup }, payload) {
+      state.showPopup = {
+        ...payload
+      }
+    },
     /**
     * @param {Videos[]} state
     */
@@ -103,6 +116,9 @@ export const store = createStore<State>({
     }
   },
   actions: {
+    startPopup({ commit }, payload) {
+      commit('SET_POPUP', payload)
+    },
     /**
     * load videos and tags from mirage
     */
@@ -124,7 +140,6 @@ export const store = createStore<State>({
         .map((t) => {
           commit('SET_TAGS', { [t.id]: Object.values(t.attributes).join('') })
         })
-
     },
     async createVideo({ commit }, model) {
       const result = await Api().post('/videos', model)

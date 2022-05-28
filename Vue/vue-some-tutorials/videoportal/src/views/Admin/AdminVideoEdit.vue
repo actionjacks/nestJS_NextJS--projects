@@ -1,5 +1,6 @@
 <template>
   <VideoForm v-model="model" @submit="saveVideo" />
+
 </template>
 
 <script lang="ts">
