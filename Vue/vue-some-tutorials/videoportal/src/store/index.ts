@@ -64,6 +64,7 @@ export const store = createStore<State>({
     },
     LOGOUT_USER(state: { currentUser: User | null }) {
       state.currentUser = null
+      window.localStorage.removeItem('currentUser')
     },
     CLEAR_VIDEOS(state: { videos: Videos[] }, _) {
       state.videos = []
@@ -149,9 +150,15 @@ export const store = createStore<State>({
     clearUsers({ commit }) {
       commit('CLEAR_USERS')
     },
-    async loginUser({ commit }, user) {
-      const { email, password } = user
-      const response = await ApiUser().post('/sessions', { email, password })
+    async loginUser({ commit }, payload) {
+      const response = await ApiUser().post('/sessions', payload)
+      const user = response.data.data.attributes
+      commit('SET_CURRENT_USER', user)
+    },
+    async registerUser({ commit }, payload) {
+      const response = await ApiUser().post('/users', payload)
+      const user = response.data.data.attributes
+      console.log({ user })
       commit('SET_CURRENT_USER', user)
     },
     logoutUser({ commit }) {
@@ -180,6 +187,8 @@ export const store = createStore<State>({
           admin, email, name, playedVideos, id: Number(id)
         }))
       })
+    },
+    async loadCurrentUser({ commit }) {
       if (window.localStorage.getItem('currentUser') === null) {
         return
       }

@@ -49,10 +49,22 @@ export function makeServer({ environment = "development" } = {}) {
     routes() {
       this.get('api/videos')
       this.get('api/users')
+      // create user
+      this.post('api/users', function (schema: any, request) {
+        const body = JSON.parse(request.requestBody)
+        const response = schema.users.create(body)
+        return response
+      })
+      //get current user !login
       this.post('api/sessions', (schema: any, request) => {
         const email = JSON.parse(request.requestBody).email
-        const response = schema.users.findBy({ email })
-        return response
+        // const password = JSON.parse(request.requestBody).password
+        const userByEmail = schema.users.findBy({ email })
+        // const userPassword = schema.users.findBy({ password })
+        // if (password !== '123') {
+        //   return [`${userPassword}`, 'wrong password']
+        // }
+        return userByEmail
       })
       this.post('api/videos')
       this.put('api/videos/:id')

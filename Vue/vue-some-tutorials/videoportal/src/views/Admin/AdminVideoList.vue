@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3>Add new video</h3>
-    <router-link to="/video/new">Add video |</router-link>
+    <router-link to="/admin/video/new">Add video |</router-link>
 
     <div class="wrapper">
       <div class="vide-box" v-for="video in videos_" :key="video.id">

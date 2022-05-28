@@ -1,5 +1,9 @@
 <template>
   <form>
+    <div v-if="nameInput" class="field">
+      <label for="name">Name</label>
+      <input v-model="model.name" type="text" id="name">
+    </div>
     <div class="field">
       <label for="email">Email</label>
       <input v-model="model.email" type="text" id="email">
@@ -9,7 +13,7 @@
       <input v-model="model.password" :type="showPassword ? 'text' : 'password'" id="password">
       <button @click.prevent="showPassword = !showPassword">toggle show password</button>
     </div>
-    <button @click.prevent="$emit('submit')">Login</button>
+    <button @click.prevent="$emit('submit')">{{ buttonSubmitText }}</button>
   </form>
 </template>
 
@@ -17,7 +21,8 @@
 import { computed } from '@vue/reactivity'
 import { defineComponent, PropType, ref } from 'vue'
 
-type Login = {
+type Model = {
+  name?: string
   email: string
   password: string
 }
@@ -29,8 +34,16 @@ export default defineComponent({
   ],
   props: {
     modelValue: {
-      type: Object as PropType<Login>,
+      type: Object as PropType<Model>,
       default: () => ({})
+    },
+    nameInput: {
+      type: Boolean, required: false
+    },
+    buttonSubmitText: {
+      type: String,
+      required: false,
+      default: ''
     },
   },
   setup(props, { emit }) {

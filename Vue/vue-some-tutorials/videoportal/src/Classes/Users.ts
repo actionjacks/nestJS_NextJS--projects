@@ -1,3 +1,9 @@
+export type CurrentUser = {
+  name: string
+  email: string
+  admin?: boolean
+}
+
 export interface User {
   id: number
   name: string

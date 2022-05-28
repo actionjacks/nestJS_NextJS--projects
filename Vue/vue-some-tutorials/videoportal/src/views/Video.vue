@@ -6,7 +6,8 @@
         <button @click="logout">Logout</button>
       </div>
       <div v-else>
-        <button>Login</button>
+        <router-link to="/login">Login | </router-link>
+        <router-link to="/registration">Register |</router-link>
       </div>
     </div>
     <span v-if="info">
@@ -49,6 +50,7 @@ export default defineComponent({
     onMounted(() => {
       store.dispatch('clearVideos')
       store.dispatch('loadVideos')
+      store.dispatch('loadCurrentUser')
     })
 
     return {
