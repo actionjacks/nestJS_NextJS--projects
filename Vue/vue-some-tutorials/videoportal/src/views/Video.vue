@@ -50,7 +50,6 @@ export default defineComponent({
     onMounted(() => {
       store.dispatch('clearVideos')
       store.dispatch('loadVideos')
-      store.dispatch('loadCurrentUser')
     })
 
     return {

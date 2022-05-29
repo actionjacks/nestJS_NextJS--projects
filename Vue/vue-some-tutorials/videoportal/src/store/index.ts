@@ -17,11 +17,7 @@ export const store = createStore<State>({
     playedVideos: [],
     users: [],
     currentUser: null,
-    showPopup: {
-      title: '',
-      position: 'bottom',
-      show: false
-    }
+    showPopup: []
   },
   getters: {
     getPopup(state) {
@@ -53,10 +49,8 @@ export const store = createStore<State>({
     }
   },
   mutations: {
-    SET_POPUP(state: { showPopup: ShowPopup }, payload) {
-      state.showPopup = {
-        ...payload
-      }
+    SET_POPUP(state: { showPopup: ShowPopup[] }, payload) {
+      state.showPopup.push(payload)
     },
     /**
     * @param {Videos[]} state

@@ -1,41 +1,39 @@
 <template>
-  <div v-if="showPopup" class="wrapper">
-    <div v-if="showPopup.show" class="popup-container" :class="[showPopup.position]">
-      <div class="info-box">
-        <span>{{ showPopup.title }}</span>
+  <div v-if="showPopup.length > 0" class="wrapper">
+    <TransitionGroup name="list" tag="ul">
+      <div v-for="(popup, index) in showPopup" class="popup-container" :key="index" :class="[popup.position]">
+        <div class="info-box">
+          <span>{{ popup.title }}</span>
+        </div>
       </div>
-    </div>
+    </TransitionGroup>
+
   </div>
 </template>
 
 <script lang="ts">
 // refactor POPUP
-import { defineComponent, watch } from 'vue'
+import { defineComponent, ref, onUpdated } from 'vue'
 import { useStore } from "vuex";
 import { key } from "@/store/index";
 import { mapGetters } from "@/store/map-state";
 import { ShowPopup } from '@/store/stateTypes'
-import { computed } from '@vue/reactivity';
 
 export default defineComponent({
   setup() {
-    const store = useStore(key)
     const { getPopup } = mapGetters()
-    const showPopup = computed<ShowPopup>(() => getPopup.value)
-
+    const showPopup = ref<ShowPopup[]>(getPopup.value)
     let timeoutId = 0
 
-    watch(showPopup, () => {
-      if (timeoutId > 0) {
-        clearTimeout(timeoutId)
-      }
-      timeoutId = setTimeout(() => {
-        return store.dispatch('startPopup', {
-          title: '',
-          position: 'bottom',
-          show: false
-        })
-      }, 3000)
+    onUpdated(() => {
+      showPopup.value.forEach((pop: ShowPopup) => {
+        if (timeoutId > 0) {
+          clearTimeout(timeoutId)
+        }
+        timeoutId = setTimeout(() => {
+          showPopup.value.pop()
+        }, 800)
+      })
     })
 
     return {
@@ -46,15 +44,19 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.popup-container {
+.wrapper {
   position: fixed;
-  background-color: rgb(27, 27, 26);
-  z-index: 99;
+  left: 43.33%;
+  bottom: 0;
 
-  .info-box {
-    font-weight: 700;
-    font-size: 16px;
-    color: rgb(243, 241, 236);
+  .popup-container {
+    .info-box {
+      background-color: rgb(27, 27, 26);
+      z-index: 99;
+      font-weight: 700;
+      font-size: 16px;
+      color: rgb(243, 241, 236);
+    }
   }
 }
 
@@ -76,5 +78,25 @@ export default defineComponent({
 .right {
   top: 50%;
   right: 10px
+}
+
+//form vue doc *-todo
+.list-move,
+/* apply transition to moving elements */
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+/* ensure leaving items are taken out of layout flow so that moving
+   animations can be calculated correctly. */
+.list-leave-active {
+  position: absolute;
 }
 </style>

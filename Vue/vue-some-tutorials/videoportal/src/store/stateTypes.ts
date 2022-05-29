@@ -16,6 +16,5 @@ export type State = {
   playedVideos: string[]
   users: User[]
   currentUser: User | null
-
-  showPopup: ShowPopup
+  showPopup: ShowPopup[]
 }
