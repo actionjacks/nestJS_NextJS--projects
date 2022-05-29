@@ -8,16 +8,21 @@
         <div class="title">{{ video.name }}</div>
         <div v-html="video.description"></div>
         <div class="actions">
-          <router-link :to="{ name: 'video-watch', params: { id: video.id } }">
+
+          <router-link :to="{
+            name: 'video-watch',
+            params: { id: video.id, displayTag: video.tagids?.map(({ id }) => displayTag(Number(id))) ?? [] },
+          }">
             <span>show</span>
           </router-link>
+
           <router-link :to="{
             name: 'admin-video-edit',
-            params: { id: video.id },
-            displayTag: video.tagids?.map(({ id }) => displayTag(Number(id))) ?? []
+            params: { id: video.id, displayTag: video.tagids?.map(({ id }) => displayTag(Number(id))) ?? [] },
           }">
             <span>edit</span>
           </router-link>
+
           <span @click="deleteVide(video)">
             delete
           </span>

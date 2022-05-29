@@ -13,8 +13,11 @@
       <button v-for="(tag, index) in videoTags" :key="index">
         {{ tag }}
       </button>
+
+      <AutoComplite :displayTag="displayTag" />
+
     </div>
-    <iframe ref="videoRef" width="480" height="380" title="YouTube video player" frameborder="0"
+    <iframe ref="videoRef" width="480" height="380" title="YouTube video player" frameborder="0" class="video"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen></iframe>
   </div>
@@ -25,6 +28,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed, onMounted } from 'vue'
+import AutoComplite from '@/components/AutoComplite.vue'
 import { useRoute } from 'vue-router'
 import { mapGetters } from "@/store/map-state";
 import { Videos } from '@/Classes/Videos'
@@ -32,10 +36,11 @@ import { useStore } from "vuex";
 import { key } from "@/store/index";
 
 export default defineComponent({
+  components: { AutoComplite },
   props: ['id', 'displayTag'],//props passed from path router TODO type them!
   setup() {
     const store = useStore(key)
-    const { videos, getPlayedVideos } = mapGetters()
+    const { videos, getPlayedVideos, tags } = mapGetters()
 
     const videoRef = ref<null | HTMLIFrameElement>(null)
     const paramId = useRoute().params?.id[0]
@@ -88,5 +93,9 @@ img {
   margin-bottom: 5px;
   width: 55px;
   cursor: pointer;
+}
+
+.video {
+  margin-top: 15px;
 }
 </style>

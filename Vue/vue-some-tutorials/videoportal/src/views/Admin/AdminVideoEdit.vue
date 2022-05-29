@@ -19,6 +19,7 @@ export default defineComponent({
   setup() {
     const { videos } = mapGetters()
     const store = useStore(key)
+
     const paramId = useRoute().params?.id[0]
     const video = ref<Videos[]>(videos.value.filter((video: Videos) => (video.id) === paramId))
 
