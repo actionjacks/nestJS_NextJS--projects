@@ -14,23 +14,30 @@
 ```
 
 ```
-    function sliceIntoChunks (arrayToDivide: string[]): string[][] {
-      const fileByteSize = (array: string[]) => new Blob(array).size
-      const tempArray = arrayToDivide
+function sliceIntoChunks (arrayToDivide: string[]): string[][] {
+  const fileByteSize = (array: string[]) => new Blob(array).size
+  const tempArray = arrayToDivide
 
-      const chunks = []
-      const maxChunkSizeInBytes = 1024000 // 128kb
-      const bytes: number = fileByteSize(tempArray)
+  const chunks = []
+  const maxChunkSizeInBytes = 1024000 // 128kb
+  const bytes: number = fileByteSize(tempArray)
 
-      const numberofChunks = Math.ceil(bytes / maxChunkSizeInBytes)
-      const partIndex = Math.ceil(tempArray.length / numberofChunks)
+  const numberOfChunks = Math.ceil(bytes / maxChunkSizeInBytes)
+  const partIndex = Math.ceil(tempArray.length / numberOfChunks)
 
-      for (let i = 0; i < numberofChunks; i++) {
-        const chunk = tempArray.splice(-partIndex)
-        chunks.push(chunk)
-      }
-      chunks.push(tempArray)
+  for (let i = 0; i < numberOfChunks; i++) {
+    const chunk = tempArray.splice(-partIndex)
 
-      return chunks
+    if (fileByteSize(chunk) > maxChunkSizeInBytes) {
+      const newPartIndex = Math.ceil(chunk.length / numberOfChunks)
+      const newChunk = chunk.splice(-newPartIndex)
+      chunks.push(newChunk)
     }
+    if (chunk.length) {
+      chunks.push(chunk)
+    }
+  }
+  chunks.push(tempArray)
+  return chunks.filter(chunk => chunk.length)
+}
 ```
