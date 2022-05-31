@@ -1,28 +1,28 @@
 import { InjectionKey } from 'vue'
 import { createStore, Store } from 'vuex'
-import { ShowPopup, State } from './stateTypes';
+import { State } from './stateTypes';
 import Api from '@/service/videosFromMirage'
 import ApiUser from '@/service/user'
 import { Video, Videos } from '@/Classes/Videos'
 import { User } from '@/Classes/Users';
+import popup from '@/store/modules/popup'
 
 export type Tags = 'firstTag' | 'secondTag' | 'thirdTag'
 export type Tag = Record<number, Tags>
 
 export const key: InjectionKey<Store<State>> = Symbol()
 export const store = createStore<State>({
+  modules: {
+    popup
+  },
   state: {
     videos: [],
     tags: {},
     playedVideos: [],
     users: [],
     currentUser: null,
-    showPopup: []
   },
   getters: {
-    getPopup(state) {
-      return state.showPopup
-    },
     videos(state) {
       return state.videos
     },
@@ -49,9 +49,6 @@ export const store = createStore<State>({
     }
   },
   mutations: {
-    SET_POPUP(state: { showPopup: ShowPopup[] }, payload) {
-      state.showPopup.push(payload)
-    },
     /**
     * @param {Videos[]} state
     */
@@ -110,9 +107,6 @@ export const store = createStore<State>({
     }
   },
   actions: {
-    startPopup({ commit }, payload) {
-      commit('SET_POPUP', payload)
-    },
     /**
     * load videos and tags from mirage
     */
@@ -204,6 +198,5 @@ export const store = createStore<State>({
       const user_ = JSON.parse(window.localStorage.currentUser)
       commit('SET_CURRENT_USER', user_)
     }
-  },
-  modules: {},
-});
+  }
+})

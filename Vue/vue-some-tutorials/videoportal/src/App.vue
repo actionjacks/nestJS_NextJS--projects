@@ -23,12 +23,14 @@ export default defineComponent({
     const store = useStore(key)
 
     function testPopup() {
-      store.dispatch('startPopup', {
-        title: 'test',
-        position: 'bottom',
-        show: true
-      })
+      store.dispatch('popup/startPopup',
+        {
+          title: 'test',
+          position: 'bottom',
+          show: true
+        })
     }
+
     return {
       testPopup
     }

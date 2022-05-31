@@ -13,16 +13,15 @@
 
 <script lang="ts">
 // refactor POPUP
-import { defineComponent, ref, onUpdated } from 'vue'
+import { defineComponent, computed, onUpdated } from 'vue'
 import { useStore } from "vuex";
 import { key } from "@/store/index";
-import { mapGetters } from "@/store/map-state";
 import { ShowPopup } from '@/store/stateTypes'
 
 export default defineComponent({
   setup() {
-    const { getPopup } = mapGetters()
-    const showPopup = ref<ShowPopup[]>(getPopup.value)
+    const store = useStore(key)
+    const showPopup = computed<any>(() => store.getters['popup/getPopup'])
     let timeoutId = 0
 
     onUpdated(() => {
