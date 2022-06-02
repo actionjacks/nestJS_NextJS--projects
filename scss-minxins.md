@@ -80,3 +80,10 @@ Scale text to be responsive based on screen width
   }
 }
 ```
+##use
+```
+@use 'variables';
+@use '~@/styles/mixins/dynamic_font';
+    @include dynamic_font.dynamic(variables.$min_width, variables.$max_width, variables.$small_font, variables.$medium_font);
+```
+
