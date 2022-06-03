@@ -62,3 +62,27 @@
       return chunks
     }
 ```
+
+```
+    function sliceIntoChunks (products: string[]): string[][] {
+      const MAX_CHUNK_SIZE = 10240 // 128kb
+      const chunks: string[][] = []
+      if (new Blob(products).size < MAX_CHUNK_SIZE) {
+        chunks.push(products)
+        return chunks
+      }
+
+      let chunk: string[] = []
+      products.forEach((product) => {
+        if (new Blob(chunk).size > MAX_CHUNK_SIZE) {
+          const lastElement = chunk.pop()
+          chunks.push(chunk)
+          lastElement?.length
+            ? chunk = [lastElement]
+            : chunk = []
+        }
+        chunk.push(product)
+      })
+      return chunks
+    }
+```
