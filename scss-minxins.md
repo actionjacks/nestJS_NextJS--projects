@@ -47,10 +47,9 @@ $x-large_font: 26px;
   x-large-font: $x-large_font;
 }
 
-/**
-  helper function
-*/
-@function strip-unit($value) {
+@use 'sass:math';
+
+@function strip-unit ($value) {
   @return calc($value / ($value * 0 + 1px));
 }
 
@@ -61,24 +60,26 @@ Scale text to be responsive based on screen width
   $min_font  Minimal font size (in pixels)
   $max_font  Maximum font size (in pixels)
 */
-@mixin dynamic($min-vw, $max-vw, $min-font-size, $max-font-size) {
-  $u1: unit($min-vw);
-  $u2: unit($max-vw);
-  $u3: unit($min-font-size);
-  $u4: unit($max-font-size);
 
-  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
-    & {
-      font-size: $min-font-size;
-      @media screen and (min-width: $min-vw) {
-        font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
-      }
-      @media screen and (min-width: $max-vw) {
-        font-size: $max-font-size;
-      }
+@mixin dynamic ($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  $unit-1: math.unit($min-vw);
+  $unit-2: math.unit($max-vw);
+  $unit-3: math.unit($min-font-size);
+  $unit-4: math.unit($max-font-size);
+
+  @if $unit-1 == $unit-2 and $unit-1 == $unit-3 and $unit-1 == $unit-4 {
+    font-size: $min-font-size;
+
+    @media screen and (min-width: $min-vw) {
+      font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+    }
+
+    @media screen and (min-width: $max-vw) {
+      font-size: $max-font-size;
     }
   }
 }
+
 ```
 ##use
 ```
