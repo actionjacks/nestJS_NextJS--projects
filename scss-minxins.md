@@ -88,3 +88,20 @@ Scale text to be responsive based on screen width
     @include dynamic_font.dynamic(variables.$min_width, variables.$max_width, variables.$small_font, variables.$medium_font);
 ```
 
+```
+@function betterClamp($minSize, $maxSize, $minWidth: 480, $maxWidth: 1536) {
+// convert to rem
+$minSize: $minSize / 16;
+$maxSize: $maxSize / 16;
+$maxWidth : $maxWidth / 16;
+$minWidth : $minWidth / 16;
+// do calculations
+$slope: ($maxSize - $minSize) / ($maxWidth - $minWidth);
+$yAxisIntersection: -$minWidth * $slope + $minSize;
+$preferredValue: #{$yAxisIntersection * 1rem} + #{$slope * 100vw};
+// output as rem
+$minSize: $minSize * 1rem;
+$maxSize: $maxSize * 1rem;
+@return clamp($minSize, $preferredValue, $maxSize);
+}
+```
