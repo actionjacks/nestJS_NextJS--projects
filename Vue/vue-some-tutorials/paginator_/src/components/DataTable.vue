@@ -1,43 +1,61 @@
 <template>
   <table v-if="items">
     <thead>
-      <th>Name</th>
-      <th>Stargazers</th>
-      <th>Language</th>
-      <th>Open Issuses</th>
-      <th>Actions</th>
+      <slot name="head">
+        <th v-for="column in columns" :key="column.id">
+          <slot :name="`head.${column.id}`">
+            {{ column.name }}
+          </slot>
+        </th>
+      </slot>
     </thead>
-    <tfoot>
-      <tr>
-        <td>Totals</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </tfoot>
 
     <tbody>
       <tr v-for="project in dataToDisplat" :key="project.id"
         :class="`${project.attributes.hightlighted ? 'hightlighted' : 'normal'}`">
-        <td>{{ project.attributes.name }}</td>
-        <td>{{ project.attributes.stargazers }}</td>
-        <td>{{ project.attributes.language }}</td>
-        <td>{{ project.attributes.issues }}</td>
-        <td>
-          <button @click="hightlighte(project.id)">HightLight</button>
-          <button @click="remove(project.id)">Remove</button>
-        </td>
+        <slot name="project" :project="project" :hightlighte="hightlighte" :remove="remove">
+
+          <td v-for="column in columns" :key="column.id">
+            <slot :name="`project.attributes.${column.id}`" :project="project" :hightlighte="hightlighte"
+              :remove="remove">
+              <span v-if="column.id === 'actions'">
+                <button @click="hightlighte(project.id)">HightLight</button>
+                <button @click="remove(project.id)">Remove</button>
+              </span>
+              <span v-else>
+                {{ project[column.propertyName] }}
+              </span>
+            </slot>
+          </td>
+
+        </slot>
       </tr>
     </tbody>
+
+    <tfoot>
+      <tr v-for="project in dataToDisplat" :key="project.id">
+        <slot name="foot" :project="project">
+          <th v-for="column in columns" :key="column.id">
+            <slot :name="`head.${column.id}`" :project="project" />
+          </th>
+        </slot>
+      </tr>
+    </tfoot>
   </table>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
+import { computed, defineComponent, PropType } from 'vue'
 
 export default defineComponent({
-  props: ['items'],
+  props: {
+    items: {
+      type: Array as PropType<any>, required: true
+    },
+    columns: {
+      type: Array as PropType<any>, required: true
+    }
+  },
   setup(props) {
     const dataToDisplat = computed({
       get: () => props.items,

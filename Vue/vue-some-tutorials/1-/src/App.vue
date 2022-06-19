@@ -1,4 +1,8 @@
 <template>
+  <CustomPlugin />
+  <!-- import from custom plugin in main.ts -->
+  <FileUpload />
+
   <div class="render_function">
     <RenderFunction />
   </div>
@@ -54,6 +58,8 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from "vue";
+//custom plugin
+import CustomPlugin from '@/components/PluginForNpm/index.vue';
 //dropdown
 import DropDown from "@/components/drop-down/index.vue";
 //skeletion
@@ -86,6 +92,7 @@ export default defineComponent({
     Teleport,
     EmmitInput,
     RenderFunction,
+    CustomPlugin
   },
   setup() {
     function grabBindFromSlotComp(data: string) {
@@ -107,9 +114,11 @@ export default defineComponent({
   text-align: center;
   color: #2c3e50;
 }
+
 .render_function {
   border: 2px solid gray;
 }
+
 .skeletion-wrapper {
   margin-top: 15px;
   border-radius: 15px;
