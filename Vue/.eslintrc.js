@@ -236,122 +236,6 @@ module.exports = {
     // FIXME single rule in multiple files
     {
       files: [
-        'src/components/Nav.vue',
-        'src/components/Search.vue',
-        'src/components/dashboard/Tab.vue',
-        'src/components/data_table/Cell.vue',
-        'src/components/data_table/DataTable.vue',
-        'src/components/data_table/Summary.vue',
-        'src/components/data_table/SummaryCell.vue',
-        'src/components/data_table/cells/Action.vue',
-        'src/components/data_table/cells/Checkbox.vue',
-        'src/components/data_table/cells/InputWithChange.vue',
-        'src/components/data_table/cells/NumberInput.vue',
-        'src/components/data_table/cells/ToggleInput.vue',
-        'src/components/data_table/summary/Action.vue',
-        'src/components/data_table/summary/Filter.vue',
-        'src/components/data_table/summary/Print.vue',
-        'src/components/data_table/summary/Text.vue',
-        'src/components/data_table/summary/actions/DropdownButton.vue',
-        'src/components/data_table/summary/actions/Option.vue',
-        'src/components/data_table_3/BodyRow.vue',
-        'src/components/data_table_3/Cell.vue',
-        'src/components/data_table_3/DataTable.vue',
-        'src/components/data_table_3/HeaderRow.vue',
-        'src/components/data_table_3/cells/Checkbox.vue',
-        'src/components/data_table_3/cells/NumberInput.vue',
-        'src/components/documents/form/UpdatePosition.vue',
-        'src/components/documents/form/ValuatePosition.vue',
-        'src/components/errors/Alert.vue',
-        'src/components/filter/Filter.vue',
-        'src/components/filter/Group.vue',
-        'src/components/filter/Input.vue',
-        'src/components/filter/input/Date.vue',
-        'src/components/filter/input/DateRange.vue',
-        'src/components/filter/input/GroupDate.vue',
-        'src/components/filter/input/Option.vue',
-        'src/components/filter/input/SortDropdown.vue',
-        'src/components/filter/input/Text.vue',
-        'src/components/form/AddonInput.vue',
-        'src/components/form/Autocomplete.vue',
-        'src/components/form/BusinessHour.vue',
-        'src/components/form/Checkbox.vue',
-        'src/components/form/Checkbox2.vue',
-        'src/components/form/CheckboxPicker.vue',
-        'src/components/form/DatePicker.vue',
-        'src/components/form/DateRangePicker.vue',
-        'src/components/form/Filter.vue',
-        'src/components/form/Input.vue',
-        'src/components/form/TextInput.vue',
-        'src/components/form/TextInputBack.vue',
-        'src/components/form/TimePicker.vue',
-        'src/components/form/Toggle.vue',
-        'src/components/inputs/dropdown/AddOption.vue',
-        'src/components/inputs/dropdown/Dropdown.vue',
-        'src/components/inputs/dropdown/DropdownButton.vue',
-        'src/components/inputs/dropdown/Option.vue',
-        'src/components/inventory/Header.vue',
-        'src/components/inventory/NoInventoryPanel.vue',
-        'src/components/inventory/NoInventoryPanel.vue',
-        'src/components/inventory/SearchBar.vue',
-        'src/components/inventory/SummaryHeader.vue',
-        'src/components/inventory/form/AddInventoryProduct.vue',
-        'src/components/inventory/form/Commission.vue',
-        'src/components/inventory/form/CreateInventory.vue',
-        'src/components/inventory/form/CreateInventorySheet.vue',
-        'src/components/inventory/form/CreateWarehouseInventory.vue',
-        'src/components/inventory/form/InventoryForm.vue',
-        'src/components/inventory/form/InventoryPartAssignment.vue',
-        'src/components/inventory/form/InventoryPartCreate.vue',
-        'src/components/inventory/form/WarehouseInventoryForm.vue',
-        'src/components/menu/ScrollButton.vue',
-        'src/components/mixins/dataLoader/Loader.vue',
-        'src/components/modals/Modal.vue',
-        'src/components/modals/TutorialModal.vue',
-        'src/components/modals/form/Confirm.vue',
-        'src/components/modals/form/Problem.vue',
-        'src/components/modals/form/YesNo.vue',
-        'src/components/modals/valuate/ValuateModal.vue',
-        'src/components/modals/valuate/steps/FirstStep.vue',
-        'src/components/paginator/PageButtons.vue',
-        'src/components/paginator/PageSelect.vue',
-        'src/components/paginator/Pager.vue',
-        'src/components/paginator/Paginator.vue',
-        'src/components/position/AddPosition.vue',
-        'src/components/position/ProductSelect.vue',
-        'src/components/price_cards/Action.vue',
-        'src/components/price_cards/ProductSelect.vue',
-        'src/components/price_cards/SearchBar.vue',
-        'src/components/print/Print.vue',
-        'src/components/products/form/AddProduct.vue',
-        'src/components/products/form/RelatedCodeInput.vue',
-        'src/components/products/form/ValuateProduct.vue',
-        'src/components/promotion/categories/Category.vue',
-        'src/components/promotion/categories/Promotion.vue',
-        'src/components/promotion/categories/promotion_category/Actions.vue',
-        'src/components/promotion/categories/promotion_category/AssignedList.vue',
-        'src/components/promotion/categories/promotion_category/Histories.vue',
-        'src/components/promotion/categories/promotion_category/ProductGroup.vue',
-        'src/components/promotion/categories/promotion_category/Products.vue',
-        'src/components/promotion/form/ValuateProduct.vue',
-        'src/components/promotion/nav/NavTab.vue',
-        'src/components/reports/modals/Date.vue',
-        'src/components/reports/modals/Filters.vue',
-        'src/components/reports/modals/Params.vue',
-        'src/components/reports/modals/Params.vue',
-        'src/components/social_media/SociaMediaInput.vue',
-        'src/components/supply/document/CreateDocument.vue',
-        'src/components/top_menu/ToggleButton.vue',
-        'src/components/top_menu/TopMenu.vue',
-        'src/components/top_menu/message_dropdown/Message.vue',
-        'src/components/top_menu/store_dropdown/StoreElement.vue',
-        'src/components/top_menu/store_dropdown/StoreHeader.vue',
-        'src/components/warehouse/contractor/form/AddContractorForm.vue',
-        'src/components/warehouse/document/CompensationPosition.vue',
-        'src/components/warehouse/document/Nav.vue',
-        'src/components/warehouse/inventory/form/AddInventoryCollection.vue',
-        'src/version/NewVersion.vue',
-        'src/views/products/List.vue'
       ],
       rules: {
         'vue/require-emit-validator': 'off'
@@ -360,31 +244,6 @@ module.exports = {
     // FIXME single rule in multiple files
     {
       files: [
-        'src/components/documents/Import.vue',
-        'src/components/inputs/dropdown/AddOption.vue',
-        'src/components/inputs/dropdown/Dropdown.vue',
-        'src/components/inputs/dropdown/Option.vue',
-        'src/components/inputs/dropdown/ValueDropdown.vue',
-        'src/components/inventory/Actions.vue',
-        'src/components/inventory/Header.vue',
-        'src/components/inventory/NoInventoryPanel.vue',
-        'src/components/inventory/SearchBar.vue',
-        'src/components/inventory/SummaryHeader.vue',
-        'src/components/menu/Menu.vue',
-        'src/components/menu/Panel.vue',
-        'src/components/menu/ScrollButton.vue',
-        'src/components/mixins/Svg.vue',
-        'src/components/mixins/dataLoader/Loader.vue',
-        'src/components/reports/modals/Date.vue',
-        'src/components/reports/modals/Params.vue',
-        'src/components/slider/SlideButtons.vue',
-        'src/components/supply/document/CreateDocument.vue',
-        'src/components/warehouse/contractor/form/AddContractorForm.vue',
-        'src/components/warehouse/document/CreateDocument.vue',
-        'src/components/warehouse/document/Import.vue',
-        'src/components/warehouse/document/Nav.vue',
-        'src/components/warehouse/document/NavTab.vue',
-        'src/components/warehouse/inventory/form/AddInventoryCollection.vue'
       ],
       rules: {
         'vue/require-expose': 'off'
@@ -393,41 +252,6 @@ module.exports = {
     // FIXME single rule in multiple files
     {
       files: [
-        'src/App.vue',
-        'src/components/data_table/summary/DataWrapper.vue',
-        'src/components/data_table/summary/actions/DropdownButton.vue',
-        'src/components/documents/Import.vue',
-        'src/components/form/AddonInput.vue',
-        'src/components/inputs/dropdown/Picker.vue',
-        'src/components/inventory/Header.vue',
-        'src/components/inventory/SummaryHeader.vue',
-        'src/components/price_cards/SearchBar.vue',
-        'src/components/promotion/categories/Category.vue',
-        'src/components/promotion/nav/PromotionNav.vue',
-        'src/components/warehouse/document/Import.vue',
-        'src/views/contractors/Contractors.vue',
-        'src/views/inventories/Collection.vue',
-        'src/views/inventories/Collections.vue',
-        'src/views/inventories/Update.vue',
-        'src/views/inventories/warehouse/Collection.vue',
-        'src/views/inventories/warehouse/CollectionUpdate.vue',
-        'src/views/inventories/warehouse/Collections.vue',
-        'src/views/inventories/warehouse/Update.vue',
-        'src/views/panel/BankAccountNumber.vue',
-        'src/views/panel/BusinessHours.vue',
-        'src/views/panel/Notification.vue',
-        'src/views/panel/PhoneNumber.vue',
-        'src/views/panel/SocialMedia.vue',
-        'src/views/price_cards/Index.vue',
-        'src/views/products/Index.vue',
-        'src/views/products/Valuate.vue',
-        'src/views/reports/Index.vue',
-        'src/views/reports_list/List.vue',
-        'src/views/supplies/List.vue',
-        'src/views/supplies/Update.vue',
-        'src/views/warehouse/Compensation.vue',
-        'src/views/warehouse/List.vue',
-        'src/views/warehouse/Update.vue'
       ],
       rules: {
         'vue/no-reserved-component-names': 'off'
@@ -436,15 +260,6 @@ module.exports = {
     // FIXME single rule in multiple files
     {
       files: [
-        'src/components/inputs/dropdown/AddOption.vue',
-        'src/components/dashboard/Tab.vue',
-        'src/components/data_table/Cell.vue',
-        'src/components/data_table/Summary.vue',
-        'src/components/data_table/SummaryCell.vue',
-        'src/components/data_table/summary/Print.vue',
-        'src/components/inputs/dropdown/AddOption',
-        'src/components/inventory/SearchBar.vue',
-        'src/components/print/Print.vue'
       ],
       rules: {
         'vue/custom-event-name-casing': 'off' // FIXME
@@ -454,9 +269,6 @@ module.exports = {
     {
       files: [
         // javascript components
-        'src/components/top_menu/store_dropdown/StoreDropdown.vue',
-        'src/components/form/Checkbox.vue',
-        'src/components/form/Filter.vue'
       ],
       rules: {
         '@typescript-eslint/explicit-module-boundary-types': 'off' // FIXME
@@ -465,8 +277,6 @@ module.exports = {
     // FIXME single rule in multiple files
     {
       files: [
-        'src/components/data_table/classes/DataTable.ts',
-        'src/components/form/NumberInput.vue'
       ],
       rules: {
         complexity: 'off' // FIXME
@@ -475,9 +285,6 @@ module.exports = {
     // FIXME single rule in multiple files
     {
       files: [
-        'src/classes/promotion/index.ts',
-        'src/components/data_table/classes/DataTable.ts',
-        'src/components/menu/MenuItem.ts'
       ],
       rules: {
         'no-use-before-define': 'off' // FIXME
