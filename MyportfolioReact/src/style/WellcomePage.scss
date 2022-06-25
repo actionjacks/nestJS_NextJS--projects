@@ -1,0 +1,160 @@
+.icons:hover .tooltiptext {
+  visibility: visible;
+}
+
+@include media-queries(xsmall) {
+  .errorDataNotFound {
+    height: 100vh;
+    background: url("/images/jsonError.png");
+    background-size: 100% 100%;
+    background-position-x: center;
+    background-position-y: top;
+    background-attachment: fixed;
+    background-origin: initial;
+    background-clip: initial;
+
+    & h1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+@include media-queries(xsmall) {
+  .wellcomePage {
+    height: 100vh;
+    background: url("/images/wellcome_page_bg.jpg");
+    background-size: 100% 100%;
+    background-position-x: center;
+    background-position-y: top;
+    background-attachment: fixed;
+    background-origin: initial;
+    background-clip: initial;
+
+    & .wellcomePage__banerText {
+      text-align: left;
+      padding-top: 30vh;
+      margin: 0 10vw;
+
+      & h1 {
+        font-size: 1rem;
+        margin-bottom: .5rem;
+        transition: 1s;
+      }
+
+      & h3 {
+        font-size: .6rem;
+        line-height: 1.2rem;
+        transition: .5s;
+      }
+    }
+
+    & .icons {
+      position: absolute;
+      top: 80%;
+      left: 80%;
+
+      & .icon__github {
+        font-size: 2rem !important;
+        transition: 1s;
+      }
+    }
+  }
+}
+
+@include media-queries(large) {
+  .wellcomePage {
+    height: 100vh;
+    background: url("/images/wellcome_page_bg.jpg");
+    background-size: 100% 100%;
+    background-position-x: center;
+    background-position-y: top;
+    background-attachment: fixed;
+    background-origin: initial;
+    background-clip: initial;
+
+    & .wellcomePage__banerText {
+      text-align: center;
+      padding: 200px;
+
+      & h1 {
+        font-size: 1.5rem;
+        margin-bottom: .5rem;
+      }
+
+      & h3 {
+        font-size: .8rem;
+        line-height: 1.2rem;
+      }
+    }
+
+    & .icons {
+      position: absolute;
+      top: 70%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      & .icon__github {
+        font-size: 2rem !important;
+        transition: 1s;
+      }
+    }
+  }
+}
+
+//themes colors
+.wellcomePage__banerText.white {
+  text-shadow: 2px 2px 0 $first-background-color--white,
+    2px -2px 0 $first-background-color--white,
+    -2px 2px 0 $first-background-color--white,
+    -2px -2px 0 $first-background-color--white,
+    2px 0px 0 $first-background-color--white,
+    0px 2px 0 $first-background-color--white,
+    -2px 0px 0 $first-background-color--white,
+    0px -2px 0 $first-background-color--white;
+}
+
+h1.white {
+  color: $first-font-color--white;
+}
+
+h3.white {
+  color: $first-font-color--white;
+}
+
+.icon__github.white {
+  color: $first-icon-color--white;
+}
+
+.icon__github.white:hover {
+  color: $first-icon-colorHover--white;
+}
+
+.wellcomePage__banerText.black {
+  text-shadow: 2px 2px 0 $first-icon-colorHover--black,
+    2px -2px 0 $first-icon-colorHover--black,
+    -2px 2px 0 $first-icon-colorHover--black,
+    -2px -2px 0 $first-icon-colorHover--black,
+    2px 0px 0 $first-icon-colorHover--black,
+    0px 2px 0 $first-icon-colorHover--black,
+    -2px 0px 0 $first-icon-colorHover--black,
+    0px -2px 0 $first-icon-colorHover--black;
+}
+
+h1.black {
+  color: $first-font-color--black;
+}
+
+h3.black {
+  color: $first-font-color--black;
+}
+
+.icon__github.black {
+  color: $first-icon-color--black;
+}
+
+.icon__github.black:hover {
+  color: $first-icon-colorHover--black;
+}

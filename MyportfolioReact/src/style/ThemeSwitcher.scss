@@ -1,0 +1,78 @@
+body {
+    transition: 0.7s;
+}
+
+@include media-queries(xsmall) {
+    .container__center {
+        position: absolute;
+        top: 20%;
+        left: 10%;
+        transform: translate(-50%, -50%);
+        // 
+        height: 40px;
+        width: 40px;
+
+        & .slider__container {
+            position: relative;
+            width: 40px;
+            height: 20px;
+            border: 4px solid rgb(60, 30, 112);
+            border-radius: 15px;
+            transition: 0.7s;
+            background-color: rgb(39, 16, 82);
+
+            & .slider.white {
+                background-color: rgb(111, 87, 168);
+                width: 25px;
+                height: 25px;
+                border-radius: 99px;
+                /*  */
+                position: relative;
+                top: 50%;
+                left: 20%;
+                transform: translate(-50%, -50%);
+                transition: 0.7s;
+
+                & .MuiSvgIcon-root {
+                    top: 15%;
+                    left: 15%;
+                    transform: translate(-25%, -25%);
+                    transform-origin: center;
+                    transform: rotate(20deg);
+                    position: absolute;
+                    color: yellow;
+                    font-size: 18px;
+                    transition: 0.7s;
+                }
+            }
+
+            & .slider.black {
+                background-color: rgb(111, 87, 168);
+                width: 25px;
+                height: 25px;
+                border-radius: 99px;
+                /*  */
+                position: absolute;
+                top: 50%;
+                left: 80%;
+                transform: translate(-50%, -50%);
+                transition: 0.7s;
+
+                & .MuiSvgIcon-root {
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    transform-origin: center;
+                    position: absolute;
+                    color: rgb(29, 29, 29);
+                    font-size: 18px;
+                    transition: 0.7s;
+                }
+            }
+
+            .slider:hover {
+                cursor: url(/images/cursors/pointer.png), auto !important;
+            }
+        }
+    }
+}

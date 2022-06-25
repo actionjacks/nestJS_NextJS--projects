@@ -1,0 +1,108 @@
+{
+  "contacts": [
+    "biuro@multi-okna.pl",
+    "+48 573-156-154"
+  ],
+  "navbarNames": [
+    {
+      "name": "Multi-okna",
+      "url": "/"
+    },
+    {
+      "name": "Okna",
+      "url": "/okna"
+    },
+    {
+      "name": "Osłony Okienne",
+      "url": "/oslony-okienne"
+    },
+    {
+      "name": "Drzwi",
+      "url": "/drzwi"
+    },
+    {
+      "name": "Bramy Garażowe",
+      "url": "/bramy-garazowe"
+    },
+    {
+      "name": "Kontakt",
+      "url": "/kontakt"
+    }
+  ],
+  "homeContent": [
+    {
+      "bannerSlogan": "multi okna montaż okien i drzwi",
+      "headerTitle": "multi okna",
+      "smallHeader": "Jesteśmy producentem stolarki okiennej i drzwiowej.",
+      "description": "Dzięki temu, że montujemy okna i drzwi od podstaw, oferujemy naszym Klientom produkty stworzone na miarę ich oczekiwań i dostosowane do indywidualnych potrzeb.Funkcjonujemy na lokalnym rynku od 30 lat i współpracujemy tylko z najlepszymi dostawcami. Posiadamy również moskitiery okienne i drzwiowe, a także posiadamy bogatą ofertę parapetów wewnętrznych i zewnętrznych oraz drzwi zewnętrzne.",
+      "contactParagraph": "Profesjonalizm i Indywidualne Podejście. Przedstaw nam swoje potrzeby, a my pomożemy dobrać odpowiednie produkty i zajmiemy się resztą.",
+      "ourBrands": "Nasi partnerzy"
+    }
+  ],
+  "windowContent": [
+    {
+      "bannerSlogan": "okna PCV, okna o konstrukcji aluminiowej.",
+      "windowBox": [
+        {
+          "imgUrl": "./assets/windows/01.webp",
+          "title": "MSline+",
+          "desc": "MSline+ zbudowane są w oparciu o najnowszy innowacyjny system PVC niemieckiej marki SALAMANDER."
+        },
+        {
+          "imgUrl": "./assets/windows/02.webp",
+          "title": "ALU LOOK",
+          "desc": "Okna ALU LOOK zbudowane są z najnowszych, wielokomorowych niemieckich profili SALAMANDER szerokości 82 mm o kanciastych krawędziach. Wyposażone są w dodatkową uszczelkę środkową oraz sztywne stalowe wzmocnienie zamknięte (grubości 2 mm), zgrzewane laserowo."
+        },
+        {
+          "imgUrl": "./assets/windows/03.webp",
+          "title": "Wood Look",
+          "desc": "Nasi technolodzy znaleźli rozwiązanie dla tej „naturalnej elegancji”, proponując nowatorskie łączenie narożników ram i skrzydeł pod kątem prostym, typowe dla okien drewnianych."
+        },
+        {
+          "imgUrl": "./assets/windows/04.webp",
+          "title": "MS evolution [82]",
+          "desc": "MS evolution [82] to zdecydowanie okna 100% PREMIUM, dla ceniących ciepło i ciszę oraz realne oszczędzanie energii. Nie bez znaczenia jest także bezpieczeństwo, o które dbamy nie mniej niż o termikę czy design. Zaokrąglona linia masywnych profili PVC w klasie A spełnia najwyższe standardy jakości."
+        }
+      ]
+    }
+  ],
+  "windowsCovers": [
+    {
+      "bannerSlogan": "rolety, żaluzje, moskitiery",
+      "CoversDescription": [
+        "Żaluzje aluminiowe",
+        "Żaluzje aluminiowe",
+        "Moskitiery",
+        "Moskitiery",
+        "Rolety Dzień Noc",
+        "Rolety Dzień Noc",
+        "Żaluzje pionowe",
+        "Żaluzje pionowe",
+        "Żaluzje drewniane",
+        "Żaluzje drewniane"
+      ]
+    }
+  ],
+  "doors": [
+    {
+      "bannerSlogan": "dzwi zewnętrzne, drzwi wewnętrzne",
+      "doorDescription": "Idealne drzwi powinien charakteryzować niski współczynnik przenikania ciepła, wysoka klasa wodoszczelności i niepowtarzalny design. Drzwi MS ExternAL PREMIUM osiągają współczynnik przenikania ciepła na poziomie Ud= 0,61 W/m2K i klasę wodoszczelności 6A"
+    }
+  ],
+  "garageDoors": [
+    {
+      "bannerSlogan": "bramy garażowe do twojego domu",
+      "CoversDescription": [
+        "Bramy garażowe segmentowe",
+        "Bramy przemysłowe",
+        "Bramy szybkobieżne",
+        "Bramy przeciwpożarowe"
+      ]
+    }
+  ],
+  "contact": [
+    {
+      "bannerSlogan": "indywidualne podejście do każdej wyceny i realizacji projektu."
+    }
+  ]
+}

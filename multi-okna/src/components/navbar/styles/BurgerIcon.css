@@ -1,0 +1,27 @@
+#hi {
+  position: absolute;
+  left: -999px;
+  top: -999px;
+}
+
+#hi:checked + .menu {
+  -webkit-transform: translate(-50%, -50%) rotatey(180deg);
+  transform: translate(-50%, -50%) rotatey(180deg);
+}
+#hi:checked + .menu .bar {
+  -webkit-transform: rotatey(180deg) rotatex(360deg);
+  transform: rotatey(180deg) rotatex(360deg);
+}
+#hi:checked + .menu .bar:first-child {
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  margin-top: 20px;
+}
+#hi:checked + .menu .bar:nth-child(2) {
+  opacity: 0;
+}
+#hi:checked + .menu .bar:nth-child(3) {
+  margin-top: -30px;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}

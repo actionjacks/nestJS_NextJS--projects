@@ -1,0 +1,75 @@
+.switcher_wrapper {
+  z-index: 99;
+  position: fixed;
+  top: 20%;
+  right: 10%;
+  transform: translate(-50%, -50%);
+  height: 40px;
+  width: 40px;
+  transition: 0.7s;
+  cursor: pointer;
+
+  & .slider_container {
+    position: relative;
+    width: 40px;
+    height: 20px;
+    border: 4px solid rgb(60, 30, 112);
+    border-radius: 15px;
+    transition: 0.7s;
+    background-color: rgb(39, 16, 82);
+  }
+}
+
+// theme styles
+.switcher_wrapper .slider_container .white-theme {
+  -webkit-box-shadow: inset 1px 1px 6px 0px rgba(66, 68, 90, 1);
+  -moz-box-shadow: inset 1px 1px 6px 0px rgba(66, 68, 90, 1);
+  box-shadow: inset 1px 1px 6px 0px rgba(66, 68, 90, 1);
+
+  background-color: rgb(111, 87, 168);
+  width: 25px;
+  height: 25px;
+  border-radius: 99px;
+  position: relative;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  transition: 0.7s;
+
+  & .icon {
+    top: 15%;
+    left: 15%;
+    transform: translate(-25%, -25%);
+    transform-origin: center;
+    transform: rotate(0deg);
+    position: absolute;
+    color: yellow;
+    font-size: 18px;
+    transition: 0.7s;
+  }
+}
+.switcher_wrapper .slider_container .black-theme {
+  -webkit-box-shadow: inset 1px 1px 6px 0px rgba(66, 68, 90, 1);
+  -moz-box-shadow: inset 1px 1px 6px 0px rgba(66, 68, 90, 1);
+  box-shadow: inset 1px 1px 6px 0px rgba(66, 68, 90, 1);
+  background-color: rgb(111, 87, 168);
+  width: 25px;
+  height: 25px;
+  border-radius: 99px;
+  position: absolute;
+  top: 50%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+  transition: 0.7s;
+
+  & .icon {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: center;
+    position: absolute;
+    color: rgb(29, 29, 29);
+    font-size: 18px;
+    transition: 0.7s;
+  }
+}

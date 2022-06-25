@@ -1,0 +1,44 @@
+@import "./style/colors.scss";
+@import './style/fonts.scss';
+@import "./style/brakePoints.scss";
+@import "./style/customScrollbar.scss";
+@import "./style/Header.scss";
+@import "./style//WellcomePage.scss";
+@import "./style/About.scss";
+@import "./style/Form.scss";
+@import "./style/Portfolio.scss";
+@import "./style//PortfolioItem.scss";
+@import "./style/Footer.scss";
+@import "./style/ThemeSwitcher.scss";
+
+:root {
+  cursor: url(/images/cursors/coursor.png), auto !important;
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: mainFont;
+}
+
+body {
+  max-width: 100% !important;
+}
+
+.change__language {
+  z-index: 10;
+  position: fixed;
+  bottom: 5vh;
+  left: 10px;
+}
+
+.MuiSvgIcon-root:hover,
+a:hover,
+img,
+button:hover,
+label:hover,
+input:hover {
+  cursor: url(/images/cursors/pointer.png), auto !important;
+}

@@ -1,0 +1,42 @@
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.header .header__list {
+  margin-left: 400px;
+  margin-right: 400px;
+}
+
+.header .header__list .header__items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.header .header__list .header__items .header__item {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  list-style: none;
+}
+
+.header .header__list .header__items .header__item .header__link {
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.header .header__list .header__items .header__item .header__link:hover {
+  cursor: url(/images/cursors/pointer.png), auto !important;
+}
+
+li:nth-child(1) a {
+  color: #f7baba !important;
+}
+/*# sourceMappingURL=Header.css.map */

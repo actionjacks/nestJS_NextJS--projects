@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAyDA,AAAA,GAAG,CAAC,kBAAkB,CAAC;EACrB,MAAM,EAAE,cAAc;CACvB",
+    "sources": [
+        "../AvatarFace.scss"
+    ],
+    "names": [],
+    "file": "AvatarFace.css"
+}

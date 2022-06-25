@@ -1,0 +1,10 @@
+@font-face {
+  font-family: headerFont;
+  src: url("/fonts/Fipps-Regular/Fipps-Regular.otf");
+}
+
+@font-face {
+  font-family: mainFont;
+  src: url("/fonts/early_gameboy/Early GameBoy.ttf");
+}
+/*# sourceMappingURL=fonts.css.map */

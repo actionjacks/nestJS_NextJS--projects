@@ -1,0 +1,190 @@
+@include media-queries(xsmall) {
+    .footer {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+
+        .footer_arrow {
+            position: absolute;
+            top: -25px;
+            right: 10px;
+
+            & img {
+                margin-right: .1rem;
+            }
+
+            & p {
+                text-align: left;
+                margin: .7rem;
+            }
+
+            .arrow__icon {
+                transform: rotate(-90deg);
+                width: 5rem;
+                transition: .7s;
+            }
+
+            .arrow__icon:hover {
+                opacity: .5;
+            }
+        }
+
+        .MuiSvgIcon-root {
+            border: 1px solid !important;
+            border-radius: 50% !important;
+            font-size: 50px !important;
+        }
+
+        .footer__icons {
+            text-align: center;
+            padding: 10px;
+
+            .githubIcon,
+            .facebookIcon {
+                font-size: 35px !important;
+                transition: .7s;
+                border: none !important;
+                margin-left: 10px;
+            }
+
+        }
+
+        .footer__copyright {
+            margin-top: .3rem;
+            font-size: .7rem;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .footer__reactIcon {
+            display: flex;
+            margin-top: .3rem;
+            margin-left: 50%;
+
+            & img {
+                width: 1.2rem;
+            }
+
+            & p {
+                text-align: left;
+                margin: .7rem;
+            }
+
+            .icon__react img {
+                margin: 10px 0;
+            }
+        }
+    }
+}
+
+@include media-queries(large) {
+    .footer {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+
+        .footer_arrow {
+            position: absolute;
+            top: -25px;
+            right: 10px;
+
+            & img {
+                margin-right: 5rem;
+            }
+
+            .arrow__icon {
+                transform: rotate(-90deg);
+                width: 5rem;
+                transition: .7s;
+            }
+
+            .arrow__icon:hover {
+                opacity: .5;
+            }
+        }
+
+        .MuiSvgIcon-root {
+            border: 1px solid !important;
+            border-radius: 50% !important;
+            font-size: 50px !important;
+        }
+
+        .footer__icons {
+            text-align: center;
+            padding: 10px;
+
+            .githubIcon,
+            .facebookIcon {
+                font-size: 35px !important;
+                transition: .7s;
+                border: none !important;
+                margin-left: 10px;
+            }
+        }
+
+        .footer__copyright {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .footer__reactIcon {
+            display: flex;
+            margin-top: .3rem;
+            margin-left: 50%;
+
+            & img {
+                width: 1.2rem;
+            }
+
+            & p {
+                text-align: left;
+                margin: .7rem;
+            }
+
+            .icon__react img {
+                margin: 10px 0;
+            }
+        }
+    }
+}
+
+#jaxoo {
+    color: $first-icon-color--white;
+}
+
+//themes colors
+.footer.white {
+    border-top: 1px solid $first-font-color--white;
+    box-shadow: inset 0 0 3px $first-font-color--white;
+    background-color: $first-background-color--white;
+    color: $first-font-color--white;
+    transition: .7s;
+}
+
+.footer.black {
+    border-top: 1px solid $first-icon-colorHover--black;
+    box-shadow: inset 0 0 3px $first-icon-colorHover--black;
+    background-color: $first-background-color--black;
+    color: $first-font-color--black;
+    transition: .7s;
+}
+
+.githubIcon.white,
+.facebookIcon.white {
+    color: $first-icon-color--white;
+}
+
+.githubIcon.white:hover,
+.facebookIcon.white:hover {
+    color: $first-icon-colorHover--white;
+}
+
+.githubIcon.black,
+.facebookIcon.black {
+    color: $first-icon-color--black;
+}
+
+.githubIcon.black:hover,
+.facebookIcon.black:hover {
+    color: $first-icon-colorHover--black;
+}

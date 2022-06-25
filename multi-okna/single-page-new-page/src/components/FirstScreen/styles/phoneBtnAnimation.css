@@ -1,0 +1,208 @@
+.centerBox {
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.categoryWrapper {
+  font-family: "Roboto", sans-serif;
+  height: 310px;
+  width: 460px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.categoryWrapper:after {
+  font-family: "Roboto", sans-serif;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: -moz-linear-gradient(
+    -45deg,
+    #dad7df9c 0%,
+    #b5b5b683 99%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    -45deg,
+    #dad7df9c 0%,
+    #b5b5b683 99%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    135deg,
+    #dad7df9c 0%,
+    #b5b5b683 99%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a29ca9', endColorstr='#95909b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  content: "";
+  opacity: 0;
+  -webkit-transition: opacity 0.9s ease 0s;
+}
+
+.categoryWrapper:hover:after {
+  opacity: 0.4;
+}
+
+.categoryWrapper h1 {
+  color: #00adb5;
+  text-shadow: 1px 1px 1px #222831;
+  font-size: 45px;
+  letter-spacing: 2px;
+  -webkit-transition: all 0.15s ease 0s;
+  position: relative;
+  z-index: 10;
+}
+@media (max-width: 340px) {
+  .categoryWrapper h1 {
+    font-size: 35px;
+  }
+}
+.categoryWrapper:hover h1 {
+  transform: translateY(-10px);
+}
+
+.categoryWrapper button {
+  font-family: "Roboto", sans-serif;
+  position: absolute;
+  transform: translatey(60px);
+  -webkit-appearance: none;
+  border: none;
+  background: none;
+  color: #00adb5;
+  width: 250px;
+  height: 50px;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  z-index: 10;
+}
+
+.categoryWrapper button span {
+  font-family: "Roboto", sans-serif;
+  display: block;
+  position: relative;
+  line-height: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.categoryWrapper button > span:after {
+  font-family: "Roboto", sans-serif;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 20px;
+  height: 0;
+  border: 1px solid #eeeeee;
+  border-left: none;
+  border-bottom: none;
+
+  transition: height 0.15s ease-out, width 0.15s ease-out 0.15s;
+}
+
+.categoryWrapper:hover button > span:after {
+  width: calc(50% - 1px);
+  height: calc(100% - 2px);
+  transition: width 0.15s ease-out, height 0.15s ease-out 0.15s;
+}
+
+.categoryWrapper button > span:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 50%;
+  width: 20px;
+  height: 0;
+  border: 1px solid #eeeeee;
+  border-right: none;
+  border-bottom: none;
+
+  transition: height 0.15s ease-out, width 0.15s ease-out 0.15s;
+}
+
+.categoryWrapper:hover button > span:before {
+  width: calc(50% - 1px);
+  height: calc(100% - 2px);
+  transition: width 0.15s ease-out, height 0.15s ease-out 0.15s;
+}
+
+.categoryWrapper button > span > span:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0%;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.categoryWrapper:hover button > span > span:before {
+  opacity: 1;
+  border-bottom: 1px solid #eeeeee;
+  width: calc(50%);
+  height: 1px;
+  transition: opacity 0s ease-out 0.29s, width 0.15s ease-out 0.3s;
+}
+
+.categoryWrapper button > span > span:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0%;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.categoryWrapper:hover button > span > span:after {
+  opacity: 1;
+  text-decoration: none;
+  border-bottom: 1px solid #eeeeee;
+  width: calc(50%);
+  height: 1px;
+  transition: opacity 0s ease-out 0.29s, width 0.15s ease-out 0.3s;
+}
+
+.categoryWrapper button > span > span > a {
+  transition: color 0.15s ease-out 0.3s;
+  color: transparent;
+  text-decoration: none;
+}
+
+.categoryWrapper:hover button > span > span > a {
+  text-decoration: none;
+  color: #00adb5;
+  text-shadow: 1px 1px 1px #eeeeee;
+}
+
+.categoryWrapper button > span > span > a:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: #00adb5;
+  content: attr(data-attr-span);
+  width: 0%;
+  height: 100%;
+  background: rgba(230, 230, 230, 0.7);
+  white-space: nowrap;
+  text-align: center;
+  margin: auto;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  transition: width 0.2s;
+}
+
+.categoryWrapper button:hover > span > span > span:after {
+  width: 100%;
+}

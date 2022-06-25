@@ -1,0 +1,20 @@
+.arrow {
+  display: block;
+  color: pink;
+  position: fixed;
+  bottom: 5%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.MuiSvgIcon-root {
+  border: 1px solid !important;
+  border-radius: 50% !important;
+  font-size: 50px !important;
+}
+
+.MuiSvgIcon-root:hover {
+  cursor: url(/images/cursors/pointer.png), auto !important;
+}
+/*# sourceMappingURL=Footer.css.map */

@@ -1,0 +1,12 @@
+.header-wrapper {
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 4.5em;
+  transition: 0.3s;
+  background-color: transparent;
+}
+.header-wrapper.show {
+  background-color: black;
+}

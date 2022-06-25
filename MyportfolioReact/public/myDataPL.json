@@ -1,0 +1,146 @@
+{
+  "main": {
+    "headerOptions": ["O mnie", "Portfolio", "Kontakt", "Stopka"]
+  },
+  "wellcomePage": {
+    "title": "Jacek Zablocki",
+    "mydesc": "Programowanie to moja pasja, uwielbiam REACT, co nie zmienia faktu, ze uczenie sie nowych frameworkow nie sprawia mi przyjemnosci, wrecz przeciwnie. Javascript, Python, Unity C# oraz malowanie figurek do Warhammer Age of Sigmar :P. Obecnie pochylam sie mocno nad mozliwosciami jakie daje FIREBASE od Google."
+  },
+  "about": {
+    "aboutMe": "o mnie",
+    "aboutMeDetails": "moja pasja informatyka",
+    "contact": "kontakt",
+    "contactDetails": {
+      "name": "Jacek Zablocki",
+      "street": "przejazdowa",
+      "zipcode": "16-010",
+      "town": "Wasilkow",
+      "phone": "795616929",
+      "mail": "actionjacks22@gmail.com"
+    }
+  },
+  "portfolio": "moje projekty",
+  "myWork": [
+    {
+      "image": "./images/portfolio/my-amazon.jpg",
+      "isDeployed": "true",
+      "link": "https://my-eshoop.web.app/",
+      "sourceCode": "https://github.com/actionjacks/my-eShop"
+    },
+    {
+      "image": "./images/portfolio/my-istagram.jpg",
+      "isDeployed": "true",
+      "link": "https://my-istagram-ce477.web.app/",
+      "sourceCode": "https://github.com/actionjacks/My-instagram"
+    },
+    {
+      "image": "./images/portfolio/my-discord.jpg",
+      "isDeployed": "true",
+      "link": "https://my-discord-6e1f1.web.app/",
+      "sourceCode": "https://github.com/actionjacks/My-discord"
+    },
+    {
+      "image": "./images/portfolio/my-spotify.jpg",
+      "isDeployed": "true",
+      "link": "https://actionjacks.github.io/mySpotify/",
+      "sourceCode": "https://github.com/actionjacks/mySpotify"
+    },
+    {
+      "image": "./images/portfolio/my-tinder.jpg",
+      "isDeployed": "true",
+      "link": "https://my-tinder-59fcf.web.app/",
+      "sourceCode": "https://github.com/actionjacks/my-tinder"
+    },
+    {
+      "image": "./images/portfolio/my-Twitter.jpg",
+      "isDeployed": "true",
+      "link": "https://my-twitter-92680.web.app/",
+      "sourceCode": "https://github.com/actionjacks/myTwitter"
+    },
+    {
+      "image": "./images/portfolio/my-covidTracker.jpg",
+      "isDeployed": "true",
+      "link": "https://covid-tracker-v1-0.web.app/",
+      "sourceCode": "https://github.com/actionjacks/covid__tracker"
+    },
+    {
+      "image": "./images/portfolio/my-movieDB.jpg",
+      "isDeployed": "true",
+      "link": "https://movie-api-2cf4f.web.app/",
+      "sourceCode": "https://github.com/actionjacks/MOVIE_API_DB"
+    },
+    {
+      "image": "./images/portfolio/my-tiktok.jpg",
+      "isDeployed": "true",
+      "link": "https://mytik-tok-2181f.web.app/",
+      "sourceCode": "https://github.com/actionjacks/myTiktok/tree/main"
+    },
+    {
+      "image": "./images/portfolio/my-facebook.jpg",
+      "isDeployed": "true",
+      "link": "https://my-facebook-22867.web.app/",
+      "sourceCode": "https://github.com/actionjacks/MyFacebook-mongoDB-pusher"
+    },
+    {
+      "image": "./images/portfolio/my-slack.jpg",
+      "isDeployed": "true",
+      "link": "https://my-slack-8ee92.web.app/",
+      "sourceCode": "https://github.com/actionjacks/my-slack-comunicator-MERN"
+    },
+    {
+      "image": "./images/portfolio/my-netflix.jpg",
+      "isDeployed": "true",
+      "link": "https://my-netflixx.herokuapp.com/",
+      "sourceCode": "https://github.com/actionjacks/Netflix-fake"
+    },
+    {
+      "image": "./images/portfolio/my-hearthstone.jpg",
+      "isDeployed": "true",
+      "link": "https://heartstone-api.web.app/",
+      "sourceCode": "https://github.com/actionjacks/reactblizzardapi"
+    },
+    {
+      "image": "./images/portfolio/my-chattingApp.jpg",
+      "isDeployed": "false",
+      "link": "#page-2",
+      "sourceCode": "https://github.com/actionjacks/wazzup-mongoDB"
+    },
+    {
+      "image": "./images/portfolio/my-Messenger.jpg",
+      "isDeployed": "true",
+      "link": "https://jackmessenger-e9aff.web.app/",
+      "sourceCode": "https://github.com/actionjacks/messenger_clone"
+    },
+    {
+      "image": "./images/portfolio/my-Google.jpg",
+      "isDeployed": "true",
+      "link": "https://clone-3ad8b.web.app/",
+      "sourceCode": "https://github.com/actionjacks/google-api-search"
+    },
+    {
+      "image": "./images/portfolio/my-Robinhood.jpg",
+      "isDeployed": "true",
+      "link": "https://robinhood-app.herokuapp.com/",
+      "sourceCode": "https://github.com/actionjacks/RoobinHood-dummydata"
+    },
+    {
+      "image": "./images/portfolio/my-json-shoop.jpg",
+      "isDeployed": "true",
+      "link": "https://json-shoop.herokuapp.com/",
+      "sourceCode": "https://github.com/actionjacks/json-eshoop"
+    },
+    {
+      "image": "./images/portfolio/my-linkedin.jpg",
+      "isDeployed": "false",
+      "link": "#",
+      "sourceCode": "https://github.com/actionjacks/fake-LinkedIn"
+    }
+  ],
+  "form": {
+    "formTitle": "napisz do mnie",
+    "name": "imie / nazwa",
+    "subject": "tytul wiadomosci",
+    "message": "tresc wiadomosci",
+    "sendBtn": "wyslij"
+  }
+}

@@ -1,0 +1,74 @@
+@include media-queries(xsmall) {
+    .portfolio {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        background-color: rgb(38, 37, 37);
+        color: white;
+        font-size: 20px;
+
+        & .portfolio__title {
+            margin: 5vh;
+            flex-direction: column;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        & .porfolio__myWorkContainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+    }
+}
+
+@include media-queries(small) {
+    .portfolio {
+        & .porfolio__myWorkContainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 5px 40px;
+        }
+    }
+}
+
+@include media-queries(large) {
+    .portfolio {
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(38, 37, 37);
+        color: white;
+        font-size: 20px;
+
+        & .portfolio__title {
+            margin: 6vh;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        & .porfolio__myWorkContainer {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+//themes colors
+.portfolio.white {
+    border-top: 1px solid $first-font-color--white;
+    box-shadow: inset 0 0 3px $first-font-color--white;
+    background-color: $first-background-color--white;
+    color: $first-font-color--white;
+    transition: .7s;
+}
+
+.portfolio.black {
+    border-top: 1px solid $first-icon-colorHover--black;
+    box-shadow: inset 0 0 3px $first-icon-colorHover--black;
+    background-color: $first-background-color--black;
+    color: $first-font-color--black;
+    transition: .7s;
+}
