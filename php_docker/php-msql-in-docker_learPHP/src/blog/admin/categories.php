@@ -62,7 +62,7 @@
                     $cat_id = $row['cat_id'];
                     $cat_title = $row['cat_title'];
                 ?>
-                <input value="<?php if (isset($cat_title)) {
+                    <input value="<?php if (isset($cat_title)) {
                                     echo $cat_title;
                                   } ?>" class="form-control" type="text" name="cat_title">
                 <?php }

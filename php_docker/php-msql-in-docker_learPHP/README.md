@@ -28,3 +28,10 @@
 ### localhost 80 is php file
 
 ### localhost 8080 is myadmin for mySQL
+
+<!-- 
+ Server: mysql_db_container
+ user: root
+ password: admin
+ Db_name: mysql_db_data_container
+-->
