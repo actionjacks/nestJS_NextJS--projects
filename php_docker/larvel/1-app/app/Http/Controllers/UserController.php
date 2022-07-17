@@ -49,8 +49,45 @@ class UserController extends Controller
     $all = $request->all();
     dump($all);
 
+    // response
+    $myResponse =
+      response('<h1>response</h1>', 200, ['Content-Type' => 'text/plain']);
+
+    $myResponse2 =
+      response('<h1>response</h1>')
+      ->setStatusCode(200)
+      ->header('Content-Type', 'text/plain')
+      ->header('Own-Header', 'Laravel');
+
+    $myResponse3 =
+      response('<h1>response</h1>', 200)
+      ->header('Content-Type', 'text/plain')
+      ->cookie('my_best', 'lorem', 10);
+
+    // redirest
+    $redirectedMain = redirect('/');
+    $redirectedMain2 = redirect()->route('post.users.test.store');
+    $redirectedMain3 =
+      redirect()->route('post.users.test.store', ['id' => $id]);
+
+    $redirectedMainController =
+      redirect()->action('UserControllerList');
+    $redirectedMainController2 =
+      redirect()->action('UserControllerList', ['id' => $id]);
+    $redirectedMainController3 =
+      redirect()->away('https://google.pl');
+
+    $myResponse4 = response()
+      ->view('user.show', ['id' => $id], 200);
+
+    $myResponse5 = view('user.show', ['id' => $id]);
+    $myResponse6 = response()->json(['id' => $id]);
+
     //get cookie
     $cookie = $request->cookie();
+
+    // =============response==========
+
 
     dd('test user show' . ' ' . $id . ' ' . $uri . ' ' . $url . ' ' . $fullUrl);
   }
@@ -63,5 +100,11 @@ class UserController extends Controller
     }
 
     dd('post store');
+  }
+
+  public function renderView(int $id)
+  {
+    //location user folder showww file
+    return view('user.showww', ['id' => $id, 'example' => 'showww']);
   }
 }

@@ -23,6 +23,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        //can register global variables
+        view()->share('applicationName', 'jacek-place');
         //
     }
 }

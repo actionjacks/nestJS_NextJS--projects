@@ -11,15 +11,15 @@ export class AuthController {
   constructor(private authService: AuthService) {}
   @Post('signup')
   signup(
-    dto: AuthDto,
+    @Body() dto: AuthDto,
     // @Body('email') email: string,
     // @Body('password') password: string,
   ) {
-    this.authService.signup();
+    return this.authService.signup();
   }
 
   @Post('signin')
   signin() {
-    this.authService.signin();
+    return this.authService.signin();
   }
 }
