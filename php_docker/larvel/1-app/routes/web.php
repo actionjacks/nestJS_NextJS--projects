@@ -84,3 +84,7 @@ Route::get('examples201/', function () {
     $url = route('shop.item.single', ['id' => 4444]);
     dump($url);
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

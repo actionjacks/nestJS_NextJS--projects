@@ -8,9 +8,29 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+  // session
   public function list(Request $request)
   {
-    dd($request);
+
+    // session
+    $session = $request->session();
+    // save time in session
+    $session->put('prevAction', __METHOD__ . ':' . time());
+    // use sesion
+    $prevAction = $request->session()->get('prevAction');
+    //check if key and value is exist
+    $isExistSession = $request->session()->has('prevAction');
+    // check if key exist
+    $isExistSession = $request->session()->exists('prevAction');
+    // dd($prevAction);
+    // dd($session);
+
+    // using helper func from laravel
+    $sessionHelper = session('prevAction');
+    // save
+    session(["test_key" => 'lorem ipsum']);
+
+    // dd($request);
     return view('user.list');
   }
 
