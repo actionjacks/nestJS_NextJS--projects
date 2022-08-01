@@ -228,7 +228,7 @@ type Contructable<ClassInstance> = new (...args: any[]) => ClassInstance;
 
 function Deletable<BaseClass extends Contructable<{}>>(Base: BaseClass) {
   return class extends Base {
-    deleted: boolean;
+    deleted: boolean | undefined;
     delete() {}
   };
 }
@@ -249,10 +249,160 @@ type DeletableClass1Instance = InstanceType<typeof DeletableClass1>;
 type DeletableClass2Instance = InstanceType<typeof DeletableClass2>;
 
 class HoldInstanceOfClass {
-  class1: DeletableClass1Instance;
-  class2: DeletableClass2Instance;
+  class1: DeletableClass1Instance | undefined;
+  class2: DeletableClass2Instance | undefined;
+  constructor() {}
 }
 
 const main = new HoldInstanceOfClass();
 main.class1 = new DeletableClass1("jac");
 main.class2 = new DeletableClass2("jac");
+
+/*
+  mixin class 
+*/
+class Dispasable {
+  isDispased: boolean = false;
+  dispase() {
+    this.isDispased = true;
+  }
+}
+
+class Activatable {
+  isActive: boolean = false;
+  activate() {
+    this.isActive = true;
+  }
+
+  deactivate() {
+    this.isActive = false;
+  }
+}
+// mixin
+export type Class_ = new (...args: any[]) => any;
+export function DisableMixin<Base extends Class_>(base: Base) {
+  return class extends base {
+    isDispased: boolean = false;
+
+    dispose() {
+      this.isDispased = true;
+    }
+  };
+}
+
+export function ActivatableMixin<Base extends Class_>(base: Base) {
+  return class extends base {
+    isActive: boolean = false;
+    activate() {
+      this.isActive = true;
+    }
+
+    deactivate() {
+      this.isActive = false;
+    }
+  };
+}
+// use mixin
+const Example = DisableMixin(ActivatableMixin(class {}));
+type Example = InstanceType<typeof Example>;
+
+function takeExample(example: Example) {
+  example.activate();
+  console.log(example.isActive);
+}
+
+class Example_ extends Example {
+  member = 123;
+  constructor() {
+    super();
+    console.log(this.isActive);
+  }
+}
+
+/*
+  MAPED   
+*/
+export type Point = {
+  x: number;
+  y: number;
+};
+type X = Point["x"]; //number
+
+// uninon of Point kys = 'x' | 'y' take keys of object
+type PointKeys = keyof Point;
+
+export type ReadonlyPoint<T> = {
+  readonly [Key in keyof T]: T[Key];
+};
+
+export const orgin: ReadonlyPoint<Point> = {
+  x: 0,
+  y: 0,
+};
+//same  readonly [Key in keyof T]: T[Key];
+export const orgin2: Readonly<Point> = {
+  x: 0,
+  y: 0,
+};
+// orgin.x = 10 // error
+
+/*
+  MAPED andvanced
+*/
+export type Point_ = {
+  readonly x: number;
+  y?: number;
+};
+export type Mapped<T> = {
+  +readonly //remove optional from type add + to add readonly or - to remove
+  [P in keyof T]-?: T[P];
+};
+
+export type Result = Mapped<Point_>;
+
+//example
+export class State_<T> {
+  constructor(public current: T) {}
+
+  update(next: Partial<T>) {
+    this.current = { ...this.current, ...next };
+  }
+}
+
+const state_ = new State_({ x: 0, y: 0 });
+state_.update({ x: 0, y: 123 });
+//partail optional property and now we can pass only x when we wanna update
+state_.update({ x: 123 });
+
+/*
+  types and interfaces
+*/
+export interface Point2D {
+  x: number;
+  y: number;
+}
+export interface Point3D extends Point2D {
+  z: number;
+}
+
+export type Point2D_ = {
+  x: number;
+  y: number;
+};
+export type Point3D_ = Point2D_ & {
+  z: number;
+};
+
+/*
+  GENERIC and use type
+*/
+type A<T> = (x: T) => T;
+const strToStr: A<string> = function (x: string) {
+  return x + "__";
+};
+strToStr("a");
+
+type B = <T>(x: T) => T;
+const identity: B = function <T>(x: T) {
+  return x;
+};

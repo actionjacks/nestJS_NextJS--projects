@@ -16,27 +16,27 @@ interface Class2 {
 const dataClass1: Class1[] = [
   {
     name: "lorem4",
-    date: new Date(2022, 03, 27),
+    date: new Date(2022, 0o3, 27),
   },
   {
     name: "lorem2",
-    date: new Date(2022, 02, 27),
+    date: new Date(2022, 0o2, 27),
   },
   {
     name: "lorem1",
-    date: new Date(2022, 07, 22),
+    date: new Date(2022, 0o7, 22),
   },
   {
     name: "lorem10",
-    date: new Date(2022, 01, 17),
+    date: new Date(2022, 0o1, 17),
   },
   {
     name: "lorem12",
-    date: new Date(2022, 01, 17),
+    date: new Date(2022, 0o1, 17),
   },
   {
     name: "lorem11",
-    date: new Date(2022, 01, 17),
+    date: new Date(2022, 0o1, 17),
   },
 ];
 const dataClass2: Class2[] = [
