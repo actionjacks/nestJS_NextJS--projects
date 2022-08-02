@@ -1,3 +1,7 @@
+/*
+array.reduce(callback(total, currentValue, currentIndex, arr), initialValue)
+*/
+
 const numbers_ = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const total = numbers_.reduce((accum, prev, curr) => {
@@ -73,17 +77,40 @@ type Orders = {
   shipped: number;
 };
 
-const countStatus = orders.reduce(
-  (acc, order) => {
-    const key = order.status;
-    return {
-      ...acc,
-      [order.status]: (acc[key as keyof Orders] || 0) + 1,
-    };
-  },
-  {
-    pending: 0,
-    cancelled: 0,
-    shipped: 0,
+const countStatus = orders.reduce((acc, order) => {
+  const key = order.status;
+
+  return {
+    ...acc,
+    [order.status]: (acc[key as keyof typeof acc] || 0) + 1,
+  };
+}, {});
+// https://bobbyhadz.com/blog/typescript-element-implicitly-has-any-type-expression
+// ⛔️ Error: Element implicitly has an 'any' type
+// because expression of type 'string' can't be used
+// to index type '{ name: string; }'.
+// No index signature with a parameter of type 'string'
+
+// FLat ARRAYs in array
+const folders = [
+  "index.js",
+  ["flatte.js", "map.js"],
+  ["any.js", ["all.js", "count.js"]],
+];
+
+function flatter(acc: any, item: any): string[] {
+  if (Array.isArray(item)) {
+    return item.reduce(flatter, acc);
   }
+  return [...acc, item];
+}
+const result = folders.reduce(flatter, []);
+
+//
+const scores = [12, 99, 0, 23, 5, 4, 65, 34];
+const getMinAndMaxScore = scores.reduce(
+  (acc, score) => {
+    return [Math.min(acc[0], score), Math.max(acc[1], score)];
+  },
+  [100, 0]
 );

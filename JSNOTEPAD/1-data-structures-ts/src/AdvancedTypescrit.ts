@@ -102,6 +102,21 @@ const feature: FeatureTask = {
 };
 // feature.type = TaskType.bug; - error
 
+interface Animal {
+  name: string;
+}
+interface Human {
+  firstName: string;
+  lastName: string;
+}
+
+const displayName = <TItem extends Animal | Human>(item: TItem) => {
+  if ("name" in item) {
+    return item.name;
+  }
+  return item.firstName;
+};
+
 /*
   extract utility fun
 */
@@ -187,7 +202,40 @@ interface Starship {
 const updateStarship = (starship: Partial<Starship>) => {
   console.log(starship);
 };
-updateStarship({ name: "jacel" });
+updateStarship({ name: "jacek" });
+
+class StateOptional<T> {
+  constructor(public current: T) {}
+
+  update(next: Partial<T>) {
+    this.current = { ...this.current, ...next };
+  }
+}
+const stateOptional = new StateOptional({ x: 0, y: 0 });
+stateOptional.update({ x: 12 });
+
+//  required
+type CircleConfig = {
+  color?: string;
+  radius?: number;
+};
+class Circle {
+  private config: Required<CircleConfig>;
+
+  constructor(config: CircleConfig) {
+    this.config = {
+      color: config.color ?? "red",
+      radius: config.radius ?? 0,
+    };
+  }
+  draw() {
+    console.log(
+      `drawing circle
+      ${this.config.color}
+      ${this.config.radius}`
+    );
+  }
+}
 
 /*
   record
@@ -406,3 +454,56 @@ type B = <T>(x: T) => T;
 const identity: B = function <T>(x: T) {
   return x;
 };
+
+/*
+  NEVER  
+  funkcja przyjmuje 2 argumenty i zwraca jesli na koncu nie bedzie error funkcja bedzie za kazdym razem zwracac undefinded aby to obsluzyc musimy zwrocic erorr lub never w tedy nie bedzie undyfinded w tym co funkcja moze zwrocic
+*/
+const assertUnreachable = (value: never): never => {
+  throw new Error(`invalid value: ${value}`);
+};
+const getMode = (value: 1 | 2) => {
+  if (value === 1) {
+    return "one";
+  }
+  if (value === 2) {
+    return "two";
+  }
+  return assertUnreachable(value);
+};
+
+/*
+  Remove
+*/
+type Letters = "a" | "b" | "c";
+type RemoveC<TType> = TType extends "c" ? never : TType;
+type WowWithoutC = RemoveC<Letters>;
+//
+type LooseAutocomplete<T extends string> = T | Omit<string, T>;
+type IconSize = LooseAutocomplete<"sm" | "xs">;
+interface IconProps {
+  size: IconSize;
+}
+
+/*
+  Dynamic function arguments with GENERICS
+*/
+type Event =
+  | {
+      type: "LOG_IN";
+      payload: {
+        userId: string;
+      };
+    }
+  | {
+      type: "SIGN_OUT";
+    };
+
+const sendEvent = <Type extends Event["type"]>(
+  ...args: Extract<Event, { type: Type }> extends { payload: infer TPayload }
+    ? [type: Type, payload: TPayload]
+    : [Type]
+) => {};
+
+sendEvent("SIGN_OUT");
+sendEvent("LOG_IN", { userId: "12" });
