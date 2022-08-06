@@ -147,6 +147,7 @@ const tripleOriginWhole: TripWithOriginWhole = {
 const hasOrginReg = (trip: Trip): trip is TripWithOriginRef => {
   return "orginUud" in trip;
 };
+
 const result = [tripOriginRef, tripleOriginWhole].filter(hasOrginReg);
 
 /*
@@ -213,6 +214,19 @@ class StateOptional<T> {
 }
 const stateOptional = new StateOptional({ x: 0, y: 0 });
 stateOptional.update({ x: 12 });
+//example
+export class State_<T> {
+  constructor(public current: T) {}
+
+  update(next: Partial<T>) {
+    this.current = { ...this.current, ...next };
+  }
+}
+
+const state_ = new State_({ x: 0, y: 0 });
+state_.update({ x: 0, y: 123 });
+//partail optional property and now we can pass only x when we wanna update
+state_.update({ x: 123 });
 
 //  required
 type CircleConfig = {
@@ -369,6 +383,7 @@ class Example_ extends Example {
 
 /*
   MAPED   
+  Object Key iteration  !
 */
 export type Point = {
   x: number;
@@ -388,11 +403,45 @@ export const orgin: ReadonlyPoint<Point> = {
   y: 0,
 };
 //same  readonly [Key in keyof T]: T[Key];
-export const orgin2: Readonly<Point> = {
-  x: 0,
-  y: 0,
-};
 // orgin.x = 10 // error
+
+type Prizes = {
+  first: string;
+  second: string;
+};
+function logPrizes(prizes: Prizes) {
+  let key: keyof Prizes;
+  for (key in prizes) {
+    console.log(key, prizes[key].toUpperCase());
+  }
+}
+
+/*
+  Array Guards
+*/
+type Foo1 = {
+  type: "square";
+  size: number;
+};
+type Foo2 = {
+  type: "rectangle";
+  height: number;
+  width: number;
+};
+type FOO = Foo1 | Foo2;
+
+const foos: FOO[] = [
+  { type: "square", size: 1 },
+  { type: "rectangle", height: 12, width: 12 },
+];
+
+const findSquareInFoos = foos.find((s): s is Foo1 => s.type === "square");
+const sizeInFoos = findSquareInFoos?.size;
+
+const findRectangleInFoos = foos.filter(
+  (s): s is Foo2 => s.type === "rectangle"
+);
+const squereSizes = findRectangleInFoos.map((s) => s.height);
 
 /*
   MAPED andvanced
@@ -407,20 +456,6 @@ export type Mapped<T> = {
 };
 
 export type Result = Mapped<Point_>;
-
-//example
-export class State_<T> {
-  constructor(public current: T) {}
-
-  update(next: Partial<T>) {
-    this.current = { ...this.current, ...next };
-  }
-}
-
-const state_ = new State_({ x: 0, y: 0 });
-state_.update({ x: 0, y: 123 });
-//partail optional property and now we can pass only x when we wanna update
-state_.update({ x: 123 });
 
 /*
   types and interfaces
@@ -457,7 +492,7 @@ const identity: B = function <T>(x: T) {
 
 /*
   NEVER  
-  funkcja przyjmuje 2 argumenty i zwraca jesli na koncu nie bedzie error funkcja bedzie za kazdym razem zwracac undefinded aby to obsluzyc musimy zwrocic erorr lub never w tedy nie bedzie undyfinded w tym co funkcja moze zwrocic
+  funkcja przyjmuje 2 argumenty i zwraca jesli na koncu nie bedzie error funkcja bedzie za kazdym razem zwracac undefinded aby to obslozyc musimy zwrocic erorr lub never w tedy nie bedzie undyfinded w tym co funkcja moze zwrocic
 */
 const assertUnreachable = (value: never): never => {
   throw new Error(`invalid value: ${value}`);
@@ -507,3 +542,39 @@ const sendEvent = <Type extends Event["type"]>(
 
 sendEvent("SIGN_OUT");
 sendEvent("LOG_IN", { userId: "12" });
+
+/*
+  TS ignore
+    // @ts-ignore  - ignore line of code
+    // @ts-nocheck - ignore in all file
+*/
+function getShape() {
+  console.log("fo");
+}
+type Circle_ = { radius: number };
+type Squere_ = { size: number };
+const example: unknown = {};
+
+if (true && example === Object && "radius" in example) {
+  //@ts-ignore
+  declare const example: Circle_;
+  console.log("lorem ipsum", example.radius);
+}
+
+/*
+  UNKNOWN
+*/
+const foo_: unknown = null;
+if (typeof foo_ === "string") {
+  foo_.trim();
+}
+
+/*
+  template
+*/
+let templateLiteral: `Example: ${string}`;
+templateLiteral = "Example: ";
+
+type Size_ = "small" | "medium" | "large";
+type Color_ = "primary" | "secondary";
+type Stype = `${Size_}-${Color_}`;

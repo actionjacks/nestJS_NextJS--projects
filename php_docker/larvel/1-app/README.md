@@ -1,3 +1,8 @@
+## need install php extension
+```
+sudo apt install openssl php-common php-curl php-json php-mbstring php-mysql php-xml php-zip
+```
+
 start controller
 ```
 php artisan serve
