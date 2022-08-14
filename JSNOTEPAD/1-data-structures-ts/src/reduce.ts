@@ -37,6 +37,18 @@ const findId = persons.reduce((acc, person) => {
   return { ...acc, [person.id]: person };
 }, {});
 
+type Person = {
+  id: number;
+  name: string;
+  age: number;
+};
+
+const newObjIdParam = persons.reduce((acc, person) => {
+  let key = person.id;
+  return { ...acc, [key]: person };
+}, {});
+// {[person.id : {Person}]}
+
 const maxAge = persons.reduce((acc: any, person) => {
   if (acc === null || person.age > acc) {
     return person.age;
