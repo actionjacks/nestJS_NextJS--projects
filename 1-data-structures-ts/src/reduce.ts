@@ -90,11 +90,11 @@ type Orders = {
 };
 
 const countStatus = orders.reduce((acc, order) => {
-  const key = order.status;
+  const key = order.status as keyof typeof acc;
 
   return {
     ...acc,
-    [order.status]: (acc[key as keyof typeof acc] || 0) + 1,
+    [order.id]: acc[key],
   };
 }, {});
 // https://bobbyhadz.com/blog/typescript-element-implicitly-has-any-type-expression
