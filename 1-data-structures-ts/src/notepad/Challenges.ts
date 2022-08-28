@@ -1,3 +1,20 @@
+// descriminetion Union
+type USER = {
+  id: number;
+  firstName: string;
+} & (
+  | { role: "admin"; adminPassword: string }
+  | { role: "user" }
+  | { role: "super-admin"; superAdminPassword: string }
+);
+// zaleznie od property role mamy inne pola dostepne
+// const Uszer: USER = {
+//   id: 1,
+//   firstName: "",
+//   role: "user",
+//   adminPassword: "s",
+// };
+
 //https://github.com/actionjacks/type-challenges/blob/main/questions/
 
 /* _____________ Your Code Here _____________ */

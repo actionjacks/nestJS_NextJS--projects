@@ -6,8 +6,27 @@ const fo = (val: { name: string } | { age: number }) => {
   val.age;
 };
 
+const someData = {
+  id: 123,
+  name: "jacek",
+  placel: "placel",
+};
+//create interface type to pass typeof someObject
+type SomeData = typeof someData;
+// create keys of type SomeData
+type SomeDataKeys = keyof SomeData;
+//get value type of typedObject
+type SomeDataValue = SomeData["id"];
+
+type Flatten<T> = T extends Array<infer R> ? R : T;
+type ArrayFlatten = Flatten<1>; //infer wnioskowanie zwracanego typu
+//jesli generic jest typem Array wnioskuj jego typ jesli nie zwracaj same przekazany typ
+
 /*
   generic React Prop
+    funkcja <Type> 
+    wywolanie funkcji
+    funkcja<Type>() <--wywolanie
 */
 // interface TableProps<TItem> {
 //   items: TItem[];
@@ -232,6 +251,7 @@ function isCat(animal: Cat | Dog): animal is Cat {
   return typeof (animal as Cat).numberOfLives === "number";
   //  return "numberOfLives" in animal
 }
+const isString_ = (type: unknown): type is string => typeof type === "string";
 
 /*
   if(isCat({numberOfLives:2})){
@@ -244,7 +264,6 @@ function isCat(animal: Cat | Dog): animal is Cat {
 /*
    Conditional types
 */
-
 interface WithId {
   id: string;
 }
@@ -281,3 +300,14 @@ type Playable<T> = T extends { play: () => void } ? T : never;
 function play_(fileToPlay: Playable<PlayerFile>) {
   fileToPlay.play();
 }
+
+/*
+   Maped types
+*/
+type USer = { [Key in "username" | "email"]: string }; //loop and create type
+type ReadOnlyUSer = { readonly [Key in keyof USer]: string };
+
+type ReadOnlyUSer2<T> = { readonly [Key in keyof T]: string };
+type UseGenericUSer = ReadOnlyUSer2<USer>;
+
+const Kek: USer = { email: "", username: "" };
