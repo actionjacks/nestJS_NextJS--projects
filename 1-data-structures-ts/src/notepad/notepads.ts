@@ -301,6 +301,9 @@ function play_(fileToPlay: Playable<PlayerFile>) {
   fileToPlay.play();
 }
 
+type Firstt<T extends any[]> = T extends any[] ? T[0] : never;
+type ReturnFirstTypeOfArray = Firstt<[1, 2, 3]>;
+
 /*
    Maped types
 */
@@ -311,3 +314,12 @@ type ReadOnlyUSer2<T> = { readonly [Key in keyof T]: string };
 type UseGenericUSer = ReadOnlyUSer2<USer>;
 
 const Kek: USer = { email: "", username: "" };
+
+//same keys same values
+const tuple = ["tesla", "model 3", "model X", "model Y"] as const;
+
+type First<T extends readonly any[]> = {
+  [P in T[number]]: P;
+};
+type result = First<typeof tuple>;
+// expected { tesla: 'tesla', 'model 3': 'model 3', 'model X': 'model X', 'model Y': 'model Y'}

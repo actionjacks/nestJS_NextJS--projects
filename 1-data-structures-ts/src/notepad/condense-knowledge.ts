@@ -30,6 +30,11 @@ const canFly2 = (animal: Animal): animal is Bird => {
   return typeof animal.fly !== "undefined";
 };
 
+const arrayToCheck = ["a", "b", "c"]; // val is string[]
+const isArrayIsStringArray = (value: unknown): value is string[] => {
+  return Array.isArray(value) && value.every((val) => typeof val === "string");
+};
+
 /*
   type Literal Types
 */
@@ -169,3 +174,57 @@ type TT3 = Exclude<"a" | "b", "b">; // 'a
   Omit remove one type from type opposite of Pick
   Omit<Duck, 'feathers>
 */
+
+/*
+  use returnTypes
+*/
+function someFunction() {
+  return "a";
+}
+type FFFF = ReturnType<typeof someFunction>;
+
+/*
+  Functions properties
+*/
+type FunctionPropertyNames<T> = {
+  // check property's from passed object
+  // if function return name of this function [keyof T]
+  [K in keyof T]: T[K] extends Function ? K : never;
+}[keyof T];
+
+type FunctionProperty<T> = Pick<T, FunctionPropertyNames<T>>;
+
+type Snake = {
+  color: string;
+  fly: () => void;
+};
+
+type T11 = FunctionProperty<Snake>; //  fly: () => void;
+type T22 = FunctionPropertyNames<Snake>; // fly
+
+// if type is function return this function return value
+type ReturnFromFunction<T> = T extends (...args: any[]) => infer R ? R : any;
+const x = (a: string): number => 1;
+
+type R_ = ReturnFromFunction<typeof x>;
+
+/*
+  Instance Type
+*/
+type InstanceType_<T extends new (...args: any[]) => any> = T extends new (
+  ...args: any[]
+) => infer R
+  ? R
+  : any;
+
+class Snake_ {}
+
+const make2 = <T extends new (...args: any[]) => any>(
+  constructor: T
+): [InstanceType<T>, InstanceType<T>] => [new constructor(), new constructor()];
+
+const snakes_ = make2(Snake_);
+
+const isArray_ = (obj: string | string[]): obj is string[] => {
+  return Array.isArray(obj);
+};
