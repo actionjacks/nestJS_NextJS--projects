@@ -1,5 +1,4 @@
 //https://ghaiklor.github.io/type-challenges-solutions/en/
-
 // descriminetion Union
 type USER = {
   id: number;
@@ -98,3 +97,64 @@ type spaceXLength = Length<spaceX>; // expected 5
 */
 type MyExclude<T, U> = T extends U ? never : T;
 type Result = MyExclude<"a" | "b" | "c", "a">; // 'b' | 'c'
+
+/*
+  type Result = Concat<[1], [2]> // expected to be [1, 2]
+*/
+type MyConcat<T extends any[], U extends any[]> = [...T, ...U];
+type UseMyConcat = MyConcat<[1, 2], [3, 4]>;
+
+/*
+  if true return first argument if not second
+*/
+type If<C extends boolean, T, F> = C extends true ? T : F;
+type UseIF = If<false, "A", "B">;
+
+/*
+  return type from promise7
+  If we have a type which is wrapped type like Promise. How we can get a type which is inside the wrapped type? For example if we have Promise<ExampleType> how to get ExampleType?
+*/
+type ExampleType<T> = T extends Promise<infer R>
+  ? R extends Promise<infer P>
+    ? P extends Promise<infer U>
+      ? U
+      : P
+    : R
+  : T;
+
+type Awaited2<T> = T extends Promise<infer R> ? Awaited<R> : T;
+
+type UseExampleType = ExampleType<Promise<string>>;
+type UseExampleType2 = Awaited2<Promise<Promise<Promise<string>>>>;
+
+/*
+  Implement the JavaScript Array.includes function in the type system. A type takes the two arguments. The output should be a boolean true or false.
+
+  //type isPillarMen = Includes<['Kars', 'Esidisi', 'Wamuu', 'Santana'], 'Dio'> // expected to be `false`
+*/
+//work only in simple types
+type isPillarMen<T extends unknown[], U> = U extends T[number] ? true : false;
+
+type UseisPillarMen = isPillarMen<["Kars", "Esidisi", "Wamuu", "Santana"], "l">;
+
+type Includes<T extends readonly any[], U> = T extends [
+  infer First,
+  ...infer Rest
+]
+  ? First extends U
+    ? true
+    : Includes<Rest, U>
+  : false;
+
+type UseisPillarMen2 = Includes<
+  [[{}], false, [1, true, 2], { a: "c" }],
+  [1, true, 2]
+>;
+
+/*
+  Implement the generic version of Array.push
+  For example:
+  type Result = Push<[1, 2], '3'> // [1, 2, '3']
+*/
+type Pusher<T extends unknown[], U extends unknown> = [...T, U];
+type usePusher = Pusher<[1, 2], "2">;
