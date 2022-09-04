@@ -158,3 +158,70 @@ type UseisPillarMen2 = Includes<
 */
 type Pusher<T extends unknown[], U extends unknown> = [...T, U];
 type usePusher = Pusher<[1, 2], "2">;
+
+/*
+  Implement the type version of Array.unshift
+  For example:
+  type Result = Unshift<[1, 2], 0> // [0, 1, 2,]
+*/
+type UnshiftAr<T extends unknown[], U extends unknown> = [U, ...T];
+
+/*
+  Implement the built-in Parameters generic without using it.
+  For example:
+  const foo = (arg1: string, arg2: number): void => {}
+  type FunctionParamsType = MyParameters<typeof foo> // [arg1: string, arg2: number]
+
+  same as 
+  type SumParams = Parameters<typeof sum>;
+*/
+type ReturnParamsFromFu<T extends (...arg: any[]) => any> = T extends (
+  ...arg: infer P
+) => any
+  ? P
+  : never;
+
+const foo_ = (arg1: string, arg2: number): void => {};
+type Fofofo = ReturnParamsFromFu<typeof foo_>;
+
+/*
+  Get Return Type
+  const fn = (v: boolean) => {
+  if (v)
+    return 1
+  else
+    return 2
+}
+type a = MyReturnType<typeof fn> // should be "1 | 2"
+*/
+const fn = (v: boolean) => (v ? 1 : 2);
+
+type MyReturnType<T> = T extends (...arg: any[]) => infer P ? P : never;
+type useMyReturnType = MyReturnType<typeof fn>;
+
+/*
+  Omit
+  interface Todo {
+  title: string
+  description: string
+  completed: boolean
+}
+  type TodoPreview = MyOmit<Todo, 'description' | 'title'>
+  const todo: TodoPreview = {
+    completed: false,
+  } 
+*/
+// myomit przyjmuje dowolny generyk , u musi byc jego kluczem
+// mapuj nowy obiekt K jest kluczem generyka,
+// as czy K jest jak u? nie zwracaj nic lub zwroc klucz jak
+//https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-1.html#key-remapping-in-mapped-types
+type MyOmit<T, U extends keyof T> = {
+  [K in keyof T as K extends U ? never : K]: T[K];
+};
+
+interface Todo {
+  title: string;
+  description: string;
+  completed: boolean;
+}
+type usemyOmit = MyOmit<Todo, "completed">;
