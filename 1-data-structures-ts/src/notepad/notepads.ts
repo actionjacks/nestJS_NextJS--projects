@@ -20,6 +20,7 @@ type SomeDataValue = SomeData["id"];
 
 type Flatten<T> = T extends Array<infer R> ? R : T;
 type ArrayFlatten = Flatten<1>; //infer wnioskowanie zwracanego typu
+import fetch from "node-fetch";
 //jesli generic jest typem Array wnioskuj jego typ jesli nie zwracaj same przekazany typ
 
 /*
@@ -128,6 +129,18 @@ const kek = getDeepVal(Obj2, "foo", "a");
 interface FunctionInterface {
   (item: string): string;
 }
+
+/*
+  Union Types
+*/
+type Person_ = {
+  [anykey: string]: string | number;
+};
+const benny: Person_ = {
+  age: 12,
+  dupa: "",
+  // dupa2:true // error
+};
 
 /*
   Condition Types
@@ -323,3 +336,59 @@ type First<T extends readonly any[]> = {
 };
 type result = First<typeof tuple>;
 // expected { tesla: 'tesla', 'model 3': 'model 3', 'model X': 'model X', 'model Y': 'model Y'}
+
+/*
+  typed FETCH
+*/
+interface HttpResponse<T extends ResponseData | ProblemData> {
+  data: T;
+  status: number;
+}
+
+type ResponseData = {
+  data: string[];
+};
+type ProblemData = {
+  data: null;
+};
+
+class CheckResponse {
+  private data: unknown = {};
+
+  constructor(data: unknown) {
+    this.data = data;
+  }
+
+  private hasResponseData(data: unknown): data is ResponseData {
+    return (data as ResponseData).data !== null;
+  }
+
+  getData(): ResponseData | ProblemData {
+    if (this.hasResponseData(this.data)) {
+      return this.data;
+    }
+    return {
+      data: null,
+    };
+  }
+}
+
+async function getJson<TExpected>(
+  url: string
+): Promise<HttpResponse<ResponseData | ProblemData>> {
+  const response = await fetch(url);
+  const data = await response.json();
+
+  const responseData = new CheckResponse(data).getData();
+
+  if (responseData.data !== null) {
+    return {
+      data: responseData,
+      status: 201,
+    };
+  }
+  return {
+    data: responseData,
+    status: 404,
+  };
+}

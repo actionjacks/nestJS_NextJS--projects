@@ -368,6 +368,7 @@ type paintStarshipReturnTypes = ReturnType<typeof paintStarship>;
 type myyyy = ReturnType<() => true>;
 
 /*
+  INFER
   return types condition return if
 */
 type InferSomething<T> = T extends infer U ? U : never;
@@ -376,6 +377,16 @@ type Inferred = InferSomething<"12">;
 type InferSomething2<T> = T extends { a: infer A; b: number } ? A : never;
 // a musi miec cos jednoscesnie b musi byc liczba
 type Inferred2 = InferSomething2<{ a: "1"; b: 1 }>;
+
+type OnlyStringReunType<T> = T extends (...arg: any[]) => infer R
+  ? R extends string
+    ? R
+    : never
+  : never;
+
+// type BetterSyntax<T> = T extends (...arg: any[]) => (infer R extends string)
+//   ? R
+//   : never;
 
 /*
   mixin class -class get params or methods we specify and type of instance of some class

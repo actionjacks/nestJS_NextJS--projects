@@ -59,3 +59,45 @@ type DeepReadonly<T> = T extends Array<infer R>
 
 const obj = { a: 3, c: { b: 2 } };
 type UseDeep = DeepReadonly<typeof obj>;
+
+type HttpMEthod = "GET" | "POST";
+
+interface Paths {
+  pathDefinitions: {
+    "/orders": {
+      GET: {
+        requestQuery: string;
+        response: string;
+      };
+      POST: {
+        requestQuery: number;
+        response: string;
+      };
+    };
+    "/pic": {
+      GET: {
+        requestQuery: string;
+        response: string;
+      };
+      POST: {
+        requestQuery: number;
+        response: string;
+      };
+    };
+  };
+}
+
+// function doFetch<
+//   Path extends keyof Paths["pathDefinitions"],
+//   Method extends keyof Paths["pathDefinitions"][Path]
+// >(
+//   path: Path,
+//   method: Method
+// ): Paths["pathDefinitions"][Path][Method] extends {
+//   response: infer Response;
+// }
+//   ? Response
+//   : null {
+//   const re = doFetch("/orders", "GET");
+//   return { response: "" };
+// }

@@ -225,3 +225,64 @@ interface Todo {
   completed: boolean;
 }
 type usemyOmit = MyOmit<Todo, "completed">;
+
+/*
+    ReadOnly 
+    Implement a generic MyReadonly2<T, K> which takes two type argument T and K.
+    K specify the set of properties of T that should set to Readonly. When K is not provided, it should make all properties readonly just like the normal Readonly<T>.
+*/
+
+type MyReadonly2<T extends object, U extends keyof T> = T & {
+  readonly [Key in U]: T[Key];
+};
+
+interface Todo {
+  title: string;
+  description: string;
+  completed: boolean;
+}
+
+type Foooo = MyReadonly2<Todo, "completed">;
+
+const todo: MyReadonly2<Todo, "title"> = {
+  title: "Hey",
+  description: "foobar",
+  completed: false,
+};
+
+// Deep Readonly
+type X = {
+  x: {
+    a: 1;
+    b: "hi";
+  };
+  y: "hey";
+};
+
+type DeepReadOnly<T extends object> = {
+  readonly [K in keyof T]: T[K] extends Record<string, unknown>
+    ? DeepReadOnly<T[K]>
+    : T[K];
+};
+type useDeepReadonly = DeepReadOnly<X>;
+//-------------------------------------------------------
+type DeepReadOnlyObject<T> = keyof T extends never
+  ? T
+  : { readonly [k in keyof T]: DeepReadOnlyObject<T[k]> };
+
+type useDeepReadonly_ = DeepReadOnlyObject<X>;
+
+/*
+  TUPLE TO UNION
+  type Arr = ['1', '2', '3']
+  type Test = TupleToUnion<Arr> // expected to be '1' | '2' | '3'
+*/
+type Arr = ["1", "2", "3"];
+type TupleToUnion<T> = T extends (infer TFromArr)[] ? TFromArr : never;
+
+type useTupleToUnion = TupleToUnion<Arr>;
+//  T extends (...arg: any[]) => infer P ? P : never;
+
+/*
+  12 - chainable options
+*/
