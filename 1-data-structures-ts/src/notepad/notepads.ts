@@ -35,6 +35,7 @@ import fetch from "node-fetch";
 // }
 
 import { argv } from "process";
+import { T } from "ramda";
 
 // export const Table=<TItem>(props:TableProps<TItem>)=>{
 //   return null
@@ -50,6 +51,31 @@ import { argv } from "process";
 //     </Table>
 //   )
 // }
+
+/*
+  Variadic tuples
+
+*/
+type PersonProp<T extends unknown[]> = [string, ...T, number];
+type ProfesionProp = PersonProp<[string]>;
+
+const [name, prof, age]: ProfesionProp = ["", "", 1];
+
+function tail<T extends any[]>(arr: readonly [any, ...T]) {
+  const [_ignored, ...rest] = arr;
+  return rest;
+}
+
+const myTuple = [1, 2, 3, 4] as const;
+const r1 = tail(myTuple); //[2, 3, 4];
+
+type OnlyRest<T extends readonly any[]> = T extends readonly [
+  infer Firs,
+  ...infer Rest
+]
+  ? Rest
+  : never;
+type UseOnlyRest = OnlyRest<typeof myTuple>;
 
 /*
   Obj[key]

@@ -284,5 +284,144 @@ type useTupleToUnion = TupleToUnion<Arr>;
 //  T extends (...arg: any[]) => infer P ? P : never;
 
 /*
-  12 - chainable options
+  chainable options
+*/
+type Chainable<O = {}> = {
+  option<K extends string, V>(key: K, value: V): Chainable<O & { [P in K]: V }>;
+  get(): O;
+};
+
+type Chainable2<O = {}> = {
+  option<K extends string, V>(
+    key: K extends keyof O ? (V extends O[K] ? never : K) : K,
+    value: V
+  ): Chainable<Omit<O, K> & { [P in K]: V }>;
+  get(): O;
+};
+//T extends (...arg: any[]) => infer P ? P : never;
+declare const config: Chainable;
+
+const result2 = config
+  .option("foo", 123)
+  .option("name", "type-challenges")
+  .option("bar", { value: "Hello World" })
+  .get();
+
+// expect the type of result to be:
+interface Result2 {
+  foo: number;
+  name: string;
+  bar: {
+    value: string;
+  };
+}
+
+/*
+Variadic Tuple Types
+
+  type arr1 = ["a", "b", "c"];
+  type arr2 = [3, 2, 1];
+
+  type tail1 = Last<arr1>; // expected to be 'c'
+  type tail2 = Last<arr2>; // expected to be 1
+*/
+///type First<T extends any[]> = T extends any[] ? T[0] : never;
+type arr1 = ["a", "b", "c"];
+const myTuple = [1, 2, 3, 4] as const;
+
+type LastFromArray<T extends any[]> = T extends [...infer First, infer Last]
+  ? Last
+  : never;
+type UseLastFromArray = LastFromArray<arr1>;
+
+type OnlyRest<T extends readonly any[]> = T extends readonly [
+  infer Firs,
+  ...infer Rest
+]
+  ? Rest
+  : never;
+type UseOnlyRest = OnlyRest<typeof myTuple>;
+
+type POOP<T extends readonly any[]> = T extends readonly [
+  ...infer Firs,
+  infer Rest
+]
+  ? Firs
+  : never;
+type UsePOOP = POOP<typeof myTuple>;
+
+/*
+  Promise.all
+
+  Type the function PromiseAll that accepts an array of PromiseLike objects, the returning value should be Promise<T> where T is the resolved result array.
+  const promise1 = Promise.resolve(3);
+  const promise2 = 42;
+  const promise3 = new Promise<string>((resolve, reject) => {
+    setTimeout(resolve, 100, 'foo');
+  });
+
+  // expected to be `Promise<[number, 42, string]>`
+  const p = PromiseAll([promise1, promise2, promise3] as const)
+*/
+const promise1 = Promise.resolve(3);
+const promise2 = 42;
+const promise3 = new Promise<string>((resolve, reject) => {
+  setTimeout(resolve, 100, "foo");
+});
+
+declare function PromiseAll<T extends unknown[]>(
+  values: readonly [...T]
+): Promise<{ [P in keyof T]: T[P] extends Promise<infer R> ? R : T[P] }>;
+
+const p = PromiseAll([promise1, promise2, promise3] as const);
+
+/*
+  Type lookup
+  
+*/
+interface CAT {
+  type: "cat";
+  breeds: "Abyssinian" | "Shorthair" | "Curl" | "Bengal";
+}
+
+interface DOG {
+  type: "dog";
+  breeds: "Hound" | "Brittany" | "Bulldog" | "Boxer";
+  color: "brown" | "white" | "black";
+}
+
+type Animal_ = CAT | DOG;
+
+type LookUp<T extends Animal_, U extends Animal_["type"]> = T extends {
+  type: U;
+}
+  ? T
+  : never;
+
+type MyDogType = LookUp<Animal_, "cat">; // expected to be `Dog`
+
+/*
+ Trim Left
+  Implement TrimLeft<T> which takes an exact string type and returns a new string with the whitespace beginning removed.
+  For example
+  type trimed = TrimLeft<'  Hello World  '> // expected to be 'Hello World  '
+*/
+type Whitespace = " " | "\n" | " ";
+
+type TrimLEFT<T extends string> = T extends `${Whitespace}${infer U}`
+  ? TrimLEFT<U>
+  : T;
+
+type useTrimLeft = TrimLEFT<" hhhh ">;
+
+type TrimALL<T extends string> = T extends `${Whitespace}${infer U}`
+  ? TrimALL<U>
+  : T extends `${infer U}${Whitespace}`
+  ? TrimALL<U>
+  : T;
+
+type useTrimALL = TrimALL<" hhhh ">;
+
+/*
+  Capitalize
 */
