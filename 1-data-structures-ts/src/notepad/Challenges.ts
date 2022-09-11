@@ -411,17 +411,114 @@ type Whitespace = " " | "\n" | " ";
 type TrimLEFT<T extends string> = T extends `${Whitespace}${infer U}`
   ? TrimLEFT<U>
   : T;
-
 type useTrimLeft = TrimLEFT<" hhhh ">;
+
+type TrimRIGHT<T extends string> = T extends `${infer U}${Whitespace}`
+  ? TrimRIGHT<U>
+  : T;
+type useTrimRight = TrimRIGHT<" hhhh ">;
 
 type TrimALL<T extends string> = T extends `${Whitespace}${infer U}`
   ? TrimALL<U>
   : T extends `${infer U}${Whitespace}`
   ? TrimALL<U>
   : T;
-
 type useTrimALL = TrimALL<" hhhh ">;
 
 /*
   Capitalize
 */
+type Capitalizator<T extends string> = `${Uppercase<T>}`;
+type UseCapitalizator = Capitalizator<"sasax">;
+
+interface CapitalizedChars {
+  f: "F";
+}
+type Capitaliz<S> = S extends `${infer C}${infer T}`
+  ? `${C extends keyof CapitalizedChars ? CapitalizedChars[C] : C}${T}`
+  : S;
+
+type useCapitalize = Capitaliz<CapitalizedChars>;
+
+/*
+  Replace
+  //type replaced = Replace<'types are fun!', 'fun', 'awesome'> // expected to be 'types are awesome!'
+*/
+
+type Replacer<
+  TItem extends string,
+  From extends string,
+  To extends string
+> = From extends ""
+  ? TItem // types ... (are)  ... fun
+  : TItem extends `${infer L}${From}${infer R}`
+  ? `${L}${To}${R}`
+  : TItem;
+
+type useReplacer = Replacer<"types are fun", "are", "dupa">;
+
+/*
+  Replace all
+  type replaced = Replace<'types are fun!', 'fun', 'awesome'> // expected to be 'types are awesome!'
+*/
+type ReplaceAll<
+  TItem extends string,
+  From extends string,
+  To extends string
+> = From extends ""
+  ? TItem // types ... (are)  ... fun
+  : TItem extends `${infer L}${From}${infer R}`
+  ? ReplaceAll<`${L}${To}${R}`, From, To>
+  : TItem;
+
+type useReplaceAll = ReplaceAll<"t y p e s", " ", "">;
+
+/* 
+  Append Argument
+  type Fn = (a: number, b: string) => number
+
+  type Result = AppendArgument<Fn, boolean> 
+  // expected be (a: number, b: string, x: boolean) => number
+*/
+
+type Fn = (a: number, b: string) => number;
+
+type AppendArgument<T extends Fn, R> = T extends (a: infer P, b: infer O) => any
+  ? (a: P, b: O, x: R) => string
+  : never;
+
+type ResultFunction = AppendArgument<Fn, boolean>;
+
+type AppendArgument2<Fn, A> = Fn extends (...args: [...infer P]) => infer R
+  ? // get multiple arg from function use tuple ...args:[a:number,b:number]
+    (...args: [...P, A]) => R
+  : never;
+
+type ResultFunction2 = AppendArgument2<Fn, boolean>;
+
+/*
+Permutation
+  type perm = Permutation<'A' | 'B' | 'C'>; // ['A', 'B', 'C'] | ['A', 'C', 'B'] | ['B', 'A', 'C'] | ['B', 'C', 'A'] | ['C', 'A', 'B'] | ['C', 'B', 'A']
+
+  type Permutation<T> = T extends never ? [] : [T];
+        it will loop all passed values
+*/
+type Permutation<T, C = T> = [T] extends [never]
+  ? []
+  : C extends infer U
+  ? [U, ...Permutation<Exclude<T, U>>]
+  : [];
+
+type UsePermutation = Permutation<"A" | "B" | "C">;
+
+/*
+  Length of String
+*/
+type StringLenght<
+  T extends string,
+  counter extends string[]
+> = T extends `${infer C}${infer T}`
+  ? StringLenght<T, [C, ...counter]>
+  : counter["length"];
+
+type UseStringLenght = StringLenght<"lorem", []>;
