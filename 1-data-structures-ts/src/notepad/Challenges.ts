@@ -135,7 +135,10 @@ type UseExampleType2 = Awaited2<Promise<Promise<Promise<string>>>>;
 //work only in simple types
 type isPillarMen<T extends unknown[], U> = U extends T[number] ? true : false;
 
-type UseisPillarMen = isPillarMen<["Kars", "Esidisi", "Wamuu", "Santana"], "l">;
+type UseisPillarMen = isPillarMen<
+  ["Kars", "Esidisi", "Wamuu", "Santana"],
+  "Kars"
+>;
 
 type Includes<T extends readonly any[], U> = T extends [
   infer First,
@@ -167,6 +170,7 @@ type usePusher = Pusher<[1, 2], "2">;
 type UnshiftAr<T extends unknown[], U extends unknown> = [U, ...T];
 
 /*
+  REturn Type
   Implement the built-in Parameters generic without using it.
   For example:
   const foo = (arg1: string, arg2: number): void => {}
@@ -513,6 +517,7 @@ type UsePermutation = Permutation<"A" | "B" | "C">;
 
 /*
   Length of String
+  do drogiego argumetu wsadzamy pojedyncza litere ze stringa i na koniec sptawdzamy dlugosc tej tablicy i ja zwracamy
 */
 type StringLenght<
   T extends string,
@@ -522,3 +527,33 @@ type StringLenght<
   : counter["length"];
 
 type UseStringLenght = StringLenght<"lorem", []>;
+
+/*
+  Flatten
+    type flatten = Flatten<[1, 2, [3, 4], [[[5]]]]> // [1, 2, 3, 4, 5]
+*/
+
+type Flatten<T> = T extends []
+  ? []
+  : T extends [infer H, ...infer T]
+  ? [...Flatten<H>, ...Flatten<T>]
+  : [T];
+
+type useFlatten = Flatten<[1, 2, [3, 4], [[[5]]]]>;
+
+/*
+type SameValSameKey<T extends readonly any[]> = {
+  [P in T[number]]: P;
+};
+  APPEND to OBject
+  type Test = { id: "1" };
+  type Result = AppendToObject<Test, "value", 4>; // expected to be { id: '1', value: 4 }
+*/
+
+type Test = { id: "1" };
+
+type Appender<Obj, KeyTo extends string, ValTo> = {
+  [K in keyof Obj | KeyTo]: K extends keyof Obj ? Obj[K] : ValTo;
+};
+
+type UseAppender = Appender<Test, "value", 4>;
