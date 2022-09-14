@@ -1,4 +1,5 @@
 //https://ghaiklor.github.io/type-challenges-solutions/en/
+
 // descriminetion Union
 type USER = {
   id: number;
@@ -557,3 +558,277 @@ type Appender<Obj, KeyTo extends string, ValTo> = {
 };
 
 type UseAppender = Appender<Test, "value", 4>;
+
+/*
+  Absolute
+  type Test = -100;
+  type Result = Absolute<Test>; // expected to be "100"
+*/
+type Test_ = -100;
+
+type AbsoluteO<T extends number | string | bigint> =
+  // `${T}` = change T to string
+  //  extends `-${infer N}` = if extends - return type N (100)
+  `${T}` extends `-${infer N}` ? N : `${T}`;
+
+type useAbsoluteO = AbsoluteO<Test_>;
+
+/*
+  String to Union
+    type Test = '123';
+    type Result = StringToUnion<Test>; // expected to be "1" | "2" | "3"
+*/
+type Test__ = "123";
+
+type StringToUnion<T extends string> =
+  `${T}` extends `${infer A}${infer B}${infer C}` ? A | B | C : never;
+
+type useStringToUnion = StringToUnion<Test__>;
+
+type StringToUnion2<T extends string> = T extends `${infer A}${infer B}`
+  ? A | StringToUnion2<B>
+  : never;
+
+type useStringToUnion2 = StringToUnion2<Test__>;
+
+/*
+  Merge 2 Objects
+  type foo = {
+    name: string;
+    age: string;
+  }
+  type coo = {
+    age: number;
+    sex: string
+  }
+  type Result = Merge<foo,coo>; // expected to be {name: string, age: number, sex: string}
+*/
+type foo2 = {
+  name: string;
+  age: string;
+};
+type coo2 = {
+  age: number;
+  sex: string;
+};
+
+type MergeObjects<T, U> = {
+  [K in keyof T | keyof U]: K extends keyof T ? T[K] : U;
+};
+type useMergeObjects = MergeObjects<foo2, coo2>;
+
+type MergeObject2<T, U> = {
+  [K in keyof T | keyof U]: K extends keyof T
+    ? T[K]
+    : K extends keyof U
+    ? U[K]
+    : never;
+};
+type useMergeObjects2 = MergeObject2<foo2, coo2>;
+
+/*
+  KebabCase
+  `FooBarBaz` -> `foo-bar-baz`
+*/
+type KebabCase_<T> = T extends `${infer First}${infer Last}`
+  ? Last extends Uncapitalize<Last>
+    ? `${Uncapitalize<First>}${KebabCase_<Last>}`
+    : `${Uncapitalize<First>}-${KebabCase_<Last>}`
+  : T;
+
+type UseKebabCase = KebabCase_<"FooBarBaz">;
+
+/*
+  DIF
+    Get an `Object` that is the difference between `O` & `O1`
+*/
+type Foo111 = {
+  name: string;
+  age: string;
+};
+type Bar222 = {
+  name: string;
+  age: string;
+  gender: number;
+};
+type Coo333 = {
+  name: string;
+  gender: number;
+};
+type MyDifff<FirstObj extends object, SecObje extends object> = {
+  [Key in keyof FirstObj | keyof SecObje as Exclude<
+    Key,
+    keyof FirstObj & keyof SecObje
+  >]: Key extends keyof FirstObj
+    ? FirstObj[Key]
+    : Key extends keyof SecObje
+    ? SecObje[Key]
+    : never;
+};
+
+type useDifff = MyDifff<Coo333, Bar222>;
+
+/*
+  AnyOf
+    Implement Python liked any function in the type system. A type takes the Array and returns true if any element of the Array is true. If the Array is empty, return false.
+    type Sample1 = AnyOf<[1, '', false, [], {}]> // expected to be true.
+    type Sample2 = AnyOf<[0, '', false, [], {}]> // expected to be false.
+*/
+type Falsy = 0 | "" | false | [] | { [P in any]: never };
+
+// [...infet] - first element from array. ...infer Last - rest elements from array
+type AnyOf<Iitem extends readonly any[]> = Iitem extends [
+  infer F,
+  ...infer Last
+]
+  ? // if first elemnt (infered) is === Falsy check again or return true
+    F extends Falsy
+    ? AnyOf<Last>
+    : true
+  : false;
+
+type useAnyOf = AnyOf<[1, {}, false, true]>;
+
+/*
+  IsNever
+*/
+type IsNever<T> = [T] extends [never] ? true : false;
+
+type A_ = IsNever<never>; // expected to be true
+type B_ = IsNever<undefined>; // expected to be false
+type C_ = IsNever<null>; // expected to be false
+type D_ = IsNever<[]>; // expected to be false
+type E_ = IsNever<number>; // expected to be false
+
+/*
+  ISUnion
+*/
+type IsUnion<T, C = T> = T extends C ? ([C] extends [T] ? false : true) : never;
+
+type case1 = IsUnion<string>; // false
+type case2 = IsUnion<string | number>; // true
+type case3 = IsUnion<[string | number]>; // false
+
+/*
+  ReplaceKeys
+*/
+type NodeA = {
+  type: "A";
+  name: string;
+  flag: number;
+};
+type NodeB = {
+  type: "B";
+  id: number;
+  flag: number;
+};
+type NodeC = {
+  type: "C";
+  name: string;
+  flag: number;
+};
+
+type Nodes = NodeA | NodeB | NodeC;
+
+type ReplaceKeys<Node extends Nodes, To extends string, From> = {
+  [Key in keyof Node]: Key extends To
+    ? Key extends keyof From
+      ? From[Key]
+      : never
+    : Node[Key];
+};
+
+type ReplacedNodes = ReplaceKeys<
+  Nodes,
+  "name" | "flag",
+  { name: number; flag: string }
+>; // {type: 'A', name: number, flag: string} | {type: 'B', id: number, flag: string} | {type: 'C', name: number, flag: string} // would replace name from string to number, replace flag from number to string.
+
+type ReplacedNotExistKeys = ReplaceKeys<Nodes, "name", { aa: number }>; // {type: 'A', name: never, flag: number} | NodeB | {type: 'C', name: never, flag: number} // would replace name to never
+
+/*
+  Remove Index Signature
+  type Foo = {
+  [key: string]: any;
+  foo(): void;
+}
+  type A = RemoveIndexSignature<Foo>  // expected { foo(): void }
+*/
+
+type FooFooFoo = {
+  [key: string]: any;
+  foo(): void;
+};
+
+type TypeLiteralOnly<T> = string extends T
+  ? never
+  : number extends T
+  ? never
+  : symbol extends T
+  ? never
+  : T;
+
+type RemoveIndexSignature<T> = { [P in keyof T as TypeLiteralOnly<P>]: T[P] };
+
+type useRemoveIndexSignature = RemoveIndexSignature<FooFooFoo>; // expected { foo(): void }
+
+type RemoveIndexSignature2<T> = {
+  [Key in keyof T as Key extends `${infer R}` ? Key : never]: T[Key];
+};
+
+type useRemoveIndexSignature2 = RemoveIndexSignature2<FooFooFoo>; // expected { foo(): void }
+
+/*
+  Percentage Parser
+
+  Implement PercentageParser. According to the /^(\+|\-)?(\d*)?(\%)?$/ regularity to match T and get three matches.
+  The structure should be: [plus or minus, number, unit] If it is not captured, the default is an empty string.
+*/
+type ParseSign<T extends string> = T extends `${infer S}${any}`
+  ? S extends "+" | "-"
+    ? S
+    : ""
+  : "";
+
+type ParsePercent<T extends string> = T extends `${any}%` ? "%" : "";
+
+type ParseNumber<T extends string> =
+  T extends `${ParseSign<T>}${infer N}${ParsePercent<T>}` ? N : "";
+
+type PercentageParser<A extends string> = [
+  ParseSign<A>,
+  ParseNumber<A>,
+  ParsePercent<A>
+];
+
+type PString1 = "";
+type PString2 = "+85%";
+type PString3 = "-85%";
+type PString4 = "85%";
+type PString5 = "85";
+
+type R1 = PercentageParser<PString1>; // expected ['', '', '']
+type R2 = PercentageParser<PString2>; // expected ["+", "85", "%"]
+type R3 = PercentageParser<PString3>; // expected ["-", "85", "%"]
+type R4 = PercentageParser<PString4>; // expected ["", "85", "%"]
+type R5 = PercentageParser<PString5>; // expected ["", "85", ""]
+
+/*
+  Drop Char
+  Drop a specified char from a string.
+  type Butterfly = DropChar<' b u t t e r f l y ! ', ' '> // 'butterfly!'
+*/
+type DropChar<
+  T extends string,
+  U extends string
+> = T extends `${infer F}${U}${infer G}` ? DropChar<`${F}${G}`, U> : T;
+
+type Butterfly = DropChar<" b u t t e r f l y ! ", " ">;
+
+/*
+  MinusOne
+  Given a number (always positive) as a type. Your type should return the number decreased by one.
+  For example:
+  type Zero = MinusOne<1> // 0
+  type FiftyFour = MinusOne<55> // 54
+*/
