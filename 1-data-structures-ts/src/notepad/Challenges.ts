@@ -826,9 +826,143 @@ type DropChar<
 type Butterfly = DropChar<" b u t t e r f l y ! ", " ">;
 
 /*
+  MATH !
   MinusOne
   Given a number (always positive) as a type. Your type should return the number decreased by one.
   For example:
   type Zero = MinusOne<1> // 0
   type FiftyFour = MinusOne<55> // 54
+  
 */
+type Length_<T extends any[]> = T extends { length: infer L } ? L : never;
+
+type BuildTuple_<L extends number, T extends any[] = []> = T extends {
+  length: L;
+}
+  ? T
+  : BuildTuple_<L, [...T, any]>;
+
+type Add<A extends number, B extends number> = Length<
+  [...BuildTuple_<A>, ...BuildTuple_<B>]
+>;
+
+type Subtract<A extends number, B extends number> = BuildTuple_<A> extends [
+  ...infer U,
+  ...BuildTuple_<B>
+]
+  ? Length<U>
+  : never;
+
+type MinusOne<Num extends number> = Subtract<Num, 1>;
+
+type Zero = MinusOne<1>;
+
+/*
+  PickByType
+
+  From T, pick a set of properties whose type are assignable to U.
+  For Example
+  type OnlyBoolean = PickByType<{
+  name: string
+  count: number
+  isReadonly: boolean
+  isEnable: boolean
+}, boolean> // { isReadonly: boolean; isEnable: boolean; }
+*/
+type Keys<K> = keyof K;
+
+type PickByType<TObj extends object, U> = {
+  [K in keyof TObj as TObj[K] extends U ? K : never]: TObj[K];
+};
+
+type OnlyBoolean = PickByType<
+  {
+    name: string;
+    count: number;
+    isReadonly: boolean;
+    isEnable: boolean;
+  },
+  boolean
+>;
+
+/*
+  StartsWith
+
+  Implement StartsWith<T, U> which takes two exact string types and returns whether T starts with U
+*/
+type StartsWith<T extends string, U extends string> = T extends `${U}${any}`
+  ? true
+  : false;
+
+type a1 = StartsWith<"abc", "ac">; // expected to be false
+type b2 = StartsWith<"abc", "ab">; // expected to be true
+type c3 = StartsWith<"abc", "abcd">; // expected to be false
+
+type EndsWith<T extends string, U extends string> = T extends `${any}${U}`
+  ? true
+  : false;
+
+type a1a = EndsWith<"abc", "bc">; // expected to be true
+type b2b = EndsWith<"abc", "abc">; // expected to be true
+type c3c = EndsWith<"abc", "d">; // expected to be false
+
+/*
+  PartialByKeys
+  Implement a generic PartialByKeys<T, K> which takes two type argument T and K.
+
+  K specify the set of properties of T that should set to be optional. When K is not provided, it should make all properties optional just like the normal Partial<T>.
+*/
+
+interface User {
+  name: string;
+  age: number;
+  address: string;
+}
+
+type MyOmit2<F, S> = { [P in keyof F as P extends S ? never : P]: F[P] };
+type EverythingFromTExceptK<T, K> = MyOmit2<T, K>;
+
+type MyMerge<T> = { [P in keyof T]: T[P] };
+
+type OptionalProperties<T, U> = {
+  [Key in keyof T as Key extends U ? Key : never]?: T[Key];
+};
+
+type PartialByKeys<T, U = keyof T> = MyMerge<
+  OptionalProperties<T, U> & EverythingFromTExceptK<T, U>
+>;
+
+type UserPartialName = PartialByKeys<User, "name">; // { name?:string; age:number; address:string }
+
+/*
+  Mutable
+*/
+interface Todo2 {
+  readonly title: string;
+  readonly description: string;
+  readonly completed: boolean;
+}
+
+type Mutable<T> = { -readonly [Key in keyof T]: T[Key] };
+
+type MutableTodo = Mutable<Todo2>; // { title: string; description: string; completed: boolean; }
+
+/*
+  OmitByType
+  From T, pick a set of properties whose type are not assignable to U.
+*/
+
+type RemoveUfromT<T, U> = {
+  [Key in keyof T as T[Key] extends U ? never : Key]: T[Key];
+};
+type OmitByType<T, U> = RemoveUfromT<T, U>;
+
+type OmitBoolean = OmitByType<
+  {
+    name: string;
+    count: number;
+    isReadonly: boolean;
+    isEnable: boolean;
+  },
+  boolean
+>; // { name: string; count: number }
