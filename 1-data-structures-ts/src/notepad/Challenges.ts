@@ -1,5 +1,12 @@
 //https://ghaiklor.github.io/type-challenges-solutions/en/
 
+//type lenght
+type GetLenghtType<T extends any[], U extends number = T["length"]> = U;
+type useGetLenghtType = GetLenghtType<["1", "231", "123"]>;
+
+type R0 = [0, 1, 2, 3, 4, 5][number];
+// R0 is 0 | 1 | 2 | 3 | 4 | 5
+
 // descriminetion Union
 type USER = {
   id: number;
@@ -966,3 +973,338 @@ type OmitBoolean = OmitByType<
   },
   boolean
 >; // { name: string; count: number }
+
+/*
+  ObjectEntries
+*/
+interface Model {
+  name: string;
+  age: number;
+  locations: string[] | null;
+}
+
+type ObjectEntries<TObj extends object> = {
+  [K in keyof TObj]: TObj[K] extends infer R ? [K, R] : never;
+};
+
+type modelEntries = ObjectEntries<Model>; // ['name', string] | ['age', number] | ['locations', string[] | null];
+
+type HandleUndefind<F, S extends keyof F> = F[S] extends infer R | undefined
+  ? R
+  : F[S];
+
+type ObjectEntrie2s<TObj extends object> = {
+  [K in keyof TObj]-?: [K, HandleUndefind<TObj, K>];
+};
+
+type modelEntries2 = ObjectEntrie2s<Model>; // ['name', string] | ['age', number] | ['locations', string[] | null];
+
+/*
+  Shift
+*/
+type Shift<TArry extends any[]> = TArry extends [infer _, ...infer R]
+  ? R
+  : never;
+
+type Resulttt = Shift<[3, 2, 1]>; // [2, 1]
+
+/*
+  Reverse
+*/
+type ReverseMY<TArry extends any[]> = TArry extends [...infer F, infer L]
+  ? [L, ...ReverseMY<F>]
+  : [];
+
+type aReverseMY = ReverseMY<["a", "b"]>; // ['b', 'a']
+type bReverseMY = ReverseMY<["a", "b", "c"]>; // ['c', 'b', 'a']
+
+/*
+  Tuple to Nested Object
+*/
+type TupleToNestedObject<
+  T extends any[],
+  U extends string | boolean | number
+> = T extends [infer F, ...infer L]
+  ? F extends string
+    ? { [Key in F]: TupleToNestedObject<L, U> }
+    : never
+  : U;
+
+type ax = TupleToNestedObject<["a"], string>; // {a: string}
+type bx = TupleToNestedObject<["a", "b"], number>; // {a: {b: number}}
+type cx = TupleToNestedObject<[], boolean>; // boolean. if the tuple is empty, just return the U type
+
+/*
+  Flip Arguments
+  Type FlipArguments<T> requires function type T and returns a new function type which has the same return type of T but reversed parameters.
+*/
+
+type MyRevers<T extends unknown[]> = T extends [...infer F, infer S]
+  ? [S, ...MyRevers<F>]
+  : [];
+
+type FlipArguments<T extends (...args: any[]) => void> = T extends (
+  ...arg: [...infer F]
+) => infer R
+  ? (...args: MyRevers<F>) => R
+  : never;
+
+type Flipped = FlipArguments<
+  (arg0: string, arg1: number, arg2: boolean) => void
+>;
+// (arg0: boolean, arg1: number, arg2: string) => void
+
+/*
+  FlattenDepth
+*/
+type FlattenDepth<
+  T extends any[],
+  C extends number = 1,
+  U extends any[] = []
+> = T extends [infer F, ...infer R]
+  ? F extends any[]
+    ? U["length"] extends C
+      ? [F, ...FlattenDepth<R, C, U>]
+      : [...FlattenDepth<F, C, [0, ...U]>, ...FlattenDepth<R, C, U>]
+    : [F, ...FlattenDepth<R, C, U>]
+  : T;
+
+type acx = FlattenDepth<[1, 2, [3, 4], [[[5]]]], 2>; // [1, 2, 3, 4, [5]]. flattern 2 times
+type bcx = FlattenDepth<[1, 2, [3, 4], [[[5]]]]>; // [1, 2, 3, 4, [[5]]]. Depth defaults to be 1
+
+/*
+  BEM style string
+*/
+type BEM<
+  B extends string,
+  E extends string[] = [],
+  M extends string[] = []
+> = E extends [infer A]
+  ? A extends string
+    ? M extends [infer C]
+      ? C extends string
+        ? `${B}__${A}--${C}`
+        : never
+      : `${B}__${A}`
+    : never
+  : B;
+
+type Element<E extends string[]> = E[number] extends never
+  ? ``
+  : `__${E[number]}`;
+
+type Modifier<M extends string[]> = M[number] extends never
+  ? ``
+  : `--${M[number]}`;
+
+type Block<B extends string> = `${B}`;
+
+type BEM2<
+  B extends string,
+  E extends string[],
+  M extends string[]
+> = `${Block<B>}${Element<E>}${Modifier<M>}`;
+
+type useBEM = BEM<"btn", ["warning"], ["price"]>;
+type useBEM2 = BEM2<"btn", ["warning"], ["price"]>;
+
+/*
+  Flip
+*/
+type AllowedTypes = string | number | boolean;
+
+type Fliper<T extends object> = {
+  [K in keyof T as T[K] extends AllowedTypes ? `${T[K]}` : never]: K;
+};
+
+type useFliper = Fliper<{ a: "x"; b: "y"; c: "z" }>; // {x: 'a', y: 'b', z: 'c'}
+
+/*
+  AllCombinations
+*/
+// get all letters and and make union
+type String2Union<S extends string> = S extends `${infer C}${infer R}`
+  ? C | String2Union<R>
+  : never;
+
+type FOOO = String2Union<"ABC">;
+
+type AllCombinations<S extends string, U extends string = String2Union<S>> = [
+  U
+] extends [never]
+  ? ""
+  : "" | { [K in U]: `${K}${AllCombinations<never, Exclude<U, K>>}` }[U];
+
+type AllCombinations_ABC = AllCombinations<"ABC">;
+// should be '' | 'A' | 'B' | 'C' | 'AB' | 'AC' | 'BA' | 'BC' | 'CA' | 'CB' | 'ABC' | 'ACB' | 'BAC' | 'BCA' | 'CAB' | 'CBA'
+
+/*
+  Fibonacci Sequence
+*/
+type Fibonacci<
+  T extends number,
+  N extends number[] = [1],
+  Res extends number[] = [1],
+  Cur extends number[] = [1]
+> = N["length"] extends T
+  ? Res["length"]
+  : Fibonacci<T, [...N, 1], Cur, [...Res, ...Cur]>;
+
+type Result1Fib = Fibonacci<3>; // 2
+type Result2Fib = Fibonacci<8>; // 21
+
+/*
+  Greater Than
+*/
+type GreaterArr<T extends any[], U extends any[]> = U extends [...T, ...any]
+  ? false
+  : true;
+
+type newArr<T extends number, A extends any[] = []> = A["length"] extends T
+  ? A
+  : newArr<T, [...A, ""]>;
+
+type GreaterThan<T extends number, U extends number> = GreaterArr<
+  newArr<T>,
+  newArr<U>
+>;
+
+type useGreter1 = GreaterThan<2, 1>; //should be true
+type useGreter2 = GreaterThan<1, 1>; //should be false
+type useGreter3 = GreaterThan<10, 100>; //should be false
+type useGreter4 = GreaterThan<111, 11>; //should be true
+
+/*
+  Fill
+*/
+type Fill<
+  T extends unknown[],
+  N,
+  Start extends number = 0,
+  End extends number = T["length"],
+  L extends 1[] = [],
+  IsReplace extends boolean = false
+> = Start extends End
+  ? T
+  : T extends [infer Head, ...infer Rest]
+  ? L["length"] extends Start
+    ? [N, ...Fill<Rest, N, Start, End, [1, ...L], true>]
+    : L["length"] extends End
+    ? [Head, ...Fill<Rest, N, Start, End, [1, ...L], false>]
+    : [
+        IsReplace extends true ? N : Head,
+        ...Fill<Rest, N, Start, End, [1, ...L], IsReplace>
+      ]
+  : [];
+
+type expFill = Fill<[1, 2, 3], 0>; // expected to be [0, 0, 0]
+
+/*
+  Chunk
+*/
+type ChunkMy<T extends any[], U extends number> = T["length"] extends U
+  ? T
+  : T extends [...infer F, infer R]
+  ? Chunk<F, U>
+  : T;
+
+type exp111 = ChunkMy<[1, 2, 3], 2>;
+
+type Chunk<T, N, A extends unknown[] = []> = T extends [infer H, ...infer T]
+  ? A["length"] extends N
+    ? [A, ...Chunk<[H, ...T], N>]
+    : Chunk<T, N, [...A, H]>
+  : A[number] extends never
+  ? []
+  : [A];
+
+type exp1 = Chunk<[1, 2, 3], 2>; // expected to be [[1, 2], [3]]
+type exp2 = Chunk<[1, 2, 3], 4>; // expected to be [[1, 2, 3]]
+type exp3 = Chunk<[1, 2, 3], 1>; // expected to be [[1], [2], [3]]
+
+/*
+      IsTuple
+*/
+type IsTuple<T> = T extends readonly unknown[]
+  ? number extends T["length"] // `T['length'] extends number`  is not work, because exact number like 1 extends number
+    ? false
+    : true
+  : false;
+
+type useIsTuple = IsTuple<[1]>;
+
+/*
+  ZIP
+*/
+type Zip<T extends unknown[], U extends unknown[]> = T extends [
+  infer F,
+  ...infer L
+]
+  ? U extends [infer G, ...infer H]
+    ? [[F, G], ...Zip<L, H>]
+    : []
+  : [];
+
+type expexpexp = Zip<[1, 2], [true, false]>; // expected to be [[1, true], [2, false]]
+
+/*
+  Subsequence
+*/
+type GettNumbersFromTuple<S extends unknown[]> = S extends [infer F, ...infer L]
+  ? GettNumbersFromTuple<L> | F
+  : never;
+
+type useGettNumbersFromTuple = GettNumbersFromTuple<[1, 2, 3, 3, 4]>;
+
+type Subsequence<T extends any[], Prefix extends any[] = []> = T extends [
+  infer F,
+  ...infer R
+]
+  ? Subsequence<R, Prefix | [...Prefix, F]>
+  : Prefix;
+
+type Aaaa = Subsequence<[1, 2]>; // [] | [1] | [2] | [1, 2]
+
+/*
+  Combination
+*/
+type Combination<
+  T extends string[],
+  A = T[number],
+  U = A
+> = U extends infer I extends string
+  ? I | `${I} ${Combination<[], Exclude<A, I>>}`
+  : never;
+
+// expected to be `"foo" | "bar" | "baz" | "foo bar" | "foo bar baz" | "foo baz" | "foo baz bar" | "bar foo" | "bar foo baz" | "bar baz" | "bar baz foo" | "baz foo" | "baz foo bar" | "baz bar" | "baz bar foo"`
+type Keysss = Combination<["foo", "bar", "baz"]>;
+
+/*
+  Number Range
+*/
+type TupleTYPE<L extends number, A extends never[] = []> = A["length"] extends L
+  ? A
+  : TupleTYPE<L, [...A, never]>;
+
+type R0TupleTYPE = TupleTYPE<5>;
+// R0 is [never, never, never, never, never]
+
+type NumberRange<
+  L extends number,
+  H extends number,
+  A extends number[] = TupleTYPE<L>
+> = A["length"] extends H
+  ? [...A, A["length"]][number]
+  : NumberRange<L, H, [...A, A["length"]]>;
+
+type resultNumberRange = NumberRange<2, 9>; //  | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+
+/*
+  Construct Tuple
+*/
+type ConstructTuple<
+  T extends number,
+  U extends unknown[] = []
+> = U["length"] extends T ? U : ConstructTuple<T, [...U, unknown]>;
+
+type resultConstructTuple = ConstructTuple<2>; // expect to be [unknown, unkonwn]
