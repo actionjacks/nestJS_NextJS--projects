@@ -146,3 +146,26 @@ ps axuk +cpu -U <user> = wyswietla zuzycie procesora dla uzytkownika
 ```
 systemctl = zarzadzanie servisami
 ```
+
+## zaawansowane
+mozna uzyć komendy np cut -c 1-3 plik.txt >> SomeFile.txt
+```
+cut -c[zasieg] plik // np cut -c 1,2,3 auta.txt // zwroci pierwsze 3 znacy z lewej strony
+// mozna tez ucyz 1-3 lub 4-8 
+
+cut -d " " -f 2 auto.txt // -d "delimiter" // zwroc 2 wiersz odzielony spacja (" ") lub w plikach .csv "," 
+
+table | table | table
+row   ,  row  ,  row <===przecinek to delimiter
+```
+## sed
+```
+sed s/Czarny/Zielony plik.txt //zamieni w pliku lewy na prawy
+```
+
+## MAWK - jezyk skryptowy
+```
+awk '{print}' plik.txt //wyswietli zawartosc pliku
+awk '{print $n}' plik.txt //n - to ktory rzad ma zwrocic i wyswietlic
+
+```

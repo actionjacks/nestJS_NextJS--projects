@@ -1308,3 +1308,91 @@ type ConstructTuple<
 > = U["length"] extends T ? U : ConstructTuple<T, [...U, unknown]>;
 
 type resultConstructTuple = ConstructTuple<2>; // expect to be [unknown, unkonwn]
+
+/*
+  MapTypes
+*/
+type MapTypes<
+  T extends object,
+  R extends { mapFrom: unknown; mapTo: unknown }
+> = {
+  [P in keyof T]: T[P] extends R["mapFrom"]
+    ? R extends { mapFrom: T[P] }
+      ? R["mapTo"]
+      : never
+    : T[P];
+};
+
+type StringToNumber = {
+  mapFrom: string; // value of key which value is string
+  mapTo: number; // will be transformed for number
+};
+
+type StringToNumber2 = { mapFrom: string; mapTo: number };
+
+type useMapTypes = MapTypes<{ iWillBeANumberOneDay: string }, StringToNumber>; // gives { iWillBeANumberOneDay: number; }
+
+/*
+  Unique
+*/
+type Unique<T extends unknown[]> = T extends [...infer H, infer T]
+  ? //We should check if the element T is present in other part of the tuple - in its head:
+    T extends H[number]
+    ? [...Unique<H>]
+    : [...Unique<H>, T]
+  : [];
+
+type ResUnique = Unique<[1, 1, 2, 2, 3, 3]>; // expected to be [1, 2, 3]
+
+/*
+  LastIndexOf
+*/
+/**
+ * Tests if two types are equal
+ */
+export type Equals<T, S> = [T] extends [S]
+  ? [S] extends [T]
+    ? true
+    : false
+  : false;
+
+type LastIndexOf<T extends unknown[], U extends number> = T extends [
+  ...infer F,
+  infer L
+]
+  ? Equals<L, U> extends true
+    ? F["length"]
+    : LastIndexOf<F, U>
+  : never;
+
+type Res1LastIndexOf = LastIndexOf<[1, 2, 3, 2, 1], 2>; // 3
+type Res2LastIndexOf = LastIndexOf<[0, 0, 0], 2>; // -1
+
+/*
+  Join
+*/
+
+type Join<T extends unknown[], U extends string> = T extends [
+  infer F,
+  ...infer L
+]
+  ? L extends never
+    ? ""
+    : F extends string
+    ? `${F}${U}${Join<L, "">}`
+    : ""
+  : "";
+
+type Res1Join = Join<["Hello", "World"], "-">; // expected to be 'Hello-World'
+
+type Join2<
+  T extends string[],
+  U extends string | number,
+  V extends string = ""
+> = T extends [infer S extends string, ...infer R extends string[]]
+  ? Join2<R, U, `${V}${V extends "" ? "" : U}${S}`>
+  : V;
+
+type Res1Join2 = Join2<["Hello", "World"], " ">; // expected to be 'Hello World'
+type Res2Join2 = Join2<["2", "2", "2"], 1>; // expected to be '21212'
+type Res3Join2 = Join2<["o"], "u">; // expected to be 'o'
