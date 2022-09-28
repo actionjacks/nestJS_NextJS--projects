@@ -169,3 +169,9 @@ awk '{print}' plik.txt //wyswietli zawartosc pliku
 awk '{print $n}' plik.txt //n - to ktory rzad ma zwrocic i wyswietlic
 
 ```
+
+## hosts
+```
+/etc$ cat hosts //plik z danymi polaczeniami protokołami
+dodanie ręczne to np 35.246.6.109    www.pandait.pl panda
+```

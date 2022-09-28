@@ -1223,7 +1223,7 @@ type exp2 = Chunk<[1, 2, 3], 4>; // expected to be [[1, 2, 3]]
 type exp3 = Chunk<[1, 2, 3], 1>; // expected to be [[1], [2], [3]]
 
 /*
-      IsTuple
+  IsTuple
 */
 type IsTuple<T> = T extends readonly unknown[]
   ? number extends T["length"] // `T['length'] extends number`  is not work, because exact number like 1 extends number
@@ -1369,21 +1369,32 @@ type Res1LastIndexOf = LastIndexOf<[1, 2, 3, 2, 1], 2>; // 3
 type Res2LastIndexOf = LastIndexOf<[0, 0, 0], 2>; // -1
 
 /*
+  IndexOf
+*/
+type IndexOf<T extends any[], U, Pass extends any[] = []> = T extends [
+  infer F,
+  ...infer Rest
+]
+  ? Equals<F, U> extends true
+    ? Pass["length"]
+    : IndexOf<Rest, U, [...Pass, F]> //put first argument and now array is length 0 next literation 1
+  : -1;
+
+type ResIndexOf = IndexOf<[1, 2, 3], 2>; // expected to be 1
+
+/*
   Join
 */
-
 type Join<T extends unknown[], U extends string> = T extends [
   infer F,
   ...infer L
 ]
-  ? L extends never
-    ? ""
-    : F extends string
+  ? F extends string
     ? `${F}${U}${Join<L, "">}`
     : ""
   : "";
 
-type Res1Join = Join<["Hello", "World"], "-">; // expected to be 'Hello-World'
+type Res1Join = Join<["Hello", "World"], "__">; // expected to be 'Hello__World'
 
 type Join2<
   T extends string[],
@@ -1396,3 +1407,35 @@ type Join2<
 type Res1Join2 = Join2<["Hello", "World"], " ">; // expected to be 'Hello World'
 type Res2Join2 = Join2<["2", "2", "2"], 1>; // expected to be '21212'
 type Res3Join2 = Join2<["o"], "u">; // expected to be 'o'
+
+/*
+  Trunc
+*/
+type Trunc<T extends number> = `${T}` extends `${infer A}.${infer _}`
+  ? `${A}`
+  : `${T}`;
+
+type ATrunc = Trunc<12.34>; // 12
+
+/*
+  Without
+*/
+type Without<T, U> = T extends [infer H, ...infer T]
+  ? H extends (U extends number[] ? U[number] : U)
+    ? [...Without<T, U>]
+    : [H, ...Without<T, U>]
+  : [];
+
+type Res1Without = Without<[1, 2], 1>; // expected to be [2]
+//type Res2Without = Without<[1, 2, 4, 1, 5], [1, 2]>; // expected to be [4, 5]
+
+/*
+  CamelCase
+      */
+type CamelCase<S extends string> =
+  S extends `${infer left}_${infer right}${infer rest}`
+    ? `${Lowercase<left>}${Uppercase<right>}${CamelCase<rest>}`
+    : Lowercase<S>;
+
+type camelCase1 = CamelCase<"hello_world_with_types">; // expected to be 'helloWorldWithTypes'
+type camelCase2 = CamelCase<"HELLO_WORLD_WITH_TYPES">; // expected to be same as previous one
