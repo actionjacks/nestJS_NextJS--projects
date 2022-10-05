@@ -1,3 +1,11 @@
+## install 
+
+Alekss Zukovskis
+3 miesiące temu
+1. sudo apt install alien, enter password
+2. cd Downloads
+3. sudo alien -d file.tar.gz
+
 ## Roor
 ```
 sudo su
