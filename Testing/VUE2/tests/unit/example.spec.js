@@ -6,7 +6,7 @@ import { shallowMount, mount } from "@vue/test-utils";
 import flushPromises from "flush-promises";
 
 const $router = {
-  replace: jest.fn()
+  replace: jest.fn(),
 };
 
 jest.mock("firebase/app", () => ({
@@ -23,10 +23,10 @@ jest.mock("firebase/app", () => ({
         return Promise.resolve();
       },
       currentUser: {
-        getIdToken: () => "blah"
-      }
+        getIdToken: () => "blah",
+      },
     };
-  }
+  },
 }));
 
 // jest.mock("firebase/app", () => ({
@@ -40,17 +40,18 @@ fdescribe("Register.vue", () => {
   beforeEach(() => {
     wrapper = shallowMount(Register, {
       mocks: {
-        $router
+        $router,
       },
       data() {
         return {
           email: "test@test.com",
           password: "123",
-          error: false
+          error: false,
         };
-      }
+      },
     });
   });
+
   it("renders", () => {
     expect(wrapper.exists()).toBe(true);
   });
@@ -86,7 +87,7 @@ describe("HelloWorld.vue", () => {
   it("renders props.msg when passed", () => {
     const msg = "new message";
     const wrapper = shallowMount(HelloWorld, {
-      propsData: { msg }
+      propsData: { msg },
     });
     expect(wrapper.text()).toMatch(msg);
   });
@@ -95,9 +96,9 @@ describe("HelloWorld.vue", () => {
 const $axios = {
   get: () => {
     return Promise.resolve({ data: [{ char_id: 1, name: "123" }] });
-  }
+  },
 };
-
+// ========================================
 describe("secret vue", () => {
   let wrapper;
   it("renders", () => {
@@ -120,13 +121,14 @@ describe("TopHeader.vue", () => {
     wrapper = shallowMount(TopHeader, {
       // methods: { setupFirebase: () => {} },
       mocks: {
-        $router
-      }
+        $router,
+      },
     });
 
     jest.resetModules();
     jest.clearAllMocks();
   });
+
   it("renders", () => {
     expect(wrapper.exists()).toBe(true);
   });
