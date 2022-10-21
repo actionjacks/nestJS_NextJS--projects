@@ -6,6 +6,8 @@ const multiply_ = (x: number) => {
   };
 };
 multiply_(2)(3);
+const duble = multiply_(2);
+duble(3); //6
 
 //
 const arrayofNumbers = [1, 2, 3, 4, 5, 6, 22];
@@ -37,3 +39,14 @@ const getPages = (list: Bookshelf[]) => list.map(getProperty("pages"));
 const countPages = (book: number[]) => book.reduce((acc, pages) => acc + pages);
 
 pipe(getBussiness, getPages, countPages)(bookshelf);
+
+// funktor
+const triple = (x: number) => x * 3;
+
+const Functor = (x: number) => ({
+  map: (fn: (arg: any) => any) => Functor(fn(x)),
+  valueOf: () => x,
+});
+
+const number_s = Functor(4);
+number_s.map(triple).map(triple).valueOf();
