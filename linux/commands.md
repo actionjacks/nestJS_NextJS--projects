@@ -1,3 +1,6 @@
+## status 
+sudo systemctl status mysql
+
 ## install 
 
 Alekss Zukovskis
