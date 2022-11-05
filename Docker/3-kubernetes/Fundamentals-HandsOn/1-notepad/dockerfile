@@ -1,0 +1,29 @@
+FROM httpd:2.4
+COPY ./index.html /usr/local/apache2/htdocs/index.html
+#  lub ./* - kopiowac wszystko do ..
+
+#  command for make image from docker file
+# - docker build -t mojblog:mojtag .
+# run image
+# - docker run --name my-app -p 8080:80 mojblog:mojtag
+
+# przykladowy makefile do aplikacji go
+FROM golang:latest
+#  ustawiam pracujacy folder
+WORKDIR /helloApp
+# kopiuje to pliki na kontener
+ADD . .
+# # budujemy aplikacjie
+RUN go build -o main .
+EXPOSE 8090
+CMD ["/helloApp/main"]
+
+# 
+
+FROM node:13
+WORKDIR /app
+COPY package.json /app
+RUN npm install
+COPY . /app/
+CMD node server.js
+EXPOSE 1111

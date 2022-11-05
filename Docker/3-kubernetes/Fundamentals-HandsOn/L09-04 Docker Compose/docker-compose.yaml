@@ -1,5 +1,6 @@
 services:
   web-fe:
+    # build command build from -Dockerfile on same level where docker-compose is
     build: .
     command: python app.py
     ports:
