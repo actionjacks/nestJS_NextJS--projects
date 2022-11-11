@@ -9,12 +9,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
-
-      </main>
-
-      <footer className="flex h-24 w-full items-center justify-center border-t">
-      </footer>
+      <h1 className='text-red-500'>
+        lorem
+      </h1>
     </div>
   )
 }
