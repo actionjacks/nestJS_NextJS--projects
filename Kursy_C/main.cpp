@@ -1,14 +1,21 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <limits>
+#include <cmath>
+
 // https://en.cppreference.com/w/cpp/language/operator_precedence
 int addNumbers(int arg1, int arg2)
 {
   return arg1 + arg2;
 }
 
+using namespace std;
 int main()
 {
+  string jacek = "jajc";
+  auto loool = "od";
+
   int first_num = {13};
   int sec_num = {4};
   int sum = addNumbers(first_num, sec_num);
@@ -59,7 +66,55 @@ int main()
   int val_b_ = 10;
   ++val_a_; // 2
   --val_b_; // 9
-            // or val_b_++, val_b_--
+  // or val_b_++, val_b_--
+
+  int val_c = 10;
+  val_c += 5;
+  val_c -= 5;
+  val_c *= 1;
+  val_c %= 1; // modulo
+  val_c /= 2;
+
+  // != , == , <= , >=, > , <, && , || and or
+  if (val_a_ == val_b_) // compare
+  {
+    val_a_ = 12;
+  }
+
+  std::cout << std::boolalpha; // make bool show instead 1/0
+  std::cout << "number < number2" << (val_a_ < val_b_) << std::endl;
+
+  std::cout << "not" << !val_a_ << std::endl;
+
+  //<limits>
+  std::cout << "min of short" << std::numeric_limits<short>::min() << "max of short"
+            << std::numeric_limits<short>::max() << std::endl;
+
+  double sav_ = -500;
+  std::cout << "abs of sav_" << std::abs(sav_) << std::endl;
+
+  // switch
+  const int Dupa{10};
+  int useDupa{Dupa};
+
+  enum TTool
+  {
+    pen,
+    eraser
+  };
+
+  TTool p = pen;
+
+  switch (p)
+  {
+  case pen:
+
+    break;
+
+  default:
+    break;
+  }
+
   return 0;
 }
-// 5:23
+// 7:41
