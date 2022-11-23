@@ -115,6 +115,15 @@ int main()
     break;
   }
 
+  // terner operation
+  int a_ = 34;
+  int b_ = 12;
+  int max{};
+
+  max = a_ > b_ ? b_ : a_;
+  // or
+  int speed{max ? 300 : 140};
+
   return 0;
 }
 // 7:41
