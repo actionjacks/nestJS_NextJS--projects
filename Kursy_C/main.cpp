@@ -5,6 +5,8 @@
 #include <cmath>
 
 // https://en.cppreference.com/w/cpp/language/operator_precedence
+// parameter passed this way are scoped localy in fun
+// inside the func are acrually COPIES of the arguments
 int addNumbers(int arg1, int arg2)
 {
   return arg1 + arg2;
