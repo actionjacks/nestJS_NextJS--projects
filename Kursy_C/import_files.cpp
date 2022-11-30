@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <limits>
 #include <cmath>
+#include "declaration_import.h" // Preprocessor
 
 // func declaration - before func call
 int max(int a, int b);
@@ -14,6 +15,8 @@ int main()
   int b_ = 4;
 
   std::cout << max(a_, b_) << std::endl;
+
+  int result_fun_from_import = function_to_import(a_, b_);
 
   return 0;
 }
