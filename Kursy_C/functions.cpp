@@ -39,7 +39,7 @@ int main(int argc, char **argv)
   //  [&abc, &bcd]() -> int
   int abc = 2;
   int bcd = 12;
-  [abc, bcd]() -> int
+  [abc, bcd]() -> int // can spec return type
   {
     return abc + bcd;
   }();
@@ -49,6 +49,18 @@ int main(int argc, char **argv)
   [=]()
   {
     return abc + bcd;
+  }();
+
+  // capture by reference
+  int c{32};
+  [&c]()
+  {
+    return ++c;
+  }();
+
+  auto lambdaFuncAceptAllByReference = [&]()
+  {
+    return ++c;
   }();
 
   return 0;
@@ -74,4 +86,42 @@ double say_age2(double a, double b)
   return a + b;
 }
 
-// 17:40
+// template blueprint
+template <typename T>
+T maximumFunc(T a, T b);
+
+template <typename T>
+const T &maximumFunc2(const T &a, const T &b); // pass as reference
+
+// template specialization
+template <typename T>
+T maximumFunc3(T a, T b);
+template <>
+const char *maximumFunc3<const char *>(const char *a, const char *b);
+
+int someFunc()
+{
+  std::cout << "use func blueprint" << maximumFunc(12, 12) << std::endl; // to use params need same same type
+  std::cout << "use func blueprint" << maximumFunc(1.23, 12.23) << std::endl;
+
+  maximumFunc<int>(1, 2);
+  maximumFunc<int>(1.2, 2.2); // make conversion doubles to int
+  maximumFunc<double>(1, 2.2);
+
+  return 0;
+}
+
+template <typename T>
+T maximumFunc(T a, T b)
+{
+  return (a > b) ? a : b;
+}
+
+// pass as reference
+template <typename T>
+const T &maximumFunc2(const T &a, const T &b)
+{
+  return (a > b) ? a : b;
+}
+
+// 17:41
