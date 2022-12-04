@@ -3,7 +3,9 @@
 #include <iomanip>
 #include <limits>
 #include <cmath>
-
+#include <cstring>
+#include <concepts>
+#include <type_traits>
 using namespace std;
 
 // pass by pointer
@@ -96,6 +98,7 @@ const T &maximumFunc2(const T &a, const T &b); // pass as reference
 // template specialization
 template <typename T>
 T maximumFunc3(T a, T b);
+
 template <>
 const char *maximumFunc3<const char *>(const char *a, const char *b);
 
@@ -124,4 +127,128 @@ const T &maximumFunc2(const T &a, const T &b)
   return (a > b) ? a : b;
 }
 
-// 17:41
+// template specialization
+// now can pas int, doouble, char, strings
+template <>
+const char *maximumFunc3<const char *>(const char *a, const char *b)
+{
+  return (std::strcmp(a, b) > 0) ? a : b;
+};
+
+/**
+ * concept
+ */
+template <typename T>
+// integral variable cant be double type
+requires std::integral<T> // can use function if will satisfy concept
+                          // requires std::is_integral_v<T> - custom concept
+    T addFunc(T a, T b)
+{
+  return a + b;
+}
+// same
+template <std::integral T>
+T addUsingConcept(T a, T b)
+{
+  return a + b;
+}
+// or
+auto addUsingConcept2(std::integral auto a, std::integral auto b)
+{
+  return a + b;
+}
+// or
+template <typename T>
+T addUsingConcept3(T a, T b) requires std::integral<T>
+{
+  return a + b;
+}
+
+/**
+ * custom concept
+ */
+template <typename T>
+concept MyIntegral = std::is_integral_v<T>;
+// or
+template <typename T>
+concept Multipliable = requires(T a, T b)
+{
+  (a * b);
+};
+// or
+template <typename T>
+concept Incrementable = requires(T a)
+{
+  a += 1;
+  ++a;
+  a++;
+};
+
+// using custom conept
+template <typename T>
+requires Multipliable<T>
+    T add_usingMyConcept(T a, T *b)
+{
+  return a + b;
+};
+
+template <Multipliable T>
+T add_usingMyConcept(T a, T *b)
+{
+  return a + b;
+};
+
+auto add_usingMyConcept(Multipliable auto a, Multipliable auto b)
+{
+  return a + b;
+};
+
+template <typename T>
+T add_function2(T a, T b) requires MyIntegral<T>
+{
+  return a + b;
+};
+
+/***
+ *  REQUIREMENT
+ */
+template <typename U>
+concept TinyType = requires(U u)
+{
+  sizeof(U) <= 4;          // simple requirement : only check syntax
+  requires sizeof(U) <= 4; // nested requirement checks the if the expression is true
+};
+
+template <typename T>
+concept Addable_ = requires(T a, T b)
+{
+  {
+    a + b
+  }
+  noexcept->std::convertible_to<int>; // compound requrement
+  // check if a+b is valid syntax and result is converible to int
+};
+
+template <typename T>
+concept TinyType_ = requires(T t)
+{
+  sizeof(T) <= 4;
+  requires sizeof(T) <= 4;
+};
+
+template <typename T>
+T myFunctUsingTinyType_ConceptAndIntegral2(T t) requires std::integral<T> && TinyType_<T>
+{
+  std::cout << "value" << srd::endl;
+};
+
+template <typename T>
+T myFunctUsingTinyType_ConceptAndIntegral(T t) requires std::integral<T> && requires(T t)
+{
+  sizeof(T) <= 4;
+  requires sizeof(T) <= 4;
+}
+{
+  std::cout << "value" << srd::endl;
+  return (2 * t);
+};
