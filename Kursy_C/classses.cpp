@@ -29,6 +29,23 @@ public:
   }
 };
 
+class Square
+{
+private:
+  int height = 20;
+  // getters
+public:
+  int get_base_height()
+  {
+    return height;
+  }
+  // setters
+  void set_base_height(int newHeight)
+  {
+    height = newHeight;
+  }
+};
+
 /**
  * using class
  */
@@ -39,4 +56,4 @@ int fo()
   return 0;
 };
 
-// 20:38
+// 21:12
