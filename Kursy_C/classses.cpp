@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <string_view>
 
 class Cylinder
 {
@@ -53,7 +54,44 @@ int fo()
 {
   Cylinder cylinder1(1.2, 3.2);
   std::cout << "get cilinder" << cylinder1.volume() << std::endl;
+
+  Cylinder *p_cylinder1 = &cylinder1;
+  std::cout << "get cilinder by pointer" << (*p_cylinder1).volume() << std::endl;
+  // or better
+  std::cout << "get cilinder by pointer" << p_cylinder1->volume() << std::endl;
+
+  Cylinder *p_cylinder2 = new Cylinder(100, 2);
+  std::cout << "get cilinder by pointer" << p_cylinder2->volume() << std::endl;
+
+  delete p_cylinder2;
   return 0;
 };
 
-// 21:12
+/**
+ * Destructors - relase memory
+ */
+class Dog
+{
+public:
+  Dog(); // default constructor
+  Dog(std::string_view name_param, std::string_view breed_param, int age_param)
+  {
+    dog_name = name_param;
+    dog_breed = breed_param;
+
+    dog_age = new int;
+    *dog_age = age_param;
+  }
+  ~Dog(); // Destructor declared after run constructor relase memory
+  // or
+  // ~Dog(){
+  //   delete dog_age;
+  // }
+
+private:
+  std::string dog_name;
+  std::string dog_breed;
+  int *dog_age = nullptr;
+};
+
+// 22:05
