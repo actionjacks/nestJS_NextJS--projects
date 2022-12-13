@@ -114,3 +114,29 @@ void exceptionMechanism()
     // bad
   }
 }
+/**
+ * POINTER AND REFERENCE
+ */
+int incremetator(int x)
+{
+  // zwraca kopie zmiennej
+  return ++x;
+}
+int incremetator_(int *x)
+{
+  // mutuje zmienną
+  return ++(*x);
+}
+void dupa()
+{
+  int *mypointer_;
+  int var = 7;
+
+  mypointer_ = &var; // pointer is adress in memory of var
+  cout << "adres wskaznika" << mypointer_ << endl;
+
+  cout << "vartość wskaznika" << *mypointer_ << endl;
+
+  int &referece = var; // reference is value of var
+} // reference get one time
+// pointer can change

@@ -71,4 +71,11 @@ int main()
   std::string wierd_message{4, 'e'};        // initialize whit multiple copies of char containe eeee
 
   return 0;
-}
+};
+
+void myFunction_()
+{
+  using std::string;
+
+  string s = "jacek";
+};
