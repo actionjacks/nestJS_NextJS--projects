@@ -138,5 +138,46 @@ void dupa()
   cout << "vartość wskaznika" << *mypointer_ << endl;
 
   int &referece = var; // reference is value of var
-} // reference get one time
+};                     // reference get one time
 // pointer can change
+
+/**
+ * referencja poprzez wartosc w funkcjach zmienne sa tworzone lokalnie i nie sa mutowalne chyba ze argumentem funcji bedzie dostakowy znacznik w postaci & - czyli po przez referencje
+ */
+void addX(int *x)
+{
+  *x += 1; // * - pobiez wartosc zmiennej wskaznikowej
+};
+
+void addX(int x[])
+{
+  x[0] = 12;
+};
+
+int main_()
+{
+  int var_x = 0;
+  int tab_x[] = {1, 2};
+
+  addX(&var_x); // jesli nie bedzie & (zmienna jako wskaznik , po przez referencje) zmienna nie zostanie zmieniona
+
+  addX(tab_x); // zostanie zmutowane, tablica nie jest typem prostym wiec zostanie zmieniona pod indeksem 0
+
+  return 0;
+};
+// literacjaPoEskazniku(tablica, sizeof(tablica) / sizeof(tablica))
+void literacjaPoEskazniku(int *tab, int len)
+{
+  for (int *i = tab; i < tab + len; i++)
+  {
+    cout << *i << endl;
+  }
+};
+
+void literacja(int tab[], int len)
+{
+  for (int i = 0; i < len; i++)
+  {
+    cout << tab[i] << endl;
+  }
+};
