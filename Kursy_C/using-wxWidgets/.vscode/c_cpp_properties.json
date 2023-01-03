@@ -1,0 +1,20 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/usr/local/include/wx-3.2",
+                "/home/dev-jack/Downloads/wxWidgets-3.2.1/linuxbuild",
+                "/home/dev-jack/Downloads/wxWidgets-3.2.1/linuxbuild/lib/wx/include/gtk3-unicode-3.2",
+                "/usr/include/c++/11",
+                "/usr/include/x86_64-linux-gnu/c++/11"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c17",
+            "intelliSenseMode": "linux-clang-x64"
+        }
+    ],
+    "version": 4
+}
