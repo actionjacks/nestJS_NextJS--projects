@@ -1,0 +1,15 @@
+/home/dev-jack/_learn/nestJS_NextJS--projects/unity_c#/bin/Debug/net6.0/unity_c#
+/home/dev-jack/_learn/nestJS_NextJS--projects/unity_c#/bin/Debug/net6.0/unity_c#.deps.json
+/home/dev-jack/_learn/nestJS_NextJS--projects/unity_c#/bin/Debug/net6.0/unity_c#.runtimeconfig.json
+/home/dev-jack/_learn/nestJS_NextJS--projects/unity_c#/bin/Debug/net6.0/unity_c#.dll
+/home/dev-jack/_learn/nestJS_NextJS--projects/unity_c#/bin/Debug/net6.0/ref/unity_c#.dll
+/home/dev-jack/_learn/nestJS_NextJS--projects/unity_c#/bin/Debug/net6.0/unity_c#.pdb
+/home/dev-jack/_learn/nestJS_NextJS--projects/unity_c#/obj/Debug/net6.0/unity_c#.csproj.AssemblyReference.cache
+/home/dev-jack/_learn/nestJS_NextJS--projects/unity_c#/obj/Debug/net6.0/unity_c#.GeneratedMSBuildEditorConfig.editorconfig
+/home/dev-jack/_learn/nestJS_NextJS--projects/unity_c#/obj/Debug/net6.0/unity_c#.AssemblyInfoInputs.cache
+/home/dev-jack/_learn/nestJS_NextJS--projects/unity_c#/obj/Debug/net6.0/unity_c#.AssemblyInfo.cs
+/home/dev-jack/_learn/nestJS_NextJS--projects/unity_c#/obj/Debug/net6.0/unity_c#.csproj.CoreCompileInputs.cache
+/home/dev-jack/_learn/nestJS_NextJS--projects/unity_c#/obj/Debug/net6.0/unity_c#.dll
+/home/dev-jack/_learn/nestJS_NextJS--projects/unity_c#/obj/Debug/net6.0/ref/unity_c#.dll
+/home/dev-jack/_learn/nestJS_NextJS--projects/unity_c#/obj/Debug/net6.0/unity_c#.pdb
+/home/dev-jack/_learn/nestJS_NextJS--projects/unity_c#/obj/Debug/net6.0/unity_c#.genruntimeconfig.cache
