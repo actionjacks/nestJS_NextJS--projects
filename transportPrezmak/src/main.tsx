@@ -1,13 +1,14 @@
-import './index.css';
+import './index.css'
 
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { RouterProvider } from 'react-router-dom'
 
-import App from './App';
+import { router } from './router/router'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>,
   document.getElementById('root'),
-);
+)

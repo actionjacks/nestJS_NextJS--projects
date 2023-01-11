@@ -40,6 +40,7 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
+    semi: [2, 'never'],
     'jsx-a11y/anchor-is-valid': [
       'error',
       {
@@ -49,4 +50,4 @@ module.exports = {
       },
     ],
   },
-};
+}

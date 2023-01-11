@@ -1,15 +1,15 @@
-import './App.css';
+import './App.css'
 
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0)
 
   return (
     <div className="App">
-      <header className="App-header"></header>
+      <header className="App-header">ssss</header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
