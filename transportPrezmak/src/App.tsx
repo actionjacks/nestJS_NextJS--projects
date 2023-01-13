@@ -1,13 +1,16 @@
 import './App.scss'
 
-import React, { useState } from 'react'
+import BoxWrapper from './components/BoxWrapper/BoxWrapper'
+import CircleIndicator from './components/CircleIndicator'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">ssss</header>
+      <CircleIndicator />
+
+      <BoxWrapper number={1} />
+      <BoxWrapper number={2} />
+      <BoxWrapper number={3} />
     </div>
   )
 }
