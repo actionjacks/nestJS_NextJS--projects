@@ -1,11 +1,11 @@
-import './box_wrapper.scss'
+import './anime_box.scss'
 
 import { motion, useAnimation } from 'framer-motion'
 import { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 
-type BoxWrapperProps = {
-  number: number
+type AnimBoxProps = {
+  children?: React.ReactNode
 }
 
 const boxVariant = {
@@ -13,7 +13,7 @@ const boxVariant = {
   hidden: { opacity: 0, scale: 0 },
 }
 
-const BoxWrapper = ({ number }: BoxWrapperProps) => {
+const AnimBox = ({ children }: AnimBoxProps) => {
   const control = useAnimation()
   const [ref, inView] = useInView()
 
@@ -34,10 +34,10 @@ const BoxWrapper = ({ number }: BoxWrapperProps) => {
         initial="hidden"
         animate={control}
       >
-        {number}
+        {children}
       </motion.div>
     </div>
   )
 }
 
-export default BoxWrapper
+export default AnimBox

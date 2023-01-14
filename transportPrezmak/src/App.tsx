@@ -1,16 +1,25 @@
 import './App.scss'
 
-import BoxWrapper from './components/BoxWrapper/BoxWrapper'
+import AnimeBox from './components/AnimBox/AnimeBox'
 import CircleIndicator from './components/CircleIndicator'
+import Draw from './components/Draw'
 
 const App = () => {
   return (
     <div className="App">
-      <CircleIndicator />
+      <CircleIndicator backGroundColor={'black'} />
 
-      <BoxWrapper number={1} />
-      <BoxWrapper number={2} />
-      <BoxWrapper number={3} />
+      <AnimeBox>
+        <Draw />
+      </AnimeBox>
+
+      <AnimeBox>
+        <h1>lorem</h1>
+      </AnimeBox>
+
+      <AnimeBox>
+        <h1>lorem</h1>
+      </AnimeBox>
     </div>
   )
 }
