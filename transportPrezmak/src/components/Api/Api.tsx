@@ -2,10 +2,16 @@ import axios from 'axios'
 
 type DataResponse = PageContent | Record<string, never>
 
+export interface Section1 {
+  title: string
+  telPL: string
+  telUK: string
+}
+
 export interface PageContent {
-  section1: string[]
-  section2: string[]
-  section3: string[]
+  section1: Section1
+  section2: object[]
+  section3: object[]
 }
 
 export const getPageContent = async () => {

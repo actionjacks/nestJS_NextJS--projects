@@ -1,4 +1,4 @@
-import './anime_box.scss'
+import './motion_box.scss'
 
 import { motion, useAnimation } from 'framer-motion'
 import { useEffect } from 'react'
@@ -7,23 +7,25 @@ import { useInView } from 'react-intersection-observer'
 type AnimBoxProps = {
   children?: React.ReactNode
   styles?: Record<string, string>
+  motionPathLength?: number
+  motionAxis?: 'x' | 'y'
 }
 
-const AnimBox = ({ styles, children }: AnimBoxProps) => {
+const MotionBox = ({ motionAxis, motionPathLength, styles, children }: AnimBoxProps) => {
   const control = useAnimation()
   const [ref, inView] = useInView()
 
   useEffect(() => {
     if (inView) {
-      control.start('visible')
+      control.start('animate')
       return
     }
-    control.start('hidden')
+    control.start('initial')
   }, [control, inView])
 
   const boxVariant = {
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
-    hidden: { opacity: 0, scale: 0 },
+    initial: { [`${motionAxis ?? 'x'}`]: `${motionPathLength ?? '500'}px`, opacity: 0 },
+    animate: { [`${motionAxis ?? 'x'}`]: 0, opacity: 1 },
   }
 
   return (
@@ -32,7 +34,7 @@ const AnimBox = ({ styles, children }: AnimBoxProps) => {
         className="box"
         ref={ref}
         variants={boxVariant}
-        initial="hidden"
+        initial="initial"
         animate={control}
       >
         {children}
@@ -41,4 +43,4 @@ const AnimBox = ({ styles, children }: AnimBoxProps) => {
   )
 }
 
-export default AnimBox
+export default MotionBox

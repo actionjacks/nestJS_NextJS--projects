@@ -7,19 +7,19 @@ type CircleIndicatorProps = {
 }
 
 const CircleIndicator = ({ backGroundColor }: CircleIndicatorProps) => {
-  const { scrollXProgress } = useScroll()
+  const { scrollYProgress } = useScroll()
 
   const style = {
-    background: backGroundColor ? backGroundColor : 'rgb(206, 136, 135)',
+    background: backGroundColor ? backGroundColor : 'rgba(240, 240, 240, 0.5',
   }
 
-  const scaleX = useSpring(scrollXProgress, {
+  const scaleY = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001,
   })
 
-  return <motion.div className="progress-bar" style={{ scaleX, ...style }} />
+  return <motion.div className="progress-bar" style={{ scaleY, ...style }} />
 }
 
 export default CircleIndicator

@@ -1,9 +1,13 @@
+@use './../colors';
+
 .progress-bar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 10px;
-  background: rgb(206, 136, 136);
+  height: 100%;
   transform-origin: 0%;
+  -webkit-box-shadow: 0px 10px 20px -9px colors.$primary;
+  -moz-box-shadow: 0px 10px 20px -9px colors.$primary;
+  box-shadow: 0px 10px 20px -9px colors.$primary;
 }

@@ -1,5 +1,9 @@
 {
-  "section1": ["lotem lorem lomre"],
-  "section2": {},
-  "section3": {}
+  "section1": {
+    "title": "Prezmak usługi transportowe",
+    "telPL": "+48 787-534-890",
+    "telUK": "+44 778-392-27-39"
+  },
+  "section2": [],
+  "section3": []
 }
