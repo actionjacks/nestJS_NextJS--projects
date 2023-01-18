@@ -30,39 +30,20 @@ const App = () => {
 
   return (
     <div className="App">
+      <CircleIndicator />
       {pageData && (
         <>
-          <CircleIndicator />
-          <Header
-            title={pageData.section1.title}
-            telPL={pageData.section1.telPL}
-            telUK={pageData.section1.telUK}
-          />
+          <div className="section">
+            <AnimeBox>lorem Ipsum</AnimeBox>
+          </div>
 
-          <AnimeBox
-            styles={{
-              paddingTop: '30px',
-            }}
-          >
-            lorem Ipsum
-          </AnimeBox>
+          <div className="section">
+            <AnimeBox>lorem Ipsum</AnimeBox>
+          </div>
 
-          <MotionBox
-            styles={{
-              paddingTop: '10px',
-            }}
-          >
-            <h1>loremlomtem mmmmmmmmmmmmmmmmm</h1>
-          </MotionBox>
-
-          <AnimeBox
-            styles={{
-              paddingTop: '10px',
-            }}
-          >
-            <h1>lorem</h1>
-            <Draw />
-          </AnimeBox>
+          <div className="section">
+            <AnimeBox>lorem Ipsum</AnimeBox>
+          </div>
         </>
       )}
     </div>

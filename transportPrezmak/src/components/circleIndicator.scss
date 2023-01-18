@@ -6,8 +6,7 @@
   left: 0;
   right: 0;
   height: 100%;
+  width: 5px;
   transform-origin: 0%;
-  -webkit-box-shadow: 0px 10px 20px -9px colors.$primary;
-  -moz-box-shadow: 0px 10px 20px -9px colors.$primary;
-  box-shadow: 0px 10px 20px -9px colors.$primary;
+  transition: 0.3s ease-in;
 }

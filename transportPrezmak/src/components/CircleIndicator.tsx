@@ -10,7 +10,7 @@ const CircleIndicator = ({ backGroundColor }: CircleIndicatorProps) => {
   const { scrollYProgress } = useScroll()
 
   const style = {
-    background: backGroundColor ? backGroundColor : 'rgba(240, 240, 240, 0.5',
+    background: backGroundColor ? backGroundColor : '#213143',
   }
 
   const scaleY = useSpring(scrollYProgress, {
