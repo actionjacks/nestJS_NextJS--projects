@@ -7,9 +7,10 @@ import { useInView } from 'react-intersection-observer'
 type AnimBoxProps = {
   children?: React.ReactNode
   styles?: Record<string, string>
+  duration?: number
 }
 
-const AnimBox = ({ styles, children }: AnimBoxProps) => {
+const AnimBox = ({ styles, children, duration }: AnimBoxProps) => {
   const control = useAnimation()
   const [ref, inView] = useInView()
 
@@ -22,7 +23,11 @@ const AnimBox = ({ styles, children }: AnimBoxProps) => {
   }, [control, inView])
 
   const boxVariant = {
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: duration ? duration : 0.5 },
+    },
     hidden: { opacity: 0, scale: 0 },
   }
 

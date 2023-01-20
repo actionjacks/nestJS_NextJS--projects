@@ -1,0 +1,25 @@
+@use 'sass:math';
+/**
+Scale text to be responsive based on screen width
+  $min_width  Minimal supported window width (in pixels)
+  $max_width  Maximum supported window width (in pixels)
+  $min_font  Minimal font size that an element can accept (in pixels)
+  $max_font  Maximum font size that an element can accept (in pixels)
+*/
+$min-width: 701px !default;
+$max-width: 1200px !default;
+
+@function clamp-calc($min-font-size, $max-font-size) {
+  $slope: calc(calc($max-font-size - $min-font-size) / ($max-width - $min-width));
+  $y-axis-intersection: -1 * $min-width * $slope + $min-font-size;
+  $return-value: clamp(
+    #{$min-font-size},
+    #{$y-axis-intersection} + #{$slope} * 100vw,
+    #{$max-font-size}
+  );
+  @return $return-value;
+}
+
+@mixin clamp($min-font-size, $max-font-size) {
+  font-size: #{clamp-calc($min-font-size, $max-font-size)};
+}

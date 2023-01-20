@@ -1,13 +1,81 @@
+@use './fonts.scss';
+@use './colors.scss';
+
 .App {
   display: flex;
   width: 100%;
   flex-direction: column;
   overflow-x: hidden;
+  background-image: url('../assets/background-textures.jpg');
+  background-repeat: repeat;
 
   .section {
+    position: relative;
     display: flex;
     height: 100vh;
+    padding: 15px;
     width: 100%;
     overflow: hidden;
+    border-bottom: 2px solid black;
+
+    .baner-container {
+      position: relative;
+      display: flex;
+      height: 60%;
+      width: 85%;
+      border-radius: 15px;
+      overflow: hidden;
+      background-color: white;
+      border: 5px solid colors.$primaryBackgroundColor;
+
+      img {
+        display: flex;
+        position: absolute;
+        top: 10%;
+        left: -180%;
+        object-fit: cover;
+      }
+    }
+
+    .icon-Container {
+      width: 180px;
+      height: 55px;
+      display: flex;
+      padding-top: 35px;
+      padding-left: 35px;
+    }
+
+    .material-symbols-outlined {
+      transform: rotate(329deg);
+      font-size: 54px;
+    }
+
+    .link-text {
+      font-size: 13px;
+    }
   }
+}
+
+.top-section {
+  position: absolute;
+  width: 100%;
+  left: 12%;
+  bottom: 15%;
+  border-radius: 5px;
+  padding: 15px;
+
+  h1 {
+    @include fonts.clamp(30px, 55px);
+  }
+
+  p {
+    @include fonts.clamp(13px, 18px);
+    font-weight: 600;
+    display: initial;
+  }
+}
+
+.middle {
+  background-color: colors.$secondaryBackgroundColor;
+  color: colors.$primaryBackgroundColor;
 }
