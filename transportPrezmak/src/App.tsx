@@ -110,13 +110,109 @@ const App = () => {
                   <p className="bottom-title" data-aos="fade-up">
                     Web.Auto Lorem
                   </p>
+                  <span className="material-symbols-outlined">arrow_circle_right</span>
                 </AnimeBox>
               </AnimeBox>
             </div>
           </div>
 
-          <div className="section">
-            <AnimeBox>lorem Ipsum</AnimeBox>
+          <div className="section bottom">
+            <AnimeBox>
+              <p>lorem Ipsum lorem lorem lorem</p>
+            </AnimeBox>
+            <div className="form-wrapper">
+              <p
+                data-aos="fade-up"
+                data-aos-offset="200"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="false"
+                data-aos-anchor-placement="top-center"
+                className="form-title"
+              >
+                lorem
+              </p>
+              <div
+                data-aos="fade-up"
+                data-aos-offset="200"
+                data-aos-delay="50"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="false"
+                data-aos-anchor-placement="top-center"
+                className="form"
+              >
+                <div className="form__group field">
+                  <input
+                    type="input"
+                    className="form__field"
+                    placeholder="Name"
+                    name="name"
+                    id="name"
+                    required
+                  />
+                  <label htmlFor="name" className="form__label">
+                    Name
+                  </label>
+                </div>
+
+                <div className="form__group field">
+                  <input
+                    type="input"
+                    className="form__field"
+                    placeholder="Name"
+                    name="name"
+                    id="name"
+                    required
+                  />
+                  <label htmlFor="name" className="form__label">
+                    Name
+                  </label>
+                </div>
+
+                <div className="form__group field">
+                  <textarea
+                    className="form__field"
+                    placeholder="Name"
+                    name="name"
+                    id="name"
+                    required
+                  />
+                  <label htmlFor="name" className="form__label">
+                    Name
+                  </label>
+                </div>
+              </div>
+
+              <div data-aos="fade-up" className="button-wrapper">
+                <button className="send_button">SEND</button>
+              </div>
+            </div>
+
+            <AnimeBox>
+              <p>Lorem ipsum dolor sit amet consectetur, a=</p>
+            </AnimeBox>
+            <AnimeBox>
+              <p>Lorem ipsum dolor sit amet consectetur, a=</p>
+            </AnimeBox>
+
+            <div className="footer-wrapper">
+              <div className="icons-box">
+                <img
+                  className="box-icon"
+                  src="../assets/fb-icon.png"
+                  alt="icon-facebook"
+                />
+              </div>
+            </div>
+
+            <div className="footer-data">
+              <p className="ovner">Prezmak - </p>
+              <p className="author">realizacja actionjacks@</p>
+            </div>
           </div>
         </>
       )}
