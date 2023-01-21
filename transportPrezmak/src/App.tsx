@@ -76,13 +76,40 @@ const App = () => {
             <div className="middle-section">
               <AnimeBox>
                 <AnimeBox duration={0.4}>
-                  <h2 data-aos="fade-up">Lorem ____</h2>
+                  <p className="middle-title" data-aos="fade-up">
+                    Lorem ____
+                  </p>
                 </AnimeBox>
-                <AnimeBox duration={0.4}>
-                  <h1 data-aos="fade-up">Web.Auto Lorem</h1>
+                <div className="price-box">
+                  <AnimeBox duration={1}>
+                    <h3 data-aos="fade-up">Ceny juz Od</h3>
+                    <div className="price">
+                      <span className="currency-icon pound material-symbols-outlined">
+                        currency_pound
+                      </span>
+                      <AnimeBox duration={1.3}>
+                        <p className="price-value">30</p>
+                      </AnimeBox>
+                    </div>
+                  </AnimeBox>
+                </div>
+                <AnimeBox duration={0.6}>
+                  <h2 className="middle-title" data-aos="fade-up">
+                    Web.Auto Lorem
+                  </h2>
                 </AnimeBox>
-                <AnimeBox duration={0.4}>
-                  <h1 data-aos="fade-up">Web.Auto Lorem</h1>
+                <AnimeBox duration={1.3}>
+                  <img
+                    className="box-icon"
+                    data-aos="flip-down"
+                    src="../assets/box-icon.png"
+                    alt="box"
+                  />
+                </AnimeBox>
+                <AnimeBox duration={0.8}>
+                  <p className="bottom-title" data-aos="fade-up">
+                    Web.Auto Lorem
+                  </p>
                 </AnimeBox>
               </AnimeBox>
             </div>

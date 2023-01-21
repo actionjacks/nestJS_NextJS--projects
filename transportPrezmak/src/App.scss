@@ -16,7 +16,7 @@
     padding: 15px;
     width: 100%;
     overflow: hidden;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid colors.$secondaryBackgroundColor;
 
     .baner-container {
       position: relative;
@@ -25,8 +25,10 @@
       width: 85%;
       border-radius: 15px;
       overflow: hidden;
-      background-color: white;
-      border: 5px solid colors.$primaryBackgroundColor;
+      background-color: colors.$secondaryBackgroundColor;
+      -webkit-box-shadow: 8px 8px 24px 0px colors.$primary;
+      -moz-box-shadow: 8px 8px 24px 0px colors.$primary;
+      box-shadow: 8px 8px 24px 0px colors.$primary;
 
       img {
         display: flex;
@@ -78,4 +80,74 @@
 .middle {
   background-color: colors.$secondaryBackgroundColor;
   color: colors.$primaryBackgroundColor;
+
+  .middle-section {
+    .middle-title {
+      @include fonts.clamp(40px, 55px);
+      font-weight: 700;
+    }
+
+    .box {
+      .box-icon {
+        margin-left: 30%;
+        width: 180px;
+        border: 5px solid colors.$primaryBackgroundColor;
+        border-radius: 15px;
+        object-fit: cover;
+        background-color: colors.$primaryBackgroundColor;
+
+        -webkit-box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
+        -moz-box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
+        box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
+      }
+    }
+
+    width: 100%;
+    height: 100%;
+    padding-left: 15px;
+  }
+
+  .price-box {
+    .box {
+      padding: 20px;
+    }
+
+    .price {
+      display: flex;
+
+      .box {
+        padding-left: 0;
+      }
+
+      .currency-icon {
+        margin-left: 30px;
+        margin-top: 30px;
+        font-weight: 400;
+      }
+
+      .price-value {
+        display: inline;
+        @include fonts.clamp(60px, 85px);
+        font-weight: 700;
+      }
+    }
+
+    .pound {
+      transform: none;
+    }
+
+    height: 240px;
+    width: 80%;
+    border: 5px solid colors.$primaryBackgroundColor;
+    border-radius: 15px;
+    -webkit-box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
+    -moz-box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
+    box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
+  }
+
+  .bottom-title {
+    margin-left: 40px;
+    margin-top: 50px;
+    @include fonts.clamp(16px, 20px);
+  }
 }
