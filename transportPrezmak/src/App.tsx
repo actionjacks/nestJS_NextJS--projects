@@ -10,6 +10,7 @@ import { getPageContent, isPageCOntent, PageContent } from './components/Api/Api
 import CircleIndicator from './components/CircleIndicator'
 import Draw from './components/Draw'
 import Header from './components/Header/Header'
+import TopSection from './views/topSection/TopSection'
 
 const App = () => {
   const [pageData, setPageData] = useState<PageContent | null>(null)
@@ -39,39 +40,7 @@ const App = () => {
       <CircleIndicator backGroundColor={'#5cb4c0'} />
       {pageData && (
         <>
-          <div className="section">
-            <div className="baner-container">
-              <img
-                data-aos="flip-down"
-                src="../assets/baner_benz.avif"
-                alt="Mercedes_sprinter"
-              />
-            </div>
-            <div className="top-section">
-              <AnimeBox duration={0.4}>
-                <h1 data-aos="fade-up">Web.Auto Lorem</h1>
-              </AnimeBox>
-              <AnimeBox duration={0.6}>
-                <p data-aos="fade-up">Lorem ipsum dolor</p>
-              </AnimeBox>
-              <AnimeBox duration={0.8}>
-                <p data-aos="fade-up">Lorem ipsum dolor</p>
-              </AnimeBox>
-              <AnimeBox duration={1.2}>
-                <p data-aos="fade-up">Lorem ipsum dolor</p>
-              </AnimeBox>
-
-              <AnimeBox duration={1.3}>
-                <div data-aos="fade-up" className="icon-Container">
-                  <span className="material-symbols-outlined">arrow_circle_right</span>
-                  <p data-aos="fade-up" className="link-text">
-                    lorem lorem lorem
-                  </p>
-                </div>
-              </AnimeBox>
-            </div>
-          </div>
-
+          <TopSection />
           <div className="section middle">
             <div className="middle-section">
               <AnimeBox>
