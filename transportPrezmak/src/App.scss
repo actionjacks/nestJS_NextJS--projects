@@ -1,7 +1,8 @@
-@use './fonts.scss';
-@use './colors.scss';
+@use './mixins/fonts.scss';
+@use './mixins/colors.scss';
 
 .App {
+  font-family: 'Roboto Condensed', sans-serif;
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -12,7 +13,7 @@
   .section {
     position: relative;
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
     padding: 15px;
     width: 100%;
     overflow: hidden;
