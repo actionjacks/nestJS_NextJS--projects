@@ -1,0 +1,38 @@
+@use '../../mixins/colors.scss';
+@use '../../mixins/fonts.scss';
+@use '../../mixins/media_queries.scss';
+
+.contact-wrapper {
+  z-index: 100;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  bottom: 100px;
+  right: 5%;
+
+  .wrapper {
+    padding: 10px;
+
+    .box {
+      display: flex;
+    }
+  }
+
+  .flag-icon {
+    width: 30px;
+  }
+
+  .phone-contaner {
+    height: 100%;
+    display: block;
+  }
+
+  .phone {
+    @include fonts.clamp(13px, 16px);
+    display: block;
+    padding-top: 3px;
+    padding-left: 10px;
+    text-decoration: none;
+    color: colors.$secondaryBackgroundColor;
+  }
+}

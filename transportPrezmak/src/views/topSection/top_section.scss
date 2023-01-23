@@ -3,6 +3,8 @@
 @use '../../mixins/media_queries.scss';
 
 .section {
+  position: relative;
+
   .baner-container {
     position: relative;
     display: flex;

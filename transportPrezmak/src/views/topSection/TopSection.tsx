@@ -1,10 +1,12 @@
 import './top_section.scss'
 
 import AnimeBox from '../../components/AnimBox/AnimeBox'
+import ContactBox from '../../components/ContactBox/ContactBox'
 
 function TopSection() {
   return (
     <div className="section">
+      <ContactBox />
       <div className="baner-container">
         <img
           data-aos="flip-down"
