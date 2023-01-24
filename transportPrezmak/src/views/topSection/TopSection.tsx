@@ -17,7 +17,13 @@ function TopSection() {
       <div className="top-section">
         <AnimeBox duration={0.4}>
           <h1 data-aos="fade-up">Prezmak -Usługi Transportowe</h1>
-          <h2 data-aos="fade-up">Polska-Anglia-Polska</h2>
+          <h2 data-aos="fade-up">
+            Polska
+            <span className="right-arrow material-symbols-outlined">arrow_forward</span>
+            Anglia
+            <span className="right-arrow material-symbols-outlined">arrow_forward</span>
+            Polska
+          </h2>
         </AnimeBox>
         <AnimeBox duration={0.6}>
           <span

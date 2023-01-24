@@ -12,10 +12,10 @@
     width: 100%;
     border-radius: 15px;
     overflow: hidden;
-    background-color: colors.$secondaryBackgroundColor;
     -webkit-box-shadow: 8px 8px 24px 0px colors.$primary;
     -moz-box-shadow: 8px 8px 24px 0px colors.$primary;
     box-shadow: 8px 8px 24px 0px colors.$primary;
+    background: radial-gradient(circle, rgba(46, 64, 84, 1) 40%, rgba(0, 0, 0, 1) 100%);
 
     img {
       display: flex;
@@ -65,25 +65,34 @@
   font-family: 'Roboto Condensed', sans-serif;
   position: absolute;
   width: 100%;
-  left: 12%;
-  bottom: 0;
+  left: 5%;
+  bottom: 5%;
   border-radius: 5px;
   padding: 15px 30px 15px 15px;
+  -webkit-box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
+  -moz-box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
+  box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
 
   h1 {
     color: colors.$primaryFontColor;
     text-shadow: 1px 1px 5px colors.$primaryBackgroundColor;
     max-width: 300px;
     font-weight: 700;
-    @include fonts.clamp(30px, 55px);
+    @include fonts.clamp(35px, 55px);
   }
 
   h2 {
     @include fonts.clamp(18px, 25px);
+    text-shadow: 1px 1px 5px colors.$primaryBackgroundColor;
+
+    .right-arrow {
+      font-size: 15px;
+    }
   }
 
   p {
     @include fonts.clamp(13px, 18px);
+    text-shadow: 1px 1px 5px colors.$primaryBackgroundColor;
     font-weight: 600;
     display: initial;
   }
