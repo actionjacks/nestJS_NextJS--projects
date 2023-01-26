@@ -20,11 +20,10 @@ function TopSection() {
 
       <header className="header">
         <div className="banner-wrapper" data-aos="fade">
-          <img
-            className="banner"
-            src="../assets/main-bg-van.jpg"
-            alt="Mercedes_sprinter"
-          />
+          <div className="banner-wrapper" data-aos="fade">
+            <div className="bg" />
+            <div className="banner" />
+          </div>
         </div>
       </header>
 
