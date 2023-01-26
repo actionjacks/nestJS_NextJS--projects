@@ -11,6 +11,7 @@
   background-repeat: repeat;
 
   .section {
+    z-index: 10;
     position: relative;
     display: flex;
     min-height: 100vh;
@@ -22,10 +23,12 @@
 }
 
 .middle {
+  z-index: 10;
   background-color: colors.$secondaryBackgroundColor;
   color: colors.$primaryBackgroundColor;
 
   .middle-section {
+    z-index: 10;
     .middle-title {
       @include fonts.clamp(40px, 55px);
       color: colors.$secondaryFontColor;
@@ -98,6 +101,7 @@
 }
 
 .section.bottom {
+  z-index: 10;
   display: flex;
   flex-direction: column;
   position: relative;

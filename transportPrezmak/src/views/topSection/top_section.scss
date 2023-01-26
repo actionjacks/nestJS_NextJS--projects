@@ -2,98 +2,149 @@
 @use '../../mixins/fonts.scss';
 @use '../../mixins/media_queries.scss';
 
-.section {
+.top-section {
+  font-family: 'Oswald', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Work Sans', sans-serif;
   position: relative;
 
-  .baner-container {
-    position: relative;
-    display: flex;
-    height: 50vh;
+  .title-wrapper {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+
+    h1 {
+      padding: 20px;
+      margin-right: 15px;
+      color: colors.$secondaryBackgroundColor;
+      max-width: 30%;
+      font-weight: 700;
+      @include fonts.clamp(35px, 75px);
+      -webkit-box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
+      -moz-box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
+      box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
+      border-bottom: 5px solid colors.$primaryFontColor;
+    }
+
+    h2 {
+      @include fonts.clamp(20px, 35px);
+      color: colors.$secondaryBackgroundColor;
+      font-weight: 700;
+      -webkit-box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
+      -moz-box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
+      box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
+      border-bottom: 5px solid colors.$primaryFontColor;
+    }
+
+    p {
+      @include fonts.clamp(35px, 75px);
+      color: colors.$secondaryBackgroundColor;
+      font-weight: 700;
+      -webkit-box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
+      -moz-box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
+      box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
+      border-bottom: 5px solid colors.$primaryFontColor;
+    }
+  }
+
+  .header {
+    border: 5px solid colors.$secondaryBackgroundColor;
+    border-radius: 5px;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    border-radius: 15px;
+    height: 100vh;
     overflow: hidden;
-    -webkit-box-shadow: 8px 8px 24px 0px colors.$primary;
-    -moz-box-shadow: 8px 8px 24px 0px colors.$primary;
-    box-shadow: 8px 8px 24px 0px colors.$primary;
-    background: radial-gradient(circle, rgba(46, 64, 84, 1) 40%, rgba(0, 0, 0, 1) 100%);
 
-    img {
+    div {
+      z-index: 1;
+    }
+
+    .banner-wrapper {
       display: flex;
-      position: absolute;
-      top: 0%;
-      left: 30%;
-      transform: translateX(-50%);
-      object-fit: cover;
+      width: 100%;
+      height: 100%;
+
+      .banner {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        opacity: 0.5;
+        -webkit-box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
+        -moz-box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
+        box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
+        border-bottom: 5px solid colors.$primaryFontColor;
+      }
+    }
+  }
+
+  .bottom-section {
+    -webkit-box-shadow: 5px -5px 39px 8px colors.$secondaryBackgroundColor;
+    -moz-box-shadow: 5px -5px 39px 8px colors.$secondaryBackgroundColor;
+    box-shadow: 5px -5px 39px 8px colors.$secondaryBackgroundColor;
+    padding: 55px;
+    margin-top: 100vh;
+    position: relative;
+    z-index: 10;
+    min-height: 33vh;
+    background-color: colors.$secondaryBackgroundColor;
+    color: colors.$primaryBackgroundColor;
+
+    .bottom-title {
+      display: flex;
+      flex-direction: column;
       margin: auto;
+      width: 50%;
+      border: 5px solid colors.$primaryBackgroundColor;
+      border-radius: 15px;
+      object-fit: cover;
+      padding: 55px;
+      -webkit-box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
+      -moz-box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
+      box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
     }
-  }
 
-  .icon-Container {
-    width: 180px;
-    height: 55px;
-    display: flex;
-    padding-top: 35px;
-    padding-left: 35px;
-  }
+    .wrapper {
+      .box {
+        display: flex;
+      }
 
-  .arrow-right-icon.material-symbols-outlined {
-    font-size: 30px;
-    margin-right: 5px;
-    color: colors.$secondaryFontColor;
-  }
+      p {
+        @include fonts.clamp(18px, 20px);
+        color: colors.$primaryBackgroundColor;
+        font-weight: 100;
+      }
 
-  .arrow-icon.material-symbols-outlined {
-    transform: rotate(329deg);
-    font-size: 54px;
-  }
+      .link-text {
+        @include fonts.clamp(13px, 18px);
+        font-weight: 700;
+        margin-left: 15px;
+        cursor: pointer;
+        display: initial;
 
-  .link-text {
-    @include fonts.clamp(13px, 18px);
-    font-weight: 700;
-    margin-left: 15px;
-    cursor: pointer;
-    display: initial;
+        &:hover {
+          color: colors.$secondaryFontColor;
+          transform: scale(0.9);
+        }
+      }
 
-    &:hover {
-      color: colors.$secondaryFontColor;
-      transform: scale(1.2);
+      .icon-Container {
+        display: flex;
+      }
+
+      .arrow-right-icon.material-symbols-outlined {
+        font-size: 30px;
+        margin-right: 5px;
+        color: colors.$secondaryFontColor;
+        line-height: 60px;
+      }
+
+      .arrow-icon.material-symbols-outlined {
+        transform: rotate(329deg);
+        font-size: 54px;
+        line-height: 60px;
+      }
     }
-  }
-}
-
-.top-section {
-  font-family: 'Roboto Condensed', sans-serif;
-  position: absolute;
-  width: 100%;
-  left: 5%;
-  bottom: 5%;
-  border-radius: 5px;
-  padding: 15px 30px 15px 15px;
-  -webkit-box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
-  -moz-box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
-  box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
-
-  h1 {
-    color: colors.$primaryFontColor;
-    text-shadow: 1px 1px 5px colors.$primaryBackgroundColor;
-    max-width: 300px;
-    font-weight: 700;
-    @include fonts.clamp(35px, 55px);
-  }
-
-  h2 {
-    @include fonts.clamp(18px, 25px);
-    text-shadow: 1px 1px 5px colors.$primaryBackgroundColor;
-
-    .right-arrow {
-      font-size: 15px;
-    }
-  }
-
-  p {
-    @include fonts.clamp(13px, 18px);
-    text-shadow: 1px 1px 5px colors.$primaryBackgroundColor;
-    font-weight: 600;
-    display: initial;
   }
 }
