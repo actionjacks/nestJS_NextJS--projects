@@ -7,46 +7,38 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  bottom: 10%;
-  right: 5%;
-
-  @include media_queries.md(640px, max) {
-    bottom: 0;
-    right: 10%;
-    top: 0;
-  }
+  top: 50%;
+  left: 10%;
 
   .wrapper {
-    padding: 10px;
-    height: 10px;
-
+    min-width: 100%;
+    overflow: hidden;
+    border-radius: 10px;
     .box {
       display: flex;
+      border-radius: 15px;
       background-color: colors.$secondaryBackgroundColor;
-      -webkit-box-shadow: 8px 8px 24px 0px colors.$primary;
-      -moz-box-shadow: 8px 8px 24px 0px colors.$primary;
-      box-shadow: 8px 8px 24px 0px colors.$primary;
-      border-radius: 10px;
+      border: 5px solid colors.$secondaryBackgroundColor;
+      margin: 5px 0;
     }
 
     .phone-icon {
-      color: colors.$secondaryFontColor;
+      color: colors.$primaryBackgroundColor;
     }
   }
 
   .flag-icon {
     width: 30px;
+    border-radius: 5px;
   }
 
   .phone-contaner {
-    height: 100%;
     display: block;
   }
 
   .phone {
     @include fonts.clamp(13px, 16px);
     display: block;
-    height: 100%;
     line-height: 25px;
     padding-left: 12px;
     padding-right: 12px;

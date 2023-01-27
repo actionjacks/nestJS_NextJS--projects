@@ -1,6 +1,12 @@
 @use './mixins/fonts.scss';
 @use './mixins/colors.scss';
 
+// @include media_queries.md(640px, max) {
+//   bottom: 0;
+//   right: 10%;
+//   top: 0;
+// }
+
 .App {
   font-family: 'Roboto Condensed', sans-serif;
   display: flex;
