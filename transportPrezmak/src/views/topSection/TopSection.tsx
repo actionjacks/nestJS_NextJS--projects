@@ -51,9 +51,9 @@ function TopSection() {
               <span className="arrow-icon material-symbols-outlined">
                 arrow_circle_right
               </span>
-              <p data-aos="fade-up" className="link-text">
-                Napisz do nas _ firma-prezmak@tlen.pl
-              </p>
+              <a data-aos="fade-up" href="mailto:firma-prezmak@tlen.pl">
+                Napisz do nas
+              </a>
             </div>
           </AnimeBox>
         </div>

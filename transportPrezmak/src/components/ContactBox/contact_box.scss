@@ -10,10 +10,15 @@
   top: 50%;
   left: 10%;
 
+  @media (max-width: 380px) {
+    top: 45%;
+  }
+
   .wrapper {
     min-width: 100%;
     overflow: hidden;
     border-radius: 10px;
+
     .box {
       display: flex;
       border-radius: 15px;
@@ -37,7 +42,7 @@
   }
 
   .phone {
-    @include fonts.clamp(13px, 16px);
+    @include fonts.clamp(17px, 20px);
     display: block;
     line-height: 25px;
     padding-left: 12px;

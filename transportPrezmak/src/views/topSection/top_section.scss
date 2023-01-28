@@ -18,23 +18,46 @@
     -moz-box-shadow: 1px 1px 24px 0px colors.$secondaryBackgroundColor;
     box-shadow: 1px 1px 24px 0px colors.$secondaryBackgroundColor;
 
+    @media (max-width: 768px) {
+      max-width: 80%;
+    }
+
+    @media (max-width: 380px) {
+      top: 2%;
+    }
+
     h1 {
       margin-right: 15px;
       color: colors.$secondaryBackgroundColor;
       font-weight: 700;
-      @include fonts.clamp(35px, 75px);
+      @include fonts.clamp(45px, 75px);
+
+      @media (max-width: 768px) {
+        padding-bottom: 10px;
+        border-bottom: 2px solid colors.$primaryBackgroundColor;
+      }
     }
 
     h2 {
       @include fonts.clamp(35px, 45px);
       color: colors.$secondaryBackgroundColor;
       font-weight: 700;
+
+      @media (max-width: 768px) {
+        padding-bottom: 10px;
+        border-bottom: 2px solid colors.$primaryBackgroundColor;
+      }
     }
 
     p {
       @include fonts.clamp(25px, 32px);
       color: colors.$secondaryBackgroundColor;
       font-weight: 700;
+
+      @media (max-width: 768px) {
+        padding-bottom: 10px;
+        border-bottom: 2px solid colors.$primaryBackgroundColor;
+      }
     }
   }
 
@@ -78,7 +101,7 @@
       }
 
       .bg {
-        // animation: slide 220s linear infinite;
+        animation: slide 220s linear infinite;
         position: absolute;
         z-index: -1;
         height: 100%;
@@ -119,6 +142,10 @@
       -webkit-box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
       -moz-box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
       box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
+
+      @media (max-width: 768px) {
+        width: 100%;
+      }
     }
 
     .wrapper {
@@ -134,17 +161,27 @@
         padding-right: 15px;
       }
 
+      a {
+        @include fonts.clamp(18px, 20px);
+        color: colors.$primaryBackgroundColor;
+        font-weight: 100;
+        border-right: 5px solid;
+        padding-right: 15px;
+        text-decoration: none;
+        line-height: 3;
+
+        &:hover {
+          color: colors.$secondaryFontColor;
+          transform: scale(0.9);
+        }
+      }
+
       .link-text {
         @include fonts.clamp(13px, 18px);
         font-weight: 700;
         margin-left: 15px;
         cursor: pointer;
         display: initial;
-
-        &:hover {
-          color: colors.$secondaryFontColor;
-          transform: scale(0.9);
-        }
       }
 
       .icon-Container {
