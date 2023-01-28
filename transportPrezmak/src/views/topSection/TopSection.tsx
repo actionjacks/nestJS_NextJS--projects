@@ -7,13 +7,11 @@ function TopSection() {
   return (
     <div className="top-section">
       <ContactBox />
-
       <div className="title-wrapper">
         <h1 data-aos="slide-left">Prezmak -Usługi Transportowe</h1>
         <h2 data-aos="slide-left">Przewóz osób transport paczek przeprowadzki</h2>
         <p data-aos="slide-left">Polska-Anglia-Polska</p>
       </div>
-
       <header className="header">
         <div className="banner-wrapper" data-aos="fade">
           <div className="banner-wrapper" data-aos="fade">
@@ -22,7 +20,6 @@ function TopSection() {
           </div>
         </div>
       </header>
-
       <div className="bottom-section">
         <div className="bottom-title">
           <AnimeBox duration={0.5}>
