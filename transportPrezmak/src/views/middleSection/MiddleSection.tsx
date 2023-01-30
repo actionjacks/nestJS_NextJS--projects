@@ -20,7 +20,7 @@ function MiddleSection() {
                   <span className="currency-icon pound material-symbols-outlined">
                     currency_pound
                   </span>
-                  <AnimeBox duration={1.3}>
+                  <AnimeBox duration={1.6}>
                     <p className="price-value">40</p>
                   </AnimeBox>
                 </div>

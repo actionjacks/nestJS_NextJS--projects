@@ -19,10 +19,21 @@
 
   .middle-section {
     z-index: 10;
+    width: 100%;
+    height: 100%;
+    padding-left: 15px;
+
     .middle-title {
+      padding-left: 50px;
+      padding-bottom: 10px;
+      border-bottom: 0.4px solid colors.$secondaryFontColor;
       @include fonts.clamp(40px, 55px);
       color: colors.$secondaryFontColor;
       font-weight: 700;
+
+      @media (max-width: 768px) {
+        padding-left: 15px;
+      }
     }
 
     .box {
@@ -33,24 +44,29 @@
         border-radius: 15px;
         object-fit: cover;
         background-color: colors.$primaryBackgroundColor;
-
         -webkit-box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
         -moz-box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
         box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
       }
     }
-    width: 100%;
-    height: 100%;
-    padding-left: 15px;
   }
 
   .price-box {
     margin-left: 5%;
+    height: 240px;
+    width: 80%;
+    border: 5px solid colors.$primaryBackgroundColor;
+    border-radius: 15px;
+    -webkit-box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
+    -moz-box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
+    box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
+
     .box {
       padding: 20px;
+      justify-content: center;
 
       h3 {
-        @include fonts.clamp(14px, 25px);
+        @include fonts.clamp(20px, 25px);
       }
     }
 
@@ -62,7 +78,7 @@
       }
 
       .currency-icon {
-        @include fonts.clamp(24px, 55px);
+        @include fonts.clamp(34px, 55px);
         margin-left: 30px;
         margin-top: 30px;
         font-weight: 400;
@@ -78,24 +94,25 @@
     .pound {
       transform: none;
     }
-
-    height: 240px;
-    width: 80%;
-    border: 5px solid colors.$primaryBackgroundColor;
-    border-radius: 15px;
-    -webkit-box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
-    -moz-box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
-    box-shadow: 8px 8px 24px 0px colors.$secondaryFontColor;
   }
 
   .middle-content {
     display: flex;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+
     .content {
       display: flex;
       max-width: 50%;
       border-right: 5px solid colors.$secondaryFontColor;
       padding: 25px;
       @include fonts.clamp(16px, 20px);
+
+      @media (max-width: 768px) {
+        max-width: 80%;
+      }
     }
   }
 

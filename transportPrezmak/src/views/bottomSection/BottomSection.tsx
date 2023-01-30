@@ -11,8 +11,8 @@ function BottomSection() {
   const sendForm = () => {
     emailjs
       .sendForm(
-        'service_bcszigm',
-        'template_mjetvlo',
+        'service_q4m544v',
+        'template_44pv9ja',
         formRef.current ?? '',
         '-Oj_VJeVHwEOei9Ly',
       )
@@ -30,7 +30,7 @@ function BottomSection() {
     <>
       <div className="section bottom">
         <AnimeBox>
-          <p>MASZ PYTANIA?</p>
+          <p className="section-title">MASZ PYTANIA ?</p>
         </AnimeBox>
         <div className="form-wrapper">
           <p
@@ -119,7 +119,9 @@ function BottomSection() {
 
         <div className="footer-wrapper">
           <div className="icons-box fb">
-            <img className="box-icon" src="../assets/fb-icon.png" alt="icon-facebook" />
+            <a href="https://www.facebook.com/przemek.kownacki.52">
+              <img className="box-icon" src="../assets/fb-icon.png" alt="icon-facebook" />
+            </a>
           </div>
         </div>
 

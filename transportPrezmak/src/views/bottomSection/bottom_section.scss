@@ -20,6 +20,10 @@
   @include fonts.clamp(16px, 20px);
   font-weight: 700;
 
+  .section-title {
+    @include fonts.clamp(25px, 28px);
+  }
+
   p {
     margin-left: 40px;
     @include fonts.clamp(15px, 22px);
@@ -45,10 +49,12 @@
     padding: 25px;
     background-color: #00000062;
 
-    .form-title {
-      @include fonts.clamp(18px, 20px);
+    .form-title,
+    .text {
+      @include fonts.clamp(18px, 24px);
       font-weight: 700;
       color: colors.$secondaryFontColor;
+      text-shadow: 8px 8px 30px colors.$secondaryBackgroundColor;
     }
 
     .form {
@@ -189,7 +195,11 @@
         position: absolute;
         top: -20px;
         left: 70%;
-        transform: rotate(270deg);
+        transition: 0.3s;
+
+        &:hover {
+          transform: scale(0.8);
+        }
       }
     }
   }
@@ -205,6 +215,7 @@
     .ovner {
       @include fonts.clamp(18px, 20px);
     }
+
     .author {
       margin-left: 50px;
       @include fonts.clamp(12px, 15px);
