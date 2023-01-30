@@ -5,11 +5,29 @@ import { useRef } from 'react'
 
 import AnimeBox from '../../components/AnimBox/AnimeBox'
 
-function BottomSection() {
-  const formRef = useRef(null)
+interface BottomSectionProps {
+  popupOnClick: (state: boolean, infoText: string) => void
+  popUpState?: boolean
+}
 
-  const sendForm = () => {
-    emailjs
+function BottomSection({ popupOnClick, popUpState }: BottomSectionProps) {
+  const formRef = useRef<HTMLFormElement>(null)
+
+  const sendForm = async () => {
+    if (!formRef.current) {
+      return
+    }
+    const from_name = formRef?.current?.[0].value
+    const from_tel = formRef?.current?.[1].value
+    const message = formRef?.current?.[2].value
+
+    if (!from_name || !from_tel || !message) {
+      popupOnClick(true, 'Nie wszystkie pola zostały wypełnione.')
+      return
+    }
+    popupOnClick(true, 'Wysyłanie wiadomości.')
+
+    await emailjs
       .sendForm(
         'service_q4m544v',
         'template_44pv9ja',
@@ -17,13 +35,16 @@ function BottomSection() {
         '-Oj_VJeVHwEOei9Ly',
       )
       .then(
-        (result) => {
-          console.log(result.text)
+        () => {
+          popupOnClick(true, 'Wiadomość została wysłana.')
         },
-        (error) => {
-          console.log(error.text)
+        () => {
+          popupOnClick(true, 'Niestety Wiadomość nie została wysłana. :(')
         },
       )
+    const resetValues = [...formRef.current?.elements].forEach((el) => {
+      el.value = ''
+    })
   }
 
   return (
@@ -102,7 +123,7 @@ function BottomSection() {
           </div>
 
           <div data-aos="fade-up" className="button-wrapper">
-            <button onClick={sendForm} className="send_button">
+            <button onClick={sendForm} disabled={popUpState} className="send_button">
               Prześlij wiadomość
             </button>
           </div>

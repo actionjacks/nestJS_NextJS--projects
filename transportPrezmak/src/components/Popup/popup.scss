@@ -1,0 +1,31 @@
+@use '../../mixins/colors.scss';
+@use '../../mixins/fonts.scss';
+@use '../../mixins/media_queries.scss';
+
+.popup-content {
+  opacity: 1;
+  display: flex;
+  position: fixed;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  background-color: colors.$secondaryBackgroundColor;
+  transition: 0.6s;
+  border: 1px solid colors.$primaryBackgroundColor;
+
+  p {
+    font-size: 20px;
+    padding: 15px;
+    margin: auto;
+    color: colors.$primaryBackgroundColor;
+  }
+}
+
+.popup-content.hide {
+  top: -100px;
+  opacity: 0;
+}
+
+.popup-content.show {
+  top: 0;
+}

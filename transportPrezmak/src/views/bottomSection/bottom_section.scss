@@ -163,6 +163,18 @@
         touch-action: manipulation;
       }
 
+      .send_button:disabled {
+        color: #f0f4ff73;
+        background-color: #f0f4ff73;
+        cursor: not-allowed;
+      }
+
+      .send_button:disabled:hover {
+        color: #f0f4ff73;
+        background-color: #f0f4ff73;
+        cursor: not-allowed;
+      }
+
       .send_button:hover {
         background-color: colors.$primaryFontColor;
         color: colors.$secondaryFontColor;
