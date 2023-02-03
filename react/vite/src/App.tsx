@@ -17,14 +17,34 @@ function App() {
         <AnimBox>
           <p>2</p>
         </AnimBox>
-        <AnimBox>
+        <AnimBox
+          visible={{
+            opacity: 1,
+            x: 0,
+            transition: { duration: 3 },
+          }}
+          hidden={{
+            opacity: 0,
+            x: -100,
+          }}
+        >
           <p>3</p>
         </AnimBox>
 
-        <AnimBox>
+        <AnimBox
+          visible={{
+            opacity: 1,
+            x: 0,
+            transition: { delay: 0.5 },
+          }}
+          hidden={{
+            opacity: 0,
+            x: -100,
+          }}
+        >
           <p>4</p>
         </AnimBox>
-        <AnimBox>
+        <AnimBox duration={2}>
           <p>5</p>
         </AnimBox>
         <AnimBox>
