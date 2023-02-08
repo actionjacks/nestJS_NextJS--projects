@@ -1,0 +1,8 @@
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c#\app_net_console\app_net_framework\app_net_framework\bin\Debug\app_net_framework.exe.config
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c#\app_net_console\app_net_framework\app_net_framework\bin\Debug\app_net_framework.exe
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c#\app_net_console\app_net_framework\app_net_framework\bin\Debug\app_net_framework.pdb
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c#\app_net_console\app_net_framework\app_net_framework\obj\Debug\app_net_framework.csproj.AssemblyReference.cache
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c#\app_net_console\app_net_framework\app_net_framework\obj\Debug\app_net_framework.csproj.SuggestedBindingRedirects.cache
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c#\app_net_console\app_net_framework\app_net_framework\obj\Debug\app_net_framework.csproj.CoreCompileInputs.cache
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c#\app_net_console\app_net_framework\app_net_framework\obj\Debug\app_net_framework.exe
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c#\app_net_console\app_net_framework\app_net_framework\obj\Debug\app_net_framework.pdb
