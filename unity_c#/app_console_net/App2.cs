@@ -27,16 +27,44 @@ namespace App2
 
       bool zmi = true;
 
-      // while(true) {
-      // }
+      //Array's
+      int[] mojaarrahy = new int[300];//tablica z 300 elementami
+      string[] mojearray2 = { "dup", "ds", "423423" };
 
-      for (int i = 0; i < 5; i++)
+      Console.WriteLine(mojaarrahy[0]);
+
+      for (int i = 0; i < mojearray2.Length; i++)
       {
+        Console.WriteLine(mojearray2[i]);
       }
 
-      // do
-      // {
-      // } while (true);
+      int[,] arraj2d = new int[2, 3];//[[1,3,4], [2,4,8]]
+      for (int i = 0; i < arraj2d.GetLongLength(0); i++)
+      {
+        for (int j = 0; j < arraj2d.GetLength(1); j++)
+        {
+          Console.WriteLine(arraj2d[i, j]);
+        }
+      }
+
+      int[][] tabs = new int[2][];
+      // Initialize the elements.
+      tabs[0] = new int[5] { 1, 3, 5, 7, 9 };
+      tabs[1] = new int[4] { 2, 4, 6, 8 };
+
+      // Display the array elements.
+      for (int i = 0; i < tabs.Length; i++)
+      {
+        System.Console.Write("Element({0}): ", i);
+
+        for (int j = 0; j < tabs[i].Length; j++)
+        {
+          System.Console.Write("{0}{1}", tabs[i][j], j == (tabs[i].Length - 1)
+          ? ""
+          : " ");
+        }
+        System.Console.WriteLine();
+      }
 
       //RZUTOWANIE - konwersja
       float dup = 12.3f;
@@ -73,6 +101,53 @@ namespace App2
         Console.WriteLine("");
       }
       Console.ReadKey();
+
+      // random
+      Random rndom = new Random();
+      //range
+      int randomNumber = rndom.Next(1, 11);
+
+      // instrukcje przerwani
+
+      int a = 0;
+
+      while (true)
+      {
+        if (a > 10)
+        {
+          break;
+        }
+        a++;
+        Console.WriteLine(a);
+      }
+
+      // while(true) {
+      // }
+
+      for (int i = 0; i < 20; i++)
+      {
+        if (i % 2 == 1)
+        {
+          continue;
+        }
+        Console.WriteLine(i);
+      }
+
+    // do
+    // {
+    // } while (true);
+
+    // etykiety 
+    etykieta1:
+      Console.Write("Etykieta1");
+      goto etykieta3;
+
+    etykieta2:
+      Console.Write("Etykieta2");
+      goto etykieta3;
+
+    etykieta3:
+      Console.Write("Etykieta3");
     }
   }
 };
