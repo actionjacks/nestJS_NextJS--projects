@@ -96,3 +96,7 @@ sum_of_num = [1, 3, 4, 5, 6, 7, 8, 12, 21, 32, 1]
 
 sum = sum(sum_of_num)
 print(sum)
+
+# Porównanie if _name_ = "__main__" służy do tego by upewnić się, że uruchamiamy tylko ten kod który zamierzaliśmy, bez żadnych niechcianych linijek.
+if __name__ == '__main__':
+    pass
