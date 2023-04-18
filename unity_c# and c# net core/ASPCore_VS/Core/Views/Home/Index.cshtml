@@ -1,0 +1,68 @@
+﻿@model Product
+
+@{
+    ViewBag.Title = "Home";
+}
+
+@section Header {
+    <div class="bg-primary text-white">
+        Header Information
+    </div>
+}
+
+<h2>to jest z components INVOKE metody</h2>
+<div>
+    @*
+    jesli bez dekoratora np [ViewComponent(Name = "myname")] to takie uzycie 
+    @await Component.InvokeAsync("ProductListing")
+    to ponizej z dekoratorem
+    <vc:product-listing/>
+    *@
+    @*
+    <vc:myname/>
+    *@
+    <vc:product-listing/>
+</div>
+
+<br/>
+
+<vc:page-size/>
+
+<p> html:5 + press tab key</p>
+<p> create new template</p>
+
+<div class="row m-2"> 
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+            <th>Name</th>
+            <th>Price</th>
+            </tr>
+        </thead>
+    <tbody>
+        <tr>
+        <td>@Model?.Name</td>
+        <td>@Model?.Price.ToString("C2")</td>
+        </tr>
+    </tbody>
+    </table> 
+</div>
+
+@*
+@section JsonEncoding {
+<div class="bg-info text-white"> 
+    @Json.Serialize(Model)
+</div>
+}
+*@
+
+<div class="row m-2">
+    @if(TempData["value"] != null)
+    {
+        <div class="bg-info text-white p-2">
+            @TempData["value"]
+        </div>
+    }
+</div>
+
+

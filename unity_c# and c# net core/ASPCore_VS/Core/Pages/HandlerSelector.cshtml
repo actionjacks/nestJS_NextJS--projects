@@ -1,0 +1,25 @@
+﻿@page "{id:long}"
+
+@model Core.Pages.HandlerSelectorModel
+@{
+}
+
+<table class="table-striped table-bordered">
+    <tbody>
+        <tr>
+            <th>Name</th>
+            <td>@Model.Product.Name</td>
+        </tr>
+        <tr>
+            <th>Price</th>
+            <td>@Model.Product.Price</td>
+        </tr>
+        <tr>
+            <th>Category</th>
+            <td>@Model.Product.Category?.Name</td>
+        </tr>
+    </tbody>
+</table>
+
+<a href="/handlerSelector" class="btn btn-primary">Standard</a>
+<a href="/handlerSelector?handler=category" class="btn btn-primary">Category</a>

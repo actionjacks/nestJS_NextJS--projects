@@ -1,0 +1,34 @@
+﻿@model Product
+
+@{
+    ViewBag.Title = "Fruit";
+    Layout = null; // overwrite layout or set too null 
+}
+
+<p> html:5 + press tab key</p>
+<p> create new template</p>
+<p>NOTA dzieki temu że w pliku _ViewImports są, użyte namespace można tutaj używać po porstu Product</p>
+
+@if (Model.CategoryId == 1)
+{
+    <p>to jest instrukcja warunkowa</p>
+}
+
+<div class="row m-2"> 
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <td>@Model?.Name</td>
+            <td>@Model?.Price.ToString("C2")</td>
+            <td>@(Model?.Price * 2)</td>
+            </tr>
+        </tbody> 
+    </table> 
+</div>

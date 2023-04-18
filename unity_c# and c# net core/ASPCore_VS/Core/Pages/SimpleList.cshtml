@@ -1,0 +1,13 @@
+﻿@page
+@using Core.Infrastructure
+@model Core.Pages.SimpleListModel
+@inject DataContext context
+@{
+}
+
+<ul class="list-group m-2">
+    @foreach(Category category in context.Categories)
+    {
+        <li class="list-group-item">@category.Name</li>
+    }
+</ul>

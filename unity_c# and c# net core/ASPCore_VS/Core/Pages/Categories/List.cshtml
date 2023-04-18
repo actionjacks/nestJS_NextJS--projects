@@ -1,0 +1,35 @@
+﻿@page
+@using Core.Infrastructure;
+@using Core.Models;
+@using Microsoft.AspNetCore.Mvc.RazorPages;
+@model ListModel
+
+<h1>localhost/categories/list</h1>
+
+<ul class="list-group m-2">
+    @foreach(string category in Model.Categories)
+    {
+        <li class="list-group-item">
+            @category
+        </li>
+    }
+</ul>
+
+@functions {
+    public class ListModel : PageModel
+    {
+        private DataContext _context;
+        public IEnumerable<string> Categories { get; set; } // public and can acces in Razor page
+
+
+        public ListModel(DataContext context)
+        {
+            _context = context;
+        }
+        // invoke automatic after get method
+        public void OnGet()
+        {
+            Categories = _context.Categories.Select(c => c.Name);
+        }
+    }
+}

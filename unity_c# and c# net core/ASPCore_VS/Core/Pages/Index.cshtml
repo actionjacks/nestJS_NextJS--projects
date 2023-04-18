@@ -1,0 +1,45 @@
+﻿@page "{id:long}"
+
+@using Core.Infrastructure;
+@using Core.Models;
+@using Microsoft.AspNetCore.Mvc.RazorPages;
+@model Core.Pages.IndexModel
+
+<h1>Razor Indedx</h1>
+<p>@Model.MyProp</p>
+
+<p>sciezka dzieki temu page"{id:long}" mozna localhost/3</p>
+
+<p>OnGetAsync invoke when get method</p>
+<div>
+    @Model.Product.Name
+</div>
+
+<p>to samo co</p>
+
+@functions {
+    public class IndexModel : PageModel
+    {
+        private DataContext _context;
+        public Product Product { get; set; } // public and can acces in Razor page
+
+        public string MyProp = "MY PROPERTY";
+
+        public IndexModel(DataContext context)
+        {
+            _context = context;
+        }
+        // invoke automatic after get method
+        public async Task<IActionResult> OnGetAsync(long id = 1)
+        {
+            Product = await _context.Products.FindAsync(id);
+
+            // to jest to samo
+            if(Product == null)
+            {
+                return RedirectToPage("NotFound");
+            }
+            return Page();
+        }
+    }
+}

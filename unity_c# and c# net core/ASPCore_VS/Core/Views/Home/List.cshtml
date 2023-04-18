@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Product>
+
+@{
+    ViewBag.Title = "List";
+    decimal averge = Model.Average(p => p.Price);
+    ViewData["fruit"] = "apples";
+}
+
+<p> html:5 + press tab key</p>
+
+<div class="row m-2"> 
+    <table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    @section JsonEncoding {
+        <div class="bg-info text-white"> 
+            @Json.Serialize(Model)
+        </div>
+        }
+        <tbody>
+            @foreach (Product p in Model)
+                {
+                <tr>
+                <td>@p?.Name</td>
+                <td>@p?.Price.ToString("C2")</td>
+                <td>@(p?.Price * 2)</td>
+                <td>
+                    @((p.Price / averge * 100).ToString("f1")) % averge
+                </td>
+                <td> Viewbag
+                    @((p.Price / ViewBag.AvergePrice * 100).ToString("f1")) % averge
+                </td>
+                </tr>
+
+                    <partial name="_RowPartial" model="p" view-data="ViewData"/>
+                }
+        </tbody> 
+    </table> 
+</div>
