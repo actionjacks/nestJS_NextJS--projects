@@ -1,0 +1,126 @@
+{
+  "SerializedFilePath": "c:\\Users\\actio\\OneDrive\\Pulpit\\_learn\\unity_c# and c# net core\\ASPCore_VS\\Core\\obj\\Debug\\net6.0\\project.razor.json",
+  "FilePath": "c:\\Users\\actio\\OneDrive\\Pulpit\\_learn\\unity_c# and c# net core\\ASPCore_VS\\Core\\Core.csproj",
+  "Configuration": {
+    "ConfigurationName": "MVC-3.0",
+    "LanguageVersion": "6.0",
+    "Extensions": [
+      {
+        "ExtensionName": "MVC-3.0"
+      }
+    ]
+  },
+  "ProjectWorkspaceState": {
+    "TagHelpers": [],
+    "CSharpLanguageVersion": 1000
+  },
+  "RootNamespace": "Core",
+  "Documents": [
+    {
+      "FilePath": "c:\\Users\\actio\\OneDrive\\Pulpit\\_learn\\unity_c# and c# net core\\ASPCore_VS\\Core\\Views\\Home\\Html.cshtml",
+      "TargetPath": "Views\\Home\\Html.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\actio\\OneDrive\\Pulpit\\_learn\\unity_c# and c# net core\\ASPCore_VS\\Core\\Views\\Shared\\Components\\ProductListing\\Default.cshtml",
+      "TargetPath": "Views\\Shared\\Components\\ProductListing\\Default.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\actio\\OneDrive\\Pulpit\\_learn\\unity_c# and c# net core\\ASPCore_VS\\Core\\Views\\Home\\_CellPartial.cshtml",
+      "TargetPath": "Views\\Home\\_CellPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\actio\\OneDrive\\Pulpit\\_learn\\unity_c# and c# net core\\ASPCore_VS\\Core\\Views\\Home\\_RowPartial.cshtml",
+      "TargetPath": "Views\\Home\\_RowPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\actio\\OneDrive\\Pulpit\\_learn\\unity_c# and c# net core\\ASPCore_VS\\Core\\Views\\_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\actio\\OneDrive\\Pulpit\\_learn\\unity_c# and c# net core\\ASPCore_VS\\Core\\Pages\\NotFound.cshtml",
+      "TargetPath": "Pages\\NotFound.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\actio\\OneDrive\\Pulpit\\_learn\\unity_c# and c# net core\\ASPCore_VS\\Core\\Pages\\SimpleList.cshtml",
+      "TargetPath": "Pages\\SimpleList.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\actio\\OneDrive\\Pulpit\\_learn\\unity_c# and c# net core\\ASPCore_VS\\Core\\Pages\\Edit.cshtml",
+      "TargetPath": "Pages\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\actio\\OneDrive\\Pulpit\\_learn\\unity_c# and c# net core\\ASPCore_VS\\Core\\Pages\\_ViewImports.cshtml",
+      "TargetPath": "Pages\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\actio\\OneDrive\\Pulpit\\_learn\\unity_c# and c# net core\\ASPCore_VS\\Core\\Views\\Home\\Index.cshtml",
+      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\actio\\OneDrive\\Pulpit\\_learn\\unity_c# and c# net core\\ASPCore_VS\\Core\\Views\\Shared\\Common.cshtml",
+      "TargetPath": "Views\\Shared\\Common.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\actio\\OneDrive\\Pulpit\\_learn\\unity_c# and c# net core\\ASPCore_VS\\Core\\Views\\Home\\List.cshtml",
+      "TargetPath": "Views\\Home\\List.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\actio\\OneDrive\\Pulpit\\_learn\\unity_c# and c# net core\\ASPCore_VS\\Core\\Pages\\Shared\\_Layout.cshtml",
+      "TargetPath": "Pages\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\actio\\OneDrive\\Pulpit\\_learn\\unity_c# and c# net core\\ASPCore_VS\\Core\\Views\\Shared\\_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\actio\\OneDrive\\Pulpit\\_learn\\unity_c# and c# net core\\ASPCore_VS\\Core\\Pages\\HandlerSelector.cshtml",
+      "TargetPath": "Pages\\HandlerSelector.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\actio\\OneDrive\\Pulpit\\_learn\\unity_c# and c# net core\\ASPCore_VS\\Core\\Pages\\Index.cshtml",
+      "TargetPath": "Pages\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\actio\\OneDrive\\Pulpit\\_learn\\unity_c# and c# net core\\ASPCore_VS\\Core\\Views\\Home\\Fruit.cshtml",
+      "TargetPath": "Views\\Home\\Fruit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\actio\\OneDrive\\Pulpit\\_learn\\unity_c# and c# net core\\ASPCore_VS\\Core\\Views\\Shared\\Components\\PageSize\\Default.cshtml",
+      "TargetPath": "Views\\Shared\\Components\\PageSize\\Default.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\actio\\OneDrive\\Pulpit\\_learn\\unity_c# and c# net core\\ASPCore_VS\\Core\\Views\\_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\actio\\OneDrive\\Pulpit\\_learn\\unity_c# and c# net core\\ASPCore_VS\\Core\\Pages\\_ViewStart.cshtml",
+      "TargetPath": "Pages\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\actio\\OneDrive\\Pulpit\\_learn\\unity_c# and c# net core\\ASPCore_VS\\Core\\Pages\\Categories\\List.cshtml",
+      "TargetPath": "Pages\\Categories\\List.cshtml",
+      "FileKind": "mvc"
+    }
+  ],
+  "SerializationFormat": "0.3"
+}

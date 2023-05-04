@@ -1,0 +1,17 @@
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\Blog\Blog.DataAccess\obj\Debug\net7.0\Blog.DataAccess.csproj.AssemblyReference.cache
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\Blog\Blog.DataAccess\obj\Debug\net7.0\Blog.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\Blog\Blog.DataAccess\obj\Debug\net7.0\Blog.DataAccess.AssemblyInfoInputs.cache
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\Blog\Blog.DataAccess\obj\Debug\net7.0\Blog.DataAccess.AssemblyInfo.cs
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\Blog\Blog.DataAccess\obj\Debug\net7.0\Blog.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\Blog\Blog.DataAccess\bin\Debug\net7.0\Blog.DataAccess.deps.json
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\Blog\Blog.DataAccess\bin\Debug\net7.0\Blog.DataAccess.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\Blog\Blog.DataAccess\bin\Debug\net7.0\Blog.DataAccess.pdb
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\Blog\Blog.DataAccess\bin\Debug\net7.0\Blog.Models.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\Blog\Blog.DataAccess\bin\Debug\net7.0\Blog.Utility.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\Blog\Blog.DataAccess\bin\Debug\net7.0\Blog.Models.pdb
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\Blog\Blog.DataAccess\bin\Debug\net7.0\Blog.Utility.pdb
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\Blog\Blog.DataAccess\obj\Debug\net7.0\Blog.DataAccess.csproj.CopyComplete
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\Blog\Blog.DataAccess\obj\Debug\net7.0\Blog.DataAccess.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\Blog\Blog.DataAccess\obj\Debug\net7.0\refint\Blog.DataAccess.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\Blog\Blog.DataAccess\obj\Debug\net7.0\Blog.DataAccess.pdb
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\Blog\Blog.DataAccess\obj\Debug\net7.0\ref\Blog.DataAccess.dll

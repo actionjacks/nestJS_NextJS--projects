@@ -1,0 +1,12 @@
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\Blog\Blog.Utility\bin\Debug\net7.0\Blog.Utility.deps.json
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\Blog\Blog.Utility\bin\Debug\net7.0\Blog.Utility.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\Blog\Blog.Utility\bin\Debug\net7.0\Blog.Utility.pdb
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\Blog\Blog.Utility\obj\Debug\net7.0\Blog.Utility.csproj.AssemblyReference.cache
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\Blog\Blog.Utility\obj\Debug\net7.0\Blog.Utility.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\Blog\Blog.Utility\obj\Debug\net7.0\Blog.Utility.AssemblyInfoInputs.cache
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\Blog\Blog.Utility\obj\Debug\net7.0\Blog.Utility.AssemblyInfo.cs
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\Blog\Blog.Utility\obj\Debug\net7.0\Blog.Utility.csproj.CoreCompileInputs.cache
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\Blog\Blog.Utility\obj\Debug\net7.0\Blog.Utility.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\Blog\Blog.Utility\obj\Debug\net7.0\refint\Blog.Utility.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\Blog\Blog.Utility\obj\Debug\net7.0\Blog.Utility.pdb
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\Blog\Blog.Utility\obj\Debug\net7.0\ref\Blog.Utility.dll

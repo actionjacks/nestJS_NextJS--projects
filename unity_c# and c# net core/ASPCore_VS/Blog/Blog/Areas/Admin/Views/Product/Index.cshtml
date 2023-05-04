@@ -1,0 +1,62 @@
+﻿@model List<Products>
+
+<h1>Products list</h1>
+
+<div class="container">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">
+                Products List
+            </h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Product" 
+               asp-action="Upsert" 
+               class="btn btn-primary">
+               Create new product
+            </a>
+        </div>
+    </div> 
+
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>ISBN</th>
+            <th>Price</th>
+            <th>Author</th>
+            <th>Category</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+            @foreach(var product in Model)
+            {
+            <tr>
+                <th>@product.Title</th>
+                <th>@product.ISBN</th>
+                <th>@product.Price</th>
+                <th>@product.Author</th>
+                <th>@product.Category.Name</th>
+
+                <th>
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Product" 
+                           asp-action="Upsert"
+                           asp-route-id="@product.Id"
+                           class="btn btn-primary mx-2">
+                           Edit
+                        </a>
+-                       <a asp-controller="Product"
+                           asp-action="Delete"
+                           asp-route-id="@product.Id"
+                           class="btn btn-secondary mx-2">
+                           Delete
+                        </a>
+                    </div>
+                </th>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>  
