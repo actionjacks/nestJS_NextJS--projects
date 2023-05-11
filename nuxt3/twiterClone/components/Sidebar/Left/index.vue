@@ -68,7 +68,7 @@
         <template v-slot:name> More </template>
       </SidebarLeftTab>
 
-      <div class="hidden xl:block">
+      <!-- <div class="hidden xl:block">
         <UIButton liquid size="lg" @on-click="emits('onTweet')">
           <span class="font-bold"> Tweet </span>
         </UIButton>
@@ -80,7 +80,7 @@
             <PencilIcon />
           </div>
         </UIButton>
-      </div>
+      </div> -->
     </div>
 
     <div
@@ -89,7 +89,7 @@
       @click="emits('onLogout')"
     >
       <div class="flex flex-row">
-        <img :src="props.user.profileImage" class="w-10 h-10 rounded-full" />
+        <img :src="props.user?.profileImage" class="w-10 h-10 rounded-full" />
         <div class="flex-col hidden ml-2 xl:block">
           <h1 class="text-sm font-bold text-gray-800 dark:text-white">
             {{ user.name }}
@@ -109,9 +109,12 @@
     </div>
   </div>
 </template>
+
 <script setup>
-// import useTailwindConfig from "@/components/composables/useTailwindConfig";
-import { HomeIcon } from "@vue-hero-icons/solid";
+import LogoTwitter from "@/components/Logo/Twitter.vue";
+import SidebarLeftTab from "@/components/Sidebar/Left/Tab.vue";
+import useTailwindConfig from "@/components/composables/useTailwindConfig";
+import { HomeIcon } from "@heroicons/vue/24/solid";
 import {
   HashtagIcon,
   BellIcon,
@@ -122,7 +125,7 @@ import {
   DotsCircleHorizontalIcon,
   PencilIcon,
   ChevronDownIcon,
-} from "@vue-hero-icons/outline";
+} from "@heroicons/vue/24/solid";
 
 const { defaultTransition } = useTailwindConfig();
 const emits = defineEmits(["onTweet", "onLogout"]);

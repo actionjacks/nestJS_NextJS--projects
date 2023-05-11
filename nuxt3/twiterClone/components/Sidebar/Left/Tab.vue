@@ -13,7 +13,9 @@
     </div>
   </nuxt-link>
 </template>
+
 <script setup>
+import useTailwindConfig from "@/components/composables/useTailwindConfig";
 const { defaultTransition } = useTailwindConfig();
 
 const props = defineProps({
