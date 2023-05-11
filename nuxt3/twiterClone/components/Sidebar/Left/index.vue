@@ -111,7 +111,7 @@
 </template>
 <script setup>
 // import useTailwindConfig from "@/components/composables/useTailwindConfig";
-import { HomeIcon } from "@heroicons/vue/solid";
+import { HomeIcon } from "@vue-hero-icons/solid";
 import {
   HashtagIcon,
   BellIcon,
@@ -122,7 +122,7 @@ import {
   DotsCircleHorizontalIcon,
   PencilIcon,
   ChevronDownIcon,
-} from "@heroicons/vue/outline";
+} from "@vue-hero-icons/outline";
 
 const { defaultTransition } = useTailwindConfig();
 const emits = defineEmits(["onTweet", "onLogout"]);
