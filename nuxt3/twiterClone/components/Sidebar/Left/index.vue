@@ -63,12 +63,12 @@
 
       <SidebarLeftTab>
         <template v-slot:icon>
-          <DotsCircleHorizontalIcon />
+          <PencilIcon />
         </template>
         <template v-slot:name> More </template>
       </SidebarLeftTab>
 
-      <!-- <div class="hidden xl:block">
+      <div class="hidden xl:block">
         <UIButton liquid size="lg" @on-click="emits('onTweet')">
           <span class="font-bold"> Tweet </span>
         </UIButton>
@@ -80,7 +80,7 @@
             <PencilIcon />
           </div>
         </UIButton>
-      </div> -->
+      </div>
     </div>
 
     <div
@@ -114,6 +114,7 @@
 import LogoTwitter from "@/components/Logo/Twitter.vue";
 import SidebarLeftTab from "@/components/Sidebar/Left/Tab.vue";
 import useTailwindConfig from "@/components/composables/useTailwindConfig";
+import UIButton from "@/components/UI/Button.vue";
 import { HomeIcon } from "@heroicons/vue/24/solid";
 import {
   HashtagIcon,
@@ -122,7 +123,6 @@ import {
   BookmarkIcon,
   DocumentTextIcon,
   UserIcon,
-  DotsCircleHorizontalIcon,
   PencilIcon,
   ChevronDownIcon,
 } from "@heroicons/vue/24/solid";

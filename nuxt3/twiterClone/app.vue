@@ -2,7 +2,6 @@
   <div :class="{ dark: darkMode }">
     <div class="bg-white dark:bg-dim-900">
       <!-- <LoadingPage v-if="isAuthLoading" /> -->
-      44:42
       <!-- App -->
       <div clas="min-h-full">
         <div
@@ -16,16 +15,16 @@
           </div>
 
           <!-- Main content -->
-          <!-- <main class="col-span-12 md:col-span-8 xl:col-span-6">
+          <main class="col-span-12 md:col-span-8 xl:col-span-6">
             <router-view />
-          </main> -->
+          </main>
 
           <!-- Right Sidebar -->
-          <!-- <div class="hidden col-span-12 md:block xl:col-span-4 md:col-span-3">
+          <div class="hidden col-span-12 md:block xl:col-span-4 md:col-span-3">
             <div class="sticky top-0">
               <SidebarRight />
             </div>
-          </div> -->
+          </div>
         </div>
       </div>
 
@@ -44,7 +43,11 @@
 </template>
 
 <script setup>
-const darkMode = ref(true);
+import SidebarLeft from "@/components/Sidebar/Left/index.vue";
+import SidebarRight from "@/components/Sidebar/Right/index.vue";
+
+const darkMode = ref(false);
+
 // const { useAuthUser, initAuth, useAuthLoading, logout } = useAuth();
 // const isAuthLoading = useAuthLoading();
 // const {
