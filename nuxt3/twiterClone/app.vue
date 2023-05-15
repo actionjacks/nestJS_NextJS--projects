@@ -1,16 +1,19 @@
 <template>
   <div :class="{ dark: darkMode }">
     <div class="bg-white dark:bg-dim-900">
-      <!-- <LoadingPage v-if="isAuthLoading" /> -->
+      <LoadingPage v-if="isAuthLoading" />
+
       <!-- App -->
-      <div clas="min-h-full">
+      <div v-else-if="user" clas="min-h-full">
         <div
           class="grid grid-cols-12 mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:gap-5"
         >
           <!-- Left sidebar -->
           <div class="hidden md:block xs-col-span-1 xl:col-span-2">
             <div class="sticky top-0">
-              <SidebarLeft />
+              <SidebarLeft :user="user" />
+              <!-- @on-tweet="handleOpenTweetModal"
+                @on-logout="handleUserLogout" -->
             </div>
           </div>
 
@@ -28,7 +31,7 @@
         </div>
       </div>
 
-      <!-- <AuthPage v-else /> -->
+      <AuthPage v-else />
 
       <!-- <UIModal :isOpen="postTweetModal" @on-close="handleModalClose">
         <TweetForm
@@ -45,21 +48,25 @@
 <script setup>
 import SidebarLeft from "@/components/Sidebar/Left/index.vue";
 import SidebarRight from "@/components/Sidebar/Right/index.vue";
+import LoadingPage from "@/components/LoadingPage.vue";
+import AuthPage from "@/components/Auth/Page.vue";
+import useAuth from "@/components/composables/useAuth";
+import useEmitter from "@/components/composables/useEmitter";
 
 const darkMode = ref(false);
 
-// const { useAuthUser, initAuth, useAuthLoading, logout } = useAuth();
-// const isAuthLoading = useAuthLoading();
+const { useAuthUser, initAuth, useAuthLoading, logout } = useAuth();
+const isAuthLoading = useAuthLoading();
 // const {
 //   closePostTweetModal,
 //   usePostTweetModal,
 //   openPostTweetModal,
 //   useReplyTweet,
 // } = useTweets();
-// const user = useAuthUser();
+const user = useAuthUser();
 
 // const postTweetModal = usePostTweetModal();
-// const emitter = useEmitter();
+const emitter = useEmitter();
 // const replyTweet = useReplyTweet();
 
 // emitter.$on("replyTweet", (tweet) => {
@@ -68,10 +75,6 @@ const darkMode = ref(false);
 
 // emitter.$on("toggleDarkMode", () => {
 //   darkMode.value = !darkMode.value;
-// });
-
-// onBeforeMount(() => {
-//   initAuth();
 // });
 
 // function handleFormSuccess(tweet) {
@@ -93,4 +96,8 @@ const darkMode = ref(false);
 // function handleUserLogout() {
 //   logout();
 // }
+
+onBeforeMount(() => {
+  initAuth();
+});
 </script>

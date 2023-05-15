@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import { defineEventHandler, H3Event, parseCookies, setCookie } from "h3";
 
 const generateAccessToken = (user) => {
   const config = useRuntimeConfig(); // nuxt.config env files
@@ -47,7 +48,7 @@ export const generateTokens = (user) => {
 };
 
 export const sendRefreshToken = (event, token) => {
-  setCookie(event.res, "refresh_token", token, {
+  setCookie(event?.res, "refresh_token", token, {
     httpOnly: true,
     sameSite: true,
   });

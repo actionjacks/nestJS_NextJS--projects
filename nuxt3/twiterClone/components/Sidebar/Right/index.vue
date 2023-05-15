@@ -98,9 +98,10 @@
 import SidebarRightPreviewCard from "@/components/Sidebar/Right/PreviewCard/index.vue";
 import SidebarRightPreviewCardItem from "@/components/Sidebar/Right/PreviewCard/Item.vue";
 import { ServerIcon } from "@heroicons/vue/24/solid";
+import useEmitter from "@/components/composables/useEmitter";
 
 const search = ref("");
-// const emitter = useEmitter();
+const emitter = useEmitter();
 
 function handleSearch() {
   useRouter().push({ path: "/search", query: { q: search.value } });
@@ -140,6 +141,6 @@ const whoToFollowItems = ref([
 ]);
 
 function handleToggleDarkMode() {
-  // emitter.$emit("toggleDarkMode");
+  emitter.$emit("toggleDarkMode");
 }
 </script>
