@@ -1,4 +1,5 @@
 import jwt_decode from "jwt-decode";
+import useFetchApi from "./useFetchApi";
 
 export default () => {
   const useAuthToken = () => useState("auth_token");

@@ -1,6 +1,7 @@
 <template>
   <div :class="{ dark: darkMode }">
     <div class="bg-white dark:bg-dim-900">
+      {{ user }}
       <LoadingPage v-if="isAuthLoading" />
 
       <!-- App -->
@@ -97,7 +98,8 @@ const emitter = useEmitter();
 //   logout();
 // }
 
-onBeforeMount(() => {
-  initAuth();
+onBeforeMount(async () => {
+  await initAuth();
+  console.log(user);
 });
 </script>
