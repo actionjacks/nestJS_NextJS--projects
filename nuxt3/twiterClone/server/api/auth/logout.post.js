@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
     await removeRefreshToken(refreshToken);
   } catch (error) {}
 
-  sendRefreshToken(event?.res, null);
+  sendRefreshToken(event.node.res, null);
 
   return { message: "Done" };
 });

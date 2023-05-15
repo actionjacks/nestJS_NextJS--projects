@@ -17,15 +17,16 @@
 <script setup>
 import MainSection from "@/components/MainSection.vue";
 import useTailwindConfig from "@/components/composables/useTailwindConfig";
+import useAuth from "@/components/composables/useAuth";
 
 const { twitterBorderColor } = useTailwindConfig();
 // const { getTweets } = useTweets();
 
 const loading = ref(false);
 const homeTweets = ref([]);
-// const { useAuthUser } = useAuth();
+const { useAuthUser } = useAuth();
 
-// const user = useAuthUser();
+const user = useAuthUser();
 
 // onBeforeMount(async () => {
 //   loading.value = true;
