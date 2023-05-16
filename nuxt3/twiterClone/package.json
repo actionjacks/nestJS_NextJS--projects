@@ -23,7 +23,7 @@
     "@vueuse/core": "^10.1.2",
     "@vueuse/integrations": "^10.1.2",
     "bcrypt": "^5.1.0",
-    "cloudinary": "^1.36.4",
+    "cloudinary": "^1.37.0",
     "formidable": "^2.1.1",
     "human-time": "^0.0.2",
     "jsonwebtoken": "^9.0.0",

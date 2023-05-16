@@ -17,7 +17,10 @@
     </div>
   </div>
 </template>
+
 <script setup>
+import defineEmits from "@/components/composables/useEmitter.js";
+
 const emits = defineEmits(["update:modelValue"]);
 
 const props = defineProps({

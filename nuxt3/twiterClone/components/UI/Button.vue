@@ -10,7 +10,10 @@
     </span>
   </button>
 </template>
+
 <script setup>
+import defineEmits from "@/components/composables/useEmitter.js";
+
 const emits = defineEmits(["onClick"]);
 
 const props = defineProps({

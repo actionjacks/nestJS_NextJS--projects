@@ -41,6 +41,10 @@ export default defineEventHandler(async (event) => {
     const user = await getUserById(userId);
 
     event.context.auth = { user };
+    /* 
+        to zosranie przekazane do pasujacych rątow i dołączone do do konkretnego zapytania np
+       "/api/user/tweets" -> do POST zostanie dołaczona properta event.context.auth = user
+    */
   } catch (error) {
     return;
   }

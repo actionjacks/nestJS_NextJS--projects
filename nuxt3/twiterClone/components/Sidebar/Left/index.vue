@@ -126,6 +126,7 @@ import {
   PencilIcon,
   ChevronDownIcon,
 } from "@heroicons/vue/24/solid";
+import defineEmits from "@/components/composables/useEmitter.js";
 
 const { defaultTransition } = useTailwindConfig();
 const emits = defineEmits(["onTweet", "onLogout"]);

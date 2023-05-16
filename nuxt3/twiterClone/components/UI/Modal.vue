@@ -45,6 +45,7 @@ import {
   Dialog,
   DialogPanel,
 } from "@headlessui/vue";
+import defineEmits from "@/components/composables/useEmitter.js";
 
 const emits = defineEmits(["onClose"]);
 

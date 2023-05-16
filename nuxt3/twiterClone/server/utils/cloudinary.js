@@ -1,7 +1,7 @@
 import { v2 as _cloudinary } from "cloudinary";
 
 const cloudinary = () => {
-  const config = useRuntimeConfig();
+  const config = useRuntimeConfig(); // env's reference
 
   _cloudinary.config({
     cloud_name: config.cloudinaryCloudName,

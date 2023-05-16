@@ -6,21 +6,24 @@
       </Head>
 
       <div class="border-b" :class="twitterBorderColor">
-        <!-- <TweetForm :user="user" @on-success="handleFormSuccess" /> -->
+        <TweetForm :user="user" @on-success="handleFormSuccess" />
       </div>
 
-      <!-- <TweetListFeed :tweets="homeTweets" /> -->
+      <TweetListFeed :tweets="homeTweets" />
     </MainSection>
   </div>
 </template>
 
 <script setup>
+import TweetForm from "@/components/Tweet/Form/index.vue";
+import TweetListFeed from "@/components/Tweet/ListFeed.vue";
 import MainSection from "@/components/MainSection.vue";
 import useTailwindConfig from "@/components/composables/useTailwindConfig";
 import useAuth from "@/components/composables/useAuth";
+import useTweets from "@/components/composables/useTweets";
 
 const { twitterBorderColor } = useTailwindConfig();
-// const { getTweets } = useTweets();
+const { getTweets } = useTweets();
 
 const loading = ref(false);
 const homeTweets = ref([]);
@@ -28,18 +31,18 @@ const { useAuthUser } = useAuth();
 
 const user = useAuthUser();
 
-// onBeforeMount(async () => {
-//   loading.value = true;
-//   try {
-//     const { tweets } = await getTweets();
+onBeforeMount(async () => {
+  loading.value = true;
+  try {
+    const { tweets } = await getTweets();
 
-//     homeTweets.value = tweets;
-//   } catch (error) {
-//     console.log(error);
-//   } finally {
-//     loading.value = false;
-//   }
-// });
+    homeTweets.value = tweets;
+  } catch (error) {
+    console.log(error);
+  } finally {
+    loading.value = false;
+  }
+});
 
 function handleFormSuccess(tweet) {
   navigateTo({ path: `/status/${tweet.id}` });
