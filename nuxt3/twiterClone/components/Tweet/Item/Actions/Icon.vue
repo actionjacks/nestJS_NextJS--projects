@@ -19,6 +19,7 @@
 import useTailwindConfig from "@/components/composables/useTailwindConfig";
 
 const emits = defineEmits(["onClick"]);
+
 const props = defineProps({
   color: { type: String, required: true },
   size: { type: Number, default: 5 },

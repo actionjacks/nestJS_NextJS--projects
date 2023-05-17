@@ -95,7 +95,7 @@
             {{ user.name }}
           </h1>
           <p class="text-sm text-gray-400">
-            {{ user.handle }}
+            {{ user?.handle }}
           </p>
         </div>
       </div>
@@ -126,7 +126,7 @@ import {
   PencilIcon,
   ChevronDownIcon,
 } from "@heroicons/vue/24/solid";
-import defineEmits from "@/components/composables/useEmitter.js";
+// import defineEmits from "@/components/composables/useEmitter.js";
 
 const { defaultTransition } = useTailwindConfig();
 const emits = defineEmits(["onTweet", "onLogout"]);

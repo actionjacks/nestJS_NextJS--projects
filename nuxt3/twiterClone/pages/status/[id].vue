@@ -27,14 +27,13 @@ watch(
 );
 
 function getTweetIdFromRoute() {
-  return useRoute().params.id;
+  return useRoute().params?.id;
 }
 
 async function getTweet() {
   loading.value = true;
   try {
     const response = await getTweetById(getTweetIdFromRoute());
-
     tweet.value = response.tweet;
   } catch (error) {
     console.log(error);

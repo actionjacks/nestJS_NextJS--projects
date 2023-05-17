@@ -1,3 +1,5 @@
+import useFetchApi from "./useFetchApi";
+
 export default () => {
   const usePostTweetModal = () => useState("post_tweet_modal", () => false);
   const useReplyTweet = () => useState("reply_tweet", () => null);
@@ -22,8 +24,8 @@ export default () => {
   const postTweet = (formData) => {
     const form = new FormData();
 
-    form.append("text", formData.text);
-    form.append("replyTo", formData.replyTo);
+    form.append("text", formData?.text);
+    form.append("replyTo", formData?.replyTo);
 
     formData.mediaFiles.forEach((mediaFile, index) => {
       form.append("media_file_" + index, mediaFile);

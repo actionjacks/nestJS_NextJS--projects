@@ -21,7 +21,7 @@ export default defineEventHandler(async (event) => {
   const userId = event.context?.auth?.user?.id; // to zostaje dołaczone dzięki auth.js
 
   const tweetData = {
-    text: fields.text,
+    text: fields?.text,
     authorId: userId,
   };
   const replyTo = fields.replyTo;

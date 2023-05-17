@@ -12,33 +12,36 @@
 
 <script setup>
 import MainSection from "@/components/MainSection.vue";
-// const { getTweets: getTweetsComposable } = useTweets();
+import TweetListFeed from "@/components/Tweet/ListFeed.vue";
+import useTweets from "~/components/composables/useTweets";
+
+const { getTweets: getTweetsComposable } = useTweets();
 
 const loading = ref(false);
 const searchTweets = ref([]);
 const searchQuery = useRoute().query.q;
 
-// watch(
-//   () => useRoute().fullPath,
-//   () => getTweets()
-// );
+watch(
+  () => useRoute().fullPath,
+  () => getTweets()
+);
 
-// onBeforeMount(() => {
-//   getTweets();
-// });
+onBeforeMount(() => {
+  getTweets();
+});
 
-// async function getTweets() {
-//   loading.value = true;
-//   try {
-//     const { tweets } = await getTweetsComposable({
-//       query: searchQuery,
-//     });
+async function getTweets() {
+  loading.value = true;
+  try {
+    const { tweets } = await getTweetsComposable({
+      query: searchQuery,
+    });
 
-//     searchTweets.value = tweets;
-//   } catch (error) {
-//     console.log(error);
-//   } finally {
-//     loading.value = false;
-//   }
-// }
+    searchTweets.value = tweets;
+  } catch (error) {
+    console.log(error);
+  } finally {
+    loading.value = false;
+  }
+}
 </script>

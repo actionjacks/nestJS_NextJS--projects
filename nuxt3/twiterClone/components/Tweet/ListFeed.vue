@@ -8,7 +8,7 @@
       v-for="tweet in props.tweets"
       class="pb-4 border-b cursor-pointer hover:bg-gray-100 dark:hover:bg-dim-300"
       :class="[twitterBorderColor, defaultTransition]"
-      :key="tweet.id"
+      :key="tweet?.id"
       @click.native="redirect(tweet)"
     >
       <TweetItem :tweet="tweet" compact />

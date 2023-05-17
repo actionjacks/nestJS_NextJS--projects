@@ -6,6 +6,7 @@
     <slot></slot>
   </div>
 </template>
+
 <script setup>
 import useTailwindConfig from "@/components/composables/useTailwindConfig";
 

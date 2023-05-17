@@ -6,7 +6,7 @@
       :size="size"
     >
       <template v-slot:icon="{ classes }">
-        <ChatIcon :class="classes" />
+        <ChartBarIcon :class="classes" />
       </template>
 
       <template v-if="showStats" v-slot:default>
@@ -16,7 +16,7 @@
 
     <TweetItemActionsIcon color="green" :size="size">
       <template v-slot:icon="{ classes }">
-        <RefreshIcon :class="classes" />
+        <ReceiptPercentIcon :class="classes" />
       </template>
 
       <template v-if="showStats" v-slot:default>
@@ -36,7 +36,7 @@
 
     <TweetItemActionsIcon color="blue" :size="size">
       <template v-slot:icon="{ classes }">
-        <UploadIcon :class="classes" />
+        <HeartIcon :class="classes" />
       </template>
 
       <template v-if="showStats" v-slot:default>
@@ -49,11 +49,10 @@
 <script setup>
 import TweetItemActionsIcon from "@/components/Tweet/Item/Actions/Icon.vue";
 import {
-  ChatIcon,
-  RefreshIcon,
+  ChartBarIcon,
+  ReceiptPercentIcon,
   HeartIcon,
-  UploadIcon,
-} from "@heroicons/vue/outline";
+} from "@heroicons/vue/24/solid";
 
 const emits = defineEmits(["onCommentClick"]);
 

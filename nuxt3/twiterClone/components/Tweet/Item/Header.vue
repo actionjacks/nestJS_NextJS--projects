@@ -11,16 +11,16 @@
 
       <span class="ml-3 text-sm font-medium text-gray-400">
         <nuxt-link to="#">
-          {{ author.handle }}
+          {{ author?.handle }}
         </nuxt-link>
-        . {{ props.tweet.postedAtHuman }}
+        . {{ props.tweet?.postedAtHuman }}
       </span>
 
       <p v-if="props.tweet.replyTo" class="text-sm">
         <span class="text-gray-500"> Replying to </span>
 
         <nuxt-link :to="replyToTweetUrl" class="text-blue-400">
-          {{ props.tweet.replyTo.author.handle }}
+          {{ props.tweet?.replyTo?.author?.handle }}
         </nuxt-link>
       </p>
     </div>

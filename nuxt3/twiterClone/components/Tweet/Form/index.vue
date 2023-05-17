@@ -21,9 +21,11 @@
 <script setup>
 import TweetItem from "@/components/Tweet/Item/index.vue";
 import UISpinner from "@/components/UI/Spinner.vue";
-import defineEmits from "@/components/composables/useEmitter.js";
+// import defineEmits from "@/components/composables/useEmitter.js";
 import useTweets from "~/components/composables/useTweets";
 import TweetFormInput from "@/components/Tweet/Form/Input.vue";
+
+const emits = defineEmits(["onSuccess"]);
 
 const props = defineProps({
   user: { type: Object, required: true },
@@ -33,15 +35,15 @@ const props = defineProps({
 });
 
 const { postTweet } = useTweets();
-const emits = defineEmits(["onSuccess"]);
+
 const loading = ref(false);
 
 async function handleFormSubmit(data) {
   loading.value = true;
   try {
     const response = await postTweet({
-      text: data.text,
-      mediaFiles: data.mediaFiles,
+      text: data?.text,
+      mediaFiles: data?.mediaFiles,
       replyTo: props.replyTo?.id,
     });
 

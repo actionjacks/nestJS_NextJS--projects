@@ -129,7 +129,7 @@
 </template>
 <script setup>
 import UIButton from "@/components/UI/Button.vue";
-import defineEmits from "@/components/composables/useEmitter.js";
+// import defineEmits from "@/components/composables/useEmitter.js";
 import useTailwindConfig from "@/components/composables/useTailwindConfig";
 
 const props = defineProps({

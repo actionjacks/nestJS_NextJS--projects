@@ -19,7 +19,7 @@
 </template>
 
 <script setup>
-import defineEmits from "@/components/composables/useEmitter.js";
+// import defineEmits from "@/components/composables/useEmitter.js";
 
 const emits = defineEmits(["update:modelValue"]);
 
