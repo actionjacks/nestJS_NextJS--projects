@@ -165,7 +165,7 @@ function handleImageChange(event) {
 
   const reader = new FileReader();
   reader.onload = (event) => {
-    inputImageUrl.value = event.target.result;
+    inputImageUrl.value = event.target.result; // show uploaded image
   };
   reader.readAsDataURL(file);
 }

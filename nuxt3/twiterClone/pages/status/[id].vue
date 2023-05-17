@@ -9,7 +9,12 @@
     </MainSection>
   </div>
 </template>
+
 <script setup>
+import TweetDetails from "@/components/Tweet/Details.vue";
+import useAuth from "~/components/composables/useAuth";
+import useTweets from "~/components/composables/useTweets";
+
 const loading = ref(false);
 const tweet = ref(null);
 const { getTweetById } = useTweets();

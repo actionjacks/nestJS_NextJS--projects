@@ -19,6 +19,7 @@
 </template>
 
 <script setup>
+import TweetItem from "@/components/Tweet/Item/index.vue";
 import UISpinner from "@/components/UI/Spinner.vue";
 import defineEmits from "@/components/composables/useEmitter.js";
 import useTweets from "~/components/composables/useTweets";
