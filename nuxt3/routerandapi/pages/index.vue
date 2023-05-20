@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/require-v-for-key -->
 <template>
   <div>
     <p>https://icones.js.org/collection/mdi</p>
@@ -26,7 +27,15 @@
       </button>
     </div>
 
-    <div>
+    <div class="p-10 border-2 m-5">
+      <p>this content is from postgress docker container</p>
+      <pre>
+        <div v-for="user of allUsers_">
+          <span :key="user.id">
+            {{ user }}
+          </span>
+        </div>
+      </pre>
       <ContentDoc />
     </div>
   </div>
@@ -39,7 +48,21 @@ const { $sayPiczes } = useNuxtApp();
 const counter = useState("counter", () => 0);
 const counterGlobal = globalCounter();
 
+const allUsers_ = ref<Array<{ email: string; name: string; id: number }>>([]);
+
 const onClick = () => {
   $sayPiczes("piczeeess");
 };
+
+onBeforeMount(async () => {
+  const { allUsers } = await $fetch("/api/primsatest", {
+    method: "GET",
+  });
+
+  allUsers_.value = allUsers as Array<{
+    email: string;
+    name: string;
+    id: number;
+  }>;
+});
 </script>
