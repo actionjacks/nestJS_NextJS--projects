@@ -7,7 +7,7 @@ export default defineNuxtConfig({
     "@": resolve(__dirname, "/"),
   },
   css: ["~/assets/main.scss"],
-  modules: ["@nuxt/content"],
+  modules: ["@nuxt/content", "@sidebase/nuxt-auth"],
   postcss: {
     plugins: {
       tailwindcss: {},

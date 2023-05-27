@@ -7,3 +7,5 @@
 ## https://tailwindcss.com/
 
 ## https://github.com/nuxt/content
+
+## https://sidebase.io/

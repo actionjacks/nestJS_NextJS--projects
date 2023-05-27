@@ -1,0 +1,106 @@
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/bin/Debug/net7.0/appsettings.Development.json
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/bin/Debug/net7.0/appsettings.json
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/bin/Debug/net7.0/ApiWithAuth
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/bin/Debug/net7.0/ApiWithAuth.deps.json
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/bin/Debug/net7.0/ApiWithAuth.runtimeconfig.json
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/bin/Debug/net7.0/ApiWithAuth.dll
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/bin/Debug/net7.0/ApiWithAuth.pdb
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/bin/Debug/net7.0/Microsoft.AspNetCore.OpenApi.dll
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/bin/Debug/net7.0/Microsoft.OpenApi.dll
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/bin/Debug/net7.0/Swashbuckle.AspNetCore.Swagger.dll
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/bin/Debug/net7.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/bin/Debug/net7.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/obj/Debug/net7.0/ApiWithAuth.csproj.AssemblyReference.cache
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/obj/Debug/net7.0/ApiWithAuth.GeneratedMSBuildEditorConfig.editorconfig
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/obj/Debug/net7.0/ApiWithAuth.AssemblyInfoInputs.cache
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/obj/Debug/net7.0/ApiWithAuth.AssemblyInfo.cs
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/obj/Debug/net7.0/ApiWithAuth.csproj.CoreCompileInputs.cache
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/obj/Debug/net7.0/ApiWithAuth.MvcApplicationPartsAssemblyInfo.cs
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/obj/Debug/net7.0/ApiWithAuth.MvcApplicationPartsAssemblyInfo.cache
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/obj/Debug/net7.0/staticwebassets/msbuild.ApiWithAuth.Microsoft.AspNetCore.StaticWebAssets.props
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/obj/Debug/net7.0/staticwebassets/msbuild.build.ApiWithAuth.props
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/obj/Debug/net7.0/staticwebassets/msbuild.buildMultiTargeting.ApiWithAuth.props
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/obj/Debug/net7.0/staticwebassets/msbuild.buildTransitive.ApiWithAuth.props
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/obj/Debug/net7.0/staticwebassets.pack.json
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/obj/Debug/net7.0/staticwebassets.build.json
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/obj/Debug/net7.0/staticwebassets.development.json
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/obj/Debug/net7.0/scopedcss/bundle/ApiWithAuth.styles.css
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/obj/Debug/net7.0/ApiWithAuth.csproj.CopyComplete
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/obj/Debug/net7.0/ApiWithAuth.dll
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/obj/Debug/net7.0/refint/ApiWithAuth.dll
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/obj/Debug/net7.0/ApiWithAuth.pdb
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/obj/Debug/net7.0/ApiWithAuth.genruntimeconfig.cache
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/obj/Debug/net7.0/ref/ApiWithAuth.dll
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/bin/Debug/net7.0/Humanizer.dll
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/bin/Debug/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/bin/Debug/net7.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.dll
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.Design.dll
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.Relational.dll
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/bin/Debug/net7.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/bin/Debug/net7.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/bin/Debug/net7.0/Microsoft.IdentityModel.Logging.dll
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/bin/Debug/net7.0/Microsoft.IdentityModel.Protocols.dll
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/bin/Debug/net7.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/bin/Debug/net7.0/Microsoft.IdentityModel.Tokens.dll
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/bin/Debug/net7.0/Npgsql.dll
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/bin/Debug/net7.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
+/Users/jacobrasmussen/Documents/MediumArticles/apiWithAuth/ApiWithAuth/ApiWithAuth/bin/Debug/net7.0/System.IdentityModel.Tokens.Jwt.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\appsettings.Development.json
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\appsettings.json
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\ApiWithAuth.exe
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\ApiWithAuth.deps.json
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\ApiWithAuth.runtimeconfig.json
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\ApiWithAuth.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\ApiWithAuth.pdb
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\Humanizer.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\Microsoft.OpenApi.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\Npgsql.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\obj\Debug\net7.0\ApiWithAuth.csproj.AssemblyReference.cache
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\obj\Debug\net7.0\ApiWithAuth.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\obj\Debug\net7.0\ApiWithAuth.AssemblyInfoInputs.cache
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\obj\Debug\net7.0\ApiWithAuth.AssemblyInfo.cs
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\obj\Debug\net7.0\ApiWithAuth.csproj.CoreCompileInputs.cache
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\obj\Debug\net7.0\ApiWithAuth.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\obj\Debug\net7.0\ApiWithAuth.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\obj\Debug\net7.0\staticwebassets\msbuild.ApiWithAuth.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\obj\Debug\net7.0\staticwebassets\msbuild.build.ApiWithAuth.props
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.ApiWithAuth.props
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.ApiWithAuth.props
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\obj\Debug\net7.0\staticwebassets.pack.json
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\obj\Debug\net7.0\staticwebassets.build.json
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\obj\Debug\net7.0\staticwebassets.development.json
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\obj\Debug\net7.0\scopedcss\bundle\ApiWithAuth.styles.css
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\obj\Debug\net7.0\ApiWithAuth.csproj.CopyComplete
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\obj\Debug\net7.0\ApiWithAuth.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\obj\Debug\net7.0\refint\ApiWithAuth.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\obj\Debug\net7.0\ApiWithAuth.pdb
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\obj\Debug\net7.0\ApiWithAuth.genruntimeconfig.cache
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\obj\Debug\net7.0\ref\ApiWithAuth.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\Mono.TextTemplating.dll
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\MediumJWTAuthenticationASPNETCoreAPI\ApiWithAuth\bin\Debug\net7.0\System.CodeDom.dll

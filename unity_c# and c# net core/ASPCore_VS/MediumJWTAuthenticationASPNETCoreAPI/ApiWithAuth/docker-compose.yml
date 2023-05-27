@@ -1,0 +1,9 @@
+﻿version: '3.8'
+services:
+  auth-api-db:
+    image: postgres
+    container_name: auth-api-db
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_PASSWORD=mysecretpassword
