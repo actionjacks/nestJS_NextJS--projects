@@ -56,5 +56,3 @@ final_path = os.path.join(application_path, file_name)
 df_headlines.to_csv(final_path)
 
 driver.quit()
-
-# 1:37
