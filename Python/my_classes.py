@@ -48,3 +48,20 @@ print(bank.balance)
 bank.balance = 50
 
 print(bank.balance)
+
+
+class My_base_calss():
+    def __init__(self) -> None:
+        print('IM base Class')
+
+    def foo(self):
+        print('my_base')
+
+
+class My_child_class(My_base_calss):
+    def __init__(self) -> None:
+        My_base_calss.__init__(self)
+        print('My_child_class')
+
+    def foo(self):
+        print('form My_child_class')
