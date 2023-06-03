@@ -100,3 +100,45 @@ print(sum)
 # Porównanie if _name_ = "__main__" służy do tego by upewnić się, że uruchamiamy tylko ten kod który zamierzaliśmy, bez żadnych niechcianych linijek.
 if __name__ == '__main__':
     pass
+
+
+# ======================= List Comprehension =================
+gru = ["123", "2332", "43r"]
+
+for i in gru:
+    print(i)
+    # or
+[print(i) for i in gru]
+
+gru = [i.upper() for i in gru]  # uppercse all items in array
+
+boolean_list = [True, True, False, False]
+
+boolean_list_converted = [1 if b == True else 0 for b in boolean_list]
+# 1 jesli b jest true i 0 jesli b jest false
+
+my_string = "JacekPlacekSracekBacek"
+
+my_string = "".join([i if i.islower() else " " + i for i in my_string])
+# Jacek Placek Sracek Bacek
+
+
+names = ["JAcek", "dupa"]
+pro = ["miszcz", "boli"]
+my_dict = {}
+
+for (key, value) in zip(names, pro):
+    my_dict[key] = value
+
+# { "jacek": "miszcz", "dupa": "boli"}
+my_dict = {
+    (key+"foo" if key != "jacek" else "dupa"):
+    (val if val != "boli" else "miszczonio")
+    for (key, val) in my_dict.items()
+}
+print(my_dict)  # {'JAcekfoo': 'miszcz', 'dupafoo': 'miszczonio'}
+
+
+my_toople = [{'app', 1}, ('app2', 2)]
+for key, val in my_toople:
+    print(key)  # app #app2
