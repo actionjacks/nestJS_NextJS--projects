@@ -65,3 +65,17 @@ class My_child_class(My_base_calss):
 
     def foo(self):
         print('form My_child_class')
+
+# ==================================
+
+
+class Play:
+    def __init__(self) -> None:
+        pass
+
+    def __str__(self) -> str:
+        return 'lorem'
+
+
+play = Play()
+print(play)  # Output: lorem
