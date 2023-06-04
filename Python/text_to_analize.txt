@@ -1,0 +1,19 @@
+Można wyróżnić 10 przedmiotów z tego zakresu: równania i układy równań, wielomiany, teorię liczb, kombinatorykę i logikę[2], oraz nierówności, geometrię, trygonometrię, analizę i funkcje[3].
+
+W przypadku zajęć wyrównawczych w polskich szkołach wyższych obecnie (2019 r.) dany obszar wiedzy jest definiowany jako posiadanie znajomości wybranych pojęć tzw. „matematyki szkolnej” w zakresie szerszym niż podstawa programowa dla szkoły ponadgimnazjalnej, w tym wiedza nt.[4]:
+
+zbioru liczb rzeczywistych oraz jego podzbiorów: zbiorów liczb naturalnych, całkowitych, wymiernych, niewymiernych;
+dowodów niewymierności liczb;
+silni i współczynnika Newtona w ich aspekcie algebraicznym oraz dwumianu Newtona;
+wartości bezwzględnej algebraicznej oraz metrycznej;
+pierwiastka arytmetycznego stopnia k liczby oraz pierwiastka nieparzystego stopnia liczby ujemnej;
+potęgi o wykładniku naturalnym, całkowitym, wymiernym oraz ich własności;
+pojęcia logarytmu i własności logarytmów;
+definicji funkcji i roli zapisu y=f(x), oraz terminów: dziedzina, przeciwdziedzina, argument, wartość funkcji, zbiór wszystkich wartości, wykres funkcji liczbowo-liczbowej;
+sformalizowanej definicji zbioru wartości funkcji dla określonego zakresu argumentów, przeciwobrazu zbioru (w szczególności zbioru rozwiązań równania f(x)=b i nierówności f(x)<b,... );
+rodzajów monotoniczności funkcji, ograniczoności i nieograniczoności funkcji, ekstremów globalnych i lokalnych, parzystości i nieparzystości, różnowartościowości, odwracalności;
+wykresów i własności funkcji liniowych, kwadratowych, homograficznych, potęgowych, wykładniczych, logarytmicznych, trygonometrycznych i cyklometrycznych oraz ich złożeń z funkcją liniową i wartością bezwzględną;
+złożenia funkcji;
+wybranych metod rozwiązywania podstawowych równań i nierówności związanych z wymienionymi wcześniej funkcjami elementarnymi oraz ich złożeniami z wartością bezwzględną;
+par funkcji wzajemnie odwrotnych oraz ich wykresów;
+wielomianów oraz ich podstawowych własności.

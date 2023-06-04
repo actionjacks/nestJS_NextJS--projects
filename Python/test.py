@@ -142,3 +142,30 @@ print(my_dict)  # {'JAcekfoo': 'miszcz', 'dupafoo': 'miszczonio'}
 my_toople = [{'app', 1}, ('app2', 2)]
 for key, val in my_toople:
     print(key)  # app #app2
+
+
+# unboxing
+a, b = ('lorem', '123')
+print(a, b)
+
+a, b = {
+    "name": "Jacek",
+    "age": 30
+}
+print(a, b)
+
+a, b = {
+    "name": "Jacek",
+    "age": 30
+}.items()
+
+print(a)  # Output: ('name', 'Jacek')
+print(b)  # Output: ('age', 30)
+
+a, b = {
+    "name": "Jacek",
+    "age": 30
+}.items()
+
+print(a[0], a[1])  # Output: name Jacek
+print(b[0], b[1])  # Output: age 30

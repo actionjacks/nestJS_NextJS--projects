@@ -77,3 +77,31 @@ check_5 = re.match('^[^A-Za-z]{2,5}o.$', '--ot')  # True
   [^A-Za-z] oznacza dopasowanie do jednego znaku, który nie jest literą alfabetu (zarówno małą, jak i wielką).
   {2,5} oznacza, że poprzedzający element (czyli [^A-Za-z]) musi występować od 2 do 5 razy.
 '''
+
+check_6 = re.match('^!|\.', '!ot')  # True
+'''
+  ^! oznacza dopasowanie do znaku ! na początku łańcucha.
+  | to operator alternatywy, który oznacza "lub".
+  \. oznacza dosłowne wystąpienie kropki ..
+'''
+
+check_group = re.match(r'(foo)-(foo)', 'foo-foo-foo')
+if check_group:
+    print(check_group.groups())
+
+check_group_label = re.match(r'(?P<first>foo)-(foo)', 'foo-foo-foo')
+if check_group:
+    print(check_group.groups())
+    print(check_group_label.group('first'))
+
+match_custom_email = r'^([A-Za-z0-9]+|[A-Za-z0-9][A-Za-z0-9\.-]+[A-Za-z0-9])@([A-Za-z0-9]+|[A-Za-z0-9-\.]+[A-Za-z0-9])\.[A-Za-z0-9]+$'
+
+'''
+  ^ oznacza początek łańcucha.
+  ([A-Za-z0-9]+|[A-Za-z0-9][A-Za-z0-9\.-]+[A-Za-z0-9]) to fragment wyrażenia, który odpowiada za sprawdzanie poprawności części lokalnej adresu e-mail (przed znakiem "@"). Ten fragment może składać się z jednego lub więcej znaków alfanumerycznych [A-Za-z0-9]+, lub zaczynać się od znaku alfanumerycznego, a następnie zawierać dodatkowe znaki, takie jak kropka lub myślnik [A-Za-z0-9][A-Za-z0-9\.-]+[A-Za-z0-9].
+  @ oznacza dosłowne wystąpienie znaku "@", który oddziela część lokalną od domeny.
+  ([A-Za-z0-9]+|[A-Za-z0-9-\.]+[A-Za-z0-9]) to fragment wyrażenia, który odpowiada za sprawdzanie poprawności części domenowej adresu e-mail (po znaku "@"). Ten fragment może składać się z jednego lub więcej znaków alfanumerycznych [A-Za-z0-9]+, lub zawierać dodatkowe znaki, takie jak kropka, myślnik lub kropka w środku [A-Za-z0-9-\.]+[A-Za-z0-9].
+  \. oznacza dosłowne wystąpienie kropki, która oddziela domenę od rozszerzenia.
+  [A-Za-z0-9]+ oznacza jedno lub więcej wystąpień znaków alfanumerycznych, które stanowią rozszerzenie domeny.
+  $ oznacza koniec łańcucha.
+'''
