@@ -5,6 +5,18 @@ result = [element for element in my_list]
 result2 = list(map(lambda element: element, my_list))
 result3 = list(element for element in my_list)
 
+
+def foo(n):
+    for i in range(n):
+        yield i
+
+
+'''
+    for i in range(n): to pętla, która iteruje od 0 do n-1.
+    yield i to instrukcja yield, która zwraca wartość i w każdej iteracji. Instrukcja yield powoduje, że funkcja staje się generatorem.
+    Funkcja zakończy działanie, gdy zostanie wykonana ostatnia iteracja lub gdy zostanie osiągnięty inny warunek zakończenia. Powrót do funkcji spowoduje wznowienie iteracji od miejsca, w którym została zatrzymana.
+'''
+
 result4 = [i + 2 for i in my_list if i % 2 == 0]
 '''
     result4 to nazwa nowej listy, do której będą dodawane elementy.
