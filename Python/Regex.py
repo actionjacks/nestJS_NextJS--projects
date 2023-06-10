@@ -1,5 +1,14 @@
 import re
 
+# (444)-555-55
+# r'(\d\d\d)-\d\d\d=\d\d' d-digit
+valid_phone = f'\d{3}-\d{3}-\d{4}'
+
+re.search(r'cat|dog', 'cat')  # cat or dog
+re.findall(r'.at', 'cat ewef hat dw2 sat fo')  # [cat hat sat]
+
+re.findall(r'[^|.?]+', 'exclude? !!! lorem .')  # remove ! . ?
+
 pattern = r'lorem\ee'
 patter2 = r"foo"
 
@@ -104,4 +113,23 @@ match_custom_email = r'^([A-Za-z0-9]+|[A-Za-z0-9][A-Za-z0-9\.-]+[A-Za-z0-9])@([A
   \. oznacza dosłowne wystąpienie kropki, która oddziela domenę od rozszerzenia.
   [A-Za-z0-9]+ oznacza jedno lub więcej wystąpień znaków alfanumerycznych, które stanowią rozszerzenie domeny.
   $ oznacza koniec łańcucha.
+'''
+
+
+'''
+
+Character	Description	Example Pattern Code	Exammple Match
+  \d	A digit	file_\d\d	file_25
+  \w	Alphanumeric	\w-\w\w\w	A-b_1
+  \s	White space	a\sb\sc	a b c
+  \D	A non digit	\D\D\D	ABC
+  \W	Non-alphanumeric	\W\W\W\W\W	*-+=)
+  \S	Non-whitespace	\S\S\S\S	Yoyo
+
++	Occurs one or more times	Version \w-\w+	Version A-b1_1
+  {3}	Occurs exactly 3 times	\D{3}	abc
+  {2,4}	Occurs 2 to 4 times	\d{2,4}	123
+  {3,}	Occurs 3 or more	\w{3,}	anycharacters
+  \*	Occurs zero or more times	A\*B\*C*	AAACC
+  ?	Once or none	plurals?	plural
 '''
