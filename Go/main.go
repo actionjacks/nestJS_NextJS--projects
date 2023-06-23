@@ -23,9 +23,23 @@ func main() {
 	fmt.Print("no new line")
 
 	myFlot2 := 2.3434
+
 	fmt.Println("lorem lorem", myFlot2)
 
 	fmt.Printf("Age: %v\n", myFlot2) // %v zostanie zastapione zmienna innego typu jak string
+
 	fmt.Printf("print type: %T\n", myFlot2)
 
+	fmt.Printf("print precision: %0.1f\n", myFlot2)
+
+	var storedConsol = fmt.Sprintf("llllllllllllll")
+	fmt.Println(storedConsol)
+
+	// Array
+	var myFirstArray [3]int = [3]int{20, 20, 1}
+	name_ := [3]string{"1", "2", "3"}
+
+	fmt.Println("lorem lorem", myFirstArray, len(myFirstArray), name_)
+
+	// slices (use array under the hood)
 }
