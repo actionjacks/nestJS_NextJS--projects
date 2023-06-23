@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+	"strings"
+)
 
 func main() {
 	// variables
@@ -51,4 +55,35 @@ func main() {
 	rangeOne := name_[0:2]
 
 	fmt.Println(len(scores), rangeOne)
+
+	string_to_search := "lorem12loremrlorem"
+	//https://pkg.go.dev/strings
+	fmt.Println(strings.Contains(string_to_search, "12")) // search and print result
+	fmt.Println(strings.ReplaceAll(string_to_search, "12", "99"))
+
+	myArrayToSort := []int{4, 5, 78, 12, 1, 4, 3, 3, 3, 55, 65}
+	sort.Ints(myArrayToSort)
+
+	fmt.Println(myArrayToSort)
+
+	// LOOOPS
+	x := 0
+	for x < 5 {
+		fmt.Print(x)
+		x++
+	}
+
+	for i := 0; i < 5; i++ {
+		fmt.Print(i)
+	}
+
+	mySlices := []string{"1a", "23a", "34", "3a", "43a"}
+
+	for i := 0; i < len(mySlices); i++ {
+		fmt.Println(mySlices[i])
+	}
+
+	for index, value := range mySlices {
+		fmt.Println(index, "=======", value)
+	}
 }
