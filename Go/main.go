@@ -37,9 +37,18 @@ func main() {
 
 	// Array
 	var myFirstArray [3]int = [3]int{20, 20, 1}
+
 	name_ := [3]string{"1", "2", "3"}
+	name_[0] = "99"
 
 	fmt.Println("lorem lorem", myFirstArray, len(myFirstArray), name_)
 
 	// slices (use array under the hood)
+	var scores = []int{10, 2, 2}
+	scores = append(scores, 12)
+
+	// slice ranges
+	rangeOne := name_[0:2]
+
+	fmt.Println(len(scores), rangeOne)
 }
