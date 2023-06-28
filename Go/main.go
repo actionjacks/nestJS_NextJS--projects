@@ -2,11 +2,47 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"sort"
 	"strings"
 )
 
+// FUNCTIONS
+func printerFo(value string) {
+	fmt.Println(value)
+}
+
+func printerFo2(arr []string, call func(string)) {
+	for _, value := range arr {
+		call(value)
+	}
+}
+
+func circleArea(cyrcleNum float64) float64 {
+	return math.Pi * cyrcleNum * cyrcleNum
+}
+
+func multipleRetur(myString string) (string, string) {
+	uppper := strings.ToUpper((myString))
+	names := strings.Split(uppper, " ")
+
+	// get first char
+	var initials []string
+	for _, char := range names {
+		initials = append(initials, char[:1]) // ADD first letter
+	}
+
+	return names[0], names[1]
+}
+
 func main() {
+	// FROM IMPORT
+	hello_("--------------")
+
+	// multiple returns
+	first, second := multipleRetur("lorem doro")
+	fmt.Println(first, second)
+
 	// variables
 	var nameOne string = "fooo"
 	var inferType = "foo2"
@@ -85,5 +121,28 @@ func main() {
 
 	for index, value := range mySlices {
 		fmt.Println(index, "=======", value)
+	}
+	// or
+	for _, value := range mySlices {
+		fmt.Println("=======", value)
+	}
+
+	printerFo("foo")
+
+	printerFo2(mySlices, printerFo)
+
+	// MAPS
+	menu := map[string]float64{
+		"fo":  1.2,
+		"fo2": 2.2,
+		"fo3": 3.3,
+	}
+
+	fmt.Println(menu)
+	fmt.Println(menu["fo"])
+
+	for key, value := range menu {
+		fmt.Println(key)
+		fmt.Println(value)
 	}
 }
