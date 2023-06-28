@@ -3,8 +3,12 @@
 #include <cstring> // for c-style string functions
 #include <cctype>  //for character-based function
 #include <string>
+#include <cmath>
 
 using namespace std;
+
+void fofunctio(string a); // PROTOTYPE
+void zeroArray(int numbers[], size_t size);
 
 int main()
 {
@@ -29,5 +33,35 @@ int main()
     cout << c << endl;
 
   cout << s1.substr(0, 4) << endl; // jace
+
+  int numberToZeros[]{1, 2, 3, 4, 5};
+  int size = sizeof(numberToZeros) / sizeof(numberToZeros[0]);
+
+  for (int i = 0; i < size; i++)
+  {
+    std::cout << numberToZeros[i] << " ";
+  }
+  std::cout << "BEFORE " << std::endl;
+
+  zeroArray(numberToZeros, 5);
+
+  for (int i = 0; i < size; i++)
+  {
+    std::cout << numberToZeros[i] << " ";
+  }
+  std::cout << "AFTER " << std::endl;
+
   return 0;
+}
+
+void fofunctio(string value){
+    // SOME FUNC
+};
+
+void zeroArray(int numbers[], size_t size)
+{
+  for (size_t i{0}; i < size; i++)
+  {
+    numbers[i] = 0;
+  }
 }
