@@ -10,6 +10,8 @@ using namespace std;
 void fofunctio(string a); // PROTOTYPE
 void zeroArray(int numbers[], size_t size);
 
+void passByReference(int &num);
+
 int main()
 {
   char initialName[20]{"fofofofo"};
@@ -49,7 +51,40 @@ int main()
   {
     std::cout << numberToZeros[i] << " ";
   }
-  std::cout << "AFTER " << std::endl;
+  cout << "AFTER " << endl;
+
+  // PASS BY REFERENCE
+  int mynum{25};
+  passByReference(mynum);
+  std::cout << "num passed by reference initial 25 now is " << mynum << std::endl;
+
+  // POONTERS
+  int fofofo{10};
+  cout << fofofo << endl;
+  cout << &fofofo << endl;
+
+  int *pointerMy{nullptr};
+  cout << pointerMy << endl;
+
+  pointerMy = &fofofo;
+  cout << pointerMy << endl;
+
+  vector<string> names_{"jacek", "placek"};
+  vector<string> *my_PointerV{nullptr};
+
+  my_PointerV = &names_;
+
+  cout << (*my_PointerV).at(0) << endl; // Jacek
+  delete my_PointerV;
+
+  // DYNAMIC ALLOCATION EMORY
+  int *int_pointer{nullptr};
+  int_pointer = new int;
+
+  cout << int_pointer << endl; // some adres
+  *int_pointer = 100;
+  cout << *int_pointer << endl; // 100
+  delete int_pointer;
 
   return 0;
 }
@@ -65,3 +100,14 @@ void zeroArray(int numbers[], size_t size)
     numbers[i] = 0;
   }
 }
+
+void passByReference(int &num)
+{
+  num += 10;
+};
+
+void passByReferenceButCantChange(const int &num)
+{
+  // num += 10; //error
+  cout << num << std::endl;
+};
