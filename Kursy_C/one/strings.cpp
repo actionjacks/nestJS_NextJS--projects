@@ -9,6 +9,7 @@ using namespace std;
 
 void fofunctio(string a); // PROTOTYPE
 void zeroArray(int numbers[], size_t size);
+void dubleData(int *value);
 
 void passByReference(int &num);
 
@@ -75,7 +76,6 @@ int main()
   my_PointerV = &names_;
 
   cout << (*my_PointerV).at(0) << endl; // Jacek
-  delete my_PointerV;
 
   // DYNAMIC ALLOCATION EMORY
   int *int_pointer{nullptr};
@@ -84,7 +84,39 @@ int main()
   cout << int_pointer << endl; // some adres
   *int_pointer = 100;
   cout << *int_pointer << endl; // 100
-  delete int_pointer;
+  delete int_pointer;           // need delete memory if new
+
+  int vaL{20};
+  dubleData(&vaL); // 40
+
+  int *duble_pointer{nullptr};
+  duble_pointer = &vaL;
+  dubleData(duble_pointer); // 80
+
+  // REFERENCE
+  vector<string> arrayToChangeByReference{"123", "234", "345"};
+  for (auto str : arrayToChangeByReference)
+  {
+    std::cout << str << " ";
+  };
+
+  for (auto &str : arrayToChangeByReference)
+  {
+    str = "New Value";
+  };
+  cout << "==== " << endl;
+
+  for (auto str : arrayToChangeByReference)
+  {
+    std::cout << str << " ";
+  };
+
+  cout << "==== " << endl;
+
+  int *Pointer_fo{nullptr};
+  int foo_bar{12};
+  Pointer_fo = &foo_bar;
+  cout << "====" << Pointer_fo << endl;
 
   return 0;
 }
@@ -104,6 +136,11 @@ void zeroArray(int numbers[], size_t size)
 void passByReference(int &num)
 {
   num += 10;
+};
+
+void dubleData(int *value)
+{
+  *value *= 2;
 };
 
 void passByReferenceButCantChange(const int &num)
