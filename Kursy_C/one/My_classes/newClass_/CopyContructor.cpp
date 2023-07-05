@@ -62,6 +62,46 @@ public:
   }
 };
 
+class ShallowCopy
+{
+private:
+  int *data;
+
+public:
+  void set_data(int d) { *data = d; }
+  int get_data() { return *data; }
+
+  ShallowCopy(int d){};
+  ShallowCopy(const ShallowCopy &source){};
+  ~ShallowCopy(){};
+};
+
+ShallowCopy::ShallowCopy(int d)
+{
+  data = new int;
+  *data = d;
+};
+// copy construcotr
+ShallowCopy::ShallowCopy(const ShallowCopy &source)
+{
+  data = new int;
+  *data = *source.data; // now is deep copy
+  // deep copy create new storage and copy values
+};
+// delegate constructor
+ShallowCopy::ShallowCopy(const ShallowCopy &source)
+    : ShallowCopy{*source.data} {};
+
+ShallowCopy::~ShallowCopy()
+{
+  delete data;
+};
+
+void display_shallow(ShallowCopy s)
+{
+  cout << s.get_data() << endl;
+};
+
 int main()
 {
   Player empty{"xxx", 10, 50};
@@ -77,6 +117,12 @@ int main()
   // Wyświetlanie informacji o obiektach
   std::cout << "Osoba 1: " << person1.name << std::endl;
   std::cout << "Osoba 2: " << person2.name << std::endl;
+
+  ShallowCopy obj1_{100};
+  display_shallow(obj1_);
+
+  ShallowCopy obj2_{obj1_};
+  obj2_.set_data(200);
 
   return 0;
 };

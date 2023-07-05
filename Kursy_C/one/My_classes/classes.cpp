@@ -13,11 +13,15 @@ class Player
 public:
   string name{""};
   int hp{};
+  Player(){};
+  ~Player(){};
 
   void printName()
   {
     cout << name << endl;
-  }
+  };
+
+private:
 };
 
 class ImplemntOutsideDecleratiorn
