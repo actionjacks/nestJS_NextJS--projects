@@ -131,7 +131,7 @@ func main() {
 
 	printerFo2(mySlices, printerFo)
 
-	// MAPS
+	// MAPS  keytype | value type
 	menu := map[string]float64{
 		"fo":  1.2,
 		"fo2": 2.2,
