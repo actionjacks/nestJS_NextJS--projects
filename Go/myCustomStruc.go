@@ -36,10 +36,21 @@ func fobar(name string) myCustomStruck {
 	return value
 }
 
+type Person struct {
+	Name string
+	Age  int
+}
+
 func main3() {
 	mymy := fobar("lorem")
 	mymy.format()
 	mymy.updateTip(2.2)
 
 	fmt.Println(mymy.name, mymy.tip, mymy.items)
+
+	person := Person{
+		Name: "John Doe",
+		Age:  30,
+	}
+	fmt.Println(person)
 }
