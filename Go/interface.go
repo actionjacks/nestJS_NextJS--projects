@@ -36,3 +36,53 @@ func main55() {
 
 	PrintMeasurements(rectangle)
 }
+
+// GENERIC
+
+// Struktura stosu implementująca generyczny interfejs Container
+type Stack[T any] struct {
+	data []T
+}
+
+// Implementacja metod dla Stack
+func (s *Stack[T]) Push(item T) {
+	s.data = append(s.data, item)
+}
+
+// Generyczna funkcja do wyszukiwania indeksu pierwszego wystąpienia danego elementu w tablicy
+func findIndex[T comparable](arr []T, elem T) int { // comparable Pozwala ono na wyrażenie wymogu, że parametr typu musi być porównywalny.
+	for i, v := range arr {
+		if v == elem {
+			return i
+		}
+	}
+	return -1
+}
+
+func checkType(v interface{}) {
+	switch v.(type) {
+	case string:
+		fmt.Println("To jest zmienna typu string.")
+	default:
+		fmt.Println("To nie jest zmienna typu string.")
+	}
+}
+
+func fofofo212() {
+	// Utworzenie stosu przechowującego int
+	intStack := &Stack[int]{}
+	intStack.Push(1)
+	intStack.Push(2)
+	intStack.Push(3)
+
+	intSlice := []int{1, 2, 3, 4, 5}
+	index := findIndex(intSlice, 3)
+	fmt.Println("Index of 3 in intSlice:", index) // wynik: 2
+
+	// -----------------------------------------
+	var str string = "Hello, Go!"
+	var num int = 42
+
+	checkType(str) // To jest zmienna typu string.
+	checkType(num) // To nie jest zmienna typu string.
+}

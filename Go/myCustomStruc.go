@@ -54,3 +54,25 @@ func main3() {
 	}
 	fmt.Println(person)
 }
+
+func foooooooobar() {
+
+	// ANonymous struct
+	fobar := struct {
+		Make  string
+		Model string
+	}{
+		Make:  "fobar1",
+		Model: "fobar2",
+	}
+
+	type orSomeStruct struct {
+		Make  string
+		Model string
+		Wheel struct {
+			Radius int
+		}
+	}
+
+	fmt.Println(fobar.Make)
+}

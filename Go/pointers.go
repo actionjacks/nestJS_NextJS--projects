@@ -1,5 +1,13 @@
 package main
 
+/* POINTERS
+& - ADRESSS
+* - VALUE
+
+WE PASS ADDRESS TO THE FUNCTION.
+IN THE FUNCTION, WE REFER TO THE VALUES THAT WE CAN CHANGE
+*/
+
 import "fmt"
 
 func updateName(x *string) {
