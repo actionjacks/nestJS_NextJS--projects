@@ -43,3 +43,21 @@ volumes:
 networks:
   backend:
     driver: bridge
+
+# Usługa postgres:
+
+# Używa obrazu postgres:12, który jest oficjalnym obrazem bazy danych PostgreSQL w wersji 12.
+# Zawsze jest uruchamiana na nowo po zatrzymaniu się kontenera (restart: always).
+# Jest podłączona do sieci o nazwie backend, co pozwala na komunikację z innymi kontenerami w tej samej sieci.
+# Ma dwa wolumeny: ./db_data:/var/lib/postgresql/data, który mapuje lokalny katalog ./db_data do katalogu /var/lib/postgresql/data w kontenerze (służy to do przechowywania danych bazy danych) oraz ./app/config/init.sql:/docker-entrypoint-initdb.d/10-init.sql, który kopiuje plik init.sql z lokalnego katalogu do katalogu /docker-entrypoint-initdb.d/ w kontenerze (służy to do inicjalizacji bazy danych przy starcie).
+# Ma plik .env w lokalnym katalogu ./app/config, który zawiera zmienne środowiskowe.
+# Zdefiniowano także healthcheck dla tej usługi. Healthcheck to mechanizm, który pozwala na sprawdzenie stanu kontenera i określenie, czy jest on "zdrowy". W tym przypadku używamy healthchecka, aby sprawdzić, czy baza danych PostgreSQL jest dostępna. Healthcheck wykorzystuje polecenie pg_isready do sprawdzenia, czy baza danych o nazwie devdb i użytkowniku dev jest gotowa do przyjmowania połączeń. Wykonuje się co 10 sekund, do łącznie 10 prób, z timeoutem 45 sekund.
+# Usługa app:
+
+# Ta usługa zostanie zbudowana na podstawie lokalnego kontekstu Dockerfile w katalogu app. Oznacza to, że app będzie budowane z opisanego wcześniej pliku Dockerfile w folderze app.
+# Kontener app ma wystawiony port 3200, co pozwala na dostęp do aplikacji na porcie 3200 na hoście.
+# Podobnie jak usługa postgres, app jest podłączona do sieci backend.
+# Ta usługa ma zależność od usługi postgres o nazwie postgres i jest warunkiem jej uruchomienia. Oznacza to, że app nie zostanie uruchomione, dopóki postgres nie będzie "zdrowy" (przechodzi healthcheck).
+# Dodatkowo w pliku zdefiniowano dwa wolumeny: db_data, który nie jest przypisany do konkretnego kontenera, ale może być używany do przechowywania danych wolumenowych, oraz sieć o nazwie backend, która została zdefiniowana jako sieć typu bridge. Sieć ta pozwala na komunikację między kontenerami, które są do niej podłączone.
+
+# Ten plik Docker Compose pozwoli na uruchomienie dwóch kontenerów: kontenera z bazą danych PostgreSQL (postgres) oraz kontenera z aplikacją Go (app), które będą mogły komunikować się ze sobą dzięki wspólnej sieci backend.
