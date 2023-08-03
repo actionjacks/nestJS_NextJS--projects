@@ -1,1 +1,1 @@
-{"fact":"There are approximately 60,000 hairs per square inch on the back of a cat and about 120,000 per square inch on its underside.","length":125}
+{"fact":"The female cat reaches sexual maturity within 6 to 10 months; most veterinarians suggest spaying the female at 5 months, before her first heat period. The male cat usually reaches sexual maturity between 9 and 12 months.","length":220}

@@ -37,7 +37,11 @@ type UserPicture struct {
 	Thumbnail string
 }
 
-func GetCatFact() {
+type CatFactsCollection struct {
+	Facts []CatFact `json:"facts"`
+}
+
+func GetCatFactSaveToTxt() {
 	url := "https://catfact.ninja/fact"
 
 	var catFact CatFact
@@ -49,7 +53,7 @@ func GetCatFact() {
 	}
 	fmt.Printf("A super interesting Cat Fact: %s\n", catFact.Fact)
 
-	file, err := os.Create("cat_fact.json")
+	file, err := os.Create("cat_fact.txt")
 	if err != nil {
 		fmt.Printf("error creating file: %s", err.Error())
 		return
@@ -69,10 +73,6 @@ func GetCatFact() {
 	}
 }
 
-type CatFactsCollection struct {
-	Facts []CatFact `json:"facts"`
-}
-
 func GetCatFactAndAppendToJson() {
 	url := "https://catfact.ninja/fact"
 
@@ -85,7 +85,11 @@ func GetCatFactAndAppendToJson() {
 	}
 	fmt.Printf("A super interesting Cat Fact: %s\n", catFact.Fact)
 
-	// Otwórz lub utwórz plik "cat_fact.json" w trybie do zapisu
+	AppendToJsonFile(catFact)
+}
+
+func AppendToJsonFile(catFact CatFact) {
+	// Open or create the file "cat_fact.json" in writable mode
 	file, err := os.OpenFile("cat_fact.json", os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0644)
 	if err != nil {
 		fmt.Printf("error opening file: %s", err.Error())
@@ -93,7 +97,7 @@ func GetCatFactAndAppendToJson() {
 	}
 	defer file.Close()
 
-	// Odczytaj zawartość pliku (jeśli istnieje)
+	// Read file content (if exists)
 	fileContent, err := os.ReadFile("cat_fact.json")
 	if err != nil {
 		// Jeśli plik nie istnieje, utwórz nową kolekcję faktów
@@ -103,20 +107,20 @@ func GetCatFactAndAppendToJson() {
 	var factsCollection CatFactsCollection
 	err = json.Unmarshal(fileContent, &factsCollection)
 	if err != nil {
-		// Ignoruj błąd deserializacji, jeśli plik jest pusty lub nie zawiera poprawnego JSONa
+		// Ignore the deserialization error if the file is empty or does not contain valid JSON
 	}
 
-	// Dodaj nowy fakt do kolekcji
+	// Add a new fact to the collection
 	factsCollection.Facts = append(factsCollection.Facts, catFact)
 
-	// Zamień kolekcję na JSON
+	// Replace the collection with JSON
 	jsonBytes, err := json.MarshalIndent(factsCollection, "", "  ")
 	if err != nil {
 		fmt.Printf("error creating JSON: %s", err.Error())
 		return
 	}
 
-	// Zapisz JSON do pliku
+	// Save JSON to a file
 	err = os.WriteFile("cat_fact.json", jsonBytes, 0644)
 	if err != nil {
 		fmt.Printf("error writing to file: %s", err.Error())
@@ -149,15 +153,14 @@ func GetJson(url string, target interface{}) error {
 	if err != nil {
 		return err
 	}
-
 	defer resp.Body.Close()
-
 	return json.NewDecoder(resp.Body).Decode(target)
 }
 
 func main() {
 	client = &http.Client{Timeout: 10 * time.Second}
 
+	GetCatFactSaveToTxt()
 	GetCatFactAndAppendToJson()
 	// GetRandomUser()
 
