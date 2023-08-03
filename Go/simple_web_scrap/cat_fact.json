@@ -1,4 +1,12 @@
 {
-  "fact": "Tests done by the Behavioral Department of the Musuem of Natural History conclude that while a dog's memory lasts about 5 minutes, a cat's recall can last as long as 16 hours.",
-  "length": 175
+  "facts": [
+    {
+      "fact": "In 1888, more than 300,000 mummified cats were found an Egyptian cemetery. They were stripped of their wrappings and carted off to be used by farmers in England and the U.S. for fertilizer.",
+      "length": 189
+    },
+    {
+      "fact": "Julius Ceasar, Henri II, Charles XI, and Napoleon were all afraid of cats.",
+      "length": 74
+    }
+  ]
 }

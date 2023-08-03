@@ -69,6 +69,61 @@ func GetCatFact() {
 	}
 }
 
+type CatFactsCollection struct {
+	Facts []CatFact `json:"facts"`
+}
+
+func GetCatFactAndAppendToJson() {
+	url := "https://catfact.ninja/fact"
+
+	var catFact CatFact
+
+	err := GetJson(url, &catFact)
+	if err != nil {
+		fmt.Printf("error getting cat fact: %s\n", err.Error())
+		return
+	}
+	fmt.Printf("A super interesting Cat Fact: %s\n", catFact.Fact)
+
+	// Otwórz lub utwórz plik "cat_fact.json" w trybie do zapisu
+	file, err := os.OpenFile("cat_fact.json", os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0644)
+	if err != nil {
+		fmt.Printf("error opening file: %s", err.Error())
+		return
+	}
+	defer file.Close()
+
+	// Odczytaj zawartość pliku (jeśli istnieje)
+	fileContent, err := os.ReadFile("cat_fact.json")
+	if err != nil {
+		// Jeśli plik nie istnieje, utwórz nową kolekcję faktów
+		fileContent = []byte(`{"facts": []}`)
+	}
+
+	var factsCollection CatFactsCollection
+	err = json.Unmarshal(fileContent, &factsCollection)
+	if err != nil {
+		// Ignoruj błąd deserializacji, jeśli plik jest pusty lub nie zawiera poprawnego JSONa
+	}
+
+	// Dodaj nowy fakt do kolekcji
+	factsCollection.Facts = append(factsCollection.Facts, catFact)
+
+	// Zamień kolekcję na JSON
+	jsonBytes, err := json.MarshalIndent(factsCollection, "", "  ")
+	if err != nil {
+		fmt.Printf("error creating JSON: %s", err.Error())
+		return
+	}
+
+	// Zapisz JSON do pliku
+	err = os.WriteFile("cat_fact.json", jsonBytes, 0644)
+	if err != nil {
+		fmt.Printf("error writing to file: %s", err.Error())
+		return
+	}
+}
+
 func GetRandomUser() {
 	url := "https://randomuser.me/api/"
 
@@ -103,7 +158,7 @@ func GetJson(url string, target interface{}) error {
 func main() {
 	client = &http.Client{Timeout: 10 * time.Second}
 
-	GetCatFact()
+	GetCatFactAndAppendToJson()
 	// GetRandomUser()
 
 	// catFact := CatFact {
