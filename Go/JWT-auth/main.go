@@ -3,6 +3,7 @@ package main
 import (
 	"jwt/controllers"
 	"jwt/initializers"
+	"jwt/middleware"
 
 	"github.com/gin-gonic/gin"
 )
@@ -16,6 +17,7 @@ func init() {
 func main() {
 	// ROUTING
 	response := gin.Default()
+
 	response.GET("/api", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "running",
@@ -24,7 +26,7 @@ func main() {
 
 	response.POST("/api/signup", controllers.Signup)
 	response.POST("/api/login", controllers.Login)
-	response.GET("/validate", controllers.Validate)
+	response.GET("/validate", middleware.RequireAuth, controllers.Validate)
 
 	response.Run()
 }
