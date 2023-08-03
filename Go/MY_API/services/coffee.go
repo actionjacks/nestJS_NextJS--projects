@@ -5,6 +5,9 @@ import (
 	"time"
 )
 
+// ctx, cancel := context.WithTimeout(context.Background(), dbTimeout):
+// Tworzy nowy kontekst ctx z ograniczeniem czasowym dbTimeout, czyli ustawia limit czasu na operację na bazie danych. Oznacza to, że jeśli operacja nie zostanie zakończona w czasie dbTimeout, zostanie automatycznie anulowana. cancel jest funkcją, która służy do ręcznego anulowania kontekstu, ale w tym przypadku używamy defer do automatycznego anulowania kontekstu po zakończeniu bieżącej funkcji.
+
 type Coffee struct {
 	ID        string    `json:"id"`
 	Name      string    `json:"name"`
