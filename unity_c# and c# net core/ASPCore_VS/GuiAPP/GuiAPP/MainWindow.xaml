@@ -1,0 +1,90 @@
+﻿<Window x:Class="GuiAPP.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GuiAPP"
+        mc:Ignorable="d"
+        Title="GUI-app-jack" Height="650" Width="800">
+    <StackPanel>
+        <Button Height="30" Width="160" 
+            x:Name="myButtonName"
+            MouseEnter="MyButtonName_MouseEnter"
+            Click="MyButtonName_Click"
+            ToolTip="fo bar!">
+            My_button click change label
+        </Button>
+        <Label Name="myLabel">
+            MY LABEL
+        </Label>
+        
+        <TextBlock>
+            lorem <Bold>lorem</Bold>
+            <LineBreak/>
+            go to <Hyperlink
+                RequestNavigate="Onclik_RequestNavigate"
+                NavigateUri="https://www.google.pl/"
+                >GOOOGLE</Hyperlink>
+        </TextBlock>
+
+        <TextBlock TextWrapping="Wrap" Foreground="AntiqueWhite">
+                <Span  Foreground="Red">
+                    Lorem Ipsum is simply
+                </Span> dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </TextBlock>
+
+        <Label>
+            <StackPanel Orientation="Horizontal">
+                <Image
+                    Source="https://i0.wp.com/uploads.freegogpcgames.com/image/freegogpcgames_logo_blue.png"/>
+                <AccessText Text="Message"></AccessText>
+            </StackPanel>
+        </Label>
+
+        <TextBox FontSize="30" 
+                 Margin="15"
+                 AcceptsReturn="True"
+                 TextWrapping="Wrap"
+                 Background="Black"
+                 Foreground="White"/>
+
+        <CheckBox Name="checkBox1"
+                  Content="Option 1"
+                  Checked="CheckBox_Checked"
+                  Unchecked="CheckBox_Unchecked"/>
+        <CheckBox Name="checkBox2"
+                  Content="Option 2"
+                  Checked="CheckBox_Checked"
+                  Unchecked="CheckBox_Unchecked"/>
+        <Label x:Name="label" Content="Selected options: " HorizontalAlignment="Center"/>
+
+        <Image Width="100"
+               Source="/Images/my_source_img.jpg"
+               ToolTip="SOURCE IMAGE FROM FOLDER!"/>
+
+        <Expander Header="CLICK ME!">
+            <TextBlock
+                TextWrapping="Wrap"
+                FontSize="20">
+                loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooool
+            </TextBlock>
+        </Expander>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            
+            <Button>in Col 01</Button>
+            <Button Grid.Column="1">in Col 02</Button>
+            <Button Grid.Column="2" Grid.Row="2">in Col 03</Button>
+        </Grid>
+    </StackPanel>
+</Window>

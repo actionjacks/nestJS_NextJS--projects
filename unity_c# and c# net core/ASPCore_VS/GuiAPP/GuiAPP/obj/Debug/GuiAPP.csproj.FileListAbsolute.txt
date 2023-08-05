@@ -1,0 +1,16 @@
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\GuiAPP\GuiAPP\bin\Debug\GuiAPP.exe.config
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\GuiAPP\GuiAPP\bin\Debug\GuiAPP.exe
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\GuiAPP\GuiAPP\bin\Debug\GuiAPP.pdb
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\GuiAPP\GuiAPP\obj\Debug\GuiAPP.csproj.AssemblyReference.cache
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\GuiAPP\GuiAPP\obj\Debug\GuiAPP.csproj.SuggestedBindingRedirects.cache
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\GuiAPP\GuiAPP\obj\Debug\MainWindow.g.cs
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\GuiAPP\GuiAPP\obj\Debug\App.g.cs
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\GuiAPP\GuiAPP\obj\Debug\GuiAPP_MarkupCompile.cache
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\GuiAPP\GuiAPP\obj\Debug\GuiAPP_MarkupCompile.lref
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\GuiAPP\GuiAPP\obj\Debug\MainWindow.baml
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\GuiAPP\GuiAPP\obj\Debug\GuiAPP.g.resources
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\GuiAPP\GuiAPP\obj\Debug\GuiAPP.Properties.Resources.resources
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\GuiAPP\GuiAPP\obj\Debug\GuiAPP.csproj.GenerateResource.cache
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\GuiAPP\GuiAPP\obj\Debug\GuiAPP.csproj.CoreCompileInputs.cache
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\GuiAPP\GuiAPP\obj\Debug\GuiAPP.exe
+C:\Users\actio\OneDrive\Pulpit\_learn\unity_c# and c# net core\ASPCore_VS\GuiAPP\GuiAPP\obj\Debug\GuiAPP.pdb
