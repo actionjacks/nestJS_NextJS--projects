@@ -1,0 +1,22 @@
+﻿<Window x:Class="GuiAPP.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GuiAPP"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="800">
+    <Grid>
+        <DockPanel LastChildFill="False">
+            <Button DockPanel.Dock="Right">dock pane</Button>
+            <Button DockPanel.Dock="Left">dock panel</Button>
+            <Button DockPanel.Dock="Top">dock pane</Button>
+            <Button DockPanel.Dock="Bottom">dock panel</Button>
+            <Canvas>
+                <Button Canvas.Left="90" Canvas.Top="40">foo</Button>
+                <Rectangle Width="30" Height="30" Fill="AntiqueWhite">
+                </Rectangle>
+            </Canvas>
+        </DockPanel>
+    </Grid>
+</Window>

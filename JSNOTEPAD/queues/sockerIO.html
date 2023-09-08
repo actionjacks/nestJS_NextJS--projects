@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .fo {
+        height: 100px;
+        width: 100px;
+        border: 1px solid red;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="button">likes</button>
+    <div class="fo"></div>
+  </body>
+
+  <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+  <script>
+    const socket = io("http://127.0.0.1:3000");
+
+    const btn = document.querySelector(".button");
+    const likes_ = document.querySelector(".fo");
+
+    socket.on("connect", () => {
+      console.log("connect");
+    });
+
+    btn.addEventListener("click", () => {
+      socket.emit("like");
+    });
+
+    socket.on("likeupdate", (arg) => {
+      console.log(arg);
+      likes_.textContent = arg;
+    });
+  </script>
+</html>
