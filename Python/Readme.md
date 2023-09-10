@@ -11,10 +11,12 @@ Windows:
 ```
 nazwa_venv\Scripts\activate
 ```
+
 Linux/macOS:
 ```
 source nazwa_venv/bin/activate
 ```
+
 Zainstaluj zależności: Po aktywowaniu wirtualnego środowiska możesz zainstalować zależności z pliku requirements.txt za pomocą polecenia pip. Upewnij się, że jesteś w katalogu projektu, który zawiera plik requirements.txt, a następnie użyj komendy:
 
 ```
