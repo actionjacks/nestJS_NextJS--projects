@@ -1,3 +1,5 @@
+Plik requirements.txt jest często używany w projektach Pythona do zarządzania zależnościami. Zawiera on listę bibliotek i ich wersji, które są wymagane do poprawnego działania projektu. Możesz użyć pliku requirements.txt, aby zainstalować te zależności w swoim środowisku wirtualnym lub na serwerze.
+
 Utwórz lub aktywuj wirtualne środowisko (zalecane): Jeśli nie masz jeszcze aktywowanego wirtualnego środowiska, to jest dobry moment, aby to zrobić. Wirtualne środowisko izoluje zależności Twojego projektu od innych zainstalowanych na systemie. Możesz utworzyć nowe wirtualne środowisko za pomocą polecenia:
 
 ```
@@ -8,9 +10,8 @@ Następnie aktywuj środowisko, korzystając z komendy:
 Windows:
 ```
 nazwa_venv\Scripts\activate
-Linux/macOS:
-bash
 ```
+Linux/macOS:
 ```
 source nazwa_venv/bin/activate
 ```
