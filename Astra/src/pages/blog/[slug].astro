@@ -1,20 +1,30 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
-import Nav from "../components/Nav";
+import type { GetStaticPaths } from "astro";
+import Layout from "../../layouts/Layout.astro";
+
+export const getStaticPaths = (() => {
+  return [
+    {
+      params: { slug: "1" },
+      props: { post: "post-1" },
+    },
+    {
+      params: { slug: "2" },
+      props: { post: "post-2" },
+    },
+  ];
+}) satisfies GetStaticPaths;
+
+const { post } = Astro.props;
 ---
 
 <Layout title="Welcome to Astro.">
   <main>
-    <!-- static component no js code -->
-    <Nav title={"first-nav"} />
-
-    <!-- reactive component -->
-    <Nav title={"second-nav"} :client:load />
-    <h1>lorem</h1>
+    <main>
+      <div>{post}</div>
+    </main>
   </main>
 </Layout>
-
 <style is:global>
   main {
     margin: auto;
