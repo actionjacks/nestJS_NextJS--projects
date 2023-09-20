@@ -14,11 +14,14 @@
 
 <div>
   <h1>{{ title }}</h1>
+  <a [routerLink]="['/calendar']">CALENDAR</a>
+
   <div class="wrapper">
+    <!-- #foInput - value from input -->
     <input type="text" placeholder="foooo" #foInput />
     <button (click)="add_method(foInput)">Add some</button>
 
-    <div *ngFor="let task of tasks">
+    <div *ngFor="let task of tasks; let i = index" [class.even]="i % 2 == 0">
       <span>{{ task }}</span>
       <button (click)="(some_method)">ADD</button>
     </div>
@@ -27,7 +30,22 @@
   <div class="wrapper">
     <!-- Format with the UppercasePipe -->
     {{ myObject.name | uppercase }}
+
     <input id="name" [(ngModel)]="myObject.name" placeholder="name" />
+  </div>
+
+  <div class="condition-binding-class">
+    <div
+      [ngClass]="{
+        active: title,
+        fo: myObject.name
+      }"
+    ></div>
+
+    <div [class.active]="myObject.name"></div>
+
+    <!-- ROUTING -->
+    <router-outlet></router-outlet>
   </div>
 
   <hero-use-to-render-in-template />

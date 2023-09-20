@@ -23,3 +23,7 @@ export class AppComponent {
     console.log('fo-baar');
   }
 }
+
+class SomeClass {
+  constructor() {}
+}

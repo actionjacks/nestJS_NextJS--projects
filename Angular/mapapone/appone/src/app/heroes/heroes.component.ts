@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Hero } from '../hero';
+import { HEROES } from '../heroes/mock-heros';
 
 @Component({
   selector: 'hero-use-to-render-in-template',
@@ -13,4 +14,6 @@ export class HeroesComponent {
     id: 1,
     name: 'fobar',
   };
+
+  heroes = HEROES;
 }
