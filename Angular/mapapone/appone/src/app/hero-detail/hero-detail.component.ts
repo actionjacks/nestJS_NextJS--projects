@@ -32,4 +32,10 @@ export class HeroDetailComponent {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.heroService.getHero(id).subscribe((hero) => (this.hero = hero));
   }
+
+  save(): void {
+    if (this.hero) {
+      this.heroService.updateHeroHTTP(this.hero).subscribe(() => this.goBack());
+    }
+  }
 }
