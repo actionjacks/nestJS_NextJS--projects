@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Hero } from '../hero';
-import { HEROES } from '../heroes/mock-heros';
+import { HeroService } from '../hero.service';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'hero-use-to-render-in-template',
@@ -8,6 +9,13 @@ import { HEROES } from '../heroes/mock-heros';
   styleUrls: ['./heroes.component.css'],
 })
 export class HeroesComponent {
+  // creates a HeroesComponent, the Dependency Injection
+  constructor(
+    private heroService: HeroService,
+    // podaje typ klasy angular wstrzykuje zaleznosci
+    private messageService: MessageService
+  ) {}
+
   heroProp = 'heroProp';
 
   hero: Hero = {
@@ -15,5 +23,19 @@ export class HeroesComponent {
     name: 'fobar',
   };
 
-  heroes = HEROES;
+  ngOnInit(): void {
+    this.getHeroes();
+  }
+
+  heroes: Hero[] = [];
+  selectedHero?: Hero;
+
+  onSelect(hero: Hero): void {
+    this.selectedHero = hero;
+    this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
+  }
+
+  getHeroes(): void {
+    this.heroService.getHeroes().subscribe((heroes) => (this.heroes = heroes));
+  }
 }
