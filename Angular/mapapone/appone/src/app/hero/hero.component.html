@@ -1,1 +1,85 @@
-<p>hero works!</p>
+{{ model | json }}
+
+<div [hidden]="submitted">
+  <h1>Hero Form</h1>
+  <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        required
+        [(ngModel)]="model.name"
+        name="name"
+        #name="ngModel"
+      />
+      <!-- In this example, you hide the message when the control is either valid or pristine. Pristine means the user hasn't changed the value since it was displayed in this form. If you ignore the pristine state, you would hide the message only when the value is valid. If you arrive in this component with a new, blank hero or an invalid hero, you'll see the error message immediately, before you've done anything.
+    
+    You might want the message to display only when the user makes an invalid change. Hiding the message while the control is in the pristine state achieves that goal. You'll see the significance of this choice when you add a new hero to the form in the next step. -->
+      <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+        Name is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="alterEgo">Alter Ego</label>
+      <input
+        type="text"
+        class="form-control"
+        id="alterEgo"
+        [(ngModel)]="model.alterEgo"
+        name="alterEgo"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="power">Hero Power</label>
+      <select
+        class="form-control"
+        id="power"
+        required
+        [(ngModel)]="model.power"
+        name="power"
+      >
+        <option *ngFor="let pow of powers" [value]="pow">{{ pow }}</option>
+      </select>
+    </div>
+
+    <button
+      type="button"
+      class="btn btn-default"
+      (click)="newHero(); heroForm.reset()"
+    >
+      New Hero
+    </button>
+
+    <button
+      type="submit"
+      class="btn btn-success"
+      [disabled]="!heroForm.form.valid"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h2>You submitted the following:</h2>
+  <div class="row">
+    <div class="col-xs-3">Name</div>
+    <div class="col-xs-9">{{ model.name }}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">Alter Ego</div>
+    <div class="col-xs-9">{{ model.alterEgo }}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">Power</div>
+    <div class="col-xs-9">{{ model.power }}</div>
+  </div>
+  <br />
+  <button type="button" class="btn btn-primary" (click)="submitted = false">
+    Edit
+  </button>
+</div>
