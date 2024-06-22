@@ -53,5 +53,3 @@ model DownloadVerification {
 
   product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 }
-
-// 9:53
