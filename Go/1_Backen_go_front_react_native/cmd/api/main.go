@@ -5,7 +5,9 @@ import (
 	"jackapi/config"
 	"jackapi/db"
 	"jackapi/handlers"
+	"jackapi/middlewares"
 	"jackapi/repositories"
+	"jackapi/services"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -18,15 +20,23 @@ func main() {
 		AppName:      "Jack API",
 		ServerHeader: "Jack API",
 	})
-
 	// Repositories
 	eventRepository := repositories.NewEventRepository(db)
+	ticketRepository := repositories.NewTicketRepository(db)
+	authRepository := repositories.NewAuthRepository(db)
 
-	//Routing
+	// Service
+	authService := services.NewAuthService(authRepository)
+
+	// Routing
 	server := app.Group("/api")
+	handlers.NewAuthHandler(server.Group("/auth"), authService)
 
-	//Handlers
-	handlers.NewEventsHandler(server.Group("/events"), eventRepository)
+	privateRoutes := server.Use(middlewares.AuthProtected(db))
+
+	// Handlers
+	handlers.NewEventsHandler(privateRoutes.Group("/events"), eventRepository)
+	handlers.NewTicketHandler(privateRoutes.Group("/tickets"), ticketRepository)
 
 	app.Listen(fmt.Sprintf(":" + envConfig.ServerPort))
 }
