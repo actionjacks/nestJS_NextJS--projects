@@ -1,0 +1,4 @@
+# create 
+  ```
+  cargo new <name>
+  ```
