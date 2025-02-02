@@ -31,3 +31,42 @@ function vIndeterminate (element, binding) {
              @input="checkAllVisible">
 
 ```
+# select text component by search
+```
+<template>
+  <span v-if="search && startText > -1">
+    <span>{{ title.substring(0, startText) }}</span>
+    <span class="text-featuredSearchText">
+      {{ title.substring(startText, endText) }}
+    </span>
+    <span>{{ title.substring(endText) }}</span>
+  </span>
+  <span v-else>
+    {{ title }}
+  </span>
+</template>
+
+<script setup lang="ts">
+import { computed } from 'vue'
+
+const props = withDefaults(defineProps<{
+  /**
+   * Element's title (text).
+   */
+  title?: string
+  /**
+   * Searched text - mark in element.
+   */
+  searchText?: string
+}>(), {
+  title: '',
+  searchText: ''
+})
+
+const search = computed<string>(() => props.searchText.toLowerCase())
+const searchableTitle = computed<string>(() => props.title.toLowerCase())
+
+const startText = computed<number>(() => searchableTitle.value.indexOf(search.value))
+const endText = computed<number>(() => startText.value + search.value.length)
+</script>
+```
