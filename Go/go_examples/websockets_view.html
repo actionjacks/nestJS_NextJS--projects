@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wszystkie wiadomości</title>
+</head>
+<body>
+    <h1>Wszystkie wiadomości</h1>
+    <div id="messages" style="white-space: pre-wrap;"></div>
+
+    <script>
+        function fetchMessages() {
+            fetch('/echo-view-data')
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('messages').innerText = data;
+                });
+        }
+
+        setInterval(fetchMessages, 1000);
+        fetchMessages();
+    </script>
+</body>
+</html>
