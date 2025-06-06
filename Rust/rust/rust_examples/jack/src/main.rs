@@ -1,10 +1,10 @@
 use std::fmt;
 
 mod costamPlik;
+mod generic;
 mod loremlorem;
 mod mymodule;
 mod utils;
-mod generic;
 
 use loremlorem::math::add; // importujemy funkcję add z modułu loremlorem
 use utils::dupa;
@@ -133,4 +133,27 @@ fn main() {
     generic::genericExamples::print_pair_example(); // wywołanie przykładu z generics
     generic::genericExamples::wrapper_example(); // wywołanie przykładu z generics
     generic::genericExamples::printable_example(); // wywołanie przykładu z traitami
+
+    //------------------------------------------------------------------------
+    let s1 = String::from("Hi");
+    let s2 = s1; // s1 jest "przeniesione" do s2, s1 jest teraz niedostępne
+
+    // println!("{}", s1); // Błąd! s1 nie jest już ważne
+    println!("{}", s2); // OK
+
+    // lifetime
+    fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
+        if x.len() > y.len() { x } else { y }
+    }
+    /*
+        'a to parametr czasu życia.
+        Zarówno x, y, jak i wynik mają ten sam lifetime 'a.
+        Oznacza to, że wynik jest gwarantowany, że nie żyje dłużej niż x i y.
+    */
+
+    let string1 = String::from("abcd");
+    let string2 = "xyz";
+
+    let result = longest(string1.as_str(), string2);
+    println!("Najdłuższy ciąg to: {}", result);
 }
