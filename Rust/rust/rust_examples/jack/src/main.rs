@@ -1,7 +1,15 @@
 use std::fmt;
 
 mod costamPlik;
+mod loremlorem;
 mod mymodule;
+mod utils;
+mod generic;
+
+use loremlorem::math::add; // importujemy funkcję add z modułu loremlorem
+use utils::dupa;
+
+use crate::utils::dupa::dupa; // importujemy funkcję dupa z modułu utils
 
 struct Point {
     x: i32,
@@ -110,4 +118,19 @@ fn main() {
 
     mymodule::costam::fromMyModule(); // wywołanie funkcji z modułu
 
+    let result_ = add(2, 3);
+    println!("result_ {}", result_);
+
+    dupa(1, 2);
+
+    #[cfg(target_os = "linux")] // kod będzie kompilowany tylko na systemie Linux
+    fn tylko_na_linuxie() {
+        println!("Jestem na Linuxie");
+    }
+    tylko_na_linuxie();
+
+    generic::genericExamples::get_first_example(); // wywołanie przykładu z generics
+    generic::genericExamples::print_pair_example(); // wywołanie przykładu z generics
+    generic::genericExamples::wrapper_example(); // wywołanie przykładu z generics
+    generic::genericExamples::printable_example(); // wywołanie przykładu z traitami
 }
