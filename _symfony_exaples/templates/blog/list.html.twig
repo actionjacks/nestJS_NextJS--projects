@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blog List{% endblock %}
+
+{% block body %}
+    <h1>Blog Posts</h1>
+    <a href="{{ path('blog_new') }}" class="btn btn-primary">Create New Post</a> Link do formularza dodawania
+    <hr>
+    {% if posts is empty %}
+        {# <p>No blog posts found. <a href="{{ path('blog_new') }}">Be the first to create one!</a></p> #}
+    {% else %}
+        <ul>
+            {% for post in posts %}
+                <li>
+                    <h2><a href="{{ path('blog_show', { 'id': post.id }) }}">{{ post.title }}</a></h2>
+                    <p>{{ post.content|slice(0, 150) ~ '...' }}</p> {# Wyświetl tylko fragment treści #}
+                    <small>Published on: {{ post.createdAt|date('Y-m-d H:i') }}</small>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

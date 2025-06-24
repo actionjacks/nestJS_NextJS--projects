@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create New Blog Post{% endblock %}
+
+{% block body %}
+    <h1>Create New Blog Post</h1>
+
+    {# render_form() to helper Twig do wyświetlania całego formularza #}
+    {{ form_start(form) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.content) }}
+
+        <button type="submit" class="btn btn-success">Save Post</button>
+    {{ form_end(form) }}
+
+    <hr>
+    <a href="{{ path('blog_list') }}">Back to list</a>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blog Post: {{ post.title }}{% endblock %} {# Użyj tytułu posta #}
+
+{% block body %}
+    <h1>{{ post.title }}</h1> {# Wyświetl tytuł posta #}
+    <p>{{ post.content }}</p>
+    <small>Published on: {{ post.createdAt|date('Y-m-d H:i') }}</small>
+
+    <hr>
+    <a href="{{ path('blog_list') }}">Back to Blog List</a>
+{% endblock %}
