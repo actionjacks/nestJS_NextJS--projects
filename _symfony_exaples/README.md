@@ -1,3 +1,6 @@
+# start
+symfony server:start
+
 mkdir -p config/jwt
 # Generate private key (remember strong password!)
 openssl genrsa -out config/jwt/private.pem -aes256 4096

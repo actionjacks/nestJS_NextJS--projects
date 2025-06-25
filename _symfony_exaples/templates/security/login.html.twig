@@ -1,0 +1,15 @@
+<h1>Logowanie</h1>
+
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+<form action="{{ path('app_login') }}" method="post">
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="_username" value="{{ last_username }}" />
+
+    <label for="password">Hasło:</label>
+    <input type="password" id="password" name="_password" />
+
+    <button type="submit">Zaloguj</button>
+</form>

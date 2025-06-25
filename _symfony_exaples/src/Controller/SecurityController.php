@@ -14,6 +14,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface; // Import dla JWT
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
@@ -94,5 +95,20 @@ class SecurityController extends AbstractController
 
         $jsonContent = $this->serializer->serialize($user, 'json', ['groups' => 'user:read']);
         return new JsonResponse($jsonContent, Response::HTTP_OK, [], true);
+    }
+
+    #[Route('/login', name: 'app_login')]
+    public function login_(AuthenticationUtils $authUtils): Response
+    {
+        return $this->render('security/login.html.twig', [
+            'last_username' => $authUtils->getLastUsername(),
+            'error' => $authUtils->getLastAuthenticationError(),
+        ]);
+    }
+
+    #[Route('/logout', name: 'app_logout')]
+    public function logout(): void
+    {
+        // Symfony zajmuje się tym automatycznie
     }
 }
