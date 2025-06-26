@@ -1,3 +1,11 @@
+# Ubuntu Invidia Acer
+```bash
+sudo nano /etc/default/grub
+```
+```
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash pcie_aspm=force acpi_backlight=native modprobe.blacklist=amdgpu"
+```
+
 # https://github.com/SortableJS/Sortable
 !!
 
