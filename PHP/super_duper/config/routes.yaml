@@ -1,0 +1,10 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+test_bundle:
+    resource: '../lib/TestBundle/src/Controller/'
+    type: attribute
+    prefix: /

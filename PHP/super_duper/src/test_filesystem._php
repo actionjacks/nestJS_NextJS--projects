@@ -1,0 +1,45 @@
+<?php
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use Symfony\Component\DependencyInjection\Attribute\When;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+
+$fs = new Filesystem();
+$path = __DIR__ . '/../sample-dir';
+
+try {
+   $fs->mkdir($path);
+   $fs->touch($path . '/text.txt');
+
+   # $fs->dumpFile($path . '/text.txt', 'Hello, World!'); // Replace content if file exists
+
+} catch (IOExceptionInterface $e) {
+   echo $e->getPath() . " could not be created: " . $e->getMessage();
+   exit(1);
+}
+
+// $name = 'jacek, \'j@example.com\'); drop database test; --';
+
+// $js = <<<JS
+// console.log('Hello, World!');
+// console.log('Created by $name');
+// JS;
+
+
+// $sql = <<<SQL
+// Insert into users (name, email) values (:name, 'foo@example.com');
+// SQL;
+
+// $data = <<<TEXT
+// This is a sample text file.
+// It contains multiple lines.
+// You can modify it as needed.
+// created by $name
+// TEXT;
+
+if (file_put_contents($path . '/text.txt', 'Hello, World!') === false) { // Append content if file exists
+   echo "Failed to write to file.";
+   exit(1);
+}
+exit(0);

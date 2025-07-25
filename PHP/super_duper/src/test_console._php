@@ -1,0 +1,40 @@
+<?php
+// require __DIR__ . '/../vendor/autoload.php';
+# dodanie tego plki nadpisze komendy symfony
+# --- IGNORE ---
+// use Symfony\Component\Console\Application;
+// use Symfony\Component\Console\Command\Command;
+// use Symfony\Component\Console\Input\InputInterface;
+// use Symfony\Component\Console\Output\OutputInterface;
+// use Symfony\Component\Console\Input\InputArgument;
+
+// class HelloCommand extends Command
+// {
+//     protected static $defaultName = 'app:hello';
+
+//     public function __construct()
+//     {
+//         parent::__construct(self::$defaultName);
+//     }
+//     protected function configure()
+//     {
+//         $this->setDescription('Wyświetla wiadomość powitalną')
+//             ->addArgument('name', InputArgument::OPTIONAL, 'Twoje imię');
+//     }
+
+//     protected function execute(InputInterface $input, OutputInterface $output): int
+//     {
+//         $name = $input->getArgument('name') ?? 'Świecie';
+//         $output->writeln("Witaj, $name!");
+//         return Command::SUCCESS;
+//     }
+// }
+
+// $application = new Application();
+// $application->add(new HelloCommand());
+// $application->run();
+
+# php test_console.php app:hello
+# Witaj, Świecie!
+# php test_console.php app:hello jacek
+# Witaj, jacek!
