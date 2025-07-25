@@ -10,9 +10,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 final class Configuration implements ConfigurationInterface
 {
     /**
-     * Get configuration tree builder
-     *
-     * @return TreeBuilder
+     * Get configuration tree builder.
      */
     public function getConfigTreeBuilder(): TreeBuilder
     {
