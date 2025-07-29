@@ -2,6 +2,8 @@
 
 namespace App\Controller\Model;
 
+use App\Controller\Model\StarshipStatusEnum;
+
 class Json
 {
   public function __construct(
@@ -9,7 +11,7 @@ class Json
     private string $name,
     private string $class,
     private string $captain,
-    private string $status,
+    private StarshipStatusEnum $status,
   ) {}
   public function getId(): int
   {
@@ -27,7 +29,7 @@ class Json
   {
     return $this->captain;
   }
-  public function getStatus(): string
+  public function getStatus(): StarshipStatusEnum
   {
     return $this->status;
   }
