@@ -1,0 +1,13 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "127.0.0.1",
+      "port": 58861,
+      "driver": "PostgreSQL",
+      "name": "dupa",
+      "username": "app",
+      "database": "app"
+    }
+  ]
+}

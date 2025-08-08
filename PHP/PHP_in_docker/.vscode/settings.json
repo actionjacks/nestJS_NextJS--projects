@@ -1,0 +1,13 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "127.0.0.1",
+      "port": 54319,
+      "driver": "PostgreSQL",
+      "name": "test_php_symfony",
+      "database": "app",
+      "username": "app"
+    }
+  ]
+}

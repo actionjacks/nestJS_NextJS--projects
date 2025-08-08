@@ -29,6 +29,15 @@
             <td>{{ myShip.status.value }}</td>
         </tr>
     </table>
+
+    <div class="px-12 pt-10 w-full">
+        <h2 class="text-4xl font-semibold my-8">ISS Location</h2>
+        <p>Time: {{ issData.timestamp|date }}</p>
+        <p>Altitude: {{ issData.altitude }}</p>
+        <p>Latitude: {{ issData.latitude }}</p>
+        <p>Longitude: {{ issData.longitude }}</p>
+        <p>Visibility: {{ issData.visibility }}</p>
+    </div>
 </div>
 
 {% endblock %}

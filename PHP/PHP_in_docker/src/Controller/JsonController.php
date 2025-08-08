@@ -3,9 +3,11 @@
 namespace App\Controller;
 
 use App\Repository\StarshipRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
+use App\Entity\StarshipFromBase;
 
 use Psr\Log\LoggerInterface;
 
@@ -24,10 +26,22 @@ class JsonController extends AbstractController
     return $this->json($data);
   }
 
+  // #[Route('/api/starships/{id<\d+>}', name: 'json_response_item', methods: ['GET'])]
+  // public function get(int $id, StarshipRepository $repository): Response
+  // {
+  //   $starship = $repository->find($id);
+
+  //   if (!$starship) {
+  //     return $this->json(['error' => 'Starship not found'], Response::HTTP_NOT_FOUND);
+  //   }
+
+  //   return $this->json($starship);
+  // }
+
   #[Route('/api/starships/{id<\d+>}', name: 'json_response_item', methods: ['GET'])]
-  public function get(int $id, StarshipRepository $repository): Response
+  public function show(int $id, EntityManagerInterface $em): Response
   {
-    $starship = $repository->find($id);
+    $starship = $em->find(StarshipFromBase::class, $id);
 
     if (!$starship) {
       return $this->json(['error' => 'Starship not found'], Response::HTTP_NOT_FOUND);
