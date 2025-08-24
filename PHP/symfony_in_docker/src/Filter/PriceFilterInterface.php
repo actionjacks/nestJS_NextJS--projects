@@ -4,6 +4,7 @@
 namespace App\Filter;
 
 use App\Controller\DTO\PriceEnquiryInterface;
+use App\Entity\Promotion;
 
 interface PriceFilterInterface extends PromotionsFilterInterface
 {

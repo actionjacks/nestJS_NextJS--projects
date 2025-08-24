@@ -2,13 +2,14 @@
 
 namespace App\Controller\DTO;
 
+use App\Entity\AdvancedProduct;
 use Symfony\Component\Serializer\Annotation\Ignore;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class LowestPriceEnquiry implements PriceEnquiryInterface
 {
   #[Ignore]
-  private ?Product $product;
+  private ?AdvancedProduct $product;
 
   #[Assert\NotBlank]
   #[Assert\Positive]
@@ -31,17 +32,17 @@ class LowestPriceEnquiry implements PriceEnquiryInterface
   private ?string $promotionName;
 
   /**
-   * @return Product|null
+   * @return AdvancedProduct|null
    */
-  public function getProduct(): ?Product
+  public function getProduct(): ?AdvancedProduct
   {
     return $this->product;
   }
 
   /**
-   * @param Product|null $product
+   * @param AdvancedProduct|null $product
    */
-  public function setProduct(?Product $product): void
+  public function setProduct(?AdvancedProduct $product): void
   {
     $this->product = $product;
   }

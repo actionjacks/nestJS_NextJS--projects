@@ -3,6 +3,7 @@
 namespace App\Filter\Modifier;
 
 use App\Controller\DTO\PromotionEnquiryInterface;
+use App\Entity\Promotion;
 
 class FixedPriceVoucher implements PriceModifierInterface
 {
@@ -12,10 +13,10 @@ class FixedPriceVoucher implements PriceModifierInterface
     Promotion $promotion,
     PromotionEnquiryInterface $enquiry
   ): int {
-    if (!($enquiry->getVoucherCode() === $promotion->getCriteria()['code'])) {
+    // if (!($enquiry->getVoucherCode() === $promotion->getCriteria()['code'])) {
 
-      return $price * $quantity;
-    }
+    //   return $price * $quantity;
+    // }
 
     return $promotion->getAdjustment() * $quantity;
   }

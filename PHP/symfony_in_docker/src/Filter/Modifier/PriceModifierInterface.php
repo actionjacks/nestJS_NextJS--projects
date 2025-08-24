@@ -3,6 +3,7 @@
 namespace App\Filter\Modifier;
 
 use App\Controller\DTO\PromotionEnquiryInterface;
+use App\Entity\Promotion;
 
 interface PriceModifierInterface
 {

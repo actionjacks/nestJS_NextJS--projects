@@ -3,6 +3,7 @@
 namespace App\Filter;
 
 use App\Controller\DTO\PriceEnquiryInterface;
+use App\Entity\Promotion;
 use App\Filter\Modifier\Factory\PriceModifierFactoryInterface;
 
 class LowestPriceFilter implements PriceFilterInterface
@@ -11,7 +12,7 @@ class LowestPriceFilter implements PriceFilterInterface
 
 
   public function apply(
-    PriceEnquiryInterface $enquiry,
+    PriceEnquiryInterface  $enquiry,
     Promotion ...$promotions
   ): PriceEnquiryInterface {
     $price = $enquiry->getProduct()->getPrice();

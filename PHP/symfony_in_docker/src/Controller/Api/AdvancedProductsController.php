@@ -3,8 +3,11 @@
 namespace App\Controller\Api;
 
 use App\Controller\DTO\LowestPriceEnquiry;
+use App\Entity\Promotion;
 use App\Filter\PromotionsFilterInterface;
+use App\Repository\AdvancedProductRepository;
 use App\Service\Serializer\DTOSerializer;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,6 +17,11 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 final class AdvancedProductsController extends AbstractController
 {
+  public function __construct(
+    private AdvancedProductRepository $advancedProductRepository,
+    private EntityManagerInterface $entityManager
+  ) {}
+
   #[Route('/api/products/{id}/lowest-price', name: 'lowest-price', methods: ['POST'])]
   public function lowestPrice(
     Request $request,
@@ -27,6 +35,12 @@ final class AdvancedProductsController extends AbstractController
       LowestPriceEnquiry::class,
       'json'
     );
+
+    $product = $this->advancedProductRepository->findOrFail($id);
+
+    $lowestPriceEnquiry->setProduct($product);
+
+    $promotions = $this->entityManager->getRepository(Promotion::class)->findValidForProduct($product);
 
     $modifiedEnquiry = $promotionsFilter->apply($lowestPriceEnquiry);
 

@@ -2,9 +2,11 @@
 
 namespace App\Controller\DTO;
 
+use App\Entity\AdvancedProduct;
+
 interface PromotionEnquiryInterface
 {
-  public function getProduct(): ?Product;
+  public function getProduct(): ?AdvancedProduct;
 
   public function setPromotionId(int $promotionId);
 
