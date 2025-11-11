@@ -1,0 +1,228 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "contentVersion": "1.0.0.0",
+        "triggers": {
+            "When_a_HTTP_request_is_received": {
+                "type": "Request",
+                "kind": "Http",
+                "inputs": {
+                    "method": "POST",
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "task_id": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "actions": {
+            "Get_secret": {
+                "type": "ApiConnection",
+                "inputs": {
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['keyvault']['connectionId']"
+                        }
+                    },
+                    "method": "get",
+                    "path": "/secrets/@{encodeURIComponent('ClickUp-API-Key-Secret')}/value"
+                },
+                "runAfter": {}
+            },
+            "Get_Task_Data": {
+                "type": "Http",
+                "inputs": {
+                    "uri": "https://api.clickup.com/api/v2/task/@{triggerBody()?['task_id']}",
+                    "method": "GET",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "authentication": {
+                        "type": "Raw",
+                        "value": "Bearer @{body('Get_secret')?['value']}"
+                    }
+                },
+                "runAfter": {
+                    "Get_secret": [
+                        "Succeeded"
+                    ]
+                }
+            },
+            "Parse_task_JSON": {
+                "type": "ParseJson",
+                "inputs": {
+                    "content": "@body('Get_Task_Data')",
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "custom_fields": {
+                                "type": "array"
+                            },
+                            "creator": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "team_id": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "runAfter": {
+                    "Get_Task_Data": [
+                        "Succeeded"
+                    ]
+                }
+            },
+            "Get_Workspace_Members": {
+                "type": "Http",
+                "inputs": {
+                    "uri": "https://api.clickup.com/api/v2/team/@{body('Parse_task_JSON')?['team_id']}",
+                    "method": "GET",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "authentication": {
+                        "type": "Raw",
+                        "value": "Bearer @{body('Get_secret')?['value']}"
+                    }
+                },
+                "runAfter": {
+                    "Parse_task_JSON": [
+                        "Succeeded"
+                    ]
+                }
+            },
+            "Parse_Workspace_Members": {
+                "type": "ParseJson",
+                "inputs": {
+                    "content": "@body('Get_Workspace_Members')",
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "team": {
+                                "type": "object",
+                                "properties": {
+                                    "members": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "user": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "integer"
+                                                        },
+                                                        "email": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "runAfter": {
+                    "Get_Workspace_Members": [
+                        "Succeeded"
+                    ]
+                }
+            },
+            "Find_Creator_in_Workspace": {
+                "type": "Query",
+                "inputs": {
+                    "from": "@body('Parse_Workspace_Members')?['team']?['members']",
+                    "where": "@equals(item()?['user']?['email'], body('Parse_task_JSON')?['creator']?['email'])"
+                },
+                "runAfter": {
+                    "Parse_Workspace_Members": [
+                        "Succeeded"
+                    ]
+                }
+            },
+            "Filter_array_for_IT_members": {
+                "type": "Query",
+                "inputs": {
+                    "from": "@body('Parse_Workspace_Members')?['team']?['members']",
+                    "where": "@contains(createArray(54687651, 81741160, 54687648, body('Find_Creator_in_Workspace')?[0]?['user']?['id']), item()?['user']?['id'])"
+                },
+                "runAfter": {
+                    "Find_Creator_in_Workspace": [
+                        "Succeeded"
+                    ]
+                }
+            },
+            "Select_Parameters": {
+                "type": "Select",
+                "inputs": {
+                    "from": "@body('Filter_array_for_IT_members')",
+                    "select": {
+                        "id": "@item()['user']?['id']",
+                        "kind": "user",
+                        "permission_level": 4
+                    }
+                },
+                "runAfter": {
+                    "Filter_array_for_IT_members": [
+                        "Succeeded"
+                    ]
+                }
+            },
+            "Update_task_privacy": {
+                "type": "Http",
+                "inputs": {
+                    "uri": "https://api.clickup.com/api/v3/workspaces/36828292/task/@{triggerBody()?['task_id']}/acls",
+                    "method": "PATCH",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "body": {
+                        "entries": "@body('Select_Parameters')",
+                        "private": true
+                    },
+                    "authentication": {
+                        "type": "Raw",
+                        "value": "Bearer @{body('Get_secret')?['value']}"
+                    }
+                },
+                "runAfter": {
+                    "Select_Parameters": [
+                        "Succeeded"
+                    ]
+                }
+            }
+        },
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "type": "Object",
+                "defaultValue": {}
+            }
+        }
+    },
+    "parameters": {
+        "$connections": {
+            "type": "Object",
+            "value": {}
+        }
+    }
+}
